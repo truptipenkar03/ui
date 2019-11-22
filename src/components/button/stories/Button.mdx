@@ -1,0 +1,19 @@
+import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Title, SectionTitle } from '../../../../.storybook/components';
+import { Button } from '../Button';
+
+<Title
+  title="Button"
+  subtitle="Buttons allow users to take actions, and make choices, with a single tap or click."
+/>
+
+<SectionTitle>Types</SectionTitle>
+
+You can modify the `buttonType` to change the color depending on the use case. For example `danger` could be used for a delete action.
+
+<Preview>
+  <Story id="components-button--types"/>
+</Preview>
+
+<SectionTitle>Props</SectionTitle>
+<Props of={Button} />
