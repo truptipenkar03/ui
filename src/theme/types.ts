@@ -14,11 +14,41 @@ export interface AnimationTheme {
 }
 
 export interface ButtonTheme {
-  border: string;
   borderRadius: string;
-  color: string;
   height: string;
   padding: string;
+  fontSize: string;
+  fontWeight: string;
+  primary: {
+    background: string;
+    border: string;
+    borderColor: string;
+    color: string;
+    hoverBackground: string;
+    hoverColor: string;
+    focusBackground: string;
+    focusColor: string;
+  };
+  ghost: {
+    background: string;
+    border: string;
+    borderColor: string;
+    color: string;
+    hoverBackground: string;
+    hoverColor: string;
+    focusBackground: string;
+    focusColor: string;
+  };
+  link: {
+    background: string;
+    border: string;
+    borderColor: string;
+    color: string;
+    hoverBackground: string;
+    hoverColor: string;
+    focusBackground: string;
+    focusColor: string;
+  };
 }
 
 export interface Colors {

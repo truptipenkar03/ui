@@ -42,7 +42,7 @@ const themes: Themes = {
 const Foo = ({ storyFn, setTheme, theme } : any) => {
   return (
     <div>
-      <Button buttonType={'info'} onClick={setTheme}> {`${theme} Theme`} </Button>
+      <Button type="primary" onClick={setTheme}> {`${theme} Theme`} </Button>
       {storyFn()}
     </div>
   )

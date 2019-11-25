@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import styled, {
-  css
-} from 'styled-components';
+import {
+  StyledButton
+} from "./StyledButton";
 
 import {
   MouseEventHandler
@@ -12,9 +12,11 @@ import {
   useTheme
 } from "../../hooks/useTheme";
 
+export type ButtonType = 'primary' | 'ghost' | 'link';
+
 export interface ButtonProps {
   /** Type of the button */
-  buttonType?: 'primary' | 'success' | 'danger' | 'warning' | 'info';
+  type?: ButtonType
 
   /** Content to show in the button */
   children?: React.ReactNode;
@@ -25,6 +27,9 @@ export interface ButtonProps {
   /** Disabled state of the button */
   disabled?: boolean;
 
+  /** HTML Type of the button */
+  htmlType?: string;
+
   /** Function to handle click event */
   onClick?: MouseEventHandler<HTMLButtonElement>;
 
@@ -32,61 +37,11 @@ export interface ButtonProps {
   ref?: React.Ref<HTMLButtonElement>;
 }
 
-const defaultButtonType = 'primary';
-
-const REQUIRE_DARK_TEXT = new Set(['success', 'warning']);
-
-const StyledButton = styled.button<ButtonProps>`
-  background: ${(props) => (
-    props.disabled ?
-      props.theme.colors.disabled :
-      props.theme.colors[props.buttonType || defaultButtonType]
-  )};
-
-  color: ${(props) => {
-    if (REQUIRE_DARK_TEXT.has(props.buttonType || defaultButtonType)) {
-      return props.theme.colors.black;
-    }
-    return props.theme.colors.white;
-  }};
-
-  height: ${(props) => `${props.theme.button.height}`};
-
-  font-weight: 400;
-  font-size: 16px;
-  font-family: inherit;
-  text-decoration: none;
-
-  border: ${(props) => props.theme.button.border};
-  border-radius: ${(props) => props.theme.button.borderRadius};
-
-  padding: ${(props) => props.theme.button.padding};
-
-  cursor: ${(props) => (
-    props.disabled ? 'not-allowed' : 'pointer'
-  )};
-
-  transition: ${(props) => props.theme.animations.time.fast} cubic-bezier(.19, 1, .4, 1);
-
-  ${(props) => !props.disabled && css`
-    &:hover {
-      opacity: 0.85;
-    }
-  `}
-
-  &:active {
-    opacity: 1;
-  }
-
-  &:focus {
-    outline: none;
-  }
-`;
-
 export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     children,
-    buttonType
+    type,
+    ...rest
   } = props;
 
   const theme = useTheme();
@@ -94,9 +49,9 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
   return (
     <StyledButton
       ref={ref}
-      buttonType={buttonType}
+      buttonType={type}
       theme={theme}
-      {...props}
+      {...rest}
     >
       {children}
     </StyledButton>
@@ -104,7 +59,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
 });
 
 Button.defaultProps = {
-  buttonType: 'primary',
+  type: 'primary',
   children: '',
   className: '',
   disabled: false,

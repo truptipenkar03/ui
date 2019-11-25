@@ -25,16 +25,20 @@ export default {
 
 export const types = () => (
   <React.Fragment>
-    <Button buttonType="primary">Primary</Button>
+    <Button type="primary">Primary</Button>
     <Spacer />
-    <Button buttonType="success">Success</Button>
+    <Button type="ghost">Ghost</Button>
     <Spacer />
-    <Button buttonType="info">Info</Button>
+    <Button type="link">Link</Button>
+  </React.Fragment>
+);
+
+export const disabled = () => (
+  <React.Fragment>
+    <Button type="primary" disabled>Primary</Button>
     <Spacer />
-    <Button buttonType="danger">Danger</Button>
+    <Button type="ghost" disabled>Ghost</Button>
     <Spacer />
-    <Button buttonType="warning">Warning</Button>
-    <Spacer />
-    <Button disabled>Disabled</Button>
+    <Button type="link" disabled>Link</Button>
   </React.Fragment>
 );
