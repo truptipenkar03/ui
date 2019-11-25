@@ -16,7 +16,7 @@ export type ButtonType = 'primary' | 'ghost' | 'link';
 
 export interface ButtonProps {
   /** Type of the button */
-  type?: ButtonType
+  type?: ButtonType;
 
   /** Content to show in the button */
   children?: React.ReactNode;
