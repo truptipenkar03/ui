@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import {
-  mount
+  mount,
+  shallow
 } from "enzyme";
 
 import {
@@ -10,44 +11,44 @@ import {
 
 describe('Button', () => {
   it('renders without children', () => {
-    const wrapper = mount(
+    const wrapper = shallow(
       <Button />
     );
 
-    expect(wrapper.exists('Button__StyledButton')).toBe(true);
+    expect(wrapper.exists('StyledButton')).toBe(true);
   });
 
   it('renders with children', () => {
-    const wrapper = mount(
+    const wrapper = shallow(
       <Button>Test Button</Button>
     );
 
-    expect(wrapper.exists('Button__StyledButton')).toBe(true);
+    expect(wrapper.exists('StyledButton')).toBe(true);
   });
 
   it('sets the buttonType prop', () => {
-    const wrapper = mount(
-      <Button buttonType={'success'}>Test Button</Button>
+    const wrapper = shallow(
+      <Button type="ghost">Test Button</Button>
     );
 
-    expect(wrapper.find('Button__StyledButton').prop('buttonType')).toBe('success');
+    expect(wrapper.find('StyledButton').prop('buttonType')).toBe('ghost');
   });
 
   it('sets the disabled prop', () => {
-    const wrapper = mount(
+    const wrapper = shallow(
       <Button disabled>Test Button</Button>
     );
 
-    expect(wrapper.find('Button__StyledButton').prop('disabled')).toBe(true);
+    expect(wrapper.find('StyledButton').prop('disabled')).toBe(true);
   });
 
   it('calls onClick handler', () => {
     const onClickMock = jest.fn();
-    const wrapper = mount(
+    const wrapper = shallow(
       <Button onClick={onClickMock}>Test Button</Button>
     );
 
-    wrapper.find('Button__StyledButton').simulate('click');
+    wrapper.find('StyledButton').simulate('click');
 
     expect(onClickMock).toBeCalledTimes(1);
   });
@@ -60,7 +61,7 @@ describe('Button', () => {
       <Button disabled onClick={onClickMock}>Test Button</Button>
     );
 
-    wrapper.find('Button__StyledButton').simulate('click');
+    wrapper.find('StyledButton').simulate('click');
 
     expect(onClickMock).toBeCalledTimes(0);
   });
