@@ -19,8 +19,6 @@ import {
   useTheme
 } from "../../hooks/useTheme";
 
-import {StyledChildren} from "./StyledChildren";
-
 export type ButtonType = 'primary' | 'ghost' | 'link';
 
 export interface ButtonProps {
@@ -65,7 +63,10 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
   const theme = useTheme();
 
   const {
-    button
+    button,
+    animations: {
+      time
+    }
   } = theme;
 
   const iconToShow = loadingIcon || <SvgCircleNotch fill={button[type || 'primary'].color} />;
@@ -84,24 +85,24 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
           loading: {
             width: button.fontSize,
             marginRight: 5,
-            transition: { type: 'tween', delayChildren: 1 }
+            transition: { type: 'tween'}
            },
           notLoading: { width: 0, marginRight: 0}
         }}
         animate={loading ? 'loading' : 'notLoading'}
-        layoutTransition={{ type: 'tween', duration: 0.2, delay: 0.2 }}
+        layoutTransition={{ type: 'tween', duration: time.veryFast, delay: time.veryFast }}
       >
         {loading &&
           <motion.div
-            style={{ height: button.fontSize, width: button.fontSize }}
-            animate={{rotate: 360, transformOrigin: 'center center'}}
-            transition={{ duration: theme.animations.time.slow, loop: Infinity, ease: 'linear'}}
+            style={{ height: button.fontSize, width: button.fontSize, transformOrigin: 'center center' }}
+            animate={{rotate: 360}}
+            transition={{ duration: time.slow, loop: Infinity, ease: 'linear'}}
           >
             {iconToShow}
           </motion.div>
         }
       </motion.div>
-      <StyledChildren loading={loading}>{children}</StyledChildren>
+      <span>{children}</span>
     </StyledButton>
   );
 });
