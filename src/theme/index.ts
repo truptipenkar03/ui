@@ -7,17 +7,11 @@ import {
 export const theme: GlobalTheme = {
   animations: {
     time: {
-      veryFast: '0.1s',
-      fast: '0.25s',
-      medium: '0.5s',
-      slow: '1s'
+      veryFast: 0.1,
+      fast: 0.25,
+      medium: 0.5,
+      slow: 1
     },
-    milliseconds: {
-      veryFast: 100,
-      fast: 250,
-      medium: 500,
-      slow: 1000
-    }
   },
   button: {
     borderRadius: '4px',

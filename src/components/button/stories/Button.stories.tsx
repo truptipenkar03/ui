@@ -8,9 +8,19 @@ import {
 // @ts-ignore
 import mdx from './Button.mdx';
 
+const Container = styled.div`
+  display: flex;
+`;
+
 const Spacer = styled.span`
   height: 1px;
   padding: 5px;
+`;
+
+const Loader = styled.div`
+  height: 16px;
+  width: 16px;
+  background-color: red;
 `;
 
 export default {
@@ -24,21 +34,61 @@ export default {
 };
 
 export const types = () => (
-  <React.Fragment>
+  <Container>
     <Button type="primary">Primary</Button>
     <Spacer />
     <Button type="ghost">Ghost</Button>
     <Spacer />
     <Button type="link">Link</Button>
-  </React.Fragment>
+  </Container>
 );
 
 export const disabled = () => (
-  <React.Fragment>
-    <Button type="primary" disabled>Primary</Button>
+  <Container>
+    <Button onClick={() => console.log('clicked')} type="primary" disabled>Primary</Button>
     <Spacer />
     <Button type="ghost" disabled>Ghost</Button>
     <Spacer />
     <Button type="link" disabled>Link</Button>
-  </React.Fragment>
+  </Container>
 );
+
+export const loading = () => {
+  const [loading, toggleLoading] = React.useState(false);
+
+  const handleToggle = React.useCallback(() => {
+    toggleLoading(!loading);
+  }, [loading, toggleLoading]);
+
+  return (
+    <React.Fragment>
+      <div style={{marginBottom: '15px' }}>
+        <Button onClick={handleToggle}>Toggle Loading</Button>
+      </div>
+      <Container>
+        <Button
+          type="primary"
+          loading={loading}
+        >
+          Primary
+        </Button>
+        <Spacer />
+        <Button
+          type="ghost"
+          loading={loading}
+        >
+          Ghost
+        </Button>
+        <Spacer />
+        <Button
+          type="link"
+          loading={loading}
+        >
+          Link
+        </Button>
+      </Container>
+    </React.Fragment>
+  );
+};
+
+

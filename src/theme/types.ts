@@ -1,11 +1,5 @@
 export interface AnimationTheme {
   time: {
-    veryFast: string;
-    fast: string;
-    medium: string;
-    slow: string;
-  };
-  milliseconds: {
     veryFast: number;
     fast: number;
     medium: number;

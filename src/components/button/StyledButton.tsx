@@ -8,6 +8,7 @@ interface StyledButtonProps {
   children?: React.ReactNode;
   className?: string;
   disabled?: boolean;
+  loading?: boolean;
   type?: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   ref?: React.Ref<HTMLButtonElement>;
@@ -16,6 +17,10 @@ interface StyledButtonProps {
 
 export const StyledButton = styled.button<StyledButtonProps>`
   ${(props) => css`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
     border: ${props.theme.button.border};
     border-radius: ${props.theme.button.borderRadius};
     cursor: pointer;
@@ -23,7 +28,9 @@ export const StyledButton = styled.button<StyledButtonProps>`
     font-weight: ${props.theme.button.fontWeight};
     height: ${props.theme.button.height};
     padding: ${props.theme.button.padding};
-    
+    white-space: nowrap;
+    outline: 0;
+
     transition: all ${props.theme.animations.time.fast};
 
     // ----------- Primary --------- //
@@ -43,10 +50,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
         color: ${props.theme.button.primary.focusColor};
       }
       
-      ${props.disabled && css`
-        opacity: 0.5;
-        cursor: not-allowed;
-        
+      ${(props.disabled || props.loading) && css`
         &:hover {
           background: ${props.theme.button.primary.background};
           color: ${props.theme.button.primary.hoverColor};
@@ -76,10 +80,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
         color: ${props.theme.button.ghost.focusColor};
       }
       
-      ${props.disabled && css`
-        opacity: 0.5;
-        cursor: not-allowed;
-        
+      ${(props.disabled || props.loading) && css`
         &:hover {
           background: ${props.theme.button.ghost.background};
           color: ${props.theme.button.ghost.color};
@@ -111,10 +112,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
         text-decoration: underline;
       }
       
-      ${props.disabled && css`
-        opacity: 0.5;
-        cursor: not-allowed;
-        
+      ${(props.disabled || props.loading) && css`
         &:hover {
           background: ${props.theme.button.link.background};
           color: ${props.theme.button.link.color};
@@ -127,6 +125,11 @@ export const StyledButton = styled.button<StyledButtonProps>`
           text-decoration: none;
         }
       `};
+    `};
+    
+    ${(props.disabled || props.loading) && css`
+      pointer-events: none;
+      opacity: 0.5;
     `};
   `};
 `;
