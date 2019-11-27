@@ -5,6 +5,7 @@ import {
 } from "./StyledButton";
 
 import {
+  AnimatePresence,
   motion
 } from "framer-motion";
 
@@ -63,12 +64,11 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
 
   const theme = useTheme();
 
-  const { button } = theme;
+  const {
+    button
+  } = theme;
 
-  const test = {
-    loading: { width: button.fontSize },
-    notLoading: { width: 0 }
-  };
+  const iconToShow = loadingIcon || <SvgCircleNotch fill={button[type || 'primary'].color} />;
 
   return (
     <StyledButton
@@ -80,9 +80,16 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
       {...rest}
     >
       <motion.div
-        variants={test}
+        variants={{
+          loading: {
+            width: button.fontSize,
+            marginRight: 5,
+            transition: { type: 'tween', delayChildren: 1 }
+           },
+          notLoading: { width: 0, marginRight: 0}
+        }}
         animate={loading ? 'loading' : 'notLoading'}
-        transition={{type: 'tween'}}
+        layoutTransition={{ type: 'tween', duration: 0.2, delay: 0.2 }}
       >
         {loading &&
           <motion.div
@@ -90,7 +97,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
             animate={{rotate: 360, transformOrigin: 'center center'}}
             transition={{ duration: theme.animations.time.slow, loop: Infinity, ease: 'linear'}}
           >
-            {loadingIcon}
+            {iconToShow}
           </motion.div>
         }
       </motion.div>
@@ -105,6 +112,5 @@ Button.defaultProps = {
   className: '',
   disabled: false,
   loading: false,
-  loadingIcon: <SvgCircleNotch />,
   onClick: undefined
 };
