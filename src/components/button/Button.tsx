@@ -17,7 +17,8 @@ import {
 import {
   useTheme
 } from "../../hooks/useTheme";
-import {StyledLoadingIcon} from "./StyledLoadingIcon";
+
+import {StyledChildren} from "./StyledChildren";
 
 export type ButtonType = 'primary' | 'ghost' | 'link';
 
@@ -93,7 +94,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
           </motion.div>
         }
       </motion.div>
-      <span>{children}</span>
+      <StyledChildren loading={loading}>{children}</StyledChildren>
     </StyledButton>
   );
 });

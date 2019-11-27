@@ -14,7 +14,6 @@ interface StyledButtonProps {
   ref?: React.Ref<HTMLButtonElement>;
 }
 
-
 export const StyledButton = styled.button<StyledButtonProps>`
   ${(props) => css`
     display: flex;
