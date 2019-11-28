@@ -29,8 +29,12 @@ export const StyledButton = styled.button<StyledButtonProps>`
     padding: ${props.theme.button.padding};
     white-space: nowrap;
     outline: 0;
+    user-select: none;
+    touch-action: manipulation;
 
     transition: all ${props.theme.animations.time.fast};
+    
+   -webkit-tap-highlight-color: transparent;
 
     // ----------- Primary --------- //
     ${(props.buttonType === 'primary') && css`
@@ -130,5 +134,9 @@ export const StyledButton = styled.button<StyledButtonProps>`
       pointer-events: none;
       opacity: 0.5;
     `};
+    
+    &::-moz-focus-inner {
+      border: none;
+    }
   `};
 `;
