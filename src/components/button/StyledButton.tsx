@@ -32,7 +32,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
     user-select: none;
     touch-action: manipulation;
 
-    transition: all ${props.theme.animations.time.fast};
+    transition: all ${props.theme.animations.time.fast}s;
     
    -webkit-tap-highlight-color: transparent;
 
