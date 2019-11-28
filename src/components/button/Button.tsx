@@ -5,7 +5,6 @@ import {
 } from "./StyledButton";
 
 import {
-  AnimatePresence,
   motion
 } from "framer-motion";
 
