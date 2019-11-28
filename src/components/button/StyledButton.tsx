@@ -26,6 +26,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
     font-size: ${props.theme.button.fontSize};
     font-weight: ${props.theme.button.fontWeight};
     height: ${props.theme.button.height};
+    line-height: 1;
     padding: ${props.theme.button.padding};
     white-space: nowrap;
     outline: 0;
