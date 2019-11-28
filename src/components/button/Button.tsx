@@ -86,7 +86,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
     <StyledButton
       ref={ref}
       buttonType={type}
-      className={className}
+      className={`${className} rtk-button`}
       loading={loading}
       theme={theme}
       {...rest}
