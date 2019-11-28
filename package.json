@@ -12,6 +12,7 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build:ts": "tsc",
     "build:js": "BABEL_ENV=build babel ./src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+    "postinstall": "npm run build",
     "storybook": "start-storybook -p 9000 --quiet",
     "storybook:build": "build-storybook -o build/storybook/static",
     "storybook:docs": "build-storybook --docs -o build/storybook/static",
