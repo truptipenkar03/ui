@@ -42,6 +42,22 @@ describe('Button', () => {
     expect(wrapper.find('StyledButton').prop('disabled')).toBe(true);
   });
 
+  it('sets the loading prop', () => {
+    const wrapper = shallow(
+      <Button loading>Test Button</Button>
+    );
+
+    expect(wrapper.find('StyledButton').prop('loading')).toBe(true);
+  });
+
+  it('sets the loadingIcon prop', () => {
+    const wrapper = shallow(
+      <Button loading loadingIcon={<div id={"icon"}>icon</div>}>Test Button</Button>
+    );
+
+    expect(wrapper.exists('#icon')).toBe(true);
+  });
+
   it('calls onClick handler', () => {
     const onClickMock = jest.fn();
     const wrapper = shallow(
