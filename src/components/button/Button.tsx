@@ -5,10 +5,12 @@ import {
 } from "./StyledButton";
 
 import {
-  motion
+  motion, MotionProps
 } from "framer-motion";
 
-import { SvgCircleNotch } from '../icons/CircleNotch';
+import {
+  SvgCircleNotch
+} from '../icons/CircleNotch';
 
 import {
   MouseEventHandler
@@ -42,6 +44,9 @@ export interface ButtonProps {
   /** Loading icon of the button */
   loadingIcon?: React.ReactNode;
 
+  /** Motion configuration for loading icon */
+  motionConfig?: MotionProps;
+
   /** Function to handle click event */
   onClick?: MouseEventHandler<HTMLButtonElement>;
 
@@ -55,6 +60,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
     className,
     loading,
     loadingIcon,
+    motionConfig,
     type,
     ...rest
   } = props;
@@ -69,6 +75,12 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
   } = theme;
 
   const iconToShow = loadingIcon || <SvgCircleNotch fill={button[type || 'primary'].color} />;
+
+  const motionConfigToUse: MotionProps = motionConfig ||  {
+    style: { height: button.fontSize, width: button.fontSize, transformOrigin: 'center center' },
+    animate: {rotate: 360},
+    transition: { duration: time.slow, loop: Infinity, ease: 'linear'}
+  };
 
   return (
     <StyledButton
@@ -93,9 +105,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
       >
         {loading &&
           <motion.div
-            style={{ height: button.fontSize, width: button.fontSize, transformOrigin: 'center center' }}
-            animate={{rotate: 360}}
-            transition={{ duration: time.slow, loop: Infinity, ease: 'linear'}}
+            {...motionConfigToUse}
           >
             {iconToShow}
           </motion.div>

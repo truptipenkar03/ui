@@ -2,6 +2,6 @@ import { create } from '@storybook/theming';
 
 export default create({
   base: 'light',
-  brandTitle: 'Kingsbury',
-  fontBase: '"Nunito", sans-serif',
+  brandTitle: 'Arctic Wolf Design',
+  fontBase: "'Encode Sans', sans-serif"
 });

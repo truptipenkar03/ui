@@ -17,12 +17,6 @@ const Spacer = styled.span`
   padding: 5px;
 `;
 
-const Loader = styled.div`
-  height: 16px;
-  width: 16px;
-  background-color: red;
-`;
-
 export default {
   title: 'Components|Button',
   component: Button,
@@ -63,11 +57,12 @@ export const loading = () => {
   return (
     <React.Fragment>
       <div style={{marginBottom: '15px' }}>
-        <Button onClick={handleToggle}>Toggle Loading</Button>
+        <Button onClick={handleToggle}>{loading ? 'Cancel Loading' : 'Start Loading'}</Button>
       </div>
       <Container>
         <Button
           type="primary"
+          onClick={handleToggle}
           loading={loading}
         >
           Primary
@@ -75,6 +70,7 @@ export const loading = () => {
         <Spacer />
         <Button
           type="ghost"
+          onClick={handleToggle}
           loading={loading}
         >
           Ghost
@@ -82,6 +78,7 @@ export const loading = () => {
         <Spacer />
         <Button
           type="link"
+          onClick={handleToggle}
           loading={loading}
         >
           Link
