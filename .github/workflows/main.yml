@@ -1,5 +1,5 @@
 name: test
-on: [tag]
+on: [push]
 
 jobs:
   main-tests:
