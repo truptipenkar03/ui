@@ -1,5 +1,8 @@
 name: deploy
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   main-tests:
@@ -12,7 +15,10 @@ jobs:
           node-version: '10.16'
       - run: npm install
       - run: npm run build
-      - run: git status
-      - run: git add lib/
-      - run: git commit -m "commiting build"
+      - run: |
+          git status
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add lib/
+          git commit -m "commiting build"
       - run: git push origin aaho-start
