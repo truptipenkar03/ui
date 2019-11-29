@@ -14,7 +14,7 @@ export const theme: GlobalTheme = {
     },
   },
   button: {
-    borderRadius: '4px',
+    borderRadius: '5px',
     height: '32px',
     padding: '0px 15px',
     fontSize: '14px',
