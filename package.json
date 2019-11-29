@@ -12,8 +12,6 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build:ts": "tsc",
     "build:js": "BABEL_ENV=build babel ./src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
-    "pre-commit": "npm test",
-    "pre-push": "npm test",
     "storybook": "start-storybook -p 9000 --quiet",
     "storybook:build": "build-storybook -o build/storybook/static",
     "storybook:docs": "build-storybook --docs -o build/storybook/static",
@@ -105,6 +103,11 @@
         "lines": 87,
         "statements": 87
       }
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test"
     }
   }
 }
