@@ -22,7 +22,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add /lib
+          git add ./lib
           git commit -m "adding a new build"
       - name: Push changes
         uses: ad-m/github-push-action@master
