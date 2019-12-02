@@ -15,9 +15,7 @@ export const theme: GlobalTheme = {
   },
   button: {
     borderRadius: '4px',
-    height: '32px',
     padding: '0px 15px',
-    fontSize: '14px',
     fontWeight: '400',
     primary: {
       background: colors.primary,
@@ -48,6 +46,20 @@ export const theme: GlobalTheme = {
       hoverColor: colors.secondary,
       focusBackground: 'transparent',
       focusColor: colors.secondary,
+    },
+    size: {
+      small: {
+        height: '24px',
+        fontSize: '14px'
+      },
+      default: {
+        height: '32px',
+        fontSize: '14px'
+      },
+      large: {
+        height: '44px',
+        fontSize: '16px'
+      }
     }
   },
   colors: {

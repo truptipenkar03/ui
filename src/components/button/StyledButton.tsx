@@ -1,7 +1,7 @@
 import * as React from "react";
 import {MouseEventHandler} from "react";
 import styled, {css} from "styled-components";
-import {ButtonType, ShapeType} from "./Button";
+import {ButtonType, ShapeType, SizeType} from "./Button";
 
 interface StyledButtonProps {
   buttonType?: ButtonType;
@@ -13,6 +13,7 @@ interface StyledButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   ref?: React.Ref<HTMLButtonElement>;
   shape?: ShapeType;
+  size?: SizeType;
 }
 
 export const StyledButton = styled.button<StyledButtonProps>`
@@ -25,9 +26,9 @@ export const StyledButton = styled.button<StyledButtonProps>`
     border: ${props.theme.button.border};
     border-radius: ${props.theme.button.borderRadius};
     cursor: pointer;
-    font-size: ${props.theme.button.fontSize};
+    font-size: ${props.theme.button.size[props.size || 'default'].fontSize};
     font-weight: ${props.theme.button.fontWeight};
-    height: ${props.theme.button.height};
+    height: ${props.theme.button.size[props.size || 'default'].height};
     line-height: 1;
     padding: ${props.theme.button.padding};
     white-space: nowrap;
@@ -138,14 +139,14 @@ export const StyledButton = styled.button<StyledButtonProps>`
       opacity: 0.5;
     `};
     
+    // ----------- Circle --------- //
     ${props.shape === 'circle' && css`
       padding: 0;
-      min-width: ${props.theme.button.height};
+      min-width: ${props.theme.button.size[props.size || 'default'].height};
       text-align: center;
       border-radius: 50%;
       
       ${props.loading && css`
-        
         span {
           display: none;
         }

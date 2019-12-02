@@ -22,6 +22,7 @@ import {
 
 export type ButtonType = 'primary' | 'ghost' | 'link';
 export type ShapeType = 'circle' | 'default';
+export type SizeType = 'small' | 'default' | 'large';
 
 export interface ButtonProps {
   /** Type of the button */
@@ -56,6 +57,9 @@ export interface ButtonProps {
 
   /** Shape of the button */
   shape?: ShapeType;
+
+  /** Size of the button */
+  size?: SizeType;
 }
 
 export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
@@ -81,8 +85,10 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
 
   const iconToShow = loadingIcon || <SvgCircleNotch fill={button[type || 'primary'].color} />;
 
+  const widthAndHeight = button.size[props.size || 'default'].fontSize;
+
   const motionConfigToUse: MotionProps = motionConfig ||  {
-    style: { height: button.fontSize, width: button.fontSize, transformOrigin: 'center center' },
+    style: { height: widthAndHeight, width: widthAndHeight, transformOrigin: 'center center' },
     animate: {rotate: 360},
     transition: { duration: time.slow, loop: Infinity, ease: 'linear'}
   };
@@ -100,7 +106,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
       <motion.div
         variants={{
           loading: {
-            width: button.fontSize,
+            width: widthAndHeight,
             marginRight: shape === 'circle' ? 0 : 5,
             transition: { type: 'tween'}
            },
@@ -129,5 +135,6 @@ Button.defaultProps = {
   disabled: false,
   loading: false,
   onClick: undefined,
-  shape: 'default'
+  shape: 'default',
+  size: 'default'
 };

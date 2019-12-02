@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from 'styled-components';
 
 import {
-  Button
+  Button, SizeType
 } from '../Button';
 
 // @ts-ignore
@@ -10,6 +10,7 @@ import mdx from './Button.mdx';
 
 const Container = styled.div`
   display: flex;
+  margin-bottom: 10px;
 `;
 
 const Spacer = styled.span`
@@ -97,4 +98,30 @@ export const shape = () => (
     <Button shape="circle" loading type="primary">P</Button>
   </Container>
 );
+
+export const size = () => {
+  const [size, setSize] = React.useState<SizeType>('default');
+  return (
+    <React.Fragment>
+      <Container>
+        <Button onClick={() => setSize('small')}>
+          Small
+        </Button>
+        <Spacer />
+        <Button onClick={() => setSize('default')}>
+          Default
+        </Button>
+        <Spacer />
+        <Button onClick={() => setSize('large')}>
+          Large
+        </Button>
+      </Container>
+      <Container>
+        <Button size={size} type="primary">Primary</Button>
+        <Spacer />
+        <Button size={size}  shape="circle" type="ghost">G</Button>
+      </Container>
+    </React.Fragment>
+  );
+};
 
