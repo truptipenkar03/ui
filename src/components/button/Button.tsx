@@ -21,6 +21,7 @@ import {
 } from "../../hooks/useTheme";
 
 export type ButtonType = 'primary' | 'ghost' | 'link';
+export type ShapeType = 'circle' | 'default';
 
 export interface ButtonProps {
   /** Type of the button */
@@ -52,6 +53,9 @@ export interface ButtonProps {
 
   /** Ref to be passed to the button */
   ref?: React.Ref<HTMLButtonElement>;
+
+  /** Shape of the button */
+  shape?: ShapeType;
 }
 
 export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
@@ -62,6 +66,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
     loadingIcon,
     motionConfig,
     type,
+    shape,
     ...rest
   } = props;
 
@@ -88,6 +93,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
       buttonType={type}
       className={`${className} rtk-button`}
       loading={loading}
+      shape={shape}
       theme={theme}
       {...rest}
     >
@@ -95,7 +101,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
         variants={{
           loading: {
             width: button.fontSize,
-            marginRight: 5,
+            marginRight: shape === 'circle' ? 0 : 5,
             transition: { type: 'tween'}
            },
           notLoading: { width: 0, marginRight: 0}
@@ -122,5 +128,6 @@ Button.defaultProps = {
   className: '',
   disabled: false,
   loading: false,
-  onClick: undefined
+  onClick: undefined,
+  shape: 'default'
 };

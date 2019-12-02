@@ -1,7 +1,7 @@
 import * as React from "react";
 import {MouseEventHandler} from "react";
 import styled, {css} from "styled-components";
-import {ButtonType} from "./Button";
+import {ButtonType, ShapeType} from "./Button";
 
 interface StyledButtonProps {
   buttonType?: ButtonType;
@@ -12,6 +12,7 @@ interface StyledButtonProps {
   type?: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   ref?: React.Ref<HTMLButtonElement>;
+  shape?: ShapeType;
 }
 
 export const StyledButton = styled.button<StyledButtonProps>`
@@ -19,6 +20,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
 
     border: ${props.theme.button.border};
     border-radius: ${props.theme.button.borderRadius};
@@ -135,6 +137,20 @@ export const StyledButton = styled.button<StyledButtonProps>`
       pointer-events: none;
       opacity: 0.5;
     `};
+    
+    ${props.shape === 'circle' && css`
+      padding: 0;
+      min-width: ${props.theme.button.height};
+      text-align: center;
+      border-radius: 50%;
+      
+      ${props.loading && css`
+        
+        span {
+          display: none;
+        }
+      `}
+    `}
     
     &::-moz-focus-inner {
       border: none;

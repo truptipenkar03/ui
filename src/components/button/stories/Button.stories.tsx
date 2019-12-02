@@ -88,4 +88,13 @@ export const loading = () => {
   );
 };
 
+export const shape = () => (
+  <Container>
+    <Button shape="circle" type="primary">P</Button>
+    <Spacer />
+    <Button shape="circle" type="ghost">G</Button>
+    <Spacer />
+    <Button shape="circle" loading type="primary">P</Button>
+  </Container>
+);
 
