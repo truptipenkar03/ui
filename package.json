@@ -104,9 +104,11 @@
       }
     }
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "echo \"this should fail\" && exit 1"
-    }
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/rtkwlf/ui_components.git"
   }
 }
