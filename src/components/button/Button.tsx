@@ -71,6 +71,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
     motionConfig,
     type,
     shape,
+    size,
     ...rest
   } = props;
 
@@ -98,8 +99,11 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
       ref={ref}
       buttonType={type}
       className={`${className} rtk-button`}
-      loading={loading}
-      shape={shape}
+      customProps={{
+        loading,
+        shape,
+        size
+      }}
       theme={theme}
       {...rest}
     >
@@ -115,12 +119,13 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
         animate={loading ? 'loading' : 'notLoading'}
         layoutTransition={{ type: 'tween', duration: time.veryFast, delay: time.veryFast }}
       >
-        {loading &&
+        {loading ?
           <motion.div
             {...motionConfigToUse}
           >
             {iconToShow}
-          </motion.div>
+          </motion.div> :
+          null
         }
       </motion.div>
       <span>{children}</span>

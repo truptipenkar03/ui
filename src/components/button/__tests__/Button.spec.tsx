@@ -58,6 +58,22 @@ describe('Button', () => {
     expect(wrapper.exists('#icon')).toBe(true);
   });
 
+  it('sets the shape prop', () => {
+    const wrapper = shallow(
+      <Button shape={'circle'}>Test Button</Button>
+    );
+
+    expect(wrapper.find('StyledButton').prop('shape')).toBe('circle');
+  });
+
+  it('sets the size prop', () => {
+    const wrapper = shallow(
+      <Button size={'large'}>Test Button</Button>
+    );
+
+    expect(wrapper.find('StyledButton').prop('size')).toBe('large');
+  });
+
   it('calls onClick handler', () => {
     const onClickMock = jest.fn();
     const wrapper = shallow(
