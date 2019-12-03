@@ -103,5 +103,9 @@
         "statements": 87
       }
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rtkwlf/ui_components.git"
   }
 }
