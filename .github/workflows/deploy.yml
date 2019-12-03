@@ -1,10 +1,10 @@
 name: Deploy
-on:
-  push:
-    branches:
-      - '!master'
-    tags:
-      - v*
+on: [push]
+#   push:
+#     branches:
+#       - '!master'
+#     tags:
+#       - v*
 
 jobs:
   main-tests:
