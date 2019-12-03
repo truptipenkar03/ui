@@ -109,6 +109,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com/rtkwlf/ui_components.git"
+    "url": "git://git@github.com/rtkwlf/ui_components.git"
   }
 }
