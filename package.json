@@ -1,5 +1,5 @@
 {
-  "name": "@rtkwlf/ui-components-to-be-named",
+  "name": "@rtkwlf/ui_components",
   "version": "0.0.0",
   "main": "lib/index.js",
   "license": "MIT",
@@ -103,12 +103,5 @@
         "statements": 87
       }
     }
-  },
-  "publishConfig": {
-    "registry":"https://npm.pkg.github.com/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://git@github.com/rtkwlf/ui_components.git"
   }
 }
