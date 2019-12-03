@@ -49,12 +49,12 @@ export interface ButtonTheme {
     default: {
       height: string;
       fontSize: string;
-    }
+    };
     large: {
       height: string;
       fontSize: string;
-    }
-  }
+    };
+  };
 }
 
 export interface Colors {
