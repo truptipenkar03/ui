@@ -9,9 +9,7 @@ export interface AnimationTheme {
 
 export interface ButtonTheme {
   borderRadius: string;
-  height: string;
   padding: string;
-  fontSize: string;
   fontWeight: string;
   primary: {
     background: string;
@@ -42,6 +40,20 @@ export interface ButtonTheme {
     hoverColor: string;
     focusBackground: string;
     focusColor: string;
+  };
+  size: {
+    small: {
+      height: string;
+      fontSize: string;
+    };
+    default: {
+      height: string;
+      fontSize: string;
+    };
+    large: {
+      height: string;
+      fontSize: string;
+    };
   };
 }
 

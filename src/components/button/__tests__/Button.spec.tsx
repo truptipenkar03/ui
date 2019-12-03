@@ -47,7 +47,8 @@ describe('Button', () => {
       <Button loading>Test Button</Button>
     );
 
-    expect(wrapper.find('StyledButton').prop('loading')).toBe(true);
+    // @ts-ignore
+    expect(wrapper.find('StyledButton').prop('customProps').loading).toBe(true);
   });
 
   it('sets the loadingIcon prop', () => {
@@ -56,6 +57,24 @@ describe('Button', () => {
     );
 
     expect(wrapper.exists('#icon')).toBe(true);
+  });
+
+  it('sets the shape prop', () => {
+    const wrapper = shallow(
+      <Button shape={'circle'}>Test Button</Button>
+    );
+
+    // @ts-ignore
+    expect(wrapper.find('StyledButton').prop('customProps').shape).toBe('circle');
+  });
+
+  it('sets the size prop', () => {
+    const wrapper = shallow(
+      <Button size={'large'}>Test Button</Button>
+    );
+
+    // @ts-ignore
+    expect(wrapper.find('StyledButton').prop('customProps').size).toBe('large');
   });
 
   it('calls onClick handler', () => {

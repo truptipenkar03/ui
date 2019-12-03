@@ -21,6 +21,8 @@ import {
 } from "../../hooks/useTheme";
 
 export type ButtonType = 'primary' | 'ghost' | 'link';
+export type ShapeType = 'circle' | 'default';
+export type SizeType = 'small' | 'default' | 'large';
 
 export interface ButtonProps {
   /** Type of the button */
@@ -52,6 +54,12 @@ export interface ButtonProps {
 
   /** Ref to be passed to the button */
   ref?: React.Ref<HTMLButtonElement>;
+
+  /** Shape of the button */
+  shape?: ShapeType;
+
+  /** Size of the button */
+  size?: SizeType;
 }
 
 export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
@@ -62,6 +70,8 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
     loadingIcon,
     motionConfig,
     type,
+    shape,
+    size,
     ...rest
   } = props;
 
@@ -76,8 +86,10 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
 
   const iconToShow = loadingIcon || <SvgCircleNotch fill={button[type || 'primary'].color} />;
 
+  const widthAndHeight = button.size[props.size || 'default'].fontSize;
+
   const motionConfigToUse: MotionProps = motionConfig ||  {
-    style: { height: button.fontSize, width: button.fontSize, transformOrigin: 'center center' },
+    style: { height: widthAndHeight, width: widthAndHeight, transformOrigin: 'center center' },
     animate: {rotate: 360},
     transition: { duration: time.slow, loop: Infinity, ease: 'linear'}
   };
@@ -87,15 +99,19 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
       ref={ref}
       buttonType={type}
       className={`${className} rtk-button`}
-      loading={loading}
+      customProps={{
+        loading,
+        shape,
+        size
+      }}
       theme={theme}
       {...rest}
     >
       <motion.div
         variants={{
           loading: {
-            width: button.fontSize,
-            marginRight: 5,
+            width: widthAndHeight,
+            marginRight: shape === 'circle' ? 0 : 5,
             transition: { type: 'tween'}
            },
           notLoading: { width: 0, marginRight: 0}
@@ -103,12 +119,13 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
         animate={loading ? 'loading' : 'notLoading'}
         layoutTransition={{ type: 'tween', duration: time.veryFast, delay: time.veryFast }}
       >
-        {loading &&
+        {loading ?
           <motion.div
             {...motionConfigToUse}
           >
             {iconToShow}
-          </motion.div>
+          </motion.div> :
+          null
         }
       </motion.div>
       <span>{children}</span>
@@ -122,5 +139,7 @@ Button.defaultProps = {
   className: '',
   disabled: false,
   loading: false,
-  onClick: undefined
+  onClick: undefined,
+  shape: 'default',
+  size: 'default'
 };
