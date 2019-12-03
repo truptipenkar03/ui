@@ -15,8 +15,11 @@ jobs:
           node-version: '10.16'
           registry-url: https://npm.pkg.github.com/
           scope: '@rtkwlf'
-      - run: npm install
-      - run: npm run build
-      - run: npm publish
+      - name: Install
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Publish to Github Packages
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

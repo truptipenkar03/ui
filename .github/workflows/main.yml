@@ -2,7 +2,7 @@ name: Test
 on: [push]
 
 jobs:
-  main-tests:
+  test:
     name: Test and Lint
     runs-on: ubuntu-latest
     steps:
@@ -10,7 +10,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '10.16'
-      - run: npm install
-      - run: npm test
-      - run: npm run lint
-      - run: npm run build
+      - name: Install
+        run: npm install
+      - name: Lint
+        run: npm run lint
+      - name: Test
+        run: npm test
+      - name: Build
+        run: npm run build
