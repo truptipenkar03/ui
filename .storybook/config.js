@@ -14,7 +14,8 @@ addParameters({
     brandTitle: 'Arctic Wolf UI',
     theme: theme,
     showPanel: false,
-    showRoots: true
+    showRoots: true,
+    sidebarAnimations: false
   },
 });
 
