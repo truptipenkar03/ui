@@ -19,7 +19,7 @@ const Spacer = styled.span`
 `;
 
 export default {
-  title: 'Components|Button',
+  title: 'Components/Button',
   component: Button,
   parameters: {
     docs: {
