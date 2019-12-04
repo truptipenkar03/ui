@@ -11,6 +11,7 @@ import theme from './theme';
 
 addParameters({
   options: {
+    brandTitle: 'Arctic Wolf UI',
     theme: theme,
     showPanel: false,
     showRoots: true
@@ -18,8 +19,6 @@ addParameters({
 });
 
 addDecorator(story => ThemeDecorator(story));
-
-// configure(require.context('../src', true, /\.stories\.(tsx|mdx)$/), module);
 
 // automatically import all files ending in *.stories.js
 configure(
