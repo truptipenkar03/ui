@@ -1,4 +1,5 @@
 build
+src
 assets
 .storybook
 .idea
@@ -10,4 +11,5 @@ TODO.md
 .babelrc
 coverage
 .github
-
+.npmrc
+*.png
