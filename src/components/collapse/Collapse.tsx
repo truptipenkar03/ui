@@ -44,7 +44,9 @@ interface ContainerProps {
   ghost?: boolean;
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+  border: 1px solid lightgray;
+`;
 
 export const Collapse: React.FunctionComponent<CollapseProps> = ({
   active,
@@ -89,6 +91,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
       </Header>
       <ContentContainer
         animate={isActive ? 'open' : 'closed'}
+        theme={theme}
       >
         <Content
           theme={theme}

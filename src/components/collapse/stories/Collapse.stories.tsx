@@ -13,7 +13,7 @@ import {
 import mdx from './Collapse.mdx';
 
 export default {
-  title: 'Components|Collapse',
+  title: 'Components/Collapse',
   component: Collapse,
   parameters: {
     docs: {
@@ -42,7 +42,7 @@ export const simple = () => (
     <Collapse
       itemKey="default"
     >
-      <CollapseContent>What is gping on</CollapseContent>
+      <CollapseContent>Im Onboarding!</CollapseContent>
     </Collapse>
   </Container>
 );
@@ -53,8 +53,7 @@ export const open = () => (
       defaultActive
       itemKey="default"
     >
-      <CollapseContent>What is gping on</CollapseContent>
-      <CollapseContent>What is gping on</CollapseContent>
+      <CollapseContent>Im Onboarding!</CollapseContent>
     </Collapse>
   </Container>
 );

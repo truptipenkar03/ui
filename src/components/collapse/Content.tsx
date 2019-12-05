@@ -11,23 +11,20 @@ import styled, {
 
 interface ContentContainerProps {
   animate: 'open' | 'closed';
+  theme: any;
 }
 
 interface ContentProps {
-  collapseType?: 'panel' | 'stack';
-  ghost?: boolean;
-  theme?: any;
+  theme: any;
 }
 
-export const ContentContainer: React.FunctionComponent<ContentContainerProps> = ({ children, animate }) => {
+export const ContentContainer: React.FunctionComponent<ContentContainerProps> = ({ children, animate, theme }) => {
   const variants = {
     closed: {
-      height: 0,
-      opacity: 0
+      height: 0
     },
     open: {
-      height: 'auto',
-      opacity: 1
+      height: 'auto'
     },
   };
 
@@ -35,13 +32,15 @@ export const ContentContainer: React.FunctionComponent<ContentContainerProps> = 
     <AnimatePresence initial={false}>
       {animate === 'open' && (
         <motion.div
-          key="fooooo"
-          style={{ background: 'red' }}
+          key="content"
+          style={{
+            overflow: 'hidden'
+          }}
           initial="closed"
           exit="closed"
           animate="open"
           variants={variants}
-          transition={{ duration: 5 }}
+          transition={{ duration: theme.animations.time.veryFast, type: 'tween' }}
         >
           {children}
         </motion.div>
@@ -53,10 +52,8 @@ export const ContentContainer: React.FunctionComponent<ContentContainerProps> = 
 const StyledContent = styled.div<ContentProps>`
   ${(props) => css`
     padding: ${props.theme.collapse.contentPadding};
-    //background: ${props.theme.collapse.contentBackground};
-    background: blue;
+    background: ${props.theme.collapse.contentBackground};
   `};
-
 `;
 
 export const Content: React.FunctionComponent<ContentProps> = (props) => {

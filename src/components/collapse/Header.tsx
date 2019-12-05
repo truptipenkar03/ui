@@ -45,8 +45,8 @@ const StyledHeader = styled.div<HeaderProps>`
     &:hover {
       background: ${props.theme.colors.primary};
       border: 0;
-    }
-  `}
+    };
+  `};
 `;
 
 const Header: React.FunctionComponent<HeaderProps> = ({
