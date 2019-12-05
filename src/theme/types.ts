@@ -84,6 +84,8 @@ export interface Colors {
 }
 
 export interface CollapseTheme {
+  border: string;
+  borderColor: string;
   borderRadius: string;
   boxShadow: string;
   contentPadding: string;

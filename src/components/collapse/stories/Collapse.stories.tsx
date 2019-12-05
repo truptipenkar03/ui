@@ -42,7 +42,7 @@ export const simple = () => (
     <Collapse
       itemKey="default"
     >
-      <CollapseContent />
+      <CollapseContent>What is gping on</CollapseContent>
     </Collapse>
   </Container>
 );
@@ -53,7 +53,8 @@ export const open = () => (
       defaultActive
       itemKey="default"
     >
-      <CollapseContent />
+      <CollapseContent>What is gping on</CollapseContent>
+      <CollapseContent>What is gping on</CollapseContent>
     </Collapse>
   </Container>
 );
