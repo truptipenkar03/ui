@@ -1,25 +1,40 @@
-name: Deploy
-on:
-  push:
-    tags:
-      - v*
+name: Release
+on: [push]
+#  push:
+#    tags:
+#      - v*
 
 jobs:
-  main-tests:
-    name: Deploy
+#  release:
+#    name: Release
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v1
+#      - uses: actions/setup-node@v1
+#        with:
+#          node-version: '10.16'
+#          registry-url: https://npm.pkg.github.com/
+#          scope: '@rtkwlf'
+#      - name: Install
+#        run: npm install
+#      - name: Build
+#        run: npm run build
+#      - name: Publish to Github Packages
+#        run: npm publish
+#        env:
+#          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  release-docs:
+    name: Release Docs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
           node-version: '10.16'
-          registry-url: https://npm.pkg.github.com/
-          scope: '@rtkwlf'
       - name: Install
         run: npm install
-      - name: Build
-        run: npm run build
-      - name: Publish to Github Packages
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Build Docs
+        run: npm run storybook:docs
+      - name: Commit to GH-Pages
+        run: |
+          git coni
