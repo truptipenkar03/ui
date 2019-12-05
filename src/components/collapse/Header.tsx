@@ -36,12 +36,12 @@ const StyledHeader = styled.div<HeaderProps>`
 
     padding: ${props.theme.collapse.headerPadding};
     height: ${props.theme.collapse.headerHeight};
-
+  
     box-sizing: border-box;
     cursor: pointer;
-
+    
     transition: all ${props.theme.animations.time.veryFast}s;
-
+    
     &:hover {
       background: ${props.theme.colors.primary};
       border: 0;
