@@ -1,49 +1,49 @@
-name: Release
-on:
-  push:
-    tags:
-      - v*
-
-jobs:
-  release:
-    name: Release
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '10.16'
-          registry-url: https://npm.pkg.github.com/
-          scope: '@rtkwlf'
-      - name: Install
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Publish to Github Packages
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-  release-docs:
-    name: Release Docs
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '10.16'
-      - name: Install
-        run: npm install
-      - name: Build Docs
-        run: npm run storybook:docs
-      - name: Commit Documentation Changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add build
-          git commit -m "Adding new documentation"
-      - name: Push to gh-pages
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          force: true
+#name: Release
+#on:
+#  push:
+#    tags:
+#      - v*
+#
+#jobs:
+#  release:
+#    name: Release
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v1
+#      - uses: actions/setup-node@v1
+#        with:
+#          node-version: '10.16'
+#          registry-url: https://npm.pkg.github.com/
+#          scope: '@rtkwlf'
+#      - name: Install
+#        run: npm install
+#      - name: Build
+#        run: npm run build
+#      - name: Publish to Github Packages
+#        run: npm publish
+#        env:
+#          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+#  release-docs:
+#    name: Release Docs
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v1
+#      - uses: actions/setup-node@v1
+#        with:
+#          node-version: '10.16'
+#      - name: Install
+#        run: npm install
+#      - name: Build Docs
+#        run: npm run storybook:docs
+#      - name: Commit Documentation Changes
+#        run: |
+#          git config --local user.email "action@github.com"
+#          git config --local user.name "GitHub Action"
+#          git add build
+#          git commit -m "Adding new documentation"
+#      - name: Push to gh-pages
+#        uses: ad-m/github-push-action@master
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          branch: gh-pages
+#          force: true
