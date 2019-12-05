@@ -18,6 +18,7 @@ import {
 import {
   useAfterMountEffect
 } from "../../hooks";
+import {useTheme} from "../../hooks/useTheme";
 
 export interface CollapseProps {
   /** Option to handle if collapse is active */
@@ -46,13 +47,6 @@ export interface CollapseProps {
 
   /** Function to handle when collapse state changes */
   onChange?: (itemKey: string | number) => void;
-
-  /** Global theme in ThemeProvider */
-  theme?: any;
-}
-
-interface CollapseState {
-  active?: boolean;
 }
 
 interface ContainerProps {
@@ -84,10 +78,11 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
   ghost,
   header,
   itemKey,
-  onChange,
-  theme
+  onChange
 }) => {
-  const [isActive, setActive] = React.useState(defaultActive);
+  const [isActive, setActive] = React.useState<boolean | undefined>(defaultActive);
+
+  const theme = useTheme();
 
   function onHeaderClick() {
     if (active === undefined) {
@@ -107,10 +102,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
   }, [active]);
 
   useAfterMountEffect(handleSetActive, [active]);
-  //
-  // useAfterMountEffect(() => {
-  //   setActive(active);
-  // }, [active]);
+
   return (
     <Container
       className={className}
@@ -152,6 +144,5 @@ Collapse.defaultProps = {
   header: '',
   onChange: undefined,
   itemKey: '',
-  collapseType: 'panel',
-  theme
+  collapseType: 'panel'
 };
