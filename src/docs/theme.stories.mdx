@@ -1,0 +1,43 @@
+import { Meta, Source } from '@storybook/addon-docs/blocks';
+import { Title, SectionTitle } from '../../.storybook/components';
+
+import Logo from '../../.storybook/logo-main.png';
+
+<Meta
+  title="Getting Started/Theming"
+/>
+
+<Title
+  title="Theming (Not Implemented)"
+  subtitle="Provide a theme to change the look and feel of each component"
+/>
+
+<SectionTitle>Creating a Theme</SectionTitle>
+
+If you wish to create your own theme use the provided `createTheme` function. Each component provides its own theme
+ that can be overridden. Please see the respective component documentation for a full list of the available theme
+  overrides.
+
+```
+import { createTheme } from '@rtkwlf/ui';
+
+const myTheme = createTheme({... overrides});
+```
+
+<SectionTitle>Using a Theme</SectionTitle>
+
+Once you have created a new theme you can provide it to the components via the `ThemeProvider` API found in `styled
+-components`.
+
+```
+import { ThemeProvider } from 'styled-components';
+
+const App = () => (
+  <ThemeProvider value={myTheme}>
+    <Button>Themed Button</Button>
+  </ThemeProvider
+)
+```
+
+
+
