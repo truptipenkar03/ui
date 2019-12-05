@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import {
+  AnimatePresence,
   motion
 } from 'framer-motion';
 
@@ -22,39 +23,40 @@ export const ContentContainer: React.FunctionComponent<ContentContainerProps> = 
   const variants = {
     closed: {
       height: 0,
-      overflow: 'hidden'
+      opacity: 0
     },
     open: {
       height: 'auto',
-      overflow: 'unset'
+      opacity: 1
     },
   };
 
   return (
-    <motion.div
-      initial="closed"
-      exit="closed"
-      animate={animate}
-      variants={variants}
-    >
-      {children}
-    </motion.div>
+    <AnimatePresence initial={false}>
+      {animate === 'open' && (
+        <motion.div
+          key="fooooo"
+          style={{ background: 'red' }}
+          initial="closed"
+          exit="closed"
+          animate="open"
+          variants={variants}
+          transition={{ duration: 5 }}
+        >
+          {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
 const StyledContent = styled.div<ContentProps>`
-  padding: ${(props) => props.theme.collapse.contentPadding};
-  background: ${(props) => props.theme.collapse.contentBackground};
-
-
-  ${(props) => props.collapseType === 'panel' && css`
-    border-bottom-left-radius: ${props.theme.collapse.borderRadius};
-    border-bottom-right-radius: ${props.theme.collapse.borderRadius};
+  ${(props) => css`
+    padding: ${props.theme.collapse.contentPadding};
+    //background: ${props.theme.collapse.contentBackground};
+    background: blue;
   `};
 
-  ${(props) => props.ghost && css`
-    background: transparent;
-  `};
 `;
 
 export const Content: React.FunctionComponent<ContentProps> = (props) => {

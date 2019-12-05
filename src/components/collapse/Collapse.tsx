@@ -4,10 +4,6 @@ import styled, {
   css
 } from 'styled-components';
 
-import {
-  theme
-} from '../../theme';
-
 import Header from './Header';
 
 import {
@@ -33,17 +29,11 @@ export interface CollapseProps {
   /** Determines if collapse should default to open */
   defaultActive?: boolean;
 
-  /** Will make collapse transparent */
-  ghost?: boolean;
-
   /** Content to render in the header */
   header?: React.ReactNode;
 
   /** Unique key to identify collapse. Used for Accordion */
   itemKey: string | number ;
-
-  /** The type of collapse */
-  collapseType?: 'stack' | 'panel';
 
   /** Function to handle when collapse state changes */
   onChange?: (itemKey: string | number) => void;
@@ -54,28 +44,13 @@ interface ContainerProps {
   ghost?: boolean;
 }
 
-const Container = styled.div<ContainerProps>`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-  ${(props) => props.ghost && css`
-    background: transparent;
-  `};
-
-  ${(props) => props.collapseType === 'panel' && css`
-    border-radius: ${props.theme.collapse.borderRadius};
-    box-shadow: ${props.theme.collapse.boxShadow};
-  `}
-`;
+const Container = styled.div``;
 
 export const Collapse: React.FunctionComponent<CollapseProps> = ({
   active,
   className,
   children,
-  collapseType,
   defaultActive,
-  ghost,
   header,
   itemKey,
   onChange
@@ -104,18 +79,10 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
   useAfterMountEffect(handleSetActive, [active]);
 
   return (
-    <Container
-      className={className}
-      ghost={ghost}
-      collapseType={collapseType}
-      theme={theme}
-      key={itemKey}
-    >
+    <Container className={className}>
       <Header
-        ghost={ghost}
         open={isActive}
         onClick={onHeaderClick}
-        collapseType={collapseType}
         theme={theme}
       >
         {header}
@@ -124,9 +91,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
         animate={isActive ? 'open' : 'closed'}
       >
         <Content
-          ghost={ghost}
           theme={theme}
-          collapseType={collapseType}
         >
           {children}
         </Content>
@@ -140,9 +105,7 @@ Collapse.defaultProps = {
   children: '',
   className: '',
   defaultActive: undefined,
-  ghost: false,
   header: '',
   onChange: undefined,
-  itemKey: '',
-  collapseType: 'panel'
+  itemKey: ''
 };

@@ -3,6 +3,7 @@ import colors from './colors';
 import {
   GlobalTheme
 } from "./types";
+import {transform} from "framer-motion";
 
 export const theme: GlobalTheme = {
   animations: {
@@ -66,12 +67,14 @@ export const theme: GlobalTheme = {
     ...colors
   },
   collapse: {
-    borderRadius: '8px',
-    boxShadow: `0px 0px 4px rgba(${colors.blackRGB},0.20)`,
+    border: '1px solid',
+    borderColor: colors.borderColor,
+    borderRadius: '4px',
+    boxShadow: 'none',
     contentPadding: '10px',
-    contentBackground: colors.white,
+    contentBackground: 'transparent',
     headerBackground: colors.white,
-    headerHeight: '40px',
+    headerHeight: '32px',
     headerPadding: '0px 10px',
   }
 };

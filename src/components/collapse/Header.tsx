@@ -8,12 +8,6 @@ interface HeaderProps {
   /** Content to show in the Header */
   children: React.ReactNode;
 
-  /** The type of collapse */
-  collapseType?: 'stack' | 'panel';
-
-  /** Will make header transparent */
-  ghost?: boolean;
-
   /** State of the collapse for custom handling */
   open?: boolean;
 
@@ -24,49 +18,46 @@ interface HeaderProps {
   theme: any;
 }
 
-interface StyleHeaderProps {
-  collapseType?: 'stack' | 'panel';
-  open?: boolean;
-  ghost?: boolean;
-}
-
 const StyledHeader = styled.div<HeaderProps>`
-  display: flex;
-  align-items: center;
+  ${(props) => css`
+    display: flex;
+    align-items: center;
 
-  background: ${(props) => props.theme.collapse.headerBackground};
+    background: ${props.theme.collapse.headerBackground};
+    border: ${props.theme.collapse.border};
+    border-color: ${props.theme.collapse.borderColor};
+    border-radius: ${props.theme.collapse.borderRadius};
 
-  border-radius: ${(props) => props.collapseType === 'panel' && props.theme.collapse.borderRadius};
+    ${props.open && css`
+      border-bottom: 1px solid ${props.theme.colors.borderColor};
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    `};
 
-  ${(props) => props.open && css`
-    border-bottom: 1px solid ${props.theme.colors.borderColor};
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 0px;
+    padding: ${props.theme.collapse.headerPadding};
+    height: ${props.theme.collapse.headerHeight};
+
+    box-sizing: border-box;
+    cursor: pointer;
+
+    transition: all ${props.theme.animations.time.veryFast}s;
+
+    &:hover {
+      background: ${props.theme.colors.primary};
+      border: 0;
+    }
   `}
-
-  ${(props) => props.ghost && css`
-    background: transparent;
-    border-bottom: none;
-  `};
-
-  padding: ${(props) => props.theme.collapse.headerPadding};
-  height: ${(props) => props.theme.collapse.headerHeight};
-
-  cursor: pointer;
 `;
 
 const Header: React.FunctionComponent<HeaderProps> = ({
   children,
-  collapseType,
-  ghost,
   onClick,
   open,
   theme
 }) => (
   <StyledHeader
-    ghost={ghost}
+    className="rtk-collapse-header"
     theme={theme}
-    collapseType={collapseType}
     onClick={onClick}
     open={open}
   >
