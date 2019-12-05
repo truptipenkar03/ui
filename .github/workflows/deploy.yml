@@ -39,7 +39,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git status
-#          git commit -m "Adding new documentation"
+          git add build
+          git commit -m "Adding new documentation"
 #      - name: Push to gh-pages
 #        run: git push origin gh-pages -f
