@@ -35,6 +35,10 @@ jobs:
         run: npm install
       - name: Build Docs
         run: npm run storybook:docs
-      - name: Commit to GH-Pages
+      - name: Commit Documentation Changes
         run: |
-          git coni
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Adding new documentation"
+      - name: Push to gh-pages
+        run: git push origin gh-pages -f
