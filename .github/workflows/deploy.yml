@@ -42,4 +42,8 @@ jobs:
           git add build
           git commit -m "Adding new documentation"
       - name: Push to gh-pages
-        run: git push origin gh-pages -f
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          force: true
