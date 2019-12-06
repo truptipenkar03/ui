@@ -37,26 +37,30 @@ const StyledHeader = styled.div<StyledHeaderProps>`
     border: ${props.theme.collapse.border};
     border-color: ${props.theme.collapse.borderColor};
     border-radius: ${props.theme.collapse.borderRadius};
-
-    ${props.customProps.open && css`
-      background: ${props.theme.collapse.header.openBackground};
-      border: 0;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-    `};
+    color: ${props.theme.collapse.header.color};
 
     padding: ${props.theme.collapse.header.padding};
     height: ${props.theme.collapse.header.height};
   
     box-sizing: border-box;
+    user-select: none;
     cursor: pointer;
     
     transition: all ${props.theme.animations.time.veryFast}s;
     
     &:hover {
       background: ${props.theme.collapse.header.hoverBackground};
-      border: 0;
+      border: 1px solid transparent;
+      color: ${props.theme.collapse.header.hoverColor};
     };
+    
+    ${props.customProps.open && css`
+      background: ${props.theme.collapse.header.openBackground};
+      border: 1px solid transparent;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      color: ${props.theme.collapse.header.openColor}
+    `};
   `};
 `;
 

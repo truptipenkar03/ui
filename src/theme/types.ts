@@ -93,9 +93,12 @@ export interface CollapseTheme {
     background: string;
   };
   header: {
+    color: string;
     background: string;
     hoverBackground: string;
+    hoverColor: string;
     openBackground: string;
+    openColor: string;
     padding: string;
     height: string;
   };

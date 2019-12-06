@@ -75,10 +75,13 @@ export const theme: GlobalTheme = {
       background: 'transparent'
     },
     header: {
+      color: colors.black,
       background: colors.white,
       hoverBackground: colors.primary,
+      hoverColor: colors.white,
       openBackground: colors.primary,
-      padding: '0px 10px',
+      openColor: colors.white,
+      padding: '0px 15px',
       height: '32px'
     }
   }

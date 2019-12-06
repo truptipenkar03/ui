@@ -40,6 +40,7 @@ const CollapseContent = ({ children }: any) => (
 export const simple = () => (
   <Container>
     <Collapse
+      header="Click Me"
       itemKey="default"
     >
       <CollapseContent>Im Onboarding!</CollapseContent>
@@ -50,6 +51,7 @@ export const simple = () => (
 export const open = () => (
   <Container>
     <Collapse
+      header="Click Me"
       defaultActive
       itemKey="default"
     >
