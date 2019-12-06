@@ -88,11 +88,17 @@ export interface CollapseTheme {
   borderColor: string;
   borderRadius: string;
   boxShadow: string;
-  contentPadding: string;
-  contentBackground: string;
-  headerBackground: string;
-  headerHeight: string;
-  headerPadding: string;
+  content: {
+    padding: string;
+    background: string;
+  };
+  header: {
+    background: string;
+    hoverBackground: string;
+    openBackground: string;
+    padding: string;
+    height: string;
+  };
 }
 
 export interface GlobalTheme {

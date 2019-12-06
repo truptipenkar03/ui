@@ -38,7 +38,7 @@ export const ContentContainer: React.FunctionComponent<ContentContainerProps> = 
           }}
           initial="closed"
           exit="closed"
-          animate="open"
+          animate={animate}
           variants={variants}
           transition={{ duration: theme.animations.time.veryFast, type: 'tween' }}
         >
@@ -51,8 +51,15 @@ export const ContentContainer: React.FunctionComponent<ContentContainerProps> = 
 
 const StyledContent = styled.div<ContentProps>`
   ${(props) => css`
-    padding: ${props.theme.collapse.contentPadding};
-    background: ${props.theme.collapse.contentBackground};
+    padding: ${props.theme.collapse.content.padding};
+    background: ${props.theme.collapse.content.background};
+    border: ${props.theme.collapse.border};
+    border-color: ${props.theme.collapse.borderColor};
+    border-radius: ${props.theme.collapse.borderRadius};
+    border-top: none;
+    
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   `};
 `;
 

@@ -1,6 +1,7 @@
-import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Story, Preview, Props, Source } from '@storybook/addon-docs/blocks';
 import { Title, SectionTitle } from '../../../../.storybook/components';
 import { Collapse } from '../Collapse';
+import { theme } from '../../../theme';
 
 <Title
   title="Collapse"
@@ -8,8 +9,6 @@ import { Collapse } from '../Collapse';
 />
 
 <SectionTitle>Simple</SectionTitle>
-
-A simple collapse can be created without a header.
 
 <Preview>
   <Story id="components-collapse--simple"/>
@@ -25,3 +24,13 @@ Setting `defaultActive` to `true` will have the `Collapse` start in the open sta
 
 <SectionTitle>Props</SectionTitle>
 <Props of={Collapse} />
+
+<SectionTitle>Theme</SectionTitle>
+
+The following theme is configurable for a collapse component. See `Theming` for more on how to override this theme.
+
+<Source
+  language="json"
+  code={`${JSON.stringify(theme.collapse, null, 2)}`}
+  format={true}
+/>

@@ -18,24 +18,35 @@ interface HeaderProps {
   theme: any;
 }
 
-const StyledHeader = styled.div<HeaderProps>`
+interface CustomProps {
+  open?: boolean;
+}
+
+interface StyledHeaderProps {
+  customProps: CustomProps;
+  onClick: () => void;
+  theme: any;
+}
+
+const StyledHeader = styled.div<StyledHeaderProps>`
   ${(props) => css`
     display: flex;
     align-items: center;
 
-    background: ${props.theme.collapse.headerBackground};
+    background: ${props.theme.collapse.header.background};
     border: ${props.theme.collapse.border};
     border-color: ${props.theme.collapse.borderColor};
     border-radius: ${props.theme.collapse.borderRadius};
 
-    ${props.open && css`
-      border-bottom: 1px solid ${props.theme.colors.borderColor};
+    ${props.customProps.open && css`
+      background: ${props.theme.collapse.header.openBackground};
+      border: 0;
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
     `};
 
-    padding: ${props.theme.collapse.headerPadding};
-    height: ${props.theme.collapse.headerHeight};
+    padding: ${props.theme.collapse.header.padding};
+    height: ${props.theme.collapse.header.height};
   
     box-sizing: border-box;
     cursor: pointer;
@@ -43,7 +54,7 @@ const StyledHeader = styled.div<HeaderProps>`
     transition: all ${props.theme.animations.time.veryFast}s;
     
     &:hover {
-      background: ${props.theme.colors.primary};
+      background: ${props.theme.collapse.header.hoverBackground};
       border: 0;
     };
   `};
@@ -59,7 +70,9 @@ const Header: React.FunctionComponent<HeaderProps> = ({
     className="rtk-collapse-header"
     theme={theme}
     onClick={onClick}
-    open={open}
+    customProps={{
+      open
+    }}
   >
     {children}
   </StyledHeader>

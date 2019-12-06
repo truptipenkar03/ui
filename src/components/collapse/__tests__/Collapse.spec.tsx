@@ -58,41 +58,6 @@ describe('Collapse', () => {
     expect(wrapper.find('Header').prop('open')).toBe(true);
   });
 
-  it('sets the ghost prop', () => {
-    const onChangeMock = jest.fn();
-
-    const wrapper = shallow(
-      <Collapse
-        onChange={onChangeMock}
-        itemKey={'test'}
-        header={'Header'}
-        ghost
-      >
-        Content
-      </Collapse>
-    );
-
-    expect(wrapper.find('Collapse__Container').prop('ghost')).toBe(true);
-  });
-
-  it('sets the collapseType prop', () => {
-    const onChangeMock = jest.fn();
-
-    // need to mount to the DOM in order for event to propagate
-    const wrapper = shallow(
-      <Collapse
-        onChange={onChangeMock}
-        itemKey={'test'}
-        header={'Header'}
-        collapseType={'stack'}
-      >
-        Content
-      </Collapse>
-    );
-
-    expect(wrapper.find('Collapse__Container').prop('collapseType')).toBe('stack');
-  });
-
   it('calls onChange handler', () => {
     const onChangeMock = jest.fn();
 
@@ -111,5 +76,4 @@ describe('Collapse', () => {
     expect(onChangeMock).toBeCalledWith('test');
     expect(wrapper.find('Header').prop('open')).toBe(true);
   });
-
 });

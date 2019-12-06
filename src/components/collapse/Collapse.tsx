@@ -1,8 +1,6 @@
 import * as React from 'react';
 
-import styled, {
-  css
-} from 'styled-components';
+import styled from 'styled-components';
 
 import Header from './Header';
 
@@ -14,7 +12,10 @@ import {
 import {
   useAfterMountEffect
 } from "../../hooks";
-import {useTheme} from "../../hooks/useTheme";
+
+import {
+  useTheme
+} from "../../hooks/useTheme";
 
 export interface CollapseProps {
   /** Option to handle if collapse is active */
@@ -45,7 +46,7 @@ interface ContainerProps {
 }
 
 const Container = styled.div`
-  border: 1px solid lightgray;
+  //border: 1px solid lightgray;
 `;
 
 export const Collapse: React.FunctionComponent<CollapseProps> = ({
@@ -81,7 +82,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
   useAfterMountEffect(handleSetActive, [active]);
 
   return (
-    <Container className={className}>
+    <Container className={`${className} rtk-collapse`}>
       <Header
         open={isActive}
         onClick={onHeaderClick}
