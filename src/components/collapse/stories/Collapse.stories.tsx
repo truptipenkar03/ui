@@ -43,7 +43,7 @@ export const simple = () => (
       header="Click Me"
       itemKey="default"
     >
-      <CollapseContent>Im Onboarding!</CollapseContent>
+      <CollapseContent />
     </Collapse>
   </Container>
 );
@@ -55,7 +55,7 @@ export const open = () => (
       defaultActive
       itemKey="default"
     >
-      <CollapseContent>Im Onboarding!</CollapseContent>
+      <CollapseContent />
     </Collapse>
   </Container>
 );

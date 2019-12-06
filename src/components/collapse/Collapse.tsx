@@ -45,9 +45,7 @@ interface ContainerProps {
   ghost?: boolean;
 }
 
-const Container = styled.div`
-  //border: 1px solid lightgray;
-`;
+const Container = styled.div``;
 
 export const Collapse: React.FunctionComponent<CollapseProps> = ({
   active,
