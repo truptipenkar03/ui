@@ -65,4 +65,12 @@ export const theme: GlobalTheme = {
   colors: {
     ...colors
   },
+  panel: {
+    background: colors.white,
+    border: 'none',
+    borderColor: 'none',
+    borderRadius: '4px',
+    activeBoxShadow: `0px 0px 4px rgba(${colors.blackRGB},0.20)`,
+    hoverBoxShadow: `0px 7px 21px rgba(${colors.blackRGB},0.07)`
+  }
 };
