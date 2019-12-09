@@ -1,8 +1,8 @@
 name: Release
-on:
-  push:
-    tags:
-      - v*
+on: [push]
+#  push:
+#    tags:
+#      - v*
 
 jobs:
   release:
@@ -13,16 +13,15 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '10.16'
-          registry-url: https://npm.pkg.github.com/
           scope: '@rtkwlf'
       - name: Install
         run: npm install
       - name: Build
         run: npm run build
-#      - name: Publish to Github Packages
-#        run: npm publish
-#        env:
-#          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Publish to npm
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
 #  release-docs:
 #    name: Release Docs
 #    runs-on: ubuntu-latest
