@@ -83,6 +83,27 @@ export interface Colors {
   whiteRGB: string;
 }
 
+export interface CollapseTheme {
+  border: string;
+  borderColor: string;
+  borderRadius: string;
+  boxShadow: string;
+  content: {
+    padding: string;
+    background: string;
+  };
+  header: {
+    color: string;
+    background: string;
+    hoverBackground: string;
+    hoverColor: string;
+    openBackground: string;
+    openColor: string;
+    padding: string;
+    height: string;
+  };
+}
+
 export interface PanelTheme {
   background: string;
   border: string;
@@ -96,5 +117,6 @@ export interface GlobalTheme {
   animations: AnimationTheme;
   button: ButtonTheme;
   colors: Colors;
+  collapse: CollapseTheme;
   panel: PanelTheme;
 }

@@ -65,6 +65,26 @@ export const theme: GlobalTheme = {
   colors: {
     ...colors
   },
+  collapse: {
+    border: '1px solid',
+    borderColor: colors.borderColor,
+    borderRadius: '4px',
+    boxShadow: 'none',
+    content: {
+      padding: '10px',
+      background: 'transparent'
+    },
+    header: {
+      color: colors.black,
+      background: colors.white,
+      hoverBackground: colors.primary,
+      hoverColor: colors.white,
+      openBackground: colors.primary,
+      openColor: colors.white,
+      padding: '0px 15px',
+      height: '32px'
+    }
+  },
   panel: {
     background: colors.white,
     border: 'none',

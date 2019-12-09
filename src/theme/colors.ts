@@ -1,7 +1,7 @@
 export default {
   black: '#000000',
   blackRGB: '0,0,0',
-  borderColor: '#C4C4C4',
+  borderColor: '#CCCCCC',
   danger: '#FF130D',
   dangerRGB: '255,19,13',
   darkGrey: '#C4C4C4',
