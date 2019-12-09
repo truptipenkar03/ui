@@ -43,7 +43,7 @@ const AccordionContainer = styled.div`
 export const standard = () => (
   <AccordionContainer>
     <Accordion
-      defaultSelectedItems={[]}
+      defaultSelectedItems={['2']}
       classic={false}
       itemGap={20}
     >
@@ -95,11 +95,12 @@ export const external = () => {
     }
   }, [selectedItems]);
 
-
   const isFullyExpanded = selectedItems.length === itemKeys.length;
+
   return (
     <AccordionContainer>
       <Button onClick={handleOnClick}>{isFullyExpanded ? 'Close All' : 'Expand All'}</Button>
+      <div style={{ height: '20px' }}/>
       <Accordion
         itemGap={20}
         selectedItems={selectedItems}

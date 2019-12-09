@@ -16,10 +16,6 @@ import {
   ItemKeyType
 } from "./types";
 
-import {
-  useAfterMountEffect
-} from "../../hooks";
-
 export interface AccordionFunctionComponent<T = {}> extends React.FunctionComponent<T> {
   Item: React.FunctionComponent<AccordionItemProps>;
 }
@@ -56,15 +52,9 @@ export const Accordion: AccordionFunctionComponent<AccordionProps> = ({
   defaultSelectedItems,
   itemGap,
   onChange,
-  selectedItems: foo
+  selectedItems: customSelectedItems
 }) => {
   const [selectedItems, setSelectedItems] = React.useState<(string|number)[]>(defaultSelectedItems || []);
-
-  const onSelectedItemsChange = React.useCallback(() => {
-    if (onChange) {
-      onChange(selectedItems);
-    }
-  }, [onChange, selectedItems]);
 
   function getClassicItems(key: ItemKeyType) {
     return _.includes(selectedItems, key) ?
@@ -80,20 +70,23 @@ export const Accordion: AccordionFunctionComponent<AccordionProps> = ({
 
   function onCollapseChange(key: ItemKeyType): void {
     const newItems = classic ? getClassicItems(key) : getItems(key);
-    setSelectedItems(newItems);
+
+    if (onChange) {
+      onChange(newItems);
+    }
+
+    if (customSelectedItems == null) {
+      setSelectedItems(newItems);
+    }
   }
 
-  useAfterMountEffect(onSelectedItemsChange, [selectedItems]);
-
   React.useEffect(() => {
-     if (foo === undefined) {
+     if (customSelectedItems == null) {
        return;
      } else {
-       setSelectedItems(foo);
+       setSelectedItems(customSelectedItems);
      }
-  }, [foo]);
-
-  console.log('render');
+  }, [customSelectedItems]);
 
   return (
     <AccordionContext.Provider
