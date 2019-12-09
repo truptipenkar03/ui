@@ -70,7 +70,7 @@ export const theme: GlobalTheme = {
     border: 'none',
     borderColor: 'none',
     borderRadius: '4px',
-    boxShadow: `0px 0px 4px rgba(${colors.blackRGB},0.20)`,
+    activeBoxShadow: `0px 0px 4px rgba(${colors.blackRGB},0.20)`,
     hoverBoxShadow: `0px 7px 21px rgba(${colors.blackRGB},0.07)`
   }
 };

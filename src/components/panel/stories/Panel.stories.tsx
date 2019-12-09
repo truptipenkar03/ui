@@ -8,6 +8,11 @@ import {
   Panel
 } from '../Panel';
 
+const Parent = styled.div`
+  padding: 20px;
+  background: #F1F1F1;
+`;
+
 const Container = styled.div`
   max-width: 400px;
 `;
@@ -31,21 +36,25 @@ export default {
 
 export const standard = () => {
   return (
-    <Container>
-      <Panel>
-        <Content />
-      </Panel>
-    </Container>
+    <Parent>
+      <Container>
+        <Panel>
+          <Content />
+        </Panel>
+      </Container>
+    </Parent>
   );
 };
 
 export const clickable = () => {
   return (
-    <Container>
-      <Panel onClick={() => console.log('clicked')}>
-        <Content>Click Me!</Content>
-      </Panel>
-    </Container>
+    <Parent>
+      <Container>
+        <Panel onClick={() => console.log('clicked')}>
+          <Content>Click Me!</Content>
+        </Panel>
+      </Container>
+    </Parent>
   );
 };
 

@@ -1,21 +1,34 @@
 import * as React from 'react';
 
 import {
-  mount
+  shallow
 } from "enzyme";
 
 import {
-  Paper
+  Panel
 } from '../Panel';
 
-describe('Paper', () => {
+describe('Panel', () => {
   it('renders', () => {
-    const wrapper = mount(
-      <Paper>
+    const wrapper = shallow(
+      <Panel>
         <div id={"test1"}/>
-      </Paper>
+      </Panel>
     );
 
     expect(wrapper.find('#test1').exists()).toBe(true);
+  });
+
+  it('calls onClick handler', () => {
+    const onClickMock = jest.fn();
+    const wrapper = shallow(
+      <Panel onClick={onClickMock}>
+        <div id={"test1"}/>
+      </Panel>
+    );
+
+    wrapper.simulate('click');
+
+    expect(onClickMock).toBeCalled();
   });
 });

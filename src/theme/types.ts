@@ -90,7 +90,7 @@ export interface PanelTheme {
   border: string;
   borderColor: string;
   borderRadius: string;
-  boxShadow: string;
+  activeBoxShadow: string;
   hoverBoxShadow: string;
 }
 

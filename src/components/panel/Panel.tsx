@@ -31,17 +31,16 @@ const Container = styled.div`
     border-color: ${props.theme.panel.borderColor};
     border-radius: ${props.theme.panel.borderRadius};
     
-    transition: all ${props.theme.animations.time.veryFast}s;
+    transition: all ${props.theme.animations.time.fast}s;
     
     ${props.onClick && css`
-      box-shadow: ${props.theme.panel.boxShadow};
       &:hover {
         cursor: pointer;
         box-shadow: ${props.theme.panel.hoverBoxShadow}; 
       }
       
       &:active {
-        box-shadow: ${props.theme.panel.boxShadow}; 
+        box-shadow: ${props.theme.panel.activeBoxShadow}; 
       }
     `}
   `};
