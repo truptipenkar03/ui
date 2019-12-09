@@ -1,5 +1,3 @@
-import colors from "./colors";
-
 export interface AnimationTheme {
   time: {
     veryFast: number;
