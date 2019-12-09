@@ -30,12 +30,14 @@ export const AccordionItem: React.FunctionComponent<AccordionItemProps> = (props
         itemKey
       } = props;
 
+      const isActive = value.selectedItems.includes(itemKey);
+
       return (
         <React.Fragment>
           <Collapse
             {...props}
-            active={value.selectedItems.includes(itemKey)}
-            collapseType={value.accordionType}
+            defaultActive={isActive}
+            active={isActive}
             onChange={value.onChange}
           />
           <CollapseSpacer itemGap={value.itemGap} />

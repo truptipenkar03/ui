@@ -12,7 +12,6 @@ import {
 } from './context';
 
 import {
-  AccordionType,
   ItemGapType,
   ItemKeyType
 } from "./types";
@@ -20,17 +19,12 @@ import {
 import {
   useAfterMountEffect
 } from "../../hooks";
-import {ThemeContext} from "../../styled";
-
 
 export interface AccordionFunctionComponent<T = {}> extends React.FunctionComponent<T> {
   Item: React.FunctionComponent<AccordionItemProps>;
 }
 
 export interface AccordionProps {
-  /** Type of collapse. See Collapse. */
-  accordionType?: AccordionType;
-
   /** Accordion Item. See Collapse for supported props. */
   children: React.ReactNode;
 
@@ -48,18 +42,21 @@ export interface AccordionProps {
 
   /** Function to handle when collapse state changes */
   onChange?: (selectedItems: ItemKeyType[]) => void;
+
+  /** Determines which collapses should be active */
+  selectedItems?: (string|number)[];
 }
 
 const Container = styled.div``;
 
 export const Accordion: AccordionFunctionComponent<AccordionProps> = ({
-  accordionType,
   children,
   classic,
   className,
   defaultSelectedItems,
   itemGap,
-  onChange
+  onChange,
+  selectedItems: foo
 }) => {
   const [selectedItems, setSelectedItems] = React.useState<(string|number)[]>(defaultSelectedItems || []);
 
@@ -86,13 +83,21 @@ export const Accordion: AccordionFunctionComponent<AccordionProps> = ({
     setSelectedItems(newItems);
   }
 
-  // Only called when the selectedItems change.
   useAfterMountEffect(onSelectedItemsChange, [selectedItems]);
+
+  React.useEffect(() => {
+     if (foo === undefined) {
+       return;
+     } else {
+       setSelectedItems(foo);
+     }
+  }, [foo]);
+
+  console.log('render');
 
   return (
     <AccordionContext.Provider
       value={{
-        accordionType,
         itemGap,
         selectedItems,
         onChange: onCollapseChange
@@ -106,13 +111,12 @@ export const Accordion: AccordionFunctionComponent<AccordionProps> = ({
 };
 
 Accordion.defaultProps = {
-    accordionType: 'panel',
-    children: '',
-    classic: false,
-    className: '',
-    defaultSelectedItems: [],
-    itemGap: 20,
-    onChange: undefined
+  children: '',
+  classic: false,
+  className: '',
+  defaultSelectedItems: [],
+  itemGap: 20,
+  onChange: undefined
 };
 
 Accordion.Item = AccordionItem;

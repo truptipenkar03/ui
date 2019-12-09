@@ -7,11 +7,15 @@ import {
   Accordion
 } from '../Accordion';
 
+import {
+  Button
+} from "../..";
+
 // @ts-ignore
 import mdx from './Accordion.mdx';
 
 export default {
-  title: 'Components|Accordion',
+  title: 'Components/Accordion',
   component: Accordion,
   parameters: {
     docs: {
@@ -74,3 +78,44 @@ export const classic = () => (
     </Accordion>
   </AccordionContainer>
 );
+
+export const external = () => {
+  const itemKeys = ['1', '2' , '3'];
+  const [selectedItems, setSelectedItems] = React.useState<any>([]);
+
+  const handleOnChange = React.useCallback((items) => {
+    setSelectedItems(items)
+  }, []);
+
+  const handleOnClick = React.useCallback(() => {
+    if (selectedItems.length === itemKeys.length) {
+      setSelectedItems([]);
+    } else {
+      setSelectedItems(itemKeys);
+    }
+  }, [selectedItems]);
+
+
+  const isFullyExpanded = selectedItems.length === itemKeys.length;
+  return (
+    <AccordionContainer>
+      <Button onClick={handleOnClick}>{isFullyExpanded ? 'Close All' : 'Expand All'}</Button>
+      <Accordion
+        itemGap={20}
+        selectedItems={selectedItems}
+        defaultSelectedItems={selectedItems}
+        onChange={handleOnChange}
+      >
+        <Accordion.Item itemKey={itemKeys[0]}>
+          <CollapseContent />
+        </Accordion.Item>
+        <Accordion.Item itemKey={itemKeys[1]}>
+          <CollapseContent />
+        </Accordion.Item>
+        <Accordion.Item itemKey={itemKeys[2]}>
+          <CollapseContent />
+        </Accordion.Item>
+      </Accordion>
+    </AccordionContainer>
+  );
+};
