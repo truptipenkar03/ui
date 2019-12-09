@@ -18,10 +18,12 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      - name: Publish to npm
-        run: npm publish --access public
+      - name: Configure .npmrc for publish
+        run: 'echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc'
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+      - name: Publish to npm
+        run: npm publish --access public
 #  release-docs:
 #    name: Release Docs
 #    runs-on: ubuntu-latest
