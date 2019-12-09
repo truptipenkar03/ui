@@ -1,3 +1,5 @@
+import colors from "./colors";
+
 export interface AnimationTheme {
   time: {
     veryFast: number;
@@ -83,8 +85,18 @@ export interface Colors {
   whiteRGB: string;
 }
 
+export interface PanelTheme {
+  background: string;
+  border: string;
+  borderColor: string;
+  borderRadius: string;
+  boxShadow: string;
+  hoverBoxShadow: string;
+}
+
 export interface GlobalTheme {
   animations: AnimationTheme;
   button: ButtonTheme;
   colors: Colors;
+  panel: PanelTheme;
 }
