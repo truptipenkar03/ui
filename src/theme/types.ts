@@ -104,9 +104,19 @@ export interface CollapseTheme {
   };
 }
 
+export interface PanelTheme {
+  background: string;
+  border: string;
+  borderColor: string;
+  borderRadius: string;
+  activeBoxShadow: string;
+  hoverBoxShadow: string;
+}
+
 export interface GlobalTheme {
   animations: AnimationTheme;
   button: ButtonTheme;
   colors: Colors;
   collapse: CollapseTheme;
+  panel: PanelTheme;
 }

@@ -84,5 +84,13 @@ export const theme: GlobalTheme = {
       padding: '0px 15px',
       height: '32px'
     }
+  },
+  panel: {
+    background: colors.white,
+    border: 'none',
+    borderColor: 'none',
+    borderRadius: '4px',
+    activeBoxShadow: `0px 0px 4px rgba(${colors.blackRGB},0.20)`,
+    hoverBoxShadow: `0px 7px 21px rgba(${colors.blackRGB},0.07)`
   }
 };

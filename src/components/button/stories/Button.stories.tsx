@@ -2,7 +2,8 @@ import * as React from "react";
 import styled from 'styled-components';
 
 import {
-  Button, SizeType
+  Button,
+  SizeType
 } from '../Button';
 
 // @ts-ignore
