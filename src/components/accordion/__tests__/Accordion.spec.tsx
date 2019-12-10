@@ -8,8 +8,6 @@ import {
   Accordion
 } from '../Accordion';
 
-import 'jest-styled-components';
-
 describe('Accordion', () => {
   it('renders all children', () => {
     const wrapper = shallow(
