@@ -75,24 +75,15 @@ export const Accordion: AccordionFunctionComponent<AccordionProps> = ({
       onChange(newItems);
     }
 
-    if (customSelectedItems == null) {
-      setSelectedItems(newItems);
-    }
+    setSelectedItems(newItems);
   }
 
-  React.useEffect(() => {
-     if (customSelectedItems == null) {
-       return;
-     } else {
-       setSelectedItems(customSelectedItems);
-     }
-  }, [customSelectedItems]);
-
+  console.log('render');
   return (
     <AccordionContext.Provider
       value={{
         itemGap,
-        selectedItems,
+        selectedItems: customSelectedItems || selectedItems,
         onChange: onCollapseChange
       }}
     >
