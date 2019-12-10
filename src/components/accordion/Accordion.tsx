@@ -78,7 +78,6 @@ export const Accordion: AccordionFunctionComponent<AccordionProps> = ({
     setSelectedItems(newItems);
   }
 
-  console.log('render');
   return (
     <AccordionContext.Provider
       value={{
