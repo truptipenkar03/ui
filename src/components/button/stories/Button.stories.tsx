@@ -33,17 +33,31 @@ export const types = () => (
   <Container>
     <Button type="primary">Primary</Button>
     <Spacer />
-    <Button type="ghost">Ghost</Button>
+    <Button type="danger">Danger</Button>
     <Spacer />
     <Button type="link">Link</Button>
   </Container>
 );
 
+export const ghost = () => (
+  <Container>
+    <Button type="primary" ghost>Primary</Button>
+    <Spacer />
+    <Button type="danger" ghost>Danger</Button>
+    <Spacer />
+    <Button type="link" ghost>Link</Button>
+  </Container>
+);
+
 export const disabled = () => (
   <Container>
-    <Button onClick={() => console.log('clicked')} type="primary" disabled>Primary</Button>
+    <Button type="primary" disabled>Primary</Button>
     <Spacer />
-    <Button type="ghost" disabled>Ghost</Button>
+    <Button type="primary" ghost disabled>Ghost</Button>
+    <Spacer />
+    <Button type="danger" disabled>Danger</Button>
+    <Spacer />
+    <Button type="danger" ghost disabled>Ghost</Button>
     <Spacer />
     <Button type="link" disabled>Link</Button>
   </Container>
@@ -71,11 +85,11 @@ export const loading = () => {
         </Button>
         <Spacer />
         <Button
-          type="ghost"
+          type="danger"
           onClick={handleToggle}
           loading={loading}
         >
-          Ghost
+          Danger
         </Button>
         <Spacer />
         <Button
@@ -94,7 +108,9 @@ export const shape = () => (
   <Container>
     <Button shape="circle" type="primary">P</Button>
     <Spacer />
-    <Button shape="circle" type="ghost">G</Button>
+    <Button shape="circle" type="danger">D</Button>
+    <Spacer />
+    <Button shape="circle" type="primary" ghost>G</Button>
     <Spacer />
     <Button shape="circle" loading type="primary">P</Button>
   </Container>
@@ -120,7 +136,7 @@ export const size = () => {
       <Container>
         <Button size={size} type="primary">Primary</Button>
         <Spacer />
-        <Button size={size}  shape="circle" type="ghost">G</Button>
+        <Button size={size}  shape="circle" ghost>G</Button>
       </Container>
     </React.Fragment>
   );

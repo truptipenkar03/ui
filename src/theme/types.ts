@@ -18,18 +18,21 @@ export interface ButtonTheme {
     color: string;
     hoverBackground: string;
     hoverColor: string;
-    focusBackground: string;
-    focusColor: string;
+    activeBackground: string;
+    activeColor: string;
   };
-  ghost: {
+  danger: {
     background: string;
     border: string;
     borderColor: string;
     color: string;
     hoverBackground: string;
     hoverColor: string;
-    focusBackground: string;
-    focusColor: string;
+    activeBackground: string;
+    activeColor: string;
+  };
+  ghost: {
+    border: string;
   };
   link: {
     background: string;
@@ -38,8 +41,8 @@ export interface ButtonTheme {
     color: string;
     hoverBackground: string;
     hoverColor: string;
-    focusBackground: string;
-    focusColor: string;
+    activeBackground: string;
+    activeColor: string;
   };
   size: {
     small: {

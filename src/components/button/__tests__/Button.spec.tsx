@@ -28,10 +28,10 @@ describe('Button', () => {
 
   it('sets the buttonType prop', () => {
     const wrapper = shallow(
-      <Button type="ghost">Test Button</Button>
+      <Button type="danger">Test Button</Button>
     );
 
-    expect(wrapper.find('StyledButton').prop('buttonType')).toBe('ghost');
+    expect(wrapper.find('StyledButton').prop('buttonType')).toBe('danger');
   });
 
   it('sets the disabled prop', () => {
@@ -49,6 +49,15 @@ describe('Button', () => {
 
     // @ts-ignore
     expect(wrapper.find('StyledButton').prop('customProps').loading).toBe(true);
+  });
+
+  it('sets the ghost prop', () => {
+    const wrapper = shallow(
+      <Button ghost>Test Button</Button>
+    );
+
+    // @ts-ignore
+    expect(wrapper.find('StyledButton').prop('customProps').ghost).toBe(true);
   });
 
   it('sets the loadingIcon prop', () => {
