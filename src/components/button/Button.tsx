@@ -20,7 +20,7 @@ import {
   useTheme
 } from "../../hooks/useTheme";
 
-export type ButtonType = 'primary' | 'ghost' | 'link';
+export type ButtonType = 'primary' | 'danger' | 'link';
 export type ShapeType = 'circle' | 'default';
 export type SizeType = 'small' | 'default' | 'large';
 
@@ -36,6 +36,9 @@ export interface ButtonProps {
 
   /** Disabled state of the button */
   disabled?: boolean;
+
+  /** Disabled state of the button */
+  ghost?: boolean;
 
   /** HTML Type of the button */
   htmlType?: string;
@@ -66,6 +69,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
   const {
     children,
     className,
+    ghost,
     loading,
     loadingIcon,
     motionConfig,
@@ -101,6 +105,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
       className={`${className} rtk-button`}
       customProps={{
         loading,
+        ghost,
         shape,
         size
       }}
@@ -138,6 +143,7 @@ Button.defaultProps = {
   children: '',
   className: '',
   disabled: false,
+  ghost: false,
   loading: false,
   onClick: undefined,
   shape: 'default',

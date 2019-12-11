@@ -24,8 +24,18 @@ export const theme: GlobalTheme = {
       color: colors.white,
       hoverBackground: colors.secondary,
       hoverColor: colors.white,
-      focusBackground: colors.secondary,
-      focusColor: colors.white,
+      activeBackground: colors.secondary,
+      activeColor: colors.white,
+    },
+    danger: {
+      background: colors.danger,
+      border: 'none',
+      borderColor: 'none',
+      color: colors.white,
+      hoverBackground: colors.dangerSecondary,
+      hoverColor: colors.white,
+      activeBackground: colors.dangerSecondary,
+      activeColor: colors.white,
     },
     ghost: {
       background: 'transparent',
@@ -34,8 +44,8 @@ export const theme: GlobalTheme = {
       color: colors.primary,
       hoverBackground: colors.primary,
       hoverColor: colors.white,
-      focusBackground: colors.primary,
-      focusColor: colors.white,
+      activeBackground: colors.primary,
+      activeColor: colors.white,
     },
     link: {
       background: 'transparent',
@@ -44,8 +54,8 @@ export const theme: GlobalTheme = {
       color: colors.primary,
       hoverBackground: 'transparent',
       hoverColor: colors.secondary,
-      focusBackground: 'transparent',
-      focusColor: colors.secondary,
+      activeBackground: 'transparent',
+      activeColor: colors.secondary,
     },
     size: {
       small: {

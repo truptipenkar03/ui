@@ -5,6 +5,7 @@ import {ButtonType, ShapeType, SizeType} from "./Button";
 
 interface CustomProps {
   loading?: boolean;
+  ghost?: boolean;
   shape?: ShapeType;
   size?: SizeType;
 }
@@ -56,9 +57,9 @@ export const StyledButton = styled.button<StyledButtonProps>`
         color: ${props.theme.button.primary.hoverColor};
       }
       
-      &:focus {
-        background: ${props.theme.button.primary.hoverBackground};
-        color: ${props.theme.button.primary.focusColor};
+      &:active {
+        background: ${props.theme.button.primary.activeBackground};
+        color: ${props.theme.button.primary.activeColor};
       }
       
       ${(props.disabled || props.customProps.loading) && css`
@@ -67,43 +68,43 @@ export const StyledButton = styled.button<StyledButtonProps>`
           color: ${props.theme.button.primary.hoverColor};
         }
         
-        &:focus {
+        &:active {
           background: ${props.theme.button.primary.background};
-          color: ${props.theme.button.primary.focusColor};
+          color: ${props.theme.button.primary.activeColor};
         }
       `};
     `};
     
-    // ----------- Ghost --------- //
-    ${(props.buttonType === 'ghost') && css`
-      background: ${props.theme.button.ghost.background};
-      border: ${props.theme.button.ghost.border};
-      border-color: ${props.theme.button.ghost.borderColor};
-      color: ${props.theme.button.ghost.color};
-  
+    // ----------- Danger --------- //
+    ${(props.buttonType === 'danger') && css`
+      background: ${props.theme.button.danger.background};
+      border: ${props.theme.button.danger.border};
+      border-color: ${props.theme.button.danger.borderColor};
+      color: ${props.theme.button.danger.color};
+
       &:hover {
-        background: ${props.theme.button.ghost.hoverBackground};
-        color: ${props.theme.button.ghost.hoverColor};
+        background: ${props.theme.button.danger.hoverBackground};
+        color: ${props.theme.button.danger.hoverColor};
       }
-      
-      &:focus {
-        background: ${props.theme.button.ghost.hoverBackground};
-        color: ${props.theme.button.ghost.focusColor};
+
+      &:active {
+        background: ${props.theme.button.danger.activeBackground};
+        color: ${props.theme.button.danger.activeColor};
       }
-      
+
       ${(props.disabled || props.customProps.loading) && css`
         &:hover {
-          background: ${props.theme.button.ghost.background};
-          color: ${props.theme.button.ghost.color};
+          background: ${props.theme.button.danger.background};
+          color: ${props.theme.button.danger.color};
         }
-        
-        &:focus {
-          background: ${props.theme.button.ghost.background};
-          color: ${props.theme.button.ghost.color};
+
+        &:active {
+          background: ${props.theme.button.danger.background};
+          color: ${props.theme.button.danger.color};
         }
       `};
     `};
-
+    
     // ----------- Link --------- //
     ${(props.buttonType === 'link') && css`
       background: ${props.theme.button.link.background};
@@ -117,9 +118,9 @@ export const StyledButton = styled.button<StyledButtonProps>`
         text-decoration: underline;
       }
 
-      &:focus {
-        background: ${props.theme.button.link.hoverBackground};
-        color: ${props.theme.button.link.focusColor};
+      &:active {
+        background: ${props.theme.button.link.activeBackground};
+        color: ${props.theme.button.link.activeColor};
         text-decoration: underline;
       }
 
@@ -130,13 +131,49 @@ export const StyledButton = styled.button<StyledButtonProps>`
           text-decoration: none;
         }
 
-        &:focus {
+        &:active {
           background: ${props.theme.button.link.background};
           color: ${props.theme.button.link.color};
           text-decoration: none;
         }
       `};
     `};
+    
+    // ----------- Ghost --------- //
+    ${props.customProps.ghost && css`
+      background: transparent;
+      border: ${props.theme.button.ghost.border};
+      border-color: ${props.theme.button[props.buttonType || 'primary'].background};
+      color: ${props.buttonType === 'link' ?
+        props.theme.button.link.color :
+        props.theme.button[props.buttonType || 'primary'].background
+      };
+  
+      &:hover {
+        background: ${props.theme.button[props.buttonType || 'primary'].background};
+        color: ${props.theme.button[props.buttonType || 'primary'].hoverColor};
+      }
+      
+      &:active {
+        background: ${props.buttonType !== 'link' &&
+          props.theme.button[props.buttonType || 'primary'].activeBackground
+        };
+        color: ${props.theme.button.ghost.activeColor};
+      }
+      
+      ${(props.disabled || props.customProps.loading) && css`
+        &:hover {
+          background: ${props.theme.button.ghost.background};
+          color: ${props.theme.button.ghost.color};
+        }
+        
+        &:focus {
+          background: ${props.theme.button.ghost.background};
+          color: ${props.theme.button.ghost.color};
+        }
+      `};
+    `};
+
 
     ${(props.disabled || props.customProps.loading) && css`
       pointer-events: none;
