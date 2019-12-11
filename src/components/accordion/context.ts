@@ -9,6 +9,7 @@ import {
 interface AccordionContext {
   itemGap?: ItemGapType;
   selectedItems: SelectedItemsType;
+  destroyOnClose?: boolean;
   onChange?: (itemKey: ItemKeyType) => void;
 }
 

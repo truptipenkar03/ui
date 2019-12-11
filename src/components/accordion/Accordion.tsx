@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import * as _ from 'lodash';
 
 import {
   AccordionItem,
@@ -33,6 +32,9 @@ export interface AccordionProps {
   /** Determines which collapses should be active on initial render */
   defaultSelectedItems?: (string|number)[];
 
+  /** Determines which collapses should be active on initial render */
+  destroyOnClose?: boolean;
+
   /** Vertical gap between items */
   itemGap?: ItemGapType;
 
@@ -50,6 +52,7 @@ export const Accordion: AccordionFunctionComponent<AccordionProps> = ({
   classic,
   className,
   defaultSelectedItems,
+  destroyOnClose,
   itemGap,
   onChange,
   selectedItems: customSelectedItems
@@ -57,13 +60,13 @@ export const Accordion: AccordionFunctionComponent<AccordionProps> = ({
   const [selectedItems, setSelectedItems] = React.useState<(string|number)[]>(defaultSelectedItems || []);
 
   function getClassicItems(key: ItemKeyType) {
-    return _.includes(selectedItems, key) ?
+    return selectedItems.includes(key) ?
       [] :
       [key];
   }
 
   function getItems(key: ItemKeyType) {
-    return _.includes(selectedItems, key) ?
+    return selectedItems.includes(key) ?
       selectedItems.filter((i: ItemKeyType) => i !== key) :
       selectedItems.concat(key);
   }
@@ -83,6 +86,7 @@ export const Accordion: AccordionFunctionComponent<AccordionProps> = ({
       value={{
         itemGap,
         selectedItems: customSelectedItems || selectedItems,
+        destroyOnClose,
         onChange: onCollapseChange
       }}
     >
@@ -98,6 +102,7 @@ Accordion.defaultProps = {
   classic: false,
   className: '',
   defaultSelectedItems: [],
+  destroyOnClose: false,
   itemGap: 20,
   onChange: undefined
 };
