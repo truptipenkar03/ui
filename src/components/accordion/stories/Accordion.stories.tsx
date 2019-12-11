@@ -13,6 +13,7 @@ import {
 
 // @ts-ignore
 import mdx from './Accordion.mdx';
+import {ItemKeyType} from "../types";
 
 export default {
   title: 'Components/Accordion',
@@ -43,7 +44,6 @@ const AccordionContainer = styled.div`
 export const standard = () => (
   <AccordionContainer>
     <Accordion
-      defaultSelectedItems={['2']}
       classic={false}
       itemGap={20}
     >
@@ -83,9 +83,13 @@ export const external = () => {
   const itemKeys = ['1', '2' , '3'];
   const [selectedItems, setSelectedItems] = React.useState<any>([]);
 
-  const handleOnChange = React.useCallback((items) => {
+  const handleOnChange = React.useCallback((key) => {
+    const items = selectedItems.includes(key) ?
+      selectedItems.filter((i: ItemKeyType) => i !== key) :
+      selectedItems.concat(key);
+
     setSelectedItems(items)
-  }, []);
+  }, [selectedItems]);
 
   const handleOnClick = React.useCallback(() => {
     if (selectedItems.length === itemKeys.length) {
