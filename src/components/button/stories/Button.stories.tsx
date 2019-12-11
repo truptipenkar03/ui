@@ -53,9 +53,11 @@ export const disabled = () => (
   <Container>
     <Button type="primary" disabled>Primary</Button>
     <Spacer />
+    <Button type="primary" ghost disabled>Ghost</Button>
+    <Spacer />
     <Button type="danger" disabled>Danger</Button>
     <Spacer />
-    <Button type="primary" ghost disabled>Ghost</Button>
+    <Button type="danger" ghost disabled>Ghost</Button>
     <Spacer />
     <Button type="link" disabled>Link</Button>
   </Container>

@@ -38,14 +38,7 @@ export const theme: GlobalTheme = {
       activeColor: colors.white,
     },
     ghost: {
-      background: 'transparent',
       border: '1px solid',
-      borderColor: colors.primary,
-      color: colors.primary,
-      hoverBackground: colors.primary,
-      hoverColor: colors.white,
-      activeBackground: colors.primary,
-      activeColor: colors.white,
     },
     link: {
       background: 'transparent',

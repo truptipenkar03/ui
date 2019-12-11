@@ -32,14 +32,7 @@ export interface ButtonTheme {
     activeColor: string;
   };
   ghost: {
-    background: string;
     border: string;
-    borderColor: string;
-    color: string;
-    hoverBackground: string;
-    hoverColor: string;
-    activeBackground: string;
-    activeColor: string;
   };
   link: {
     background: string;

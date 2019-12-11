@@ -158,22 +158,9 @@ export const StyledButton = styled.button<StyledButtonProps>`
         background: ${props.buttonType !== 'link' &&
           props.theme.button[props.buttonType || 'primary'].activeBackground
         };
-        color: ${props.theme.button.ghost.activeColor};
+        color: ${props.theme.button[props.buttonType || 'primary'].activeColor};
       }
-      
-      ${(props.disabled || props.customProps.loading) && css`
-        &:hover {
-          background: ${props.theme.button.ghost.background};
-          color: ${props.theme.button.ghost.color};
-        }
-        
-        &:focus {
-          background: ${props.theme.button.ghost.background};
-          color: ${props.theme.button.ghost.color};
-        }
-      `};
     `};
-
 
     ${(props.disabled || props.customProps.loading) && css`
       pointer-events: none;
