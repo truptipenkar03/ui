@@ -83,8 +83,6 @@ export const Accordion: AccordionFunctionComponent<AccordionProps> = ({
     }
   }, [selectedItems, customSelectedItems, onChange, classic]);
 
-  console.log('render');
-
   return (
     <AccordionContext.Provider
       value={{
