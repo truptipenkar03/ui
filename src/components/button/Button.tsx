@@ -37,7 +37,7 @@ export interface ButtonProps {
   /** Disabled state of the button */
   disabled?: boolean;
 
-  /** Disabled state of the button */
+  /** Makes the background of button transparent */
   ghost?: boolean;
 
   /** HTML Type of the button */
