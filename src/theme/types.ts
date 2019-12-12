@@ -66,6 +66,8 @@ export interface Colors {
   borderColor: string;
   danger: string;
   dangerRGB: string;
+  dangerSecondary: string;
+  dangerSecondaryRGB: string;
   darkGrey: string;
   darkGreyRGB: string;
   disabled: string;
@@ -119,7 +121,6 @@ export interface PanelTheme {
 export interface GlobalTheme {
   animations: AnimationTheme;
   button: ButtonTheme;
-  colors: Colors;
   collapse: CollapseTheme;
   panel: PanelTheme;
 }

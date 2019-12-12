@@ -21,7 +21,6 @@ addParameters({
 
 addDecorator(story => ThemeDecorator(story));
 
-// automatically import all files ending in *.stories.js
 configure(
   [
     require.context('../src', true, /\.stories\.mdx$/),

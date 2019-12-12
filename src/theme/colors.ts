@@ -1,4 +1,8 @@
-export default {
+import {
+  Colors
+} from "./types";
+
+export const colors: Colors = {
   black: '#000000',
   blackRGB: '0,0,0',
   borderColor: '#CCCCCC',

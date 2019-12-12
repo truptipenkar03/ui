@@ -1,5 +1,5 @@
 import { Story, Preview, Props, Source, Anchor } from '@storybook/addon-docs/blocks';
-import { Title, SectionTitle } from '../../../../.storybook/components';
+import { Title, SectionTitle, ThemeDisplay } from '../../../../.storybook/components';
 import { Panel } from '../Panel';
 import { theme } from '../../../theme';
 
@@ -31,8 +31,4 @@ You optionally make the panel clickable by passing it an `onClick` function.
 
 The following theme is configurable for a panel component. See `Theming` for more on how to override this theme.
 
-<Source
-  language="json"
-  code={`${JSON.stringify(theme.panel, null, 2)}`}
-  format={true}
-/>
+<ThemeDisplay component="panel" />

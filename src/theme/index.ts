@@ -1,10 +1,13 @@
-import colors from './colors';
+import {
+  colors
+} from './colors';
 
 import {
+  Colors,
   GlobalTheme
 } from "./types";
 
-export const theme: GlobalTheme = {
+export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   animations: {
     time: {
       veryFast: 0.1,
@@ -18,24 +21,24 @@ export const theme: GlobalTheme = {
     padding: '0px 15px',
     fontWeight: '400',
     primary: {
-      background: colors.primary,
+      background: themeColors.primary,
       border: 'none',
       borderColor: 'none',
-      color: colors.white,
-      hoverBackground: colors.secondary,
-      hoverColor: colors.white,
-      activeBackground: colors.secondary,
-      activeColor: colors.white,
+      color: themeColors.white,
+      hoverBackground: themeColors.secondary,
+      hoverColor: themeColors.white,
+      activeBackground: themeColors.secondary,
+      activeColor: themeColors.white,
     },
     danger: {
-      background: colors.danger,
+      background: themeColors.danger,
       border: 'none',
       borderColor: 'none',
-      color: colors.white,
-      hoverBackground: colors.dangerSecondary,
-      hoverColor: colors.white,
-      activeBackground: colors.dangerSecondary,
-      activeColor: colors.white,
+      color: themeColors.white,
+      hoverBackground: themeColors.dangerSecondary,
+      hoverColor: themeColors.white,
+      activeBackground: themeColors.dangerSecondary,
+      activeColor: themeColors.white,
     },
     ghost: {
       border: '1px solid',
@@ -44,11 +47,11 @@ export const theme: GlobalTheme = {
       background: 'transparent',
       border: 'none',
       borderColor: 'none',
-      color: colors.primary,
+      color: themeColors.primary,
       hoverBackground: 'transparent',
-      hoverColor: colors.secondary,
+      hoverColor: themeColors.secondary,
       activeBackground: 'transparent',
-      activeColor: colors.secondary,
+      activeColor: themeColors.secondary,
     },
     size: {
       small: {
@@ -65,12 +68,9 @@ export const theme: GlobalTheme = {
       }
     }
   },
-  colors: {
-    ...colors
-  },
   collapse: {
     border: '1px solid',
-    borderColor: colors.borderColor,
+    borderColor: themeColors.borderColor,
     borderRadius: '4px',
     boxShadow: 'none',
     content: {
@@ -78,22 +78,36 @@ export const theme: GlobalTheme = {
       background: 'transparent'
     },
     header: {
-      color: colors.black,
-      background: colors.white,
-      hoverBackground: colors.primary,
-      hoverColor: colors.white,
-      openBackground: colors.primary,
-      openColor: colors.white,
+      color: themeColors.black,
+      background: themeColors.white,
+      hoverBackground: themeColors.primary,
+      hoverColor: themeColors.white,
+      openBackground: themeColors.primary,
+      openColor: themeColors.white,
       padding: '0px 15px',
       height: '32px'
     }
   },
   panel: {
-    background: colors.white,
+    background: themeColors.white,
     border: 'none',
     borderColor: 'none',
     borderRadius: '4px',
-    activeBoxShadow: `0px 0px 4px rgba(${colors.blackRGB},0.20)`,
-    hoverBoxShadow: `0px 7px 21px rgba(${colors.blackRGB},0.07)`
+    activeBoxShadow: `0px 0px 4px rgba(${themeColors.blackRGB},0.20)`,
+    hoverBoxShadow: `0px 7px 21px rgba(${themeColors.blackRGB},0.07)`
   }
+});
+
+export const createTheme = (colorOverrides: Partial<Colors>, themeOverrides: Partial<GlobalTheme>): GlobalTheme => {
+  const themeColors = {
+    ...colors,
+    ...colorOverrides
+  };
+
+  const theme = getDefaultTheme(themeColors);
+
+  return {
+    ...themeOverrides,
+    ...theme
+  };
 };
