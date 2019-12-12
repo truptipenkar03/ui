@@ -38,23 +38,22 @@ describe('Accordion', () => {
 
     // click items 1 and 2
     accordionItemHeader.at(0).simulate('click');
+    expect(mockOnChange).toBeCalledWith('1');
     accordionItemHeader.at(1).simulate('click');
+    expect(mockOnChange).toBeCalledWith('2');
 
-    expect(mockOnChange).toBeCalledWith(['1', '2']);
+    const accordionItem = wrapper.find('Collapse');
 
-    // close the first item and make sure its closed
-    accordionItemHeader.at(0).simulate('click');
-    expect(mockOnChange).toBeCalledWith(['2']);
+    expect(accordionItem.at(0).prop('active')).toBe(true);
+    expect(accordionItem.at(1).prop('active')).toBe(true);
 
     // cleanup
     wrapper.unmount();
   });
 
-  it('opens one clicked item at a time', () => {
-    const mockOnChange = jest.fn();
+  it('opens one item at a time', () => {
     const wrapper = mount(
       <Accordion
-        onChange={mockOnChange}
         classic
       >
         <Accordion.Item itemKey={'1'}>Accordion Item 1</Accordion.Item>
@@ -70,10 +69,10 @@ describe('Accordion', () => {
     accordionItemHeader.at(0).simulate('click');
     accordionItemHeader.at(1).simulate('click');
 
-    expect(mockOnChange).toBeCalledWith(['2']);
+    const accordionItem = wrapper.find('Collapse');
 
-    // cleanup
-    wrapper.unmount();
+    expect(accordionItem.at(0).prop('active')).toBe(false);
+    expect(accordionItem.at(1).prop('active')).toBe(true);
   });
 
   it('opens item 1 by default', () => {

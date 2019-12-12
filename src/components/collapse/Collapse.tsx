@@ -30,6 +30,9 @@ export interface CollapseProps {
   /** Determines if collapse should default to open */
   defaultActive?: boolean;
 
+  /** When Collapse closes the content component will be unmounted */
+  destroyOnClose?: boolean;
+
   /** Content to render in the header */
   header?: React.ReactNode;
 
@@ -52,6 +55,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
   className,
   children,
   defaultActive,
+  destroyOnClose,
   header,
   itemKey,
   onChange
@@ -90,6 +94,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
       </Header>
       <ContentContainer
         animate={isActive ? 'open' : 'closed'}
+        destroyOnClose={destroyOnClose}
         theme={theme}
       >
         <Content
@@ -107,6 +112,7 @@ Collapse.defaultProps = {
   children: '',
   className: '',
   defaultActive: undefined,
+  destroyOnClose: false,
   header: '',
   onChange: undefined,
   itemKey: ''

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import * as _ from 'lodash';
 
 import {
   AccordionItem,
@@ -37,7 +36,7 @@ export interface AccordionProps {
   itemGap?: ItemGapType;
 
   /** Function to handle when collapse state changes */
-  onChange?: (selectedItems: ItemKeyType[]) => void;
+  onChange?: (key: ItemKeyType) => void;
 
   /** Determines which collapses should be active */
   selectedItems?: (string|number)[];
@@ -56,27 +55,29 @@ export const Accordion: AccordionFunctionComponent<AccordionProps> = ({
 }) => {
   const [selectedItems, setSelectedItems] = React.useState<(string|number)[]>(defaultSelectedItems || []);
 
-  function getClassicItems(key: ItemKeyType) {
-    return _.includes(selectedItems, key) ?
-      [] :
-      [key];
-  }
+  const onCollapseChange = React.useCallback((key: ItemKeyType) => {
+    // if there is no external control of items
+    if (customSelectedItems == null) {
+      function getItems(key: ItemKeyType) {
+        return selectedItems.includes(key) ?
+          selectedItems.filter((i: ItemKeyType) => i !== key) :
+          selectedItems.concat(key);
+      }
 
-  function getItems(key: ItemKeyType) {
-    return _.includes(selectedItems, key) ?
-      selectedItems.filter((i: ItemKeyType) => i !== key) :
-      selectedItems.concat(key);
-  }
+      function getClassicItems(key: ItemKeyType) {
+        return selectedItems.includes(key) ?
+          [] :
+          [key];
+      }
 
-  function onCollapseChange(key: ItemKeyType): void {
-    const newItems = classic ? getClassicItems(key) : getItems(key);
-
-    if (onChange) {
-      onChange(newItems);
+      const newItems = classic ? getClassicItems(key) : getItems(key);
+      setSelectedItems(newItems);
     }
 
-    setSelectedItems(newItems);
-  }
+    if (onChange) {
+      onChange(key);
+    }
+  }, [selectedItems, customSelectedItems, onChange, classic]);
 
   return (
     <AccordionContext.Provider

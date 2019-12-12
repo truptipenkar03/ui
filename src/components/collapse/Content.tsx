@@ -11,6 +11,7 @@ import styled, {
 
 interface ContentContainerProps {
   animate: 'open' | 'closed';
+  destroyOnClose?: boolean;
   theme: any;
 }
 
@@ -18,7 +19,12 @@ interface ContentProps {
   theme: any;
 }
 
-export const ContentContainer: React.FunctionComponent<ContentContainerProps> = ({ children, animate, theme }) => {
+export const ContentContainer: React.FunctionComponent<ContentContainerProps> = ({
+  animate,
+  children,
+  destroyOnClose,
+  theme
+}) => {
   const variants = {
     closed: {
       height: 0
@@ -28,23 +34,28 @@ export const ContentContainer: React.FunctionComponent<ContentContainerProps> = 
     },
   };
 
+  const content = (
+    <motion.div
+      key="content"
+      style={{
+        overflow: 'hidden'
+      }}
+      initial="closed"
+      exit="closed"
+      animate={animate}
+      variants={variants}
+      transition={{ duration: theme.animations.time.veryFast, type: 'tween' }}
+    >
+      {children}
+    </motion.div>
+  );
+
   return (
     <AnimatePresence initial={false}>
-      {animate === 'open' && (
-        <motion.div
-          key="content"
-          style={{
-            overflow: 'hidden'
-          }}
-          initial="closed"
-          exit="closed"
-          animate={animate}
-          variants={variants}
-          transition={{ duration: theme.animations.time.veryFast, type: 'tween' }}
-        >
-          {children}
-        </motion.div>
-      )}
+      { destroyOnClose ?
+        animate === 'open' && content :
+        content
+      }
     </AnimatePresence>
   );
 };

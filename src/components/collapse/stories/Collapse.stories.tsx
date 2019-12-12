@@ -37,6 +37,18 @@ const CollapseContent = ({ children }: any) => (
   </StyledCollapseContent>
 );
 
+const TestContent = () => {
+  React.useEffect(() => {
+    console.log('mounted');
+
+    return () => console.log('unmounted');
+  }, []);
+
+  return (
+    <CollapseContent />
+  );
+};
+
 export const simple = () => (
   <Container>
     <Collapse
@@ -55,7 +67,19 @@ export const open = () => (
       defaultActive
       itemKey="default"
     >
-      <CollapseContent />
+      <TestContent />
+    </Collapse>
+  </Container>
+);
+
+export const destroy = () => (
+  <Container>
+    <Collapse
+      header="Click Me"
+      itemKey="default"
+      destroyOnClose
+    >
+      <TestContent />
     </Collapse>
   </Container>
 );
