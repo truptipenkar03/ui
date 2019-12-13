@@ -29,37 +29,37 @@ interface StyledHeaderProps {
 }
 
 const StyledHeader = styled.div<StyledHeaderProps>`
-  ${(props) => css`
+  ${({ customProps, theme }) => css`
     display: flex;
     align-items: center;
 
-    background: ${props.theme.collapse.header.background};
-    border: ${props.theme.collapse.border};
-    border-color: ${props.theme.collapse.borderColor};
-    border-radius: ${props.theme.collapse.borderRadius};
-    color: ${props.theme.collapse.header.color};
+    background: ${theme.collapseHeaderBackground};
+    border: ${theme.collapseBorder};
+    border-color: ${theme.collapseBorderColor};
+    border-radius: ${theme.collapseBorderRadius};
+    color: ${theme.collapseHeaderColor};
 
-    padding: ${props.theme.collapse.header.padding};
-    height: ${props.theme.collapse.header.height};
+    padding: ${theme.collapseHeaderPadding};
+    height: ${theme.collapseHeaderHeight};
   
     box-sizing: border-box;
     user-select: none;
     cursor: pointer;
     
-    transition: all ${props.theme.animations.time.veryFast}s;
+    transition: all ${theme.animationTimeVeryFast}s;
     
     &:hover {
-      background: ${props.theme.collapse.header.hoverBackground};
+      background: ${theme.collapseHeaderHoverBackground};
       border: 1px solid transparent;
-      color: ${props.theme.collapse.header.hoverColor};
+      color: ${theme.collapseHeaderHoverColor};
     };
     
-    ${props.customProps.open && css`
-      background: ${props.theme.collapse.header.openBackground};
+    ${customProps.open && css`
+      background: ${theme.collapseHeaderOpenBackground};
       border: 1px solid transparent;
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
-      color: ${props.theme.collapse.header.openColor}
+      color: ${theme.collapseHeaderOpenColor}
     `};
   `};
 `;

@@ -1,5 +1,5 @@
 import { Story, Preview, Props, Source } from '@storybook/addon-docs/blocks';
-import { Title, SectionTitle, ThemeDisplay } from '../../../../.storybook/components';
+import { Title, SectionTitle } from '../../../../.storybook/components';
 import { Collapse } from '../Collapse';
 import { theme } from '../../../theme';
 
@@ -36,9 +36,3 @@ Setting `destroyOnClose` to `true` will have the `Collapse` unmount the contents
 
 <SectionTitle>Props</SectionTitle>
 <Props of={Collapse} />
-
-<SectionTitle>Theme</SectionTitle>
-
-The following theme is configurable for a collapse component. See `Theming` for more on how to override this theme.
-
-<ThemeDisplay component="collapse" />

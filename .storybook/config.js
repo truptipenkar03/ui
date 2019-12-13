@@ -23,8 +23,8 @@ addDecorator(story => ThemeDecorator(story));
 
 configure(
   [
-    require.context('../src', true, /\Button.stories\.mdx$/),
-    require.context('../src', true, /\Button.stories\.tsx$/),
+    require.context('../src', true, /\.stories\.mdx$/),
+    require.context('../src', true, /\.stories\.tsx$/),
   ],
   module
 );
