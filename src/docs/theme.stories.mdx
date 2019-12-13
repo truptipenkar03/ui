@@ -8,7 +8,7 @@ import Logo from '../../.storybook/logo-main.png';
 />
 
 <Title
-  title="Theming (Not Implemented)"
+  title="Theming"
   subtitle="Provide a theme to change the look and feel of each component"
 />
 
@@ -21,20 +21,23 @@ If you wish to create your own theme use the provided `createTheme` function. Ea
 ```
 import { createTheme } from '@rtkwlf/ui';
 
-const myTheme = createTheme({... overrides});
+const myTheme = createTheme(colorOverrides, themeOverrides);
 ```
 
 <SectionTitle>Using a Theme</SectionTitle>
 
-Once you have created a new theme you can provide it to the components via the `ThemeProvider` API found in `styled
--components`.
+Once you have created a new theme you can provide it to the components via the `ThemeProvider`.
 
 ```
-import { ThemeProvider } from 'styled-components';
+import { createTheme, ThemeProvider } from '@rtkwlf/ui';
+
+const myTheme = createTheme({
+  primary: 'red'
+}, {});
 
 const App = () => (
   <ThemeProvider value={myTheme}>
-    <Button>Themed Button</Button>
+    <Button>My Red Button</Button>
   </ThemeProvider
 )
 ```

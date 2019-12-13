@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import styled from "styled-components";
+
 import {
   ThemeProvider
 } from "../../src/styled";
@@ -11,6 +13,15 @@ import {
 import {
   createTheme,
 } from "../../src/theme";
+
+const Header = styled.div`
+  width: 100%;
+  height: 40px;
+  
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
 
 const theme1 = createTheme({}, {});
 
@@ -26,11 +37,13 @@ const themes = {
 
 const Foo = ({ onClick, storyFn} : any) => {
   return (
-    <div>
-      <Button onClick={onClick}> Toggle Theme </Button>
+    <React.Fragment>
+      <Header>
+        <Button size="small" shape="circle" onClick={onClick} />
+      </Header>
       <div style={{ height: '15px' }}/>
       {storyFn()}
-    </div>
+    </React.Fragment>
   )
 };
 
