@@ -28,13 +28,16 @@ const theme1 = createTheme({}, {});
 const theme2 = createTheme({
   primary: 'hotpink',
   secondary: 'yellow'
-}, {});
+}, {
+  collapseHeaderHoverBackground: 'blue'
+});
 
 const themes = {
   theme1,
   theme2
 };
 
+console.log(theme2);
 const Foo = ({ onClick, storyFn} : any) => {
   return (
     <React.Fragment>

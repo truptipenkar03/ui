@@ -93,7 +93,7 @@ export const createTheme = (colorOverrides: Partial<Colors>, themeOverrides: Par
   const theme = getDefaultTheme(themeColors);
 
   return {
-    ...themeOverrides,
-    ...theme
+    ...theme,
+    ...themeOverrides
   };
 };
