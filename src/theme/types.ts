@@ -1,65 +1,3 @@
-export interface AnimationTheme {
-  time: {
-    veryFast: number;
-    fast: number;
-    medium: number;
-    slow: number;
-  };
-}
-
-export interface ButtonTheme {
-  borderRadius: string;
-  padding: string;
-  fontWeight: string;
-  primary: {
-    background: string;
-    border: string;
-    borderColor: string;
-    color: string;
-    hoverBackground: string;
-    hoverColor: string;
-    activeBackground: string;
-    activeColor: string;
-  };
-  danger: {
-    background: string;
-    border: string;
-    borderColor: string;
-    color: string;
-    hoverBackground: string;
-    hoverColor: string;
-    activeBackground: string;
-    activeColor: string;
-  };
-  ghost: {
-    border: string;
-  };
-  link: {
-    background: string;
-    border: string;
-    borderColor: string;
-    color: string;
-    hoverBackground: string;
-    hoverColor: string;
-    activeBackground: string;
-    activeColor: string;
-  };
-  size: {
-    small: {
-      height: string;
-      fontSize: string;
-    };
-    default: {
-      height: string;
-      fontSize: string;
-    };
-    large: {
-      height: string;
-      fontSize: string;
-    };
-  };
-}
-
 export interface Colors {
   black: string;
   blackRGB: string;
@@ -88,39 +26,80 @@ export interface Colors {
   whiteRGB: string;
 }
 
-export interface CollapseTheme {
-  border: string;
-  borderColor: string;
-  borderRadius: string;
-  boxShadow: string;
-  content: {
-    padding: string;
-    background: string;
-  };
-  header: {
-    color: string;
-    background: string;
-    hoverBackground: string;
-    hoverColor: string;
-    openBackground: string;
-    openColor: string;
-    padding: string;
-    height: string;
-  };
-}
-
-export interface PanelTheme {
-  background: string;
-  border: string;
-  borderColor: string;
-  borderRadius: string;
-  activeBoxShadow: string;
-  hoverBoxShadow: string;
-}
-
 export interface GlobalTheme {
-  animations: AnimationTheme;
-  button: ButtonTheme;
-  collapse: CollapseTheme;
-  panel: PanelTheme;
+
+  // ---- Animation Time ---- //
+  animationTimeVeryFast: number;
+  animationTimeFast: number;
+  animationTimeMedium: number;
+  animationTimeSlow: number;
+
+  // ---- Button ---- //
+  buttonBorderRadius: string;
+  buttonPadding: string;
+  buttonFontWeight: string;
+  buttonSmallHeight: string;
+  buttonSmallFontSize: string;
+  buttonDefaultHeight: string;
+  buttonDefaultFontSize: string;
+  buttonLargeHeight: string;
+  buttonLargeFontSize: string;
+
+  // ---- Primary Button ---- //
+  buttonPrimaryBackground: string;
+  buttonPrimaryBorder: string;
+  buttonPrimaryBorderColor: string;
+  buttonPrimaryColor: string;
+  buttonPrimaryHoverBackground: string;
+  buttonPrimaryHoverColor: string;
+  buttonPrimaryActiveBackground: string;
+  buttonPrimaryActiveColor: string;
+
+  // ---- Danger Button ---- //
+  buttonDangerBackground: string;
+  buttonDangerBorder: string;
+  buttonDangerBorderColor: string;
+  buttonDangerColor: string;
+  buttonDangerHoverBackground: string;
+  buttonDangerHoverColor: string;
+  buttonDangerActiveBackground: string;
+  buttonDangerActiveColor: string;
+
+  // ---- Ghost Button ---- //
+  buttonGhostBorder: string;
+
+  // ----- Link Button ---- //
+  buttonLinkBackground: string;
+  buttonLinkBorder: string;
+  buttonLinkBorderColor: string;
+  buttonLinkColor: string;
+  buttonLinkHoverBackground: string;
+  buttonLinkHoverColor: string;
+  buttonLinkActiveBackground: string;
+  buttonLinkActiveColor: string;
+
+  // ---- Collapse ---- //
+  collapseBorder: string;
+  collapseBorderColor: string;
+  collapseBorderRadius: string;
+  collapseBoxShadow: string;
+  collapseContentPadding: string;
+  collapseContentBackground: string;
+  collapseHeaderColor: string;
+  collapseHeaderBackground: string;
+  collapseHeaderHoverBackground: string;
+  collapseHeaderHoverColor: string;
+  collapseHeaderOpenBackground: string;
+  collapseHeaderOpenColor: string;
+  collapseHeaderPadding: string;
+  collapseHeaderHeight: string;
+
+
+  // ---- Panel ---- //
+  panelBackground: string;
+  panelBorder: string;
+  panelBorderColor: string;
+  panelBorderRadius: string;
+  panelActiveBoxShadow: string;
+  panelHoverBoxShadow: string;
 }

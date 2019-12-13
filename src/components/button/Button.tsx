@@ -65,6 +65,40 @@ export interface ButtonProps {
   size?: SizeType;
 }
 
+function getTypeStyle(type, ghost, theme) {
+  switch(type) {
+    case 'primary': {
+      if (ghost) {
+        return theme.buttonPrimaryBackground;
+      }
+      return theme.buttonPrimaryColor;
+    }
+    case 'danger': {
+      if (ghost) {
+        return theme.buttonDangerBackground;
+      }
+      return theme.buttonDangerColor;
+    }
+    case 'link': {
+      return theme.buttonLinkColor;
+    }
+  }
+}
+
+function getSizeStyle(size, theme) {
+  switch(size) {
+    case 'small': {
+      return theme.buttonSmallFontSize;
+    }
+    case 'large': {
+      return theme.buttonLargeFontSize;
+    }
+    default: {
+      return theme.buttonDefaultFontSize;
+    }
+  }
+}
+
 export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     children,
@@ -81,21 +115,14 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
 
   const theme = useTheme();
 
-  const {
-    button,
-    animations: {
-      time
-    }
-  } = theme;
+  const iconToShow = loadingIcon || <SvgCircleNotch fill={getTypeStyle(type, ghost, theme)} />;
 
-  const iconToShow = loadingIcon || <SvgCircleNotch fill={button[type || 'primary'].color} />;
-
-  const widthAndHeight = button.size[props.size || 'default'].fontSize;
+  const widthAndHeight = getSizeStyle(size, theme);
 
   const motionConfigToUse: MotionProps = motionConfig ||  {
     style: { height: widthAndHeight, width: widthAndHeight, transformOrigin: 'center center' },
     animate: {rotate: 360},
-    transition: { duration: time.slow, loop: Infinity, ease: 'linear'}
+    transition: { duration: theme.animationTimeSlow, loop: Infinity, ease: 'linear'}
   };
 
   return (
@@ -122,7 +149,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
           notLoading: { width: 0, marginRight: 0}
         }}
         animate={loading ? 'loading' : 'notLoading'}
-        layoutTransition={{ type: 'tween', duration: time.veryFast, delay: time.veryFast }}
+        layoutTransition={{ type: 'tween', duration: theme.animationTimeVeryFast, delay: theme.animationTimeVeryFast }}
       >
         {loading ?
           <motion.div

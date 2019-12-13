@@ -15,7 +15,8 @@ import {
 const theme1 = createTheme({}, {});
 
 const theme2 = createTheme({
-  primary: 'hotpink'
+  primary: 'hotpink',
+  secondary: 'yellow'
 }, {});
 
 const themes = {
@@ -27,6 +28,7 @@ const Foo = ({ onClick, storyFn} : any) => {
   return (
     <div>
       <Button onClick={onClick}> Toggle Theme </Button>
+      <div style={{ height: '15px' }}/>
       {storyFn()}
     </div>
   )

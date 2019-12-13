@@ -8,94 +8,80 @@ import {
 } from "./types";
 
 export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
-  animations: {
-    time: {
-      veryFast: 0.1,
-      fast: 0.25,
-      medium: 0.5,
-      slow: 1
-    },
-  },
-  button: {
-    borderRadius: '4px',
-    padding: '0px 15px',
-    fontWeight: '400',
-    primary: {
-      background: themeColors.primary,
-      border: 'none',
-      borderColor: 'none',
-      color: themeColors.white,
-      hoverBackground: themeColors.secondary,
-      hoverColor: themeColors.white,
-      activeBackground: themeColors.secondary,
-      activeColor: themeColors.white,
-    },
-    danger: {
-      background: themeColors.danger,
-      border: 'none',
-      borderColor: 'none',
-      color: themeColors.white,
-      hoverBackground: themeColors.dangerSecondary,
-      hoverColor: themeColors.white,
-      activeBackground: themeColors.dangerSecondary,
-      activeColor: themeColors.white,
-    },
-    ghost: {
-      border: '1px solid',
-    },
-    link: {
-      background: 'transparent',
-      border: 'none',
-      borderColor: 'none',
-      color: themeColors.primary,
-      hoverBackground: 'transparent',
-      hoverColor: themeColors.secondary,
-      activeBackground: 'transparent',
-      activeColor: themeColors.secondary,
-    },
-    size: {
-      small: {
-        height: '24px',
-        fontSize: '14px'
-      },
-      default: {
-        height: '32px',
-        fontSize: '14px'
-      },
-      large: {
-        height: '44px',
-        fontSize: '16px'
-      }
-    }
-  },
-  collapse: {
-    border: '1px solid',
-    borderColor: themeColors.borderColor,
-    borderRadius: '4px',
-    boxShadow: 'none',
-    content: {
-      padding: '10px',
-      background: 'transparent'
-    },
-    header: {
-      color: themeColors.black,
-      background: themeColors.white,
-      hoverBackground: themeColors.primary,
-      hoverColor: themeColors.white,
-      openBackground: themeColors.primary,
-      openColor: themeColors.white,
-      padding: '0px 15px',
-      height: '32px'
-    }
-  },
-  panel: {
-    background: themeColors.white,
-    border: 'none',
-    borderColor: 'none',
-    borderRadius: '4px',
-    activeBoxShadow: `0px 0px 4px rgba(${themeColors.blackRGB},0.20)`,
-    hoverBoxShadow: `0px 7px 21px rgba(${themeColors.blackRGB},0.07)`
-  }
+
+  // ---- Animation ---- //
+  animationTimeVeryFast: 0.1,
+  animationTimeFast: 0.25,
+  animationTimeMedium: 0.5,
+  animationTimeSlow: 1,
+
+  // ---- Button ---- //
+  buttonBorderRadius: '4px',
+  buttonPadding: '0px 15px',
+  buttonFontWeight: '400',
+  buttonSmallHeight: '24px',
+  buttonSmallFontSize: '14px',
+  buttonDefaultHeight: '32px',
+  buttonDefaultFontSize: '14px',
+  buttonLargeHeight: '44px',
+  buttonLargeFontSize: '16px',
+
+  // ---- Primary Button ---- //
+  buttonPrimaryBackground: themeColors.primary,
+  buttonPrimaryBorder: 'none',
+  buttonPrimaryBorderColor: 'none',
+  buttonPrimaryColor: themeColors.white,
+  buttonPrimaryHoverBackground: themeColors.secondary,
+  buttonPrimaryHoverColor: themeColors.white,
+  buttonPrimaryActiveBackground: themeColors.secondary,
+  buttonPrimaryActiveColor: themeColors.white,
+
+  // ---- Danger Button ---- //
+  buttonDangerBackground: themeColors.danger,
+  buttonDangerBorder: 'none',
+  buttonDangerBorderColor: 'none',
+  buttonDangerColor: themeColors.white,
+  buttonDangerHoverBackground: themeColors.dangerSecondary,
+  buttonDangerHoverColor: themeColors.white,
+  buttonDangerActiveBackground: themeColors.dangerSecondary,
+  buttonDangerActiveColor: themeColors.white,
+
+  // ---- Ghost Button ---- //
+  buttonGhostBorder: '1px solid',
+
+  // ----- Link Button ---- //
+  buttonLinkBackground: 'transparent',
+  buttonLinkBorder: 'none',
+  buttonLinkBorderColor: 'none',
+  buttonLinkColor: themeColors.primary,
+  buttonLinkHoverBackground: 'transparent',
+  buttonLinkHoverColor: themeColors.secondary,
+  buttonLinkActiveBackground: 'transparent',
+  buttonLinkActiveColor: themeColors.secondary,
+
+  // ---- Collapse ---- //
+  collapseBorder: '1px solid',
+  collapseBorderColor: themeColors.borderColor,
+  collapseBorderRadius: '4px',
+  collapseBoxShadow: 'none',
+  collapseContentPadding: '10px',
+  collapseContentBackground: 'transparent',
+  collapseHeaderColor: themeColors.black,
+  collapseHeaderBackground: themeColors.white,
+  collapseHeaderHoverBackground: themeColors.primary,
+  collapseHeaderHoverColor: themeColors.white,
+  collapseHeaderOpenBackground: themeColors.primary,
+  collapseHeaderOpenColor: themeColors.white,
+  collapseHeaderPadding: '0px 15px',
+  collapseHeaderHeight: '32px',
+
+  // ---- Panel ---- //
+  panelBackground: themeColors.white,
+  panelBorder: 'none',
+  panelBorderColor: 'none',
+  panelBorderRadius: '4px',
+  panelActiveBoxShadow: `0px 0px 4px rgba(${themeColors.blackRGB},0.20)`,
+  panelHoverBoxShadow: `0px 7px 21px rgba(${themeColors.blackRGB},0.07)`
 });
 
 export const createTheme = (colorOverrides: Partial<Colors>, themeOverrides: Partial<GlobalTheme>): GlobalTheme => {
