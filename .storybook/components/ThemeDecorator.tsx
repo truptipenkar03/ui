@@ -16,8 +16,6 @@ import {
 
 const Header = styled.div`
   width: 100%;
-  height: 40px;
-  
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -26,19 +24,15 @@ const Header = styled.div`
 const theme1 = createTheme({}, {});
 
 const theme2 = createTheme({
-  primary: 'hotpink',
-  secondary: 'yellow'
-}, {
-  collapseHeaderHoverBackground: 'blue'
-});
+  primary: 'hotpink'
+}, {});
 
 const themes = {
   theme1,
   theme2
 };
 
-console.log(theme2);
-const Foo = ({ onClick, storyFn} : any) => {
+const Story = ({ onClick, storyFn} : any) => {
   return (
     <React.Fragment>
       <Header>
@@ -63,7 +57,7 @@ export default (storyFn: any) => {
 
   return (
     <ThemeProvider theme={themes[themeIndex]}>
-      <Foo onClick={onClick} storyFn={storyFn} />
+      <Story onClick={onClick} storyFn={storyFn} />
     </ThemeProvider>
   );
 };
