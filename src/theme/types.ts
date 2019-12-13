@@ -16,12 +16,12 @@ export interface Colors {
   lightGreyRGB: string;
   primary: string;
   primaryRGB: string;
+  primaryBackground: string;
+  primaryBackgroundRGB: string;
   secondary: string;
   secondaryRGB: string;
-  success: string;
-  successRGB: string;
-  warning: string;
-  warningRGB: string;
+  secondaryBackground: string;
+  secondaryBackgroundRGB: string;
   white: string;
   whiteRGB: string;
 }
@@ -102,4 +102,6 @@ export interface GlobalTheme {
   panelBorderRadius: string;
   panelActiveBoxShadow: string;
   panelHoverBoxShadow: string;
+
+  colors: Colors;
 }

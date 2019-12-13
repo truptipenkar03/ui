@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-import styled from "styled-components";
+import styled, {
+  css
+} from "styled-components";
 
 import {
   ThemeProvider
@@ -14,6 +16,14 @@ import {
   createTheme,
 } from "../../src/theme";
 
+const Container = styled.div`
+  ${({ theme }) => css`
+    border-radius: 4px;
+    padding: 20px;
+    background: ${theme.colors.secondaryBackground};
+  `};
+`;
+
 const Header = styled.div`
   width: 100%;
   display: flex;
@@ -24,7 +34,10 @@ const Header = styled.div`
 const theme1 = createTheme({}, {});
 
 const theme2 = createTheme({
-  primary: 'hotpink'
+  primary: 'orange',
+  primaryBackground: '#484f5e',
+  secondaryBackground: '#1F2728',
+  borderColor: 'transparent'
 }, {});
 
 const themes = {
@@ -34,13 +47,13 @@ const themes = {
 
 const Story = ({ onClick, storyFn} : any) => {
   return (
-    <React.Fragment>
+    <Container>
       <Header>
         <Button size="small" shape="circle" onClick={onClick} />
       </Header>
       <div style={{ height: '15px' }}/>
       {storyFn()}
-    </React.Fragment>
+    </Container>
   )
 };
 

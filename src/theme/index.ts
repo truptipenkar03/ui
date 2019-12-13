@@ -65,9 +65,9 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   collapseBorderRadius: '4px',
   collapseBoxShadow: 'none',
   collapseContentPadding: '10px',
-  collapseContentBackground: 'transparent',
+  collapseContentBackground: themeColors.primaryBackground,
   collapseHeaderColor: themeColors.black,
-  collapseHeaderBackground: themeColors.white,
+  collapseHeaderBackground: themeColors.primaryBackground,
   collapseHeaderHoverBackground: themeColors.primary,
   collapseHeaderHoverColor: themeColors.white,
   collapseHeaderOpenBackground: themeColors.primary,
@@ -76,12 +76,16 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   collapseHeaderHeight: '32px',
 
   // ---- Panel ---- //
-  panelBackground: themeColors.white,
+  panelBackground: themeColors.primaryBackground,
   panelBorder: 'none',
   panelBorderColor: 'none',
   panelBorderRadius: '4px',
   panelActiveBoxShadow: `0px 0px 4px rgba(${themeColors.blackRGB},0.20)`,
-  panelHoverBoxShadow: `0px 7px 21px rgba(${themeColors.blackRGB},0.07)`
+  panelHoverBoxShadow: `0px 7px 21px rgba(${themeColors.blackRGB},0.07)`,
+
+  colors: {
+    ...themeColors
+  }
 });
 
 export const createTheme = (colorOverrides: Partial<Colors>, themeOverrides: Partial<GlobalTheme>): GlobalTheme => {
