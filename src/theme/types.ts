@@ -6,14 +6,8 @@ export interface Colors {
   dangerRGB: string;
   dangerSecondary: string;
   dangerSecondaryRGB: string;
-  darkGrey: string;
-  darkGreyRGB: string;
-  disabled: string;
-  disabledRGB: string;
-  info: string;
-  infoRGB: string;
-  lightGrey: string;
-  lightGreyRGB: string;
+  darkFontColor: string;
+  darkFontColorRGB: string;
   primary: string;
   primaryRGB: string;
   primaryBackground: string;
@@ -22,6 +16,8 @@ export interface Colors {
   secondaryRGB: string;
   secondaryBackground: string;
   secondaryBackgroundRGB: string;
+  lightFontColor: string;
+  lightFontColorRGB: string;
   white: string;
   whiteRGB: string;
 }
