@@ -36,9 +36,13 @@ const theme1 = createTheme({}, {});
 const theme2 = createTheme({
   primary: 'orange',
   primaryBackground: '#484f5e',
+  secondary: '#ad7101',
   secondaryBackground: '#1F2728',
-  borderColor: 'transparent'
-}, {});
+  borderColor: 'transparent',
+}, {
+  buttonPrimaryColor: 'black',
+  buttonPrimaryHoverColor: 'black'
+});
 
 const themes = {
   theme1,
