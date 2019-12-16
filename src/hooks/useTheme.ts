@@ -1,8 +1,12 @@
 import * as React from 'react';
 
 import {
-  theme
+  createTheme
 } from "../theme";
+
+import {
+  GlobalTheme
+} from "../theme/types";
 
 import {
   ThemeContext
@@ -10,5 +14,7 @@ import {
 
 // theme hook to get the current theme;
 export const useTheme = () => {
-  return React.useContext(ThemeContext) || theme
+  const theme = createTheme({}, {});
+
+  return React.useContext<GlobalTheme>(ThemeContext) || theme;
 };

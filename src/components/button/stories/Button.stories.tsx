@@ -85,9 +85,27 @@ export const loading = () => {
         </Button>
         <Spacer />
         <Button
+          type="primary"
+          onClick={handleToggle}
+          loading={loading}
+          ghost
+        >
+          Ghost
+        </Button>
+        <Spacer />
+        <Button
           type="danger"
           onClick={handleToggle}
           loading={loading}
+        >
+          Danger
+        </Button>
+        <Spacer />
+        <Button
+          type="danger"
+          onClick={handleToggle}
+          loading={loading}
+          ghost
         >
           Danger
         </Button>

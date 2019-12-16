@@ -24,23 +24,23 @@ export interface PanelProps {
 }
 
 const Container = styled.div`
-  ${(props) => css`
+  ${({ onClick, theme }) => css`
     width: 100%;
-    background: ${props.theme.panel.background};
-    border: ${props.theme.panel.border};
-    border-color: ${props.theme.panel.borderColor};
-    border-radius: ${props.theme.panel.borderRadius};
+    background: ${theme.panelBackground};
+    border: ${theme.panelBorder};
+    border-color: ${theme.panelBorderColor};
+    border-radius: ${theme.panelBorderRadius};
     
-    transition: all ${props.theme.animations.time.fast}s;
+    transition: all ${theme.animationTimeFast}s;
     
-    ${props.onClick && css`
+    ${onClick && css`
       &:hover {
         cursor: pointer;
-        box-shadow: ${props.theme.panel.hoverBoxShadow}; 
+        box-shadow: ${theme.panelHoverBoxShadow}; 
       }
       
       &:active {
-        box-shadow: ${props.theme.panel.activeBoxShadow}; 
+        box-shadow: ${theme.panelActiveBoxShadow}; 
       }
     `}
   `};

@@ -1,5 +1,9 @@
 import * as React from 'react';
 
+import styled, {
+  css
+} from "styled-components";
+
 import {
   ThemeProvider
 } from "../../src/styled";
@@ -9,49 +13,68 @@ import {
 } from "../../src/components";
 
 import {
-  theme
+  createTheme,
 } from "../../src/theme";
 
-import {
-  GlobalTheme
-} from "../../src/theme/types";
+const Container = styled.div`
+  ${({ theme }) => css`
+    border-radius: 4px;
+    padding: 20px;
+    background: ${theme.colors.secondaryBackground};
+  `};
+`;
 
-interface Themes {
-  [key: string]: GlobalTheme
-}
+const Header = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
 
-const themes: Themes = {
-  light: {
-    ...theme,
-    colors: {
-      ...theme.colors,
-      // primary: '#24557d',
-      // primaryRGB: '36,85,125'
-    }
-  },
-  dark: {
-    ...theme,
-    colors: {
-      ...theme.colors,
-      // primary: '#ff0000',
-      // primaryRGB: '255,0, 0'
-    }
-  }
+const theme1 = createTheme({}, {});
+
+const theme2 = createTheme({
+  primary: 'orange',
+  primaryBackground: '#484f5e',
+  secondary: '#ad7101',
+  secondaryBackground: '#1F2728',
+  borderColor: 'transparent',
+}, {
+  buttonPrimaryColor: 'black',
+  buttonPrimaryHoverColor: 'black'
+});
+
+const themes = {
+  theme1,
+  theme2
 };
 
-const Foo = ({ storyFn, setTheme, theme } : any) => {
+const Story = ({ onClick, storyFn} : any) => {
   return (
-    <div>
-      <Button type="primary" onClick={setTheme}> {`${theme} Theme`} </Button>
+    <Container>
+      <Header>
+        <Button size="small" shape="circle" onClick={onClick} />
+      </Header>
+      <div style={{ height: '15px' }}/>
       {storyFn()}
-    </div>
+    </Container>
   )
 };
 
 export default (storyFn: any) => {
+  const [themeIndex, setThemeIndex] = React.useState<'theme1' | 'theme2'>('theme1');
+
+  const onClick = React.useCallback(() => {
+    if (themeIndex === 'theme1') {
+      setThemeIndex('theme2');
+    } else {
+      setThemeIndex('theme1');
+    }
+  },[themeIndex]);
+
   return (
-    <ThemeProvider theme={themes.light}>
-      {storyFn()}
+    <ThemeProvider theme={themes[themeIndex]}>
+      <Story onClick={onClick} storyFn={storyFn} />
     </ThemeProvider>
   );
 };
