@@ -39,9 +39,13 @@ const theme2 = createTheme({
   secondary: '#ad7101',
   secondaryBackground: '#1F2728',
   borderColor: 'transparent',
+  placeholderDarkFontColor: '#C9C7C7',
+  placeholderLightFontColor: '#545450',
+  lightFontColor: '#30302F',
+  darkFontColor: '#EFEFEF'
 }, {
   buttonPrimaryColor: 'black',
-  buttonPrimaryHoverColor: 'black'
+  buttonPrimaryHoverColor: 'black',
 });
 
 const themes = {
