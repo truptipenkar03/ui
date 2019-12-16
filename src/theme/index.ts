@@ -20,7 +20,7 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   buttonPadding: '0px 15px',
   buttonFontWeight: '400',
   buttonSmallHeight: '24px',
-  buttonSmallFontSize: '14px',
+  buttonSmallFontSize: '12px',
   buttonDefaultHeight: '32px',
   buttonDefaultFontSize: '14px',
   buttonLargeHeight: '44px',
@@ -82,6 +82,25 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   panelBorderRadius: '4px',
   panelActiveBoxShadow: `0px 0px 4px rgba(${themeColors.blackRGB},0.20)`,
   panelHoverBoxShadow: `0px 7px 21px rgba(${themeColors.blackRGB},0.07)`,
+
+
+  // ---- Input ---- //
+  inputBackground: themeColors.primaryBackground,
+  inputBorder: '1px solid',
+  inputBorderRadius: '4px',
+  inputBorderColor: themeColors.borderColor,
+  inputFocusBorderColor: themeColors.primary,
+  inputColor: themeColors.darkFontColor,
+  inputDefaultHeight: '32px',
+  inputDefaultFontSize: 14,
+  inputSmallHeight: '24px',
+  inputSmallFontSize: 12,
+  inputLargeHeight: '44px',
+  inputLargeFontSize: 18,
+  inputPadding: '10px 0 10px 10px',
+  inputPlaceholderColor: themeColors.placeholderDarkFontColor,
+  inputPrefixLeft: '10px',
+  inputSuffixRight: '10px',
 
   colors: {
     ...themeColors

@@ -8,6 +8,10 @@ export interface Colors {
   dangerSecondaryRGB: string;
   darkFontColor: string;
   darkFontColorRGB: string;
+  placeholderLightFontColor: string;
+  placeholderLightFontColorRGB: string;
+  placeholderDarkFontColor: string;
+  placeholderDarkFontColorRGB: string;
   primary: string;
   primaryRGB: string;
   primaryBackground: string;
@@ -98,6 +102,25 @@ export interface GlobalTheme {
   panelBorderRadius: string;
   panelActiveBoxShadow: string;
   panelHoverBoxShadow: string;
+
+
+  // ---- Input ---- //
+  inputBackground: string;
+  inputBorder: string;
+  inputBorderRadius: string;
+  inputBorderColor: string;
+  inputFocusBorderColor: string;
+  inputColor: string;
+  inputDefaultHeight: string;
+  inputDefaultFontSize: number;
+  inputSmallHeight: string;
+  inputSmallFontSize: number;
+  inputLargeHeight: string;
+  inputLargeFontSize: number;
+  inputPadding: string;
+  inputPlaceholderColor: string;
+  inputPrefixLeft: string;
+  inputSuffixRight: string;
 
   colors: Colors;
 }
