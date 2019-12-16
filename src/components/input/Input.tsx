@@ -9,12 +9,15 @@ import {
   AffixContainer,
   Container,
   Label,
-  Error,
+  Status,
   StyledInput
 } from "./StyledInput";
+import {motion} from "framer-motion";
+import {StyledButton} from "../button/StyledButton";
 
 export type BorderType = 'full' | 'bottom' | 'none';
 export type InputSize = 'small' | 'default' | 'large';
+export type ValidationStatus = 'success' | 'error' | 'default';
 
 export interface InputProps {
 
@@ -29,12 +32,6 @@ export interface InputProps {
 
   /** Disabled state of the input */
   disabled?: boolean;
-
-  /** Formik validation error */
-  error?: string;
-
-  /** Function that provides the error to use in custom component */
-  errorComponent?: (error: string) => React.ReactNode;
 
   /** HTML input type attribute */
   htmlType?: 'text' | 'number' | 'date' | 'password';
@@ -80,6 +77,15 @@ export interface InputProps {
 
   /** value of the input */
   value?: string;
+
+  /** Validation status to provide feedback to the user */
+  validationStatus?: ValidationStatus;
+
+  /** Message to show along with the `validationStatus` */
+  validationMessage?: string;
+
+  /** Custom component used to display the validation message */
+  validationComponent?: (error: string) => React.ReactNode;
 }
 
 
@@ -88,8 +94,6 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
     className,
     disabled,
     defaultValue,
-    error,
-    errorComponent,
     htmlType,
     id,
     label,
@@ -104,16 +108,18 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
     inputSuffix,
     borderType,
     readOnly,
-    value
+    value,
+    validationMessage,
+    validationComponent,
+    validationStatus
   } = props;
 
   const theme = useTheme();
 
   return (
-    <Container className={className}>
+    <Container className={`${className} rtk-input`}>
       {label && (
         <Label
-          inputSize={size}
           theme={theme}
         >
           {label}
@@ -140,7 +146,6 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
         </AffixContainer>
         <StyledInput
           label={null}
-          error={error}
           disabled={disabled}
           defaultValue={defaultValue}
           type={htmlType}
@@ -160,10 +165,15 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
           theme={theme}
           value={value}
         />
-      {(error && errorComponent) &&
-        <Error theme={theme}>
-          {errorComponent(error)}
-        </Error>
+      {validationMessage &&
+        validationComponent ?
+          validationComponent(validationMessage) :
+          <Status
+            validationStatus={validationStatus}
+            theme={theme}
+           >
+            {validationMessage}
+          </Status>
       }
     </Container>
   );
@@ -174,8 +184,6 @@ Input.defaultProps = {
   className: '',
   disabled: false,
   defaultValue: undefined,
-  error: '',
-  errorComponent: (error) => <div>{error}</div>,
   htmlType: undefined,
   id: undefined,
   name: undefined,
@@ -187,5 +195,6 @@ Input.defaultProps = {
   placeholder: '',
   size: 'default',
   readOnly: false,
-  value: undefined
+  value: undefined,
+  validationStatus: 'default'
 };

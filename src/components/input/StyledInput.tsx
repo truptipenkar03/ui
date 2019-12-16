@@ -8,7 +8,8 @@ import {
 
 import {
   InputProps,
-  InputSize
+  InputSize,
+  ValidationStatus
 } from "./Input";
 
 interface StyledInputProps extends InputProps {
@@ -19,27 +20,28 @@ export const Container = styled.div`
   width: 100%;
 `;
 
-export const Label = styled.label<{
-  theme: GlobalTheme;
-  inputSize?: InputSize;
-}>`
-  ${({ theme, inputSize }) => css`
-    font-size: ${theme.inputDefaultFontSize};
+export const Label = styled.label`
+  ${({ theme }) => css`
+    font-size: ${theme.inputLabelFontSize};
     color: ${theme.inputColor};
-
-    ${inputSize === 'small' && css`
-      font-size: ${theme.inputSmallFontSize};
-    `}
-      
-    ${inputSize === 'large' && css`
-      font-size: ${theme.inputLargeFontSize};
-    `}
-  `}
+  `};
 `;
 
-export const Error = styled.div`
-  ${({ theme }) => css`
-    color: ${theme.colors.danger};
+export const Status = styled.div<{
+  theme: GlobalTheme;
+  validationStatus?: ValidationStatus;
+}>`
+  ${({ theme, validationStatus }) => css`
+    font-size: ${theme.inputStatusFontSize};
+    color: ${theme.inputStatusColor};
+
+    ${validationStatus === 'error' && css`
+      color: ${theme.inputStatusErrorColor};
+    `}
+
+    ${validationStatus === 'success' && css`
+      color: ${theme.inputStatusSuccessColor};
+    `}
   `};
 `;
 
@@ -80,7 +82,7 @@ export const Affix = styled.div<{
 `;
 
 export const StyledInput = styled.input<StyledInputProps>`
-  ${({ borderType, error, theme, inputSize, inputPrefix, inputSuffix }) => css`
+  ${({ borderType, theme, inputSize, inputPrefix, inputSuffix }) => css`
     height: ${theme.inputDefaultHeight};
     font-size: ${theme.inputDefaultFontSize}px;
     
@@ -95,7 +97,7 @@ export const StyledInput = styled.input<StyledInputProps>`
     border: ${theme.inputBorder};
     border-color: ${theme.inputBorderColor};
     border-radius: ${theme.inputBorderRadius};
-    border-color: ${error ? theme.colors.danger : theme.inputBorderColor};
+    border-color: ${theme.inputBorderColor};
 
     box-sizing: border-box;
     
@@ -109,24 +111,20 @@ export const StyledInput = styled.input<StyledInputProps>`
       font-size: ${theme.inputLargeFontSize}px;
     `}
     
-    ${error && css`
-      border-color: ${theme.colors.danger};
-    `}
-    
     ${borderType === 'bottom' && css`
       padding: 10px 5px;
       background: transparent;
       border: none;
       border-radius: 0;
       border-bottom: ${theme.inputBorder};
-      border-color: ${error ? theme.colors.danger : theme.inputBorderColor};
+      border-color: ${theme.inputBorderColor};
     `};
     
     ${borderType === 'none' && css`
       padding: 10px 0;
       background: transparent;
       border: none;
-      color: ${error ? theme.colors.danger : theme.inputColor};
+      color: ${theme.inputColor};
     `};
     
     ${inputPrefix && css`

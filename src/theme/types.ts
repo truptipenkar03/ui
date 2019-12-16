@@ -113,6 +113,11 @@ export interface GlobalTheme {
   inputColor: string;
   inputDefaultHeight: string;
   inputDefaultFontSize: number;
+  inputStatusFontSize: string;
+  inputStatusColor: string;
+  inputStatusErrorColor: string;
+  inputStatusSuccessColor: string;
+  inputLabelFontSize: string;
   inputSmallHeight: string;
   inputSmallFontSize: number;
   inputLargeHeight: string;

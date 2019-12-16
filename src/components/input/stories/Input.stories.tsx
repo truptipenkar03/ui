@@ -64,11 +64,11 @@ export const label = () => (
   </Container>
 );
 
-export const error = () => (
+export const validation = () => (
   <Container>
     <Input
-      label="Label"
-      error="This is an error"
+      validationStatus="error"
+      validationMessage="This is an error"
     />
   </Container>
 );
@@ -81,7 +81,7 @@ export const disabled = () => (
 
 export const affix = () => (
   <Container>
-    <Input inputPrefix={<SvgCircleNotch />} inputSuffix={<SvgCircleNotch />} />
+    <Input validationStatus={'error'} inputPrefix={<SvgCircleNotch />} inputSuffix={<SvgCircleNotch />} />
   </Container>
 );
 
