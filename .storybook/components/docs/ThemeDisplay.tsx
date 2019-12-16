@@ -21,6 +21,7 @@ export const ThemeDisplay: React.FunctionComponent<Props> = ({ component, colors
   const theme = getDefaultTheme();
 
   const themeSource = `
+    
     // ---- Animation ---- //
     animationTimeVeryFast: 0.1,
     animationTimeFast: 0.25,
@@ -32,7 +33,7 @@ export const ThemeDisplay: React.FunctionComponent<Props> = ({ component, colors
     buttonPadding: '0px 15px',
     buttonFontWeight: '400',
     buttonSmallHeight: '24px',
-    buttonSmallFontSize: '14px',
+    buttonSmallFontSize: '12px',
     buttonDefaultHeight: '32px',
     buttonDefaultFontSize: '14px',
     buttonLargeHeight: '44px',
@@ -42,7 +43,7 @@ export const ThemeDisplay: React.FunctionComponent<Props> = ({ component, colors
     buttonPrimaryBackground: themeColors.primary,
     buttonPrimaryBorder: 'none',
     buttonPrimaryBorderColor: 'none',
-    buttonPrimaryColor: themeColors.white,
+    buttonPrimaryColor: themeColors.lightFontColor,
     buttonPrimaryHoverBackground: themeColors.secondary,
     buttonPrimaryHoverColor: themeColors.white,
     buttonPrimaryActiveBackground: themeColors.secondary,
@@ -52,7 +53,7 @@ export const ThemeDisplay: React.FunctionComponent<Props> = ({ component, colors
     buttonDangerBackground: themeColors.danger,
     buttonDangerBorder: 'none',
     buttonDangerBorderColor: 'none',
-    buttonDangerColor: themeColors.white,
+    buttonDangerColor: themeColors.lightFontColor,
     buttonDangerHoverBackground: themeColors.dangerSecondary,
     buttonDangerHoverColor: themeColors.white,
     buttonDangerActiveBackground: themeColors.dangerSecondary,
@@ -77,23 +78,46 @@ export const ThemeDisplay: React.FunctionComponent<Props> = ({ component, colors
     collapseBorderRadius: '4px',
     collapseBoxShadow: 'none',
     collapseContentPadding: '10px',
-    collapseContentBackground: 'transparent',
-    collapseHeaderColor: themeColors.black,
-    collapseHeaderBackground: themeColors.white,
+    collapseContentBackground: themeColors.primaryBackground,
+    collapseHeaderColor: themeColors.darkFontColor,
+    collapseHeaderBackground: themeColors.primaryBackground,
     collapseHeaderHoverBackground: themeColors.primary,
-    collapseHeaderHoverColor: themeColors.white,
+    collapseHeaderHoverColor: themeColors.lightFontColor,
     collapseHeaderOpenBackground: themeColors.primary,
-    collapseHeaderOpenColor: themeColors.white,
+    collapseHeaderOpenColor: themeColors.lightFontColor,
     collapseHeaderPadding: '0px 15px',
     collapseHeaderHeight: '32px',
   
     // ---- Panel ---- //
-    panelBackground: themeColors.white,
+    panelBackground: themeColors.primaryBackground,
     panelBorder: 'none',
     panelBorderColor: 'none',
     panelBorderRadius: '4px',
-    panelActiveBoxShadow: 0px 0px 4px rgba(themeColors.blackRGB,0.20),
-    panelHoverBoxShadow: 0px 7px 21px rgba(themeColors.blackRGB,0.07)
+    panelActiveBoxShadow: \`0px 0px 4px rgba(themeColors.blackRGB},0.20)\`,
+    panelHoverBoxShadow: \`0px 7px 21px rgba(themeColors.blackRGB},0.07)\`,
+  
+  
+    // ---- Input ---- //
+    inputBackground: themeColors.primaryBackground,
+    inputBorder: '1px solid',
+    inputBorderRadius: '4px',
+    inputBorderColor: themeColors.borderColor,
+    inputFocusBorderColor: themeColors.primary,
+    inputColor: themeColors.darkFontColor,
+    inputDefaultHeight: '32px',
+    inputDefaultFontSize: 14,
+    inputSmallHeight: '24px',
+    inputSmallFontSize: 12,
+    inputLargeHeight: '44px',
+    inputLargeFontSize: 18,
+    inputPadding: '10px 0 10px 10px',
+    inputPlaceholderColor: themeColors.placeholderDarkFontColor,
+    inputPrefixLeft: '10px',
+    inputSuffixRight: '10px',
+  
+    colors: {
+      ...themeColors
+    }
   `;
 
   const themeColorSource = `
@@ -104,22 +128,22 @@ export const ThemeDisplay: React.FunctionComponent<Props> = ({ component, colors
     dangerRGB: '196,56,54',
     dangerSecondary: '#9B3230',
     dangerSecondaryRGB: '155,50,48',
-    darkGrey: '#C4C4C4',
-    darkGreyRGB: '196,196,196',
-    disabled: '#60586F',
-    disabledRGB: '96,88,111',
-    info: '#0C95FF',
-    infoRGB: '12,149,255',
-    lightGrey: '#C4C4C4',
-    lightGreyRGB: '196,196,196',
+    darkFontColor: '#30302F',
+    darkFontColorRGB: '48, 48, 48',
+    placeholderLightFontColor: '#C9C7C7',
+    placeholderLightFontColorRGB: '199,199,199',
+    placeholderDarkFontColor: '#545450',
+    placeholderDarkFontColorRGB: '84,84,80',
     primary: '#23618E',
     primaryRGB: '35,97,142',
+    primaryBackground: '#FFFFFF',
+    primaryBackgroundRGB: '255,255,255',
     secondary: '#23316E',
     secondaryRGB: '35,49,110',
-    success: '#0BE894',
-    successRGB: '11,232,148',
-    warning: '#FF9F0C',
-    warningRGB: '255,159,12',
+    secondaryBackground: '#f1f1f1',
+    secondaryBackgroundRGB: '241,241,241',
+    lightFontColor: '#EFEFEF',
+    lightFontColorRGB: '239, 239, 239',
     white: '#FFFFFF',
     whiteRGB: '255,255,255',
   `;
