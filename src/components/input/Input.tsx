@@ -186,8 +186,6 @@ Input.defaultProps = {
   onFocus: undefined,
   placeholder: '',
   size: 'default',
-  inputPrefix: null,
-  inputSuffix: null,
   readOnly: false,
   value: undefined
 };
