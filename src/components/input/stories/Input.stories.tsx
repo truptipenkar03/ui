@@ -15,6 +15,7 @@ import {
 
 // @ts-ignore
 import mdx from './Input.mdx';
+
 import {Button} from "../..";
 
 const Spacer = styled.span`
@@ -22,6 +23,11 @@ const Spacer = styled.span`
   padding: 5px;
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+`;
 
 export default {
   title: 'Components/Input',
@@ -66,30 +72,30 @@ export const label = () => (
 );
 
 export const validation = () => {
-  const [loading, setLoading] = React.useState(false);
+  const [status, setStatus] = React.useState<any>('default');
+  const [showMessage, toggleMessage] = React.useState(true);
   return (
     <Container>
+      <ButtonContainer>
+        <Button onClick={() => setStatus('default')}>
+          Default
+        </Button>
+        <Button onClick={() => setStatus('success')}>
+          Success
+        </Button>
+        <Button onClick={() => setStatus('error')}>
+          Error
+        </Button>
+        <Button onClick={() => setStatus('loading')}>
+          Loading
+        </Button>
+        <Button onClick={() => toggleMessage(!showMessage)}>
+          Toggle Message
+        </Button>
+      </ButtonContainer>
       <Input
-        validationStatus="error"
-        validationMessage="This is an error"
-      />
-      <Spacer />
-      <Input
-        validationStatus="success"
-        validationMessage="This is a success"
-      />
-      <Spacer />
-      <Input
-        validationStatus="default"
-        validationMessage="This is a default"
-        inputSuffix={<div>D</div>}
-      />
-      <Spacer />
-      <Button onClick={() => setLoading(!loading)}>Toggle Loading</Button>
-      <Input
-        validationStatus={loading ? 'loading' : 'default'}
-        validationMessage="This is a loading"
-        size="large"
+        validationStatus={status}
+        validationMessage={showMessage ? `This is the ${status} status` : undefined}
       />
     </Container>
   )

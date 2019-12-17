@@ -17,6 +17,8 @@ import {
   Icon
 } from '../icons';
 
+import {AnimatePresence, motion} from "framer-motion";
+
 export type BorderType = 'full' | 'bottom' | 'none';
 export type InputSize = 'small' | 'default' | 'large';
 export type ValidationStatus = 'success' | 'error' | 'default' | 'loading';
@@ -171,7 +173,7 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
         {suffixContent}
       </Affix>
     )
-  }, [validationStatus, inputSuffix, theme, size]);
+  }, [validationStatus, inputSuffix, theme, size, getIconDims]);
 
   return (
     <Container className={`${className} rtk-input`}>
@@ -216,16 +218,29 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
           value={value}
           validationStatus={validationStatus}
         />
-      {validationMessage &&
-        validationComponent ?
-          validationComponent(validationMessage) :
-          <Status
-            validationStatus={validationStatus}
-            theme={theme}
-           >
-            {validationMessage}
-          </Status>
-      }
+        <div style={{ height: '15px' }}>
+          <AnimatePresence>
+            {validationMessage &&
+              <motion.div
+                style={{ position: 'relative' }}
+                initial={{ opacity: 0, top: -5 }}
+                animate={{ opacity: 1, top: 0 }}
+                exit={{ opacity: 0, top: -5 }}
+                transition={{ duration: 0.1 }}
+              >
+                {validationComponent ?
+                  validationComponent(validationMessage) :
+                  <Status
+                    validationStatus={validationStatus}
+                    theme={theme}
+                  >
+                    {validationMessage}
+                  </Status>
+                }
+              </motion.div>
+            }
+          </AnimatePresence>
+        </div>
     </Container>
   );
 });
