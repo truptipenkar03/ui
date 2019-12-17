@@ -12,6 +12,7 @@ export const colors: Colors = {
   dangerSecondaryRGB: '155,50,48',
   darkFontColor: '#30302F',
   darkFontColorRGB: '48, 48, 48',
+  success: '#518042',
   placeholderLightFontColor: '#C9C7C7',
   placeholderLightFontColorRGB: '199,199,199',
   placeholderDarkFontColor: '#545450',

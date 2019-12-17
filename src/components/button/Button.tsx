@@ -5,12 +5,12 @@ import {
 } from "./StyledButton";
 
 import {
-  motion, MotionProps
+  motion
 } from "framer-motion";
 
 import {
-  SvgCircleNotch
-} from '../icons/CircleNotch';
+  Icon
+} from '../icons';
 
 import {
   MouseEventHandler
@@ -18,7 +18,7 @@ import {
 
 import {
   useTheme
-} from "../../hooks/useTheme";
+} from "../../hooks";
 
 export type ButtonType = 'primary' | 'danger' | 'link';
 export type ShapeType = 'circle' | 'default';
@@ -45,12 +45,6 @@ export interface ButtonProps {
 
   /** Loading state of the button */
   loading?: boolean;
-
-  /** Loading icon of the button */
-  loadingIcon?: React.ReactNode;
-
-  /** Motion configuration for loading icon */
-  motionConfig?: MotionProps;
 
   /** Function to handle click event */
   onClick?: MouseEventHandler<HTMLButtonElement>;
@@ -105,8 +99,6 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
     className,
     ghost,
     loading,
-    loadingIcon,
-    motionConfig,
     type,
     shape,
     size,
@@ -115,15 +107,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
 
   const theme = useTheme();
 
-  const iconToShow = loadingIcon || <SvgCircleNotch fill={getTypeStyle(type, ghost, theme)} />;
-
   const widthAndHeight = getSizeStyle(size, theme);
-
-  const motionConfigToUse: MotionProps = motionConfig ||  {
-    style: { height: widthAndHeight, width: widthAndHeight, transformOrigin: 'center center' },
-    animate: {rotate: 360},
-    transition: { duration: theme.animationTimeSlow, loop: Infinity, ease: 'linear'}
-  };
 
   return (
     <StyledButton
@@ -152,11 +136,11 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
         layoutTransition={{ type: 'tween', duration: theme.animationTimeVeryFast, delay: theme.animationTimeVeryFast }}
       >
         {loading ?
-          <motion.div
-            {...motionConfigToUse}
-          >
-            {iconToShow}
-          </motion.div> :
+          <Icon.Loading
+            fill={getTypeStyle(type, ghost, theme)}
+            height={widthAndHeight}
+            width={widthAndHeight}
+          />:
           null
         }
       </motion.div>

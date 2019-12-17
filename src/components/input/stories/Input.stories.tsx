@@ -15,6 +15,7 @@ import {
 
 // @ts-ignore
 import mdx from './Input.mdx';
+import {Button} from "../..";
 
 const Spacer = styled.span`
   height: 1px;
@@ -64,14 +65,35 @@ export const label = () => (
   </Container>
 );
 
-export const validation = () => (
-  <Container>
-    <Input
-      validationStatus="error"
-      validationMessage="This is an error"
-    />
-  </Container>
-);
+export const validation = () => {
+  const [loading, setLoading] = React.useState(false);
+  return (
+    <Container>
+      <Input
+        validationStatus="error"
+        validationMessage="This is an error"
+      />
+      <Spacer />
+      <Input
+        validationStatus="success"
+        validationMessage="This is a success"
+      />
+      <Spacer />
+      <Input
+        validationStatus="default"
+        validationMessage="This is a default"
+        inputSuffix={<div>D</div>}
+      />
+      <Spacer />
+      <Button onClick={() => setLoading(!loading)}>Toggle Loading</Button>
+      <Input
+        validationStatus={loading ? 'loading' : 'default'}
+        validationMessage="This is a loading"
+        size="large"
+      />
+    </Container>
+  )
+};
 
 export const disabled = () => (
   <Container>
@@ -81,7 +103,7 @@ export const disabled = () => (
 
 export const affix = () => (
   <Container>
-    <Input validationStatus={'error'} inputPrefix={<SvgCircleNotch />} inputSuffix={<SvgCircleNotch />} />
+    <Input inputPrefix={<SvgCircleNotch />} inputSuffix={<SvgCircleNotch />} />
   </Container>
 );
 

@@ -12,12 +12,14 @@ import {
   Status,
   StyledInput
 } from "./StyledInput";
-import {motion} from "framer-motion";
-import {StyledButton} from "../button/StyledButton";
+
+import {
+  Icon
+} from '../icons';
 
 export type BorderType = 'full' | 'bottom' | 'none';
 export type InputSize = 'small' | 'default' | 'large';
-export type ValidationStatus = 'success' | 'error' | 'default';
+export type ValidationStatus = 'success' | 'error' | 'default' | 'loading';
 
 export interface InputProps {
 
@@ -116,6 +118,61 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
 
   const theme = useTheme();
 
+  const getIconDims = React.useCallback(() => {
+    switch(size) {
+      case 'small': {
+        return theme.inputSmallFontSize;
+      }
+      case 'large': {
+        return theme.inputLargeFontSize;
+      }
+      case 'default': {
+        return theme.inputDefaultFontSize;
+      }
+    }
+  }, [size, theme]);
+
+  const renderSuffix = React.useCallback(() => {
+    let suffixContent;
+    switch (validationStatus) {
+      case 'error': {
+        suffixContent = <div>E</div>;
+        break;
+      }
+      case 'success': {
+        suffixContent = <div>S</div>;
+        break;
+      }
+      case 'loading': {
+        const iconDim = getIconDims();
+        suffixContent = (
+          <Icon.Loading
+            height={`${iconDim}px`}
+            width={`${iconDim}px`}
+          />
+        );
+        break;
+      }
+      case 'default': {
+        suffixContent = inputSuffix;
+        break;
+      }
+    }
+
+    if (!inputSuffix && validationStatus === 'default') {
+      return null;
+    }
+
+    return (
+      <Affix
+        theme={theme}
+        inputSize={size}
+      >
+        {suffixContent}
+      </Affix>
+    )
+  }, [validationStatus, inputSuffix, theme, size]);
+
   return (
     <Container className={`${className} rtk-input`}>
       {label && (
@@ -135,14 +192,7 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
               {inputPrefix}
             </Affix>
           )}
-          {inputSuffix && (
-            <Affix
-              inputSize={size}
-              theme={theme}
-            >
-              {inputSuffix}
-            </Affix>
-          )}
+          {renderSuffix()}
         </AffixContainer>
         <StyledInput
           label={null}
@@ -164,6 +214,7 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
           readOnly={readOnly}
           theme={theme}
           value={value}
+          validationStatus={validationStatus}
         />
       {validationMessage &&
         validationComponent ?

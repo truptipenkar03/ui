@@ -88,6 +88,7 @@ export const loading = () => {
           type="primary"
           onClick={handleToggle}
           loading={loading}
+          size={"large"}
           ghost
         >
           Ghost

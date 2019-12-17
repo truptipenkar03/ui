@@ -82,7 +82,7 @@ export const Affix = styled.div<{
 `;
 
 export const StyledInput = styled.input<StyledInputProps>`
-  ${({ borderType, theme, inputSize, inputPrefix, inputSuffix }) => css`
+  ${({ borderType, theme, inputSize, inputPrefix, inputSuffix, validationStatus }) => css`
     height: ${theme.inputDefaultHeight};
     font-size: ${theme.inputDefaultFontSize}px;
     
@@ -139,7 +139,7 @@ export const StyledInput = styled.input<StyledInputProps>`
       `}
     `};
     
-    ${inputSuffix && css`
+    ${(inputSuffix || validationStatus !== 'default') && css`
       padding-right: ${theme.inputDefaultFontSize + 15}px;
       
       ${inputSize === 'small' && css`
@@ -151,6 +151,14 @@ export const StyledInput = styled.input<StyledInputProps>`
       `}
     `};
     
+    ${validationStatus === 'error' && css`
+      border-color: ${theme.inputStatusErrorBorderColor};
+    `};
+
+    ${validationStatus === 'success' && css`
+      border-color: ${theme.inputStatusSuccessBorderColor};
+    `};
+
     
     &:read-only {
       cursor: pointer;

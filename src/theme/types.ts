@@ -8,6 +8,7 @@ export interface Colors {
   dangerSecondaryRGB: string;
   darkFontColor: string;
   darkFontColorRGB: string;
+  success: string;
   placeholderLightFontColor: string;
   placeholderLightFontColorRGB: string;
   placeholderDarkFontColor: string;
@@ -117,6 +118,8 @@ export interface GlobalTheme {
   inputStatusColor: string;
   inputStatusErrorColor: string;
   inputStatusSuccessColor: string;
+  inputStatusErrorBorderColor: string;
+  inputStatusSuccessBorderColor: string;
   inputLabelFontSize: string;
   inputSmallHeight: string;
   inputSmallFontSize: number;
