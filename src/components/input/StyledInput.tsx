@@ -18,7 +18,6 @@ interface StyledInputProps extends InputProps {
 
 export const Container = styled.div`
   width: 100%;
-  margin-bottom: 20px;
 `;
 
 export const Label = styled.label`

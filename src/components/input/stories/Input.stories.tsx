@@ -16,17 +16,13 @@ import {
 // @ts-ignore
 import mdx from './Input.mdx';
 
-import {Button} from "../..";
-
-const Spacer = styled.span`
-  height: 1px;
-  padding: 5px;
-`;
+import {
+  Button
+} from "../..";
 
 const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
 `;
 
 export default {
@@ -48,9 +44,7 @@ export const simple = () => (
 export const size = () => (
   <Container>
     <Input size="small" />
-    <Spacer />
     <Input />
-    <Spacer />
     <Input size="large" />
   </Container>
 );
@@ -58,9 +52,7 @@ export const size = () => (
 export const border = () => (
   <Container>
     <Input placeholder="Input with border" />
-    <Spacer />
     <Input borderType="bottom" placeholder="Input with bottom border" />
-    <Spacer />
     <Input borderType="none" placeholder="Input without border" />
   </Container>
 );

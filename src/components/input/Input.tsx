@@ -17,7 +17,10 @@ import {
   Icon
 } from '../icons';
 
-import {AnimatePresence, motion} from "framer-motion";
+import {
+  AnimatePresence,
+  motion
+} from "framer-motion";
 
 export type BorderType = 'full' | 'bottom' | 'none';
 export type InputSize = 'small' | 'default' | 'large';
@@ -105,7 +108,6 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
     id,
     label,
     name,
-    hasFeedback,
     onBlur,
     onChange,
     onClick,
@@ -269,3 +271,4 @@ Input.defaultProps = {
   value: undefined,
   validationStatus: 'default'
 };
+
