@@ -22,6 +22,9 @@ import {
   motion
 } from "framer-motion";
 
+import CheckSolid from "../icons/CheckSolid";
+import TimesSolid from "../icons/TimesSolid";
+
 export type BorderType = 'full' | 'bottom' | 'none';
 export type InputSize = 'small' | 'default' | 'large';
 export type ValidationStatus = 'success' | 'error' | 'default' | 'loading';
@@ -47,7 +50,10 @@ export interface InputProps {
   id?: string;
 
   /** Set to `true` to use validation message */
-  hasFeedback?: boolean;
+  hasFeedbackMessage?: boolean;
+
+  /** Set to `true` to use validation icon */
+  hasFeedbackIcon?: boolean;
 
   /** Content to show inside the input to the left */
   inputPrefix?: React.ReactNode;
@@ -108,6 +114,8 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
     id,
     label,
     name,
+    hasFeedbackMessage,
+    hasFeedbackIcon,
     onBlur,
     onChange,
     onClick,
@@ -144,11 +152,11 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
     let suffixContent;
     switch (validationStatus) {
       case 'error': {
-        suffixContent = <div>E</div>;
+        suffixContent = <TimesSolid fill={theme.colors.danger} />;
         break;
       }
       case 'success': {
-        suffixContent = <div>S</div>;
+        suffixContent = <CheckSolid fill={theme.colors.success} />;
         break;
       }
       case 'loading': {
@@ -169,6 +177,17 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
 
     if (!inputSuffix && validationStatus === 'default') {
       return null;
+    }
+
+    else if (!hasFeedbackIcon) {
+      return (
+        <Affix
+          theme={theme}
+          inputSize={size}
+        >
+          {inputSuffix}
+        </Affix>
+      );
     }
 
     return (
@@ -224,29 +243,31 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
         value={value}
         validationStatus={validationStatus}
       />
-      <div style={{ height: '15px' }}>
-        <AnimatePresence>
-          {validationMessage &&
-            <motion.div
-              style={{ position: 'relative' }}
-              initial={{ opacity: 0, top: -5 }}
-              animate={{ opacity: 1, top: 0 }}
-              exit={{ opacity: 0, top: -5 }}
-              transition={{ duration: 0.1 }}
-            >
-              {validationComponent ?
-                validationComponent(validationMessage) :
-                <Status
-                  validationStatus={validationStatus}
-                  theme={theme}
-                >
-                  {validationMessage}
-                </Status>
-              }
-            </motion.div>
-          }
-        </AnimatePresence>
-      </div>
+      {hasFeedbackMessage &&
+        <div style={{ height: '15px' }}>
+          <AnimatePresence>
+            {validationMessage &&
+              <motion.div
+                style={{ position: 'relative' }}
+                initial={{ opacity: 0, top: -5 }}
+                animate={{ opacity: 1, top: 0 }}
+                exit={{ opacity: 0, top: -5 }}
+                transition={{ duration: 0.1 }}
+              >
+                {validationComponent ?
+                  validationComponent(validationMessage) :
+                  <Status
+                    validationStatus={validationStatus}
+                    theme={theme}
+                  >
+                    {validationMessage}
+                  </Status>
+                }
+              </motion.div>
+            }
+          </AnimatePresence>
+        </div>
+      }
     </Container>
   );
 });
@@ -257,7 +278,8 @@ Input.defaultProps = {
   disabled: false,
   defaultValue: undefined,
   htmlType: undefined,
-  hasFeedback: false,
+  hasFeedbackMessage: true,
+  hasFeedbackIcon: true,
   id: undefined,
   name: undefined,
   label: '',
