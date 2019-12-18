@@ -97,6 +97,10 @@ export const validation = () => {
         validationStatus={status}
         validationMessage={showMessage ? `This is the ${status} status` : undefined}
       />
+      <Input
+        validationStatus={status}
+        validationMessage={showMessage ? `This is the ${status} status` : undefined}
+      />
     </Container>
   )
 };

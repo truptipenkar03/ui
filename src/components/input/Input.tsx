@@ -43,6 +43,9 @@ export interface InputProps {
   /** id of the input to be used with Formik */
   id?: string;
 
+  /** Set to `true` to use validation message */
+  hasFeedback?: boolean;
+
   /** Content to show inside the input to the left */
   inputPrefix?: React.ReactNode;
 
@@ -86,7 +89,7 @@ export interface InputProps {
   validationStatus?: ValidationStatus;
 
   /** Message to show along with the `validationStatus` */
-  validationMessage?: string;
+  validationMessage?: string | null;
 
   /** Custom component used to display the validation message */
   validationComponent?: (error: string) => React.ReactNode;
@@ -102,6 +105,7 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
     id,
     label,
     name,
+    hasFeedback,
     onBlur,
     onChange,
     onClick,
@@ -184,63 +188,63 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
           {label}
         </Label>
       )}
-        <AffixContainer>
-          {inputPrefix && (
-            <Affix
-              inputSize={size}
-              theme={theme}
-              isPrefix
+      <AffixContainer>
+        {inputPrefix && (
+          <Affix
+            inputSize={size}
+            theme={theme}
+            isPrefix
+          >
+            {inputPrefix}
+          </Affix>
+        )}
+        {renderSuffix()}
+      </AffixContainer>
+      <StyledInput
+        label={null}
+        disabled={disabled}
+        defaultValue={defaultValue}
+        type={htmlType}
+        id={id}
+        name={name}
+        onBlur={onBlur}
+        onClick={onClick}
+        onChange={onChange}
+        onFocus={onFocus}
+        placeholder={placeholder}
+        borderType={borderType}
+        inputSize={size}
+        inputSuffix={inputSuffix}
+        inputPrefix={inputPrefix}
+        ref={ref}
+        readOnly={readOnly}
+        theme={theme}
+        value={value}
+        validationStatus={validationStatus}
+      />
+      <div style={{ height: '15px' }}>
+        <AnimatePresence>
+          {validationMessage &&
+            <motion.div
+              style={{ position: 'relative' }}
+              initial={{ opacity: 0, top: -5 }}
+              animate={{ opacity: 1, top: 0 }}
+              exit={{ opacity: 0, top: -5 }}
+              transition={{ duration: 0.1 }}
             >
-              {inputPrefix}
-            </Affix>
-          )}
-          {renderSuffix()}
-        </AffixContainer>
-        <StyledInput
-          label={null}
-          disabled={disabled}
-          defaultValue={defaultValue}
-          type={htmlType}
-          id={id}
-          name={name}
-          onBlur={onBlur}
-          onClick={onClick}
-          onChange={onChange}
-          onFocus={onFocus}
-          placeholder={placeholder}
-          borderType={borderType}
-          inputSize={size}
-          inputSuffix={inputSuffix}
-          inputPrefix={inputPrefix}
-          ref={ref}
-          readOnly={readOnly}
-          theme={theme}
-          value={value}
-          validationStatus={validationStatus}
-        />
-        <div style={{ height: '15px' }}>
-          <AnimatePresence>
-            {validationMessage &&
-              <motion.div
-                style={{ position: 'relative' }}
-                initial={{ opacity: 0, top: -5 }}
-                animate={{ opacity: 1, top: 0 }}
-                exit={{ opacity: 0, top: -5 }}
-                transition={{ duration: 0.1 }}
-              >
-                {validationComponent ?
-                  validationComponent(validationMessage) :
-                  <Status
-                    validationStatus={validationStatus}
-                    theme={theme}
-                  >
-                    {validationMessage}
-                  </Status>
-                }
-              </motion.div>
-            }
-          </AnimatePresence>
-        </div>
+              {validationComponent ?
+                validationComponent(validationMessage) :
+                <Status
+                  validationStatus={validationStatus}
+                  theme={theme}
+                >
+                  {validationMessage}
+                </Status>
+              }
+            </motion.div>
+          }
+        </AnimatePresence>
+      </div>
     </Container>
   );
 });
@@ -251,6 +255,7 @@ Input.defaultProps = {
   disabled: false,
   defaultValue: undefined,
   htmlType: undefined,
+  hasFeedback: false,
   id: undefined,
   name: undefined,
   label: '',
