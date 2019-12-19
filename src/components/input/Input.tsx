@@ -14,20 +14,17 @@ import {
 } from "./StyledInput";
 
 import {
-  Icon
-} from '../icons';
+  Suffix
+} from './Suffix';
 
 import {
   AnimatePresence,
   motion
 } from "framer-motion";
 
-import CheckSolid from "../icons/CheckSolid";
-import TimesSolid from "../icons/TimesSolid";
-
 export type BorderType = 'full' | 'bottom' | 'none';
 export type InputSize = 'small' | 'default' | 'large';
-export type ValidationStatus = 'success' | 'error' | 'default' | 'loading';
+export type ValidationStatus = 'success' | 'error' | 'loading';
 
 export interface InputProps {
 
@@ -148,58 +145,6 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
     }
   }, [size, theme]);
 
-  const renderSuffix = React.useCallback(() => {
-    let suffixContent;
-    switch (validationStatus) {
-      case 'error': {
-        suffixContent = <TimesSolid fill={theme.colors.danger} />;
-        break;
-      }
-      case 'success': {
-        suffixContent = <CheckSolid fill={theme.colors.success} />;
-        break;
-      }
-      case 'loading': {
-        const iconDim = getIconDims();
-        suffixContent = (
-          <Icon.Loading
-            height={`${iconDim}px`}
-            width={`${iconDim}px`}
-          />
-        );
-        break;
-      }
-      case 'default': {
-        suffixContent = inputSuffix;
-        break;
-      }
-    }
-
-    if (!inputSuffix && validationStatus === 'default') {
-      return null;
-    }
-
-    else if (!hasFeedbackIcon) {
-      return (
-        <Affix
-          theme={theme}
-          inputSize={size}
-        >
-          {inputSuffix}
-        </Affix>
-      );
-    }
-
-    return (
-      <Affix
-        theme={theme}
-        inputSize={size}
-      >
-        {suffixContent}
-      </Affix>
-    )
-  }, [validationStatus, inputSuffix, theme, size, getIconDims]);
-
   return (
     <Container className={`${className} rtk-input`}>
       {label && (
@@ -219,7 +164,14 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
             {inputPrefix}
           </Affix>
         )}
-        {renderSuffix()}
+        <Suffix
+          validationStatus={validationStatus}
+          theme={theme}
+          iconDim={getIconDims()}
+          inputSuffix={inputSuffix}
+          size={size}
+          hasFeedbackIcon={hasFeedbackIcon}
+        />
       </AffixContainer>
       <StyledInput
         label={null}
@@ -246,7 +198,7 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
       {hasFeedbackMessage &&
         <div style={{ height: '15px' }}>
           <AnimatePresence>
-            {validationMessage &&
+            {(validationMessage && validationStatus) &&
               <motion.div
                 style={{ position: 'relative' }}
                 initial={{ opacity: 0, top: -5 }}
@@ -291,6 +243,6 @@ Input.defaultProps = {
   size: 'default',
   readOnly: false,
   value: undefined,
-  validationStatus: 'default'
+  validationStatus: undefined
 };
 

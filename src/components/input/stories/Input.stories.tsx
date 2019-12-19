@@ -23,6 +23,13 @@ import {
 const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
+  
+  margin-bottom: 15px;
+`;
+
+const Spacer = styled.div`
+  padding: 0 4px;
+  height: 1px;
 `;
 
 export default {
@@ -64,34 +71,32 @@ export const label = () => (
 );
 
 export const validation = () => {
-  const [status, setStatus] = React.useState<any>('default');
-  const [showMessage, toggleMessage] = React.useState(true);
+  const [status, setStatus] = React.useState<any>(undefined);
   return (
     <Container>
       <ButtonContainer>
-        <Button onClick={() => setStatus('default')}>
+        <Button onClick={() => setStatus(undefined)}>
           Default
         </Button>
+        <Spacer />
         <Button onClick={() => setStatus('success')}>
           Success
         </Button>
+        <Spacer />
         <Button onClick={() => setStatus('error')}>
           Error
         </Button>
+        <Spacer />
         <Button onClick={() => setStatus('loading')}>
           Loading
         </Button>
-        <Button onClick={() => toggleMessage(!showMessage)}>
-          Toggle Message
-        </Button>
+        <Spacer />
       </ButtonContainer>
       <Input
+        label="With Suffix"
         validationStatus={status}
-        validationMessage={showMessage ? `This is the ${status} status` : undefined}
-      />
-      <Input
-        validationStatus={status}
-        validationMessage={showMessage ? `This is the ${status} status` : undefined}
+        inputSuffix={<SvgCircleNotch />}
+        validationMessage={status ? `This is the ${status} status` : undefined}
       />
     </Container>
   )

@@ -62,8 +62,12 @@ export const Affix = styled.div<{
     justify-content: center;
     height: ${theme.inputDefaultHeight};
     
-    width: ${theme.inputDefaultFontSize}px;
     right: ${theme.inputSuffixRight};
+    
+    svg {
+      width: ${theme.inputDefaultFontSize}px;
+      height: ${theme.inputDefaultFontSize}px;
+    }
     
     ${inputSize === 'small' && css`
       height: ${theme.inputSmallHeight};
@@ -141,8 +145,8 @@ export const StyledInput = styled.input<StyledInputProps>`
       `}
     `};
     
-    ${(inputSuffix || validationStatus !== 'default') && css`
-      padding-right: ${theme.inputDefaultFontSize + 15}px;
+    ${(inputSuffix || validationStatus !== undefined) && css`
+      padding-right: ${theme.inputDefaultFontSize*2 + 15}px;
       
       ${inputSize === 'small' && css`
         padding-right: ${theme.inputSmallFontSize + 15}px;

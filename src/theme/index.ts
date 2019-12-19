@@ -93,7 +93,7 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   inputColor: themeColors.darkFontColor,
   inputDefaultHeight: '32px',
   inputDefaultFontSize: 14,
-  inputLabelFontSize: '14px',
+  inputLabelFontSize: '12px',
   inputStatusFontSize: '12px',
   inputStatusColor: themeColors.placeholderDarkFontColor,
   inputStatusErrorColor: themeColors.danger,
