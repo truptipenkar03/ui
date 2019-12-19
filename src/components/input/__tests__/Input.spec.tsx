@@ -90,6 +90,18 @@ describe('Input', () => {
     expect(wrapper.exists('StyledInput__Status')).toBe(true);
   });
 
+  it('sets the custom validation message component', () => {
+    const wrapper = mount(
+      <Input
+        validationStatus={'error'}
+        validationMessage={'This is the message'}
+        validationComponent={(message) => <div id={'test'}/>}
+      />
+    );
+
+    expect(wrapper.exists('#test')).toBe(true);
+  });
+
   it('sets the label prop', () => {
     const wrapper = shallow(
       <Input label={'label'} />

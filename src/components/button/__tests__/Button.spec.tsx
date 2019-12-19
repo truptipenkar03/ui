@@ -60,14 +60,6 @@ describe('Button', () => {
     expect(wrapper.find('StyledButton').prop('customProps').ghost).toBe(true);
   });
 
-  it('sets the loadingIcon prop', () => {
-    const wrapper = shallow(
-      <Button loading loadingIcon={<div id={"icon"}>icon</div>}>Test Button</Button>
-    );
-
-    expect(wrapper.exists('#icon')).toBe(true);
-  });
-
   it('sets the shape prop', () => {
     const wrapper = shallow(
       <Button shape={'circle'}>Test Button</Button>
