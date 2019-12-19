@@ -21,9 +21,8 @@ import {InputSize} from "./Input";
 export const StyledSuffix = styled.div<{
   theme: GlobalTheme;
   inputSize?: InputSize;
-  isPrefix?: boolean;
 }>`
-  ${({ theme, inputSize, isPrefix }) => css`
+  ${({ theme, inputSize }) => css`
     position: absolute;
     
     display: flex;
@@ -53,10 +52,6 @@ export const StyledSuffix = styled.div<{
         width: ${theme.inputLargeFontSize}px;
         height: ${theme.inputLargeFontSize}px;
       }
-    `}
-    
-    ${isPrefix && css`
-      left: ${theme.inputPrefixLeft};
     `}
   `};
 `;

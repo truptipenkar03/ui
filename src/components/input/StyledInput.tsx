@@ -88,7 +88,7 @@ export const Prefix = styled.div<{
 `;
 
 export const StyledInput = styled.input<StyledInputProps>`
-  ${({ borderType, theme, inputSize, inputPrefix, inputSuffix, validationStatus }) => css`
+  ${({ borderType, theme, inputSize, inputPrefix, inputSuffix, validationStatus, hasFeedbackIcon }) => css`
     height: ${theme.inputDefaultHeight};
     font-size: ${theme.inputDefaultFontSize}px;
     
@@ -135,6 +135,7 @@ export const StyledInput = styled.input<StyledInputProps>`
       color: ${theme.inputColor};
     `};
     
+    // has prefix
     ${inputPrefix && css`
       padding-left: ${theme.inputDefaultFontSize + 15}px;
       
@@ -147,8 +148,9 @@ export const StyledInput = styled.input<StyledInputProps>`
       `}
     `};
     
-    ${(inputSuffix && validationStatus !== undefined) && css`
-      padding-right: ${theme.inputDefaultFontSize*2 + 15}px;
+    // has suffix
+    ${inputSuffix && css`
+      padding-right: ${theme.inputDefaultFontSize + 15}px;
       
       ${inputSize === 'small' && css`
         padding-right: ${theme.inputSmallFontSize + 15}px;
@@ -157,8 +159,21 @@ export const StyledInput = styled.input<StyledInputProps>`
       ${inputSize === 'large' && css`
         padding-right: ${theme.inputLargeFontSize + 15}px;
       `}
+      
+       // has suffix and feedback icon
+       ${(validationStatus !== undefined && hasFeedbackIcon) && css`
+          padding-right: ${theme.inputDefaultFontSize*2 + 20}px;
+      
+          ${inputSize === 'small' && css`
+            padding-right: ${theme.inputSmallFontSize*2 + 20}px;
+          `}
+          
+          ${inputSize === 'large' && css`
+            padding-right: ${theme.inputLargeFontSize*2 + 20}px;
+          `}
+       `}
     `};
-    
+
     ${validationStatus === 'error' && css`
       border-color: ${theme.inputStatusErrorBorderColor};
     `};
@@ -167,33 +182,33 @@ export const StyledInput = styled.input<StyledInputProps>`
       border-color: ${theme.inputStatusSuccessBorderColor};
     `};
 
-    
+
     &:read-only {
       cursor: pointer;
     }
-  
+
     &::placeholder {
       color: ${theme.inputPlaceholderColor};
     }
-  
+
     &:disabled {
       cursor: not-allowed;
       opacity: 0.5;
     }
-    
+
     &:focus {
       border-color: ${theme.inputFocusBorderColor};
- 
+
       ${borderType === 'bottom' && css`
         border: none;
         border-bottom: 1px solid ${theme.inputFocusBorderColor};
         border-radius: 0;
       `};
-  
+
       ${borderType === 'none' && css`
         border: none;
       `};
-  
+
       outline: none;
     }
   `};

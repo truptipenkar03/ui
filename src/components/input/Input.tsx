@@ -176,6 +176,7 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
         label={null}
         disabled={disabled}
         defaultValue={defaultValue}
+        hasFeedbackIcon={hasFeedbackIcon}
         type={htmlType}
         id={id}
         name={name}
