@@ -95,21 +95,6 @@ export const validation = () => {
       <Input
         label="With Suffix"
         validationStatus={status}
-        inputSuffix={<SvgCircleNotch />}
-        validationMessage={status ? `This is the ${status} status` : undefined}
-      />
-      <Input
-        label="With Suffix"
-        size={"small"}
-        validationStatus={status}
-        inputSuffix={<SvgCircleNotch />}
-        validationMessage={status ? `This is the ${status} status` : undefined}
-      />
-      <Input
-        label="With Suffix"
-        size={"large"}
-        validationStatus={status}
-        inputSuffix={<SvgCircleNotch />}
         validationMessage={status ? `This is the ${status} status` : undefined}
       />
     </Container>

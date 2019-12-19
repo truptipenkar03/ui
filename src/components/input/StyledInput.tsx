@@ -87,6 +87,11 @@ export const Prefix = styled.div<{
   `};
 `;
 
+
+export const FeedbackMessage = styled.div`
+  height: ${({ theme }) => theme.inputStatusMessageHeight}
+`;
+
 export const StyledInput = styled.input<StyledInputProps>`
   ${({ borderType, theme, inputSize, inputPrefix, inputSuffix, validationStatus, hasFeedbackIcon }) => css`
     height: ${theme.inputDefaultHeight};

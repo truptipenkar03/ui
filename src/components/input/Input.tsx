@@ -10,7 +10,7 @@ import {
   Container,
   Label,
   Status,
-  StyledInput
+  StyledInput, FeedbackMessage
 } from "./StyledInput";
 
 import {
@@ -196,10 +196,11 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
         validationStatus={validationStatus}
       />
       {hasFeedbackMessage &&
-        <div style={{ height: '15px' }}>
+        <FeedbackMessage>
           <AnimatePresence>
             {(validationMessage && validationStatus) &&
               <motion.div
+                key="validate-message"
                 style={{ position: 'relative' }}
                 initial={{ opacity: 0, top: -5 }}
                 animate={{ opacity: 1, top: 0 }}
@@ -218,7 +219,7 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
               </motion.div>
             }
           </AnimatePresence>
-        </div>
+        </FeedbackMessage>
       }
     </Container>
   );
