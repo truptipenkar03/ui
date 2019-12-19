@@ -133,7 +133,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
           notLoading: { width: 0, marginRight: 0}
         }}
         animate={loading ? 'loading' : 'notLoading'}
-        layoutTransition={{ type: 'tween', duration: theme.animationTimeVeryFast, delay: theme.animationTimeVeryFast }}
+        transition={{ type: 'tween', duration: theme.animationTimeVeryFast, delay: theme.animationTimeVeryFast }}
       >
         {loading ?
           <Icon.Loading
