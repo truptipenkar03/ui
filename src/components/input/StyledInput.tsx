@@ -42,6 +42,10 @@ export const Status = styled.div<{
     ${validationStatus === 'success' && css`
       color: ${theme.inputStatusSuccessColor};
     `}
+    
+    ${validationStatus === 'loading' && css`
+      color: ${theme.inputStatusLoadingColor};
+    `}
   `};
 `;
 
@@ -186,7 +190,10 @@ export const StyledInput = styled.input<StyledInputProps>`
     ${validationStatus === 'success' && css`
       border-color: ${theme.inputStatusSuccessBorderColor};
     `};
-
+    
+    ${validationStatus === 'loading' && css`
+      border-color: ${theme.inputStatusLoadingBorderColor};
+    `};
 
     &:read-only {
       cursor: pointer;

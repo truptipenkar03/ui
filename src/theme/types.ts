@@ -118,9 +118,11 @@ export interface GlobalTheme {
   inputStatusFontSize: string;
   inputStatusColor: string;
   inputStatusErrorColor: string;
-  inputStatusSuccessColor: string;
   inputStatusErrorBorderColor: string;
+  inputStatusSuccessColor: string;
   inputStatusSuccessBorderColor: string;
+  inputStatusLoadingColor: string;
+  inputStatusLoadingBorderColor: string;
   inputLabelFontSize: string;
   inputSmallHeight: string;
   inputSmallFontSize: number;

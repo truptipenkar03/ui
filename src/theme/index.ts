@@ -101,6 +101,8 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   inputStatusErrorBorderColor: themeColors.danger,
   inputStatusSuccessColor: themeColors.success,
   inputStatusSuccessBorderColor: themeColors.success,
+  inputStatusLoadingColor: themeColors.placeholderDarkFontColor,
+  inputStatusLoadingBorderColor: themeColors.borderColor,
   inputSmallHeight: '24px',
   inputSmallFontSize: 12,
   inputLargeHeight: '44px',
