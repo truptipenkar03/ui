@@ -33,10 +33,7 @@ export const Loading: React.FunctionComponent<LoadingProps> = ({
     style: {
       height,
       width,
-      transformOrigin: 'center center',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
+      transformOrigin: 'center center'
     },
     animate: {rotate: 360},
     transition: { duration: theme.animationTimeSlow, loop: Infinity, ease: 'linear'}

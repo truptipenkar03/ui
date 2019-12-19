@@ -5,7 +5,7 @@ import {
 } from "../../hooks";
 
 import {
-  Affix,
+  Prefix,
   AffixContainer,
   Container,
   Label,
@@ -156,13 +156,12 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
       )}
       <AffixContainer>
         {inputPrefix && (
-          <Affix
+          <Prefix
             inputSize={size}
             theme={theme}
-            isPrefix
           >
             {inputPrefix}
-          </Affix>
+          </Prefix>
         )}
         <Suffix
           validationStatus={validationStatus}

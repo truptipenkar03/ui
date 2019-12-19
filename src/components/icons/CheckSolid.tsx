@@ -7,6 +7,7 @@ const CheckSolid = (props: React.SVGProps<SVGSVGElement>) => (
     data-icon="check"
     className="check-solid_svg__svg-inline--fa check-solid_svg__fa-check check-solid_svg__fa-w-16"
     viewBox="0 0 512 512"
+    style={{ display: 'block' }}
     {...props}
   >
     <path

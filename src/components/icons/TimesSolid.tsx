@@ -7,6 +7,7 @@ const TimesSolid = (props: React.SVGProps<SVGSVGElement>) => (
     data-icon="times"
     className="times-solid_svg__svg-inline--fa times-solid_svg__fa-times times-solid_svg__fa-w-11"
     viewBox="0 0 352 512"
+    style={{ display: 'block' }}
     {...props}
   >
     <path

@@ -1,17 +1,65 @@
 import * as React from 'react';
-import {AnimatePresence, motion} from "framer-motion";
+
+import {
+  AnimatePresence,
+  motion
+} from "framer-motion";
+
+import styled, {
+  css
+} from "styled-components";
 
 import {
   Icon
 } from "../icons";
 
-import {
-  Affix
-} from "./StyledInput";
-
 import TimesSolid from "../icons/TimesSolid";
 import CheckSolid from "../icons/CheckSolid";
-import {validation} from "./stories/Input.stories";
+import {GlobalTheme} from "../../theme/types";
+import {InputSize} from "./Input";
+
+export const StyledSuffix = styled.div<{
+  theme: GlobalTheme;
+  inputSize?: InputSize;
+  isPrefix?: boolean;
+}>`
+  ${({ theme, inputSize, isPrefix }) => css`
+    position: absolute;
+    
+    display: flex;
+    align-items: center;
+
+    height: ${theme.inputDefaultHeight};
+    right: ${theme.inputSuffixRight};
+    
+    svg {
+      width: ${theme.inputDefaultFontSize}px;
+      height: ${theme.inputDefaultFontSize}px;
+    }
+    
+    ${inputSize === 'small' && css`
+      height: ${theme.inputSmallHeight};
+      
+      svg {
+        width: ${theme.inputSmallFontSize}px;
+        height: ${theme.inputSmallFontSize}px;
+      }
+    `}
+    
+    ${inputSize === 'large' && css`
+      height: ${theme.inputLargeHeight};
+      
+      svg {
+        width: ${theme.inputLargeFontSize}px;
+        height: ${theme.inputLargeFontSize}px;
+      }
+    `}
+    
+    ${isPrefix && css`
+      left: ${theme.inputPrefixLeft};
+    `}
+  `};
+`;
 
 export const Suffix: React.FunctionComponent<any> = ({
   validationStatus,
@@ -19,8 +67,7 @@ export const Suffix: React.FunctionComponent<any> = ({
   iconDim,
   inputSuffix,
   size,
-  hasFeedbackIcon,
-  style
+  hasFeedbackIcon
 }) => {
   let suffixContent;
   switch (validationStatus) {
@@ -45,23 +92,22 @@ export const Suffix: React.FunctionComponent<any> = ({
 
   const hasFeedback = (hasFeedbackIcon && validationStatus !== undefined);
   return (
-    <Affix
-      style={{ display: 'flex', alignItems: 'center' }}
+    <StyledSuffix
       theme={theme}
       inputSize={size}
     >
       <motion.div
         key="suffix"
+        style={{ position: 'relative' }}
         variants={{
           hasFeedback: {
-            paddingRight: '8px'
+            marginRight: '8px'
           },
           noFeedback: {
-            paddingRight: 0
+            marginRight: 0
           }
         }}
         animate={hasFeedback ? 'hasFeedback' : 'noFeedback'}
-        transition={{duration: theme.animationTimeVeryFast}}
       >
         {inputSuffix}
       </motion.div>
@@ -79,6 +125,6 @@ export const Suffix: React.FunctionComponent<any> = ({
           </motion.div>
         }
       </AnimatePresence>
-    </Affix>
+    </StyledSuffix>
   )
 };

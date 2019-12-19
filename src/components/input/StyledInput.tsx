@@ -50,19 +50,17 @@ export const AffixContainer = styled.div`
   width: 100%;
 `;
 
-export const Affix = styled.div<{
+export const Prefix = styled.div<{
   theme: GlobalTheme;
   inputSize?: InputSize;
-  isPrefix?: boolean;
 }>`
-  ${({ theme, inputSize, isPrefix }) => css`
+  ${({ theme, inputSize }) => css`
     position: absolute;
     display: flex;
     align-items: center;
-    justify-content: center;
+
     height: ${theme.inputDefaultHeight};
-    
-    right: ${theme.inputSuffixRight};
+    left: ${theme.inputPrefixLeft};
     
     svg {
       width: ${theme.inputDefaultFontSize}px;
@@ -71,16 +69,20 @@ export const Affix = styled.div<{
     
     ${inputSize === 'small' && css`
       height: ${theme.inputSmallHeight};
-      width: ${theme.inputSmallFontSize}px;
+      
+      svg {
+        width: ${theme.inputSmallFontSize}px;
+        height: ${theme.inputSmallFontSize}px;
+      }
     `}
     
     ${inputSize === 'large' && css`
       height: ${theme.inputLargeHeight};
-      width: ${theme.inputLargeFontSize}px;
-    `}
-    
-    ${isPrefix && css`
-      left: ${theme.inputPrefixLeft};
+      
+      svg {
+        width: ${theme.inputLargeFontSize}px;
+        height: ${theme.inputLargeFontSize}px;
+      }
     `}
   `};
 `;
@@ -145,7 +147,7 @@ export const StyledInput = styled.input<StyledInputProps>`
       `}
     `};
     
-    ${(inputSuffix || validationStatus !== undefined) && css`
+    ${(inputSuffix && validationStatus !== undefined) && css`
       padding-right: ${theme.inputDefaultFontSize*2 + 15}px;
       
       ${inputSize === 'small' && css`
