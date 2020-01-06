@@ -205,7 +205,7 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
                 initial={{ opacity: 0, top: -5 }}
                 animate={{ opacity: 1, top: 0 }}
                 exit={{ opacity: 0, top: -5 }}
-                transition={{ duration: 0.1 }}
+                transition={{ duration: theme.animationTimeVeryFast }}
               >
                 {validationComponent ?
                   validationComponent(validationMessage) :
