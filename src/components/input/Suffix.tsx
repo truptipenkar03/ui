@@ -11,12 +11,15 @@ import styled, {
 
 import {
   Icon
-} from "../icons";
+} from "..";
 
-import TimesSolid from "../icons/TimesSolid";
-import CheckSolid from "../icons/CheckSolid";
-import {GlobalTheme} from "../../theme/types";
-import {InputSize} from "./Input";
+import {
+  GlobalTheme
+} from "../../theme/types";
+
+import {
+  InputSize
+} from "./Input";
 
 export const StyledSuffix = styled.div<{
   theme: GlobalTheme;
@@ -31,27 +34,12 @@ export const StyledSuffix = styled.div<{
     height: ${theme.inputDefaultHeight};
     right: ${theme.inputSuffixRight};
     
-    svg {
-      width: ${theme.inputDefaultFontSize}px;
-      height: ${theme.inputDefaultFontSize}px;
-    }
-    
     ${inputSize === 'small' && css`
       height: ${theme.inputSmallHeight};
-      
-      svg {
-        width: ${theme.inputSmallFontSize}px;
-        height: ${theme.inputSmallFontSize}px;
-      }
     `}
     
     ${inputSize === 'large' && css`
       height: ${theme.inputLargeHeight};
-      
-      svg {
-        width: ${theme.inputLargeFontSize}px;
-        height: ${theme.inputLargeFontSize}px;
-      }
     `}
   `};
 `;
@@ -59,7 +47,6 @@ export const StyledSuffix = styled.div<{
 export const Suffix: React.FunctionComponent<any> = ({
   validationStatus,
   theme,
-  iconDim,
   inputSuffix,
   size,
   hasFeedbackIcon
@@ -67,19 +54,16 @@ export const Suffix: React.FunctionComponent<any> = ({
   let suffixContent;
   switch (validationStatus) {
     case 'error': {
-      suffixContent = <TimesSolid fill={theme.colors.danger} />;
+      suffixContent = <Icon.TimesSolid color={theme.colors.danger} />;
       break;
     }
     case 'success': {
-      suffixContent = <CheckSolid fill={theme.colors.success} />;
+      suffixContent = <Icon.CheckSolid color={theme.colors.success} />;
       break;
     }
     case 'loading': {
       suffixContent = (
-        <Icon.Loading
-          height={`${iconDim}px`}
-          width={`${iconDim}px`}
-        />
+        <Icon.Loading />
       );
       break;
     }

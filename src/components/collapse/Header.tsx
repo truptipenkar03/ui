@@ -4,21 +4,19 @@ import styled, {
   css
 } from 'styled-components';
 
+import {
+  GlobalTheme
+} from "../../theme/types";
+
+import PlusSolid from "../icons/PlusSolid";
+import MinusSolid from "../icons/MinusSolid";
+
 interface HeaderProps {
-  /** Content to show in the left of the Header */
+  activeIcon?: React.ReactNode;
   children: React.ReactNode;
-
-  /** Content to show in the right of the Header */
-  headerRight: React.ReactNode;
-
-  /** State of the collapse for custom handling */
   open?: boolean;
-
-  /** Function to handle when header is clicked */
   onClick: () => void;
-
-  /** Global theme in ThemeProvider */
-  theme: any;
+  theme: GlobalTheme;
 }
 
 interface CustomProps {
@@ -31,11 +29,11 @@ interface StyledHeaderProps {
   theme: any;
 }
 
-const HeaderLeft = styled.div`
-  height: 100%;
+const HeaderContent = styled.div`
+  align-self: center;
 `;
 
-const HeaderRight = styled.div`
+const HeaderIconContainer = styled.div`
   justify-self: flex-end;
   align-self: center;
 `;
@@ -76,10 +74,35 @@ const StyledHeader = styled.div<StyledHeaderProps>`
   `};
 `;
 
+const HeaderIcon: React.FunctionComponent<any> = ({
+  activeIcon,
+  open
+}) => {
+  if (activeIcon) {
+    return (
+      <HeaderIconContainer>
+        {activeIcon}
+      </HeaderIconContainer>
+    );
+  } else if (open) {
+    return (
+      <HeaderIconContainer>
+        <MinusSolid />
+      </HeaderIconContainer>
+    );
+  }
+
+  return (
+    <HeaderIconContainer>
+      <PlusSolid />
+    </HeaderIconContainer>
+  );
+};
+
 const Header: React.FunctionComponent<HeaderProps> = ({
+  activeIcon,
   children,
   onClick,
-  headerRight,
   open,
   theme
 }) => (
@@ -91,12 +114,13 @@ const Header: React.FunctionComponent<HeaderProps> = ({
       open
     }}
   >
-    <HeaderLeft>
+    <HeaderContent>
       {children}
-    </HeaderLeft>
-    <HeaderRight>
-      {headerRight}
-    </HeaderRight>
+    </HeaderContent>
+    <HeaderIcon
+      activeIcon={activeIcon}
+      open={open}
+    />
   </StyledHeader>
 );
 

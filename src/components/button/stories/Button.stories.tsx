@@ -80,6 +80,7 @@ export const loading = () => {
           type="primary"
           onClick={handleToggle}
           loading={loading}
+          size={"large"}
         >
           Primary
         </Button>

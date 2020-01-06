@@ -10,7 +10,7 @@ import {
 
 import {
   Icon
-} from '../icons';
+} from '..';
 
 import {
   MouseEventHandler
@@ -138,8 +138,6 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
         {loading ?
           <Icon.Loading
             fill={getTypeStyle(type, ghost, theme)}
-            height={widthAndHeight}
-            width={widthAndHeight}
           />:
           null
         }
