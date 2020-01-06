@@ -30,18 +30,20 @@ interface StyledHeaderProps {
 }
 
 const HeaderContent = styled.div`
-  align-self: center;
 `;
 
 const HeaderIconContainer = styled.div`
-  justify-self: flex-end;
-  align-self: center;
+  display: flex;
+  align-items: center;
+
+  justify-self: end;
 `;
 
 const StyledHeader = styled.div<StyledHeaderProps>`
   ${({ customProps, theme }) => css`
     display: grid;
     grid-template-columns: auto 0.2fr;
+    align-items: center;
 
     background: ${theme.collapseHeaderBackground};
     border: ${theme.collapseBorder};
