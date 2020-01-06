@@ -87,6 +87,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
     <Container className={`${className} rtk-collapse`}>
       <Header
         open={isActive}
+        headerRight={isActive ? 'bar' : 'foo'}
         onClick={onHeaderClick}
         theme={theme}
       >

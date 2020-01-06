@@ -5,8 +5,11 @@ import styled, {
 } from 'styled-components';
 
 interface HeaderProps {
-  /** Content to show in the Header */
+  /** Content to show in the left of the Header */
   children: React.ReactNode;
+
+  /** Content to show in the right of the Header */
+  headerRight: React.ReactNode;
 
   /** State of the collapse for custom handling */
   open?: boolean;
@@ -28,10 +31,19 @@ interface StyledHeaderProps {
   theme: any;
 }
 
+const HeaderLeft = styled.div`
+  height: 100%;
+`;
+
+const HeaderRight = styled.div`
+  justify-self: flex-end;
+  align-self: center;
+`;
+
 const StyledHeader = styled.div<StyledHeaderProps>`
   ${({ customProps, theme }) => css`
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: auto 0.2fr;
 
     background: ${theme.collapseHeaderBackground};
     border: ${theme.collapseBorder};
@@ -67,6 +79,7 @@ const StyledHeader = styled.div<StyledHeaderProps>`
 const Header: React.FunctionComponent<HeaderProps> = ({
   children,
   onClick,
+  headerRight,
   open,
   theme
 }) => (
@@ -78,7 +91,12 @@ const Header: React.FunctionComponent<HeaderProps> = ({
       open
     }}
   >
-    {children}
+    <HeaderLeft>
+      {children}
+    </HeaderLeft>
+    <HeaderRight>
+      {headerRight}
+    </HeaderRight>
   </StyledHeader>
 );
 
