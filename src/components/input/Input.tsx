@@ -131,20 +131,6 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
 
   const theme = useTheme();
 
-  const getIconDims = React.useCallback(() => {
-    switch(size) {
-      case 'small': {
-        return theme.inputSmallFontSize;
-      }
-      case 'large': {
-        return theme.inputLargeFontSize;
-      }
-      case 'default': {
-        return theme.inputDefaultFontSize;
-      }
-    }
-  }, [size, theme]);
-
   return (
     <Container className={`${className} rtk-input`}>
       {label && (
@@ -166,7 +152,6 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
         <Suffix
           validationStatus={validationStatus}
           theme={theme}
-          iconDim={getIconDims()}
           inputSuffix={inputSuffix}
           size={size}
           hasFeedbackIcon={hasFeedbackIcon}

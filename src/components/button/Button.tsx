@@ -5,6 +5,7 @@ import {
 } from "./StyledButton";
 
 import {
+  AnimatePresence,
   motion
 } from "framer-motion";
 
@@ -79,20 +80,6 @@ function getTypeStyle(type, ghost, theme) {
   }
 }
 
-function getSizeStyle(size, theme) {
-  switch(size) {
-    case 'small': {
-      return theme.buttonSmallFontSize;
-    }
-    case 'large': {
-      return theme.buttonLargeFontSize;
-    }
-    default: {
-      return theme.buttonDefaultFontSize;
-    }
-  }
-}
-
 export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     children,
@@ -106,8 +93,6 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
   } = props;
 
   const theme = useTheme();
-
-  const widthAndHeight = getSizeStyle(size, theme);
 
   return (
     <StyledButton
@@ -123,25 +108,21 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
       theme={theme}
       {...rest}
     >
-      <motion.div
-        variants={{
-          loading: {
-            width: widthAndHeight,
-            marginRight: shape === 'circle' ? 0 : 5,
-            transition: { type: 'tween'}
-           },
-          notLoading: { width: 0, marginRight: 0}
-        }}
-        animate={loading ? 'loading' : 'notLoading'}
-        transition={{ type: 'tween', duration: theme.animationTimeVeryFast, delay: theme.animationTimeVeryFast }}
-      >
-        {loading ?
+      {loading &&
+        <>
           <Icon.Loading
             fill={getTypeStyle(type, ghost, theme)}
-          />:
-          null
-        }
-      </motion.div>
+          />
+          <motion.div
+            key={"loading"}
+            animate={{
+              marginRight: shape === 'circle' ? 0 : 5,
+              transition: { type: 'tween'}
+            }}
+            transition={{ type: 'tween', duration: theme.animationTimeVeryFast }}
+          />
+        </>
+      }
       <span>{children}</span>
     </StyledButton>
   );

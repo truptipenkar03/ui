@@ -94,7 +94,7 @@ export const Suffix: React.FunctionComponent<any> = ({
         {hasFeedback &&
           <motion.div
             key="feedback"
-            style={{position: 'relative'}}
+            style={{position: 'relative', height: '1em' }}
             initial={{opacity: 0, right: '-10px'}}
             animate={{opacity: 1, right: '0px'}}
             exit={{opacity: 0, right: '-10px' }}
