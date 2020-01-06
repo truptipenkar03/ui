@@ -63,13 +63,43 @@ describe('Input', () => {
     expect(wrapper.find('input').getDOMNode().disabled).toBe(true);
   });
 
-  it('sets the error prop', () => {
-    const wrapper = shallow(
-      <Input error={'error'} />
+  it('sets the error message and icon', () => {
+    const wrapper = mount(
+      <Input validationStatus={'error'} validationMessage={'This is the message'} />
     );
 
-    expect(wrapper.exists('StyledInput__Error')).toBe(true);
-    expect(wrapper.find('StyledInput__Error').children().first().childAt(0).text()).toBe('error');
+    expect(wrapper.exists('TimesSolid')).toBe(true);
+    expect(wrapper.exists('StyledInput__Status')).toBe(true);
+  });
+
+  it('sets the error icon and removes the error message', () => {
+    const wrapper = mount(
+      <Input validationStatus={'error'} validationMessage={'This is the message'} hasFeedbackMessage={false} />
+    );
+
+    expect(wrapper.exists('TimesSolid')).toBe(true);
+    expect(wrapper.exists('StyledInput__Status')).toBe(false);
+  });
+
+  it('sets the error message and removes the error icon', () => {
+    const wrapper = mount(
+      <Input validationStatus={'error'} validationMessage={'This is the message'} hasFeedbackIcon={false} />
+    );
+
+    expect(wrapper.exists('TimesSolid')).toBe(false);
+    expect(wrapper.exists('StyledInput__Status')).toBe(true);
+  });
+
+  it('sets the custom validation message component', () => {
+    const wrapper = mount(
+      <Input
+        validationStatus={'error'}
+        validationMessage={'This is the message'}
+        validationComponent={(message) => <div id={'test'}/>}
+      />
+    );
+
+    expect(wrapper.exists('#test')).toBe(true);
   });
 
   it('sets the label prop', () => {
@@ -121,15 +151,15 @@ describe('Input', () => {
       <Input inputPrefix={'A'}/>
     );
 
-    expect(wrapper.exists('StyledInput__Affix')).toBe(true);
+    expect(wrapper.exists('StyledInput__Prefix')).toBe(true);
   });
 
   it('sets the inputSuffix prop', () => {
-    const wrapper = shallow(
-      <Input inputSuffix={'A'} />
+    const wrapper = mount(
+      <Input inputSuffix={<div id="test" />} />
     );
 
-    expect(wrapper.exists('StyledInput__Affix')).toBe(true);
+    expect(wrapper.exists('#test')).toBe(true);
   });
 
   it('sets the readOnly prop', () => {

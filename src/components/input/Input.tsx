@@ -5,16 +5,26 @@ import {
 } from "../../hooks";
 
 import {
-  Affix,
+  Prefix,
   AffixContainer,
   Container,
   Label,
-  Error,
-  StyledInput
+  Status,
+  StyledInput, FeedbackMessage
 } from "./StyledInput";
+
+import {
+  Suffix
+} from './Suffix';
+
+import {
+  AnimatePresence,
+  motion
+} from "framer-motion";
 
 export type BorderType = 'full' | 'bottom' | 'none';
 export type InputSize = 'small' | 'default' | 'large';
+export type ValidationStatus = 'success' | 'error' | 'loading';
 
 export interface InputProps {
 
@@ -30,17 +40,17 @@ export interface InputProps {
   /** Disabled state of the input */
   disabled?: boolean;
 
-  /** Formik validation error */
-  error?: string;
-
-  /** Function that provides the error to use in custom component */
-  errorComponent?: (error: string) => React.ReactNode;
-
   /** HTML input type attribute */
   htmlType?: 'text' | 'number' | 'date' | 'password';
 
   /** id of the input to be used with Formik */
   id?: string;
+
+  /** Set to `true` to use validation message */
+  hasFeedbackMessage?: boolean;
+
+  /** Set to `true` to use validation icon */
+  hasFeedbackIcon?: boolean;
 
   /** Content to show inside the input to the left */
   inputPrefix?: React.ReactNode;
@@ -80,6 +90,15 @@ export interface InputProps {
 
   /** value of the input */
   value?: string;
+
+  /** Validation status to provide feedback to the user */
+  validationStatus?: ValidationStatus;
+
+  /** Message to show along with the `validationStatus` */
+  validationMessage?: string | null;
+
+  /** Custom component used to display the validation message */
+  validationComponent?: (error: string) => React.ReactNode;
 }
 
 
@@ -88,12 +107,12 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
     className,
     disabled,
     defaultValue,
-    error,
-    errorComponent,
     htmlType,
     id,
     label,
     name,
+    hasFeedbackMessage,
+    hasFeedbackIcon,
     onBlur,
     onChange,
     onClick,
@@ -104,66 +123,103 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
     inputSuffix,
     borderType,
     readOnly,
-    value
+    value,
+    validationMessage,
+    validationComponent,
+    validationStatus
   } = props;
 
   const theme = useTheme();
 
+  const getIconDims = React.useCallback(() => {
+    switch(size) {
+      case 'small': {
+        return theme.inputSmallFontSize;
+      }
+      case 'large': {
+        return theme.inputLargeFontSize;
+      }
+      case 'default': {
+        return theme.inputDefaultFontSize;
+      }
+    }
+  }, [size, theme]);
+
   return (
-    <Container className={className}>
+    <Container className={`${className} rtk-input`}>
       {label && (
         <Label
-          inputSize={size}
           theme={theme}
         >
           {label}
         </Label>
       )}
-        <AffixContainer>
-          {inputPrefix && (
-            <Affix
-              inputSize={size}
-              theme={theme}
-              isPrefix
-            >
-              {inputPrefix}
-            </Affix>
-          )}
-          {inputSuffix && (
-            <Affix
-              inputSize={size}
-              theme={theme}
-            >
-              {inputSuffix}
-            </Affix>
-          )}
-        </AffixContainer>
-        <StyledInput
-          label={null}
-          error={error}
-          disabled={disabled}
-          defaultValue={defaultValue}
-          type={htmlType}
-          id={id}
-          name={name}
-          onBlur={onBlur}
-          onClick={onClick}
-          onChange={onChange}
-          onFocus={onFocus}
-          placeholder={placeholder}
-          borderType={borderType}
-          inputSize={size}
-          inputSuffix={inputSuffix}
-          inputPrefix={inputPrefix}
-          ref={ref}
-          readOnly={readOnly}
+      <AffixContainer>
+        {inputPrefix && (
+          <Prefix
+            inputSize={size}
+            theme={theme}
+          >
+            {inputPrefix}
+          </Prefix>
+        )}
+        <Suffix
+          validationStatus={validationStatus}
           theme={theme}
-          value={value}
+          iconDim={getIconDims()}
+          inputSuffix={inputSuffix}
+          size={size}
+          hasFeedbackIcon={hasFeedbackIcon}
         />
-      {(error && errorComponent) &&
-        <Error theme={theme}>
-          {errorComponent(error)}
-        </Error>
+      </AffixContainer>
+      <StyledInput
+        label={null}
+        disabled={disabled}
+        defaultValue={defaultValue}
+        hasFeedbackIcon={hasFeedbackIcon}
+        type={htmlType}
+        id={id}
+        name={name}
+        onBlur={onBlur}
+        onClick={onClick}
+        onChange={onChange}
+        onFocus={onFocus}
+        placeholder={placeholder}
+        borderType={borderType}
+        inputSize={size}
+        inputSuffix={inputSuffix}
+        inputPrefix={inputPrefix}
+        ref={ref}
+        readOnly={readOnly}
+        theme={theme}
+        value={value}
+        validationStatus={validationStatus}
+      />
+      {hasFeedbackMessage &&
+        <FeedbackMessage>
+          <AnimatePresence>
+            {(validationMessage && validationStatus) &&
+              <motion.div
+                key="validate-message"
+                style={{ position: 'relative' }}
+                initial={{ opacity: 0, top: -5 }}
+                animate={{ opacity: 1, top: 0 }}
+                exit={{ opacity: 0, top: -5 }}
+                transition={{ duration: theme.animationTimeVeryFast }}
+              >
+                {validationComponent ?
+                  validationComponent(validationMessage) :
+                  <Status
+                    validationStatus={validationStatus}
+                    theme={theme}
+                  >
+                    {validationMessage}
+                  </Status>
+                }
+              </motion.div>
+            }
+          </AnimatePresence>
+        </FeedbackMessage>
       }
     </Container>
   );
@@ -174,9 +230,9 @@ Input.defaultProps = {
   className: '',
   disabled: false,
   defaultValue: undefined,
-  error: '',
-  errorComponent: (error) => <div>{error}</div>,
   htmlType: undefined,
+  hasFeedbackMessage: true,
+  hasFeedbackIcon: true,
   id: undefined,
   name: undefined,
   label: '',
@@ -187,5 +243,7 @@ Input.defaultProps = {
   placeholder: '',
   size: 'default',
   readOnly: false,
-  value: undefined
+  value: undefined,
+  validationStatus: undefined
 };
+

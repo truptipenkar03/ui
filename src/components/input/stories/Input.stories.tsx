@@ -16,11 +16,21 @@ import {
 // @ts-ignore
 import mdx from './Input.mdx';
 
-const Spacer = styled.span`
-  height: 1px;
-  padding: 5px;
+import {
+  Button
+} from "../..";
+
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  
+  margin-bottom: 15px;
 `;
 
+const Spacer = styled.div`
+  padding: 0 4px;
+  height: 1px;
+`;
 
 export default {
   title: 'Components/Input',
@@ -41,9 +51,7 @@ export const simple = () => (
 export const size = () => (
   <Container>
     <Input size="small" />
-    <Spacer />
     <Input />
-    <Spacer />
     <Input size="large" />
   </Container>
 );
@@ -51,9 +59,7 @@ export const size = () => (
 export const border = () => (
   <Container>
     <Input placeholder="Input with border" />
-    <Spacer />
     <Input borderType="bottom" placeholder="Input with bottom border" />
-    <Spacer />
     <Input borderType="none" placeholder="Input without border" />
   </Container>
 );
@@ -64,14 +70,36 @@ export const label = () => (
   </Container>
 );
 
-export const error = () => (
-  <Container>
-    <Input
-      label="Label"
-      error="This is an error"
-    />
-  </Container>
-);
+export const validation = () => {
+  const [status, setStatus] = React.useState<any>(undefined);
+  return (
+    <Container>
+      <ButtonContainer>
+        <Button onClick={() => setStatus(undefined)}>
+          Default
+        </Button>
+        <Spacer />
+        <Button onClick={() => setStatus('success')}>
+          Success
+        </Button>
+        <Spacer />
+        <Button onClick={() => setStatus('error')}>
+          Error
+        </Button>
+        <Spacer />
+        <Button onClick={() => setStatus('loading')}>
+          Loading
+        </Button>
+        <Spacer />
+      </ButtonContainer>
+      <Input
+        label="With Suffix"
+        validationStatus={status}
+        validationMessage={status ? `This is the ${status} status` : undefined}
+      />
+    </Container>
+  )
+};
 
 export const disabled = () => (
   <Container>
