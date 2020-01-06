@@ -21,6 +21,8 @@ export const colors: Colors = {
   primaryRGB: '35,97,142',
   primaryBackground: '#FFFFFF',
   primaryBackgroundRGB: '255,255,255',
+  primaryGrey: '#58595B',
+  primaryGreyRGB: '88, 89, 92',
   secondary: '#23316E',
   secondaryRGB: '35,49,110',
   secondaryBackground: '#f1f1f1',

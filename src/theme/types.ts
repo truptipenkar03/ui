@@ -17,6 +17,8 @@ export interface Colors {
   primaryRGB: string;
   primaryBackground: string;
   primaryBackgroundRGB: string;
+  primaryGrey: string;
+  primaryGreyRGB: string;
   secondary: string;
   secondaryRGB: string;
   secondaryBackground: string;
