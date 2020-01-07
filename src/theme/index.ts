@@ -66,7 +66,7 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   collapseBoxShadow: 'none',
   collapseContentPadding: '10px',
   collapseContentBackground: themeColors.primaryBackground,
-  collapseHeaderColor: themeColors.darkFontColor,
+  collapseHeaderColor: themeColors.primaryGrey,
   collapseHeaderBackground: themeColors.primaryBackground,
   collapseHeaderHoverBackground: themeColors.primary,
   collapseHeaderHoverColor: themeColors.lightFontColor,
@@ -74,6 +74,7 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   collapseHeaderOpenColor: themeColors.lightFontColor,
   collapseHeaderPadding: '0px 15px',
   collapseHeaderHeight: '32px',
+  collapseIconSize: '10px',
 
   // ---- Panel ---- //
   panelBackground: themeColors.primaryBackground,
