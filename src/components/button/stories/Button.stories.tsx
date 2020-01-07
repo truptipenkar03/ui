@@ -84,40 +84,40 @@ export const loading = () => {
         >
           Primary
         </Button>
-        {/*<Spacer />*/}
-        {/*<Button*/}
-        {/*  type="primary"*/}
-        {/*  onClick={handleToggle}*/}
-        {/*  loading={loading}*/}
-        {/*  ghost*/}
-        {/*>*/}
-        {/*  Ghost*/}
-        {/*</Button>*/}
-        {/*<Spacer />*/}
-        {/*<Button*/}
-        {/*  type="danger"*/}
-        {/*  onClick={handleToggle}*/}
-        {/*  loading={loading}*/}
-        {/*>*/}
-        {/*  Danger*/}
-        {/*</Button>*/}
-        {/*<Spacer />*/}
-        {/*<Button*/}
-        {/*  type="danger"*/}
-        {/*  onClick={handleToggle}*/}
-        {/*  loading={loading}*/}
-        {/*  ghost*/}
-        {/*>*/}
-        {/*  Danger*/}
-        {/*</Button>*/}
-        {/*<Spacer />*/}
-        {/*<Button*/}
-        {/*  type="link"*/}
-        {/*  onClick={handleToggle}*/}
-        {/*  loading={loading}*/}
-        {/*>*/}
-        {/*  Link*/}
-        {/*</Button>*/}
+        <Spacer />
+        <Button
+          type="primary"
+          onClick={handleToggle}
+          loading={loading}
+          ghost
+        >
+          Ghost
+        </Button>
+        <Spacer />
+        <Button
+          type="danger"
+          onClick={handleToggle}
+          loading={loading}
+        >
+          Danger
+        </Button>
+        <Spacer />
+        <Button
+          type="danger"
+          onClick={handleToggle}
+          loading={loading}
+          ghost
+        >
+          Danger
+        </Button>
+        <Spacer />
+        <Button
+          type="link"
+          onClick={handleToggle}
+          loading={loading}
+        >
+          Link
+        </Button>
       </Container>
     </React.Fragment>
   );

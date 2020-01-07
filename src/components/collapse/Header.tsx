@@ -78,7 +78,8 @@ const StyledHeader = styled.div<StyledHeaderProps>`
 
 const HeaderIcon: React.FunctionComponent<any> = ({
   activeIcon,
-  open
+  open,
+  theme
 }) => {
   if (activeIcon) {
     return (
@@ -89,16 +90,22 @@ const HeaderIcon: React.FunctionComponent<any> = ({
   } else if (open) {
     return (
       <HeaderIconContainer>
-        <MinusSolid />
+        <MinusSolid
+          height={theme.collapseIconSize}
+          width={theme.collapseIconSize}
+        />
       </HeaderIconContainer>
-    );
+    )
   }
 
   return (
     <HeaderIconContainer>
-      <PlusSolid />
+      <PlusSolid
+        height={theme.collapseIconSize}
+        width={theme.collapseIconSize}
+      />
     </HeaderIconContainer>
-  );
+  )
 };
 
 const Header: React.FunctionComponent<HeaderProps> = ({
@@ -122,6 +129,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({
     <HeaderIcon
       activeIcon={activeIcon}
       open={open}
+      theme={theme}
     />
   </StyledHeader>
 );

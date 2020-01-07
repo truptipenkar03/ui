@@ -4,9 +4,6 @@ module.exports = {
       removeViewBox: false,
     }
   },
-  svgProps: {
-    fill: 'red'
-  },
   template(
     { template },
     opts,

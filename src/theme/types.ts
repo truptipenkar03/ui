@@ -96,6 +96,7 @@ export interface GlobalTheme {
   collapseHeaderOpenColor: string;
   collapseHeaderPadding: string;
   collapseHeaderHeight: string;
+  collapseIconSize: string;
 
 
   // ---- Panel ---- //
