@@ -9,10 +9,6 @@ import {
   Container
 } from './story.components';
 
-import {
-  SvgCircleNotch
-} from "../../icons/CircleNotch";
-
 // @ts-ignore
 import mdx from './Input.mdx';
 
@@ -109,7 +105,7 @@ export const disabled = () => (
 
 export const affix = () => (
   <Container>
-    <Input inputPrefix={<SvgCircleNotch />} inputSuffix={<SvgCircleNotch />} />
+    <Input inputPrefix={'A'} inputSuffix={'A'} />
   </Container>
 );
 

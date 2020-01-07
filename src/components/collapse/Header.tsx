@@ -4,18 +4,19 @@ import styled, {
   css
 } from 'styled-components';
 
+import {
+  GlobalTheme
+} from "../../theme/types";
+
+import PlusSolid from "../icons/PlusSolid";
+import MinusSolid from "../icons/MinusSolid";
+
 interface HeaderProps {
-  /** Content to show in the Header */
+  activeIcon?: React.ReactNode;
   children: React.ReactNode;
-
-  /** State of the collapse for custom handling */
   open?: boolean;
-
-  /** Function to handle when header is clicked */
   onClick: () => void;
-
-  /** Global theme in ThemeProvider */
-  theme: any;
+  theme: GlobalTheme;
 }
 
 interface CustomProps {
@@ -28,9 +29,20 @@ interface StyledHeaderProps {
   theme: any;
 }
 
+const HeaderContent = styled.div`
+`;
+
+const HeaderIconContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  justify-self: end;
+`;
+
 const StyledHeader = styled.div<StyledHeaderProps>`
   ${({ customProps, theme }) => css`
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 0.2fr;
     align-items: center;
 
     background: ${theme.collapseHeaderBackground};
@@ -64,7 +76,40 @@ const StyledHeader = styled.div<StyledHeaderProps>`
   `};
 `;
 
+const HeaderIcon: React.FunctionComponent<any> = ({
+  activeIcon,
+  open,
+  theme
+}) => {
+  if (activeIcon) {
+    return (
+      <HeaderIconContainer>
+        {activeIcon}
+      </HeaderIconContainer>
+    );
+  } else if (open) {
+    return (
+      <HeaderIconContainer>
+        <MinusSolid
+          height={theme.collapseIconSize}
+          width={theme.collapseIconSize}
+        />
+      </HeaderIconContainer>
+    )
+  }
+
+  return (
+    <HeaderIconContainer>
+      <PlusSolid
+        height={theme.collapseIconSize}
+        width={theme.collapseIconSize}
+      />
+    </HeaderIconContainer>
+  )
+};
+
 const Header: React.FunctionComponent<HeaderProps> = ({
+  activeIcon,
   children,
   onClick,
   open,
@@ -78,7 +123,14 @@ const Header: React.FunctionComponent<HeaderProps> = ({
       open
     }}
   >
-    {children}
+    <HeaderContent>
+      {children}
+    </HeaderContent>
+    <HeaderIcon
+      activeIcon={activeIcon}
+      open={open}
+      theme={theme}
+    />
   </StyledHeader>
 );
 
