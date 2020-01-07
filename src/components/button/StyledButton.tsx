@@ -176,6 +176,10 @@ export const StyledButton = styled.button<StyledButtonProps>`
         }
       `};
     `}
+    
+    span {
+      pointer-events: none;
+    }
 
     &::-moz-focus-inner {
       border: none;
