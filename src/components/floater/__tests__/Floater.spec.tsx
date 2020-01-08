@@ -21,10 +21,14 @@ describe('Floater', () => {
   anchorElement.style.width = '100px';
   anchorElement.style.height = '100px';
 
-  const defaultProps = {
+  const defaultProps: {
+    anchorElement: HTMLElement | null,
+    children: React.ReactChild,
+    position: string[]
+  } = {
     anchorElement,
     children: <div>Hello Floater</div>,
-    position: 'bottom'
+    position: ['tl', 'br']
   };
 
   beforeEach(() => {
@@ -33,7 +37,6 @@ describe('Floater', () => {
 
   it('sets the open prop to true', async () => {
     const wrapper = mount(
-      // @ts-ignore
       <Floater {...defaultProps} open={true} />
     );
 
@@ -42,7 +45,6 @@ describe('Floater', () => {
 
   it('sets the open prop to false', async () => {
     const wrapper = mount(
-      // @ts-ignore
       <Floater {...defaultProps} open={true} />
     );
 

@@ -22,13 +22,13 @@ import {
 
 export interface FloaterProps {
   /** Element to anchor portal to */
-  anchorElement: HTMLDivElement | null;
+  anchorElement: HTMLElement | null;
 
   /** Animation props for motion.div */
   animationProps?: MotionProps;
 
   /** Content to show in the floater */
-  children: React.ReactNode;
+  children?: React.ReactNode;
 
   /** Floater node to mount against (defaults to document.body) */
   container?: () => HTMLElement | null;
