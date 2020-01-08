@@ -8,12 +8,16 @@ import {
 } from '../Accordion';
 
 import {
-  Button
+  Button,
+  Input
 } from "../..";
 
 // @ts-ignore
 import mdx from './Accordion.mdx';
-import {ItemKeyType} from "../types";
+
+import {
+  ItemKeyType
+} from "../types";
 
 export default {
   title: 'Components/Accordion',
@@ -48,7 +52,9 @@ export const standard = () => (
       itemGap={20}
     >
       <Accordion.Item itemKey="1">
-        <CollapseContent />
+        <CollapseContent>
+          <Input />
+        </CollapseContent>
       </Accordion.Item>
       <Accordion.Item itemKey="2">
         <CollapseContent />
@@ -107,8 +113,8 @@ export const external = () => {
       <div style={{ height: '20px' }}/>
       <Accordion
         itemGap={20}
-        selectedItems={selectedItems}
-        defaultSelectedItems={selectedItems}
+        expandedItems={selectedItems}
+        defaultExpandedItems={selectedItems}
         onChange={handleOnChange}
       >
         <Accordion.Item itemKey={itemKeys[0]}>

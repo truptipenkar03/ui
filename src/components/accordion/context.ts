@@ -2,16 +2,16 @@ import * as React from 'react';
 
 import {
   ItemGapType,
-  SelectedItemsType,
+  ExpandedItemsType,
   ItemKeyType
 } from "./types";
 
 interface AccordionContext {
   itemGap?: ItemGapType;
-  selectedItems: SelectedItemsType;
+  expandedItems: ExpandedItemsType;
   onChange?: (itemKey: ItemKeyType) => void;
 }
 
 export const AccordionContext = React.createContext<AccordionContext>({
-  selectedItems: [],
+  expandedItems: [],
 });

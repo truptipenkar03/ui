@@ -31,17 +31,18 @@ export const AccordionItem: React.FunctionComponent<AccordionItemProps> = (props
   <AccordionContext.Consumer>
     {(value) => {
       const {
-        itemKey
+        itemKey,
+        defaultExpanded
       } = props;
 
-      const isActive = value.selectedItems.includes(itemKey);
+      const isExpanded = value.expandedItems.includes(itemKey);
 
       return (
         <React.Fragment>
           <Collapse
             {...props}
-            defaultActive={isActive}
-            active={isActive}
+            defaultExpanded={defaultExpanded || isExpanded}
+            expanded={isExpanded}
             onChange={value.onChange}
           />
           <CollapseSpacer itemGap={value.itemGap} />
