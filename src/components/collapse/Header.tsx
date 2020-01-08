@@ -19,6 +19,12 @@ interface HeaderProps {
   theme: GlobalTheme;
 }
 
+interface HeaderIconProps {
+  icon?: React.ReactNode;
+  expanded?: boolean;
+  theme: GlobalTheme;
+}
+
 interface CustomProps {
   expanded?: boolean;
 }
@@ -73,7 +79,7 @@ const StyledHeader = styled.div<StyledHeaderProps>`
   `};
 `;
 
-const HeaderIcon: React.FunctionComponent<any> = ({
+const HeaderIcon: React.FunctionComponent<HeaderIconProps> = ({
   icon,
   expanded,
   theme
@@ -125,7 +131,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({
     </HeaderContent>
     <HeaderIcon
       icon={icon}
-      open={open}
+      expanded={expanded}
       theme={theme}
     />
   </StyledHeader>
