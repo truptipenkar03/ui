@@ -20,6 +20,7 @@ import {
 } from "../../hooks";
 
 export interface CollapseProps {
+
   /** Option to handle if collapse is expanded */
   expanded?: boolean;
 
@@ -42,20 +43,15 @@ export interface CollapseProps {
   header?: React.ReactNode;
 
   /** Unique key to identify collapse. Used for Accordion */
-  itemKey: string | number ;
+  itemKey?: string | number;
 
   /** Function to handle when collapse state changes */
-  onChange?: (itemKey: string | number) => void;
-}
-
-interface ContainerProps {
-  collapseType?: 'panel' | 'stack';
-  ghost?: boolean;
+  onChange?: (itemKey?: string | number) => void;
 }
 
 const Container = styled.div`
   ${({theme}) => css`
-    &:hover {
+    &:hover, :focus-within {
       .rtk-collapse-header {
         background: ${theme.collapseHeaderOpenBackground};
         border: 1px solid transparent;
@@ -81,7 +77,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
 
   const theme = useTheme();
 
-  function onHeaderClick() {
+  const onHeaderClick = React.useCallback(() => {
     if (expanded === undefined) {
       setExpanded(!isExpanded);
 
@@ -92,14 +88,13 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
     } else if (onChange) {
       onChange(itemKey);
     }
-  }
+  }, [expanded, isExpanded, itemKey, onChange]);
 
-  const handleSetActive = React.useCallback(() => {
+  const handleSetExpanded = React.useCallback(() => {
     setExpanded(expanded);
   }, [expanded]);
 
-
-  useAfterMountEffect(handleSetActive, [expanded]);
+  useAfterMountEffect(handleSetExpanded, [expanded]);
 
   return (
     <Container

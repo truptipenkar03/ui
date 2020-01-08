@@ -9,7 +9,7 @@ import {
 interface AccordionContext {
   itemGap?: ItemGapType;
   expandedItems: ExpandedItemsType;
-  onChange?: (itemKey: ItemKeyType) => void;
+  onChange?: (itemKey?: ItemKeyType) => void;
 }
 
 export const AccordionContext = React.createContext<AccordionContext>({

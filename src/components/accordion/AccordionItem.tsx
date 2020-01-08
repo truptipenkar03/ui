@@ -9,17 +9,34 @@ import {
   AccordionContext
 } from './context';
 
-import {
-  CollapseProps
-} from "../collapse/Collapse";
-
 interface CollapseSpacerProps {
   itemGap?: number;
 }
 
-export interface AccordionItemProps extends CollapseProps {
-  /** Unique key used to identify each item */
-  itemKey: string | number;
+export interface AccordionItemProps {
+  /** Option to handle if collapse is expanded */
+  expanded?: boolean;
+
+  /** Icon to show on the right to show the current collapse state */
+  icon?: React.ReactNode;
+
+  /** Content to show in the collapse */
+  children?: React.ReactNode;
+
+  /** classname for the collapse */
+  className?: string;
+
+  /** When Collapse closes the content component will be unmounted */
+  destroyOnClose?: boolean;
+
+  /** Content to render in the header */
+  header?: React.ReactNode;
+
+  /** Unique key to identify collapse. Used for Accordion */
+  itemKey: string | number ;
+
+  /** Function to handle when collapse state changes */
+  onChange?: (itemKey?: string | number) => void;
 }
 
 const CollapseSpacer = styled.div<CollapseSpacerProps>`
@@ -32,7 +49,6 @@ export const AccordionItem: React.FunctionComponent<AccordionItemProps> = (props
     {(value) => {
       const {
         itemKey,
-        defaultExpanded
       } = props;
 
       const isExpanded = value.expandedItems.includes(itemKey);
@@ -41,7 +57,7 @@ export const AccordionItem: React.FunctionComponent<AccordionItemProps> = (props
         <React.Fragment>
           <Collapse
             {...props}
-            defaultExpanded={defaultExpanded || isExpanded}
+            defaultExpanded={isExpanded}
             expanded={isExpanded}
             onChange={value.onChange}
           />

@@ -31,7 +31,7 @@ export default {
 
 
 const StyledCollapseContent = styled.div`
-  height: 200px;
+  min-height: 200px;
 `;
 
 const CollapseContent = ({ children }: any) => (
@@ -49,11 +49,15 @@ export const standard = () => (
   <AccordionContainer>
     <Accordion
       classic={false}
+      defaultExpandedItems={["1", "3"]}
       itemGap={20}
     >
       <Accordion.Item itemKey="1">
         <CollapseContent>
-          <Input />
+          <Input label={"First Name"} />
+          <Input label={"Last Name"} />
+          <Input label={"Email"} />
+          <Input label={"Phone Number"} />
         </CollapseContent>
       </Accordion.Item>
       <Accordion.Item itemKey="2">
