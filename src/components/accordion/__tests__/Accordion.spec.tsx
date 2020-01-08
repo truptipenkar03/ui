@@ -44,8 +44,8 @@ describe('Accordion', () => {
 
     const accordionItem = wrapper.find('Collapse');
 
-    expect(accordionItem.at(0).prop('active')).toBe(true);
-    expect(accordionItem.at(1).prop('active')).toBe(true);
+    expect(accordionItem.at(0).prop('expanded')).toBe(true);
+    expect(accordionItem.at(1).prop('expanded')).toBe(true);
 
     // cleanup
     wrapper.unmount();
@@ -71,14 +71,14 @@ describe('Accordion', () => {
 
     const accordionItem = wrapper.find('Collapse');
 
-    expect(accordionItem.at(0).prop('active')).toBe(false);
-    expect(accordionItem.at(1).prop('active')).toBe(true);
+    expect(accordionItem.at(0).prop('expanded')).toBe(false);
+    expect(accordionItem.at(1).prop('expanded')).toBe(true);
   });
 
   it('opens item 1 by default', () => {
     const wrapper = mount(
       <Accordion
-        defaultSelectedItems={['1']}
+        defaultExpandedItems={['1']}
       >
         <Accordion.Item itemKey={'1'}>Accordion Item 1</Accordion.Item>
         <Accordion.Item itemKey={'2'}>Accordion Item 2</Accordion.Item>
@@ -86,13 +86,13 @@ describe('Accordion', () => {
       </Accordion>
     );
 
-    expect(wrapper.find('Collapse').at(0).prop('active')).toBe(true);
+    expect(wrapper.find('Collapse').at(0).prop('expanded')).toBe(true);
   });
 
   it('opens items that are passed in as external props', () => {
     const wrapper = mount(
       <Accordion
-        defaultSelectedItems={['1']}
+        defaultExpandedItems={['1']}
       >
         <Accordion.Item itemKey={'1'}>Accordion Item 1</Accordion.Item>
         <Accordion.Item itemKey={'2'}>Accordion Item 2</Accordion.Item>
@@ -102,8 +102,8 @@ describe('Accordion', () => {
 
     wrapper.setProps({selectedItems: ['2']});
 
-    expect(wrapper.find('Collapse').at(0).prop('active')).toBe(false);
-    expect(wrapper.find('Collapse').at(1).prop('active')).toBe(true);
+    expect(wrapper.find('Collapse').at(0).prop('expanded')).toBe(false);
+    expect(wrapper.find('Collapse').at(1).prop('expanded')).toBe(true);
   });
 
 });

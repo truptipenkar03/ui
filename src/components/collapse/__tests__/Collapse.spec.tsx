@@ -45,7 +45,7 @@ describe('Collapse', () => {
     expect(wrapper.find('Header').children()).toHaveLength(1);
   });
 
-  it('sets the defaultActive prop', () => {
+  it('sets the defaultExpanded prop', () => {
     const onChangeMock = jest.fn();
 
     const wrapper = shallow(
@@ -53,7 +53,7 @@ describe('Collapse', () => {
         onChange={onChangeMock}
         itemKey={'test'}
         header={'Header'}
-        defaultActive
+        defaultExpanded
       >
         Content
       </Collapse>
@@ -81,7 +81,7 @@ describe('Collapse', () => {
       <Collapse
         itemKey={'test'}
         header={'Header'}
-        defaultActive
+        defaultExpanded
         destroyOnClose
       >
         Content
@@ -93,7 +93,7 @@ describe('Collapse', () => {
     // creating a promise with a setTimeout so we can wait for the animation of the collapse
     // closing to finish before checking the dom
     const promise = new Promise<ReactWrapper<any>>((resolve) => {
-      wrapper.setProps({active: false});
+      wrapper.setProps({expanded: false});
       wrapper.update();
 
       // wait for the animation to finish
