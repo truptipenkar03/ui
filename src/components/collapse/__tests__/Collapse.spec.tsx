@@ -59,7 +59,7 @@ describe('Collapse', () => {
       </Collapse>
     );
 
-    expect(wrapper.find('Header').prop('open')).toBe(true);
+    expect(wrapper.find('Header').prop('expanded')).toBe(true);
   });
 
   it('sets the destroyOnClose prop', () => {
@@ -128,6 +128,6 @@ describe('Collapse', () => {
 
     wrapper.find('Header__StyledHeader').simulate('click');
     expect(onChangeMock).toBeCalledWith('test');
-    expect(wrapper.find('Header').prop('open')).toBe(true);
+    expect(wrapper.find('Header').prop('expanded')).toBe(true);
   });
 });
