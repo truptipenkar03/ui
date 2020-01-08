@@ -1,49 +1,36 @@
 import * as React from 'react';
 
-import {
-  motion, MotionProps
-} from "framer-motion";
+import styled from 'styled-components';
 
 import {
   useTheme
 } from "../../hooks";
 
-import {
-  SvgCircleNotch
-} from "./CircleNotch";
+import CircleNotch from "./CircleNotch";
 
 export interface LoadingProps {
   fill?: string;
-  width: string;
-  height: string;
-  motionConfig?: MotionProps;
-  icon?: SVGSVGElement;
 }
 
-export const Loading: React.FunctionComponent<LoadingProps> = ({
-  fill,
-  width,
-  height,
-  motionConfig,
-  icon
+const CircleNotchSpinner = styled(CircleNotch)`
+  fill: ${(props) => props.fill};
+  animation: spin 1s linear infinite;
+  
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
+const Loading: React.FunctionComponent<LoadingProps> = ({
+  fill
 }) => {
   const theme = useTheme();
 
-  const motionConfigToUse: MotionProps = motionConfig ||  {
-    style: {
-      height,
-      width,
-      transformOrigin: 'center center'
-    },
-    animate: {rotate: 360},
-    transition: { duration: theme.animationTimeSlow, loop: Infinity, ease: 'linear'}
-  };
-
   return (
-    <motion.div
-      {...motionConfigToUse}
-    >
-      {icon || <SvgCircleNotch fill={fill || theme.colors.primary} />}
-    </motion.div>
+    <CircleNotchSpinner fill={fill || theme.colors.primary} />
   );
 };
+
+export default Loading;

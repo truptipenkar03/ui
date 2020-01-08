@@ -9,11 +9,15 @@ import {
   AccordionContext
 } from './context';
 
+import {
+  CollapseProps
+} from "../collapse/Collapse";
+
 interface CollapseSpacerProps {
   itemGap?: number;
 }
 
-export interface AccordionItemProps {
+export interface AccordionItemProps extends CollapseProps {
   /** Unique key used to identify each item */
   itemKey: string | number;
 }

@@ -15,11 +15,14 @@ import {
 
 import {
   useTheme
-} from "../../hooks/useTheme";
+} from "../../hooks";
 
 export interface CollapseProps {
   /** Option to handle if collapse is active */
   active?: boolean;
+
+  /** Icon to show on the right to show the current collapse state */
+  icon?: React.ReactNode;
 
   /** Content to show in the collapse */
   children?: React.ReactNode;
@@ -52,6 +55,7 @@ const Container = styled.div``;
 
 export const Collapse: React.FunctionComponent<CollapseProps> = ({
   active,
+  icon,
   className,
   children,
   defaultActive,
@@ -86,6 +90,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
   return (
     <Container className={`${className} rtk-collapse`}>
       <Header
+        activeIcon={icon}
         open={isActive}
         onClick={onHeaderClick}
         theme={theme}
