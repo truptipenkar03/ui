@@ -100,7 +100,7 @@ describe('Accordion', () => {
       </Accordion>
     );
 
-    wrapper.setProps({selectedItems: ['2']});
+    wrapper.setProps({expandedItems: ['2']});
 
     expect(wrapper.find('Collapse').at(0).prop('expanded')).toBe(false);
     expect(wrapper.find('Collapse').at(1).prop('expanded')).toBe(true);
