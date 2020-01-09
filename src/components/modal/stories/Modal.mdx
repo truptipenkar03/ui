@@ -1,0 +1,19 @@
+import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Title, SectionTitle } from '../../../../.storybook/components';
+import { Input } from '../Input';
+
+<Title
+  title="Modal"
+  subtitle="Provides interaction with application without changing pages."
+/>
+
+<SectionTitle>Simple</SectionTitle>
+
+Many times a simple input is all that is needed.
+
+<Preview>
+  <Story id="components-modal--simple"/>
+</Preview>
+
+<SectionTitle>Props</SectionTitle>
+<Props of={Input} />
