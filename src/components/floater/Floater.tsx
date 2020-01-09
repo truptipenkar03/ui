@@ -45,7 +45,7 @@ export interface FloaterProps {
   /** Whether or not to show floater */
   open?: boolean;
 
-  /** Position of the floater with respect the the anchor element */
+  /** Position of the floater with respect the the anchor element. See `utilities/getRelativePosition` for how this works. */
   position: string[];
 
   /** style of the motion div. Typically used for height/width transitions */
