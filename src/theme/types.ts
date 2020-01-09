@@ -136,5 +136,24 @@ export interface GlobalTheme {
   inputPrefixLeft: string;
   inputSuffixRight: string;
 
+
+  // ---- Modal ---- //
+
+  modalBackground: string;
+  modalBorder: string;
+  modalBorderColor: string;
+  modalBorderRadius: string;
+  modalBoxShadow: string;
+  modalContentPadding: string;
+  modalFooterBackground: string;
+  modalFooterPadding: string;
+  modalHeaderBackground: string;
+  modalHeaderColor: string;
+  modalHeaderPadding: string;
+  modalMaskBackground: string;
+  modalMinHeight: string;
+  modalMinWidth: string;
+
+
   colors: Colors;
 }

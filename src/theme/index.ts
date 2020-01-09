@@ -113,6 +113,22 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   inputPrefixLeft: '10px',
   inputSuffixRight: '10px',
 
+  // ---- Modal ---- //
+  modalBackground: themeColors.primaryBackground,
+  modalBorder: 'none',
+  modalBorderColor: 'transparent',
+  modalBorderRadius: '4px',
+  modalBoxShadow: `0px 4px 12px rgba(${themeColors.blackRGB}, 0.15)`,
+  modalContentPadding: '0 32px',
+  modalFooterBackground: themeColors.secondaryBackground,
+  modalFooterPadding: '24px 32px',
+  modalHeaderBackground: 'transparent',
+  modalHeaderColor: themeColors.primary,
+  modalHeaderPadding: '24px 32px',
+  modalMaskBackground: `rgba(${themeColors.blackRGB}, 0.45)`,
+  modalMinHeight: '200px',
+  modalMinWidth: '520px',
+
   colors: {
     ...themeColors
   }

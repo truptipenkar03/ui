@@ -7,24 +7,67 @@ import {
 import {
   ModalRoot,
   ModalMask,
-  ModalContainer
+  ModalContainer,
+  ModalWrapper
 } from "./StyledModal";
 
-const ModalComponent: React.FunctionComponent = () => {
-  return (
-    <ModalRoot>
-      <ModalMask />
-      <ModalContainer>
-        Stuff
-      </ModalContainer>
-    </ModalRoot>
-  );
-};
+import {
+  Header
+} from './Header';
 
-export const Foo: React.FunctionComponent = () => {
+import {
+  Content
+} from './Content';
+
+import {
+  DefaultFooter,
+  Footer
+} from './Footer';
+
+import {
+  useTheme
+} from "../../hooks";
+
+export const Modal: React.FunctionComponent<any> = ({
+  className,
+  children,
+  header,
+  footer,
+  visible,
+  setVisibility
+}) => {
+
+  const theme = useTheme();
+
   return (
     <Portal>
-      <ModalComponent />
+      {visible &&
+        <ModalRoot className={`${className} rtk-modal`}>
+          <ModalMask theme={theme} />
+          <ModalWrapper
+            role="document"
+            tab-index="-1"
+          >
+            <ModalContainer>
+              <Header
+                theme={theme}
+                setVisibility={setVisibility}
+              >
+                {header}
+              </Header>
+              <Content theme={theme}>
+                {children}
+              </Content>
+              <Footer>
+                {footer ?
+                  footer :
+                  <DefaultFooter />
+                }
+              </Footer>
+            </ModalContainer>
+          </ModalWrapper>
+        </ModalRoot>
+      }
     </Portal>
   );
 };

@@ -9,12 +9,16 @@ import {
 import mdx from './Modal.mdx';
 
 import {
-  Foo
+  Modal
 } from '../Modal';
 
+const ModalContent = styled.div`
+  min-height: 200px;
+`;
+
 export default {
-  title: 'Components/Input',
-  component: Foo,
+  title: 'Components/Modal',
+  component: Modal,
   parameters: {
     docs: {
       page: mdx
@@ -22,9 +26,20 @@ export default {
   },
 };
 
-export const simple = () => (
-  <div>
-    <Button>Open</Button>
-    <Foo />
-  </div>
-);
+export const simple = () => {
+  const [visible, setVisibility] = React.useState(false);
+  return (
+    <div>
+      <Button onClick={() => setVisibility(true)}>Open</Button>
+      <Modal
+        header={'Add Contact'}
+        visible={visible}
+        setVisibility={setVisibility}
+      >
+        <ModalContent>
+          asdfasdf
+        </ModalContent>
+      </Modal>
+    </div>
+  );
+};
