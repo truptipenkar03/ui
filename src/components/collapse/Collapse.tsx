@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-import styled from 'styled-components';
+import styled, {
+  css
+} from 'styled-components';
 
 import Header from './Header';
 
@@ -18,8 +20,9 @@ import {
 } from "../../hooks";
 
 export interface CollapseProps {
-  /** Option to handle if collapse is active */
-  active?: boolean;
+
+  /** Option to handle if collapse is expanded */
+  expanded?: boolean;
 
   /** Icon to show on the right to show the current collapse state */
   icon?: React.ReactNode;
@@ -30,8 +33,8 @@ export interface CollapseProps {
   /** classname for the collapse */
   className?: string;
 
-  /** Determines if collapse should default to open */
-  defaultActive?: boolean;
+  /** Determines if collapse should default to expanded */
+  defaultExpanded?: boolean;
 
   /** When Collapse closes the content component will be unmounted */
   destroyOnClose?: boolean;
@@ -40,37 +43,43 @@ export interface CollapseProps {
   header?: React.ReactNode;
 
   /** Unique key to identify collapse. Used for Accordion */
-  itemKey: string | number ;
+  itemKey?: string | number;
 
   /** Function to handle when collapse state changes */
-  onChange?: (itemKey: string | number) => void;
+  onChange?: (itemKey?: string | number) => void;
 }
 
-interface ContainerProps {
-  collapseType?: 'panel' | 'stack';
-  ghost?: boolean;
-}
-
-const Container = styled.div``;
+const Container = styled.div`
+  ${({theme}) => css`
+    &:hover, :focus-within {
+      .rtk-collapse-header {
+        background: ${theme.collapseHeaderOpenBackground};
+        border: 1px solid transparent;
+        color: ${theme.collapseHeaderOpenColor}      
+      }
+    };
+  `};
+  }
+`;
 
 export const Collapse: React.FunctionComponent<CollapseProps> = ({
-  active,
+  expanded,
   icon,
   className,
   children,
-  defaultActive,
+  defaultExpanded,
   destroyOnClose,
   header,
   itemKey,
   onChange
 }) => {
-  const [isActive, setActive] = React.useState<boolean | undefined>(defaultActive);
+  const [isExpanded, setExpanded] = React.useState<boolean | undefined>(defaultExpanded);
 
   const theme = useTheme();
 
-  function onHeaderClick() {
-    if (active === undefined) {
-      setActive(!isActive);
+  const onHeaderClick = React.useCallback(() => {
+    if (expanded === undefined) {
+      setExpanded(!isExpanded);
 
       if (onChange) {
         onChange(itemKey);
@@ -79,26 +88,29 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
     } else if (onChange) {
       onChange(itemKey);
     }
-  }
+  }, [expanded, isExpanded, itemKey, onChange]);
 
-  const handleSetActive = React.useCallback(() => {
-    setActive(active);
-  }, [active]);
+  const handleSetExpanded = React.useCallback(() => {
+    setExpanded(expanded);
+  }, [expanded]);
 
-  useAfterMountEffect(handleSetActive, [active]);
+  useAfterMountEffect(handleSetExpanded, [expanded]);
 
   return (
-    <Container className={`${className} rtk-collapse`}>
+    <Container
+      className={`${className} rtk-collapse`}
+      theme={theme}
+    >
       <Header
-        activeIcon={icon}
-        open={isActive}
+        icon={icon}
+        expanded={isExpanded}
         onClick={onHeaderClick}
         theme={theme}
       >
         {header}
       </Header>
       <ContentContainer
-        animate={isActive ? 'open' : 'closed'}
+        animate={isExpanded ? 'open' : 'closed'}
         destroyOnClose={destroyOnClose}
         theme={theme}
       >
@@ -113,10 +125,10 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
 };
 
 Collapse.defaultProps = {
-  active: undefined,
+  expanded: undefined,
   children: '',
   className: '',
-  defaultActive: undefined,
+  defaultExpanded: undefined,
   destroyOnClose: false,
   header: '',
   onChange: undefined,

@@ -64,7 +64,7 @@ export const open = () => (
   <Container>
     <Collapse
       header="Click Me"
-      defaultActive
+      defaultExpanded
       itemKey="default"
     >
       <TestContent />

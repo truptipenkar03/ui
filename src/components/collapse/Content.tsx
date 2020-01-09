@@ -19,7 +19,9 @@ interface ContentProps {
   theme: any;
 }
 
-export const ContentContainer: React.FunctionComponent<ContentContainerProps> = ({
+export const ContentContainer: React.FunctionComponent<any> = ({
+  onMouseEnter,
+  onMouseLeave,
   animate,
   children,
   destroyOnClose,
@@ -37,6 +39,9 @@ export const ContentContainer: React.FunctionComponent<ContentContainerProps> = 
   const content = (
     <motion.div
       key="content"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onClick={() => console.log('clicked')}
       style={{
         overflow: 'hidden'
       }}

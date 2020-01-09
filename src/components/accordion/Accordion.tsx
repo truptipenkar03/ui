@@ -29,8 +29,8 @@ export interface AccordionProps {
   /** Use classic accordion where a single item is open at a time */
   classic?: boolean;
 
-  /** Determines which collapses should be active on initial render */
-  defaultSelectedItems?: (string|number)[];
+  /** Determines which collapses should be expanded on initial render */
+  defaultExpandedItems?: (string|number)[];
 
   /** Vertical gap between items */
   itemGap?: ItemGapType;
@@ -38,8 +38,8 @@ export interface AccordionProps {
   /** Function to handle when collapse state changes */
   onChange?: (key: ItemKeyType) => void;
 
-  /** Determines which collapses should be active */
-  selectedItems?: (string|number)[];
+  /** Determines which collapses should be expanded */
+  expandedItems?: (string|number)[];
 }
 
 const Container = styled.div``;
@@ -48,42 +48,42 @@ export const Accordion: AccordionFunctionComponent<AccordionProps> = ({
   children,
   classic,
   className,
-  defaultSelectedItems,
+  defaultExpandedItems,
   itemGap,
   onChange,
-  selectedItems: customSelectedItems
+  expandedItems: customExpandedItems
 }) => {
-  const [selectedItems, setSelectedItems] = React.useState<(string|number)[]>(defaultSelectedItems || []);
+  const [expandedItems, setExpandedItems] = React.useState<(string|number)[]>(defaultExpandedItems || []);
 
-  const onCollapseChange = React.useCallback((key: ItemKeyType) => {
+  const onCollapseChange = React.useCallback((key) => {
     // if there is no external control of items
-    if (customSelectedItems == null) {
+    if (customExpandedItems == null) {
       function getItems(key: ItemKeyType) {
-        return selectedItems.includes(key) ?
-          selectedItems.filter((i: ItemKeyType) => i !== key) :
-          selectedItems.concat(key);
+        return expandedItems.includes(key) ?
+          expandedItems.filter((i: ItemKeyType) => i !== key) :
+          expandedItems.concat(key);
       }
 
       function getClassicItems(key: ItemKeyType) {
-        return selectedItems.includes(key) ?
+        return expandedItems.includes(key) ?
           [] :
           [key];
       }
 
       const newItems = classic ? getClassicItems(key) : getItems(key);
-      setSelectedItems(newItems);
+      setExpandedItems(newItems);
     }
 
     if (onChange) {
       onChange(key);
     }
-  }, [selectedItems, customSelectedItems, onChange, classic]);
+  }, [expandedItems, customExpandedItems, onChange, classic]);
 
   return (
     <AccordionContext.Provider
       value={{
         itemGap,
-        selectedItems: customSelectedItems || selectedItems,
+        expandedItems: customExpandedItems || expandedItems,
         onChange: onCollapseChange
       }}
     >
@@ -98,7 +98,7 @@ Accordion.defaultProps = {
   children: '',
   classic: false,
   className: '',
-  defaultSelectedItems: [],
+  defaultExpandedItems: [],
   itemGap: 20,
   onChange: undefined
 };

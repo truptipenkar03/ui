@@ -12,15 +12,21 @@ import PlusSolid from "../icons/PlusSolid";
 import MinusSolid from "../icons/MinusSolid";
 
 interface HeaderProps {
-  activeIcon?: React.ReactNode;
+  icon?: React.ReactNode;
   children: React.ReactNode;
-  open?: boolean;
+  expanded?: boolean;
   onClick: () => void;
   theme: GlobalTheme;
 }
 
+interface HeaderIconProps {
+  icon?: React.ReactNode;
+  expanded?: boolean;
+  theme: GlobalTheme;
+}
+
 interface CustomProps {
-  open?: boolean;
+  expanded?: boolean;
 }
 
 interface StyledHeaderProps {
@@ -66,28 +72,25 @@ const StyledHeader = styled.div<StyledHeaderProps>`
       color: ${theme.collapseHeaderHoverColor};
     };
     
-    ${customProps.open && css`
-      background: ${theme.collapseHeaderOpenBackground};
-      border: 1px solid transparent;
+    ${customProps.expanded && css`
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
-      color: ${theme.collapseHeaderOpenColor}
     `};
   `};
 `;
 
-const HeaderIcon: React.FunctionComponent<any> = ({
-  activeIcon,
-  open,
+const HeaderIcon: React.FunctionComponent<HeaderIconProps> = ({
+  icon,
+  expanded,
   theme
 }) => {
-  if (activeIcon) {
+  if (icon) {
     return (
       <HeaderIconContainer>
-        {activeIcon}
+        {icon}
       </HeaderIconContainer>
     );
-  } else if (open) {
+  } else if (expanded) {
     return (
       <HeaderIconContainer>
         <MinusSolid
@@ -109,10 +112,10 @@ const HeaderIcon: React.FunctionComponent<any> = ({
 };
 
 const Header: React.FunctionComponent<HeaderProps> = ({
-  activeIcon,
+  icon,
   children,
   onClick,
-  open,
+  expanded,
   theme
 }) => (
   <StyledHeader
@@ -120,15 +123,15 @@ const Header: React.FunctionComponent<HeaderProps> = ({
     theme={theme}
     onClick={onClick}
     customProps={{
-      open
+      expanded
     }}
   >
     <HeaderContent>
       {children}
     </HeaderContent>
     <HeaderIcon
-      activeIcon={activeIcon}
-      open={open}
+      icon={icon}
+      expanded={expanded}
       theme={theme}
     />
   </StyledHeader>
