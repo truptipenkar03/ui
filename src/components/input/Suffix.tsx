@@ -87,6 +87,7 @@ export const Suffix: React.FunctionComponent<any> = ({
           }
         }}
         animate={hasFeedback ? 'hasFeedback' : 'noFeedback'}
+        exit={'noFeedback'}
       >
         {inputSuffix}
       </motion.div>

@@ -2,7 +2,8 @@ import * as React from 'react';
 import styled from "styled-components";
 
 import {
-  Button
+  Button,
+  Input
 } from '../..';
 
 // @ts-ignore
@@ -28,16 +29,30 @@ export default {
 
 export const simple = () => {
   const [visible, setVisibility] = React.useState(false);
+
+  const onCancel = React.useCallback(() => {
+     setVisibility(false);
+  }, []);
+
+  const onOk = React.useCallback(() => {
+    setVisibility(false);
+  }, []);
+
   return (
     <div>
       <Button onClick={() => setVisibility(true)}>Open</Button>
       <Modal
-        header={'Add Contact'}
+        title={'Add Contact'}
+        onOk={onOk}
+        okButtonText={'Add'}
+        onCancel={onCancel}
         visible={visible}
-        setVisibility={setVisibility}
       >
         <ModalContent>
-          asdfasdf
+          <Input label={'First Name'} />
+          <Input label={'Last Name'} />
+          <Input label={'Email'} />
+          <Input label={'Password'} />
         </ModalContent>
       </Modal>
     </div>

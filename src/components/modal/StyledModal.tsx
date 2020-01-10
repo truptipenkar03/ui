@@ -4,9 +4,13 @@ import styled, {
   css
 } from 'styled-components';
 
-export const ModalRoot = styled.div``;
+import {
+  motion
+} from 'framer-motion';
 
-export const ModalMask = styled.div`
+export const ModalRoot = styled(motion.div)``;
+
+export const ModalMask = styled(motion.div)`
   ${({ theme }) => css`
     position: fixed;
     top: 0;
@@ -16,7 +20,7 @@ export const ModalMask = styled.div`
     width: 100%;
 
     background: ${theme.modalMaskBackground};
-  `}
+  `};
 `;
 
 export const ModalWrapper = styled.div`
@@ -32,10 +36,10 @@ export const ModalWrapper = styled.div`
     
     align-items: center;
     justify-content: center;
-  `}
+  `};
 `;
 
-export const ModalContainer = styled.div`
+export const ModalContainer = styled(motion.div)`
   ${({ theme }) => css`
     min-height: ${theme.modalMinHeight};
     min-width: ${theme.modalMinWidth};
@@ -46,6 +50,8 @@ export const ModalContainer = styled.div`
     border-radius: ${theme.modalBorderRadius};
     
     box-shadow: ${theme.modalBoxShadow};
+    
+    outline: 0;
   `};
 `;
 

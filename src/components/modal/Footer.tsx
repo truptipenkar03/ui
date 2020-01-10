@@ -31,15 +31,34 @@ const DefaultFooterContainer = styled.div`
 `;
 
 export const DefaultFooter: React.FunctionComponent<any> = ({
-  okText,
+  cancelButtonProps,
   cancelText,
-  onOk,
-  onCancel
+  okButtonProps,
+  onCancel,
+  okButtonText,
+  onOk
 }) => {
+
   return (
     <DefaultFooterContainer>
-      <Button>Okay</Button>
-      <CancelButton ghost>Cancel</CancelButton>
+      <Button
+        onClick={onOk}
+        {...okButtonProps}
+      >
+        {okButtonText}
+      </Button>
+      <CancelButton
+        onClick={onCancel}
+        ghost
+        {...cancelButtonProps}
+      >
+        {cancelText}
+      </CancelButton>
     </DefaultFooterContainer>
-  )
+  );
+};
+
+DefaultFooter.defaultProps = {
+  okText: 'Okay',
+  cancelText: 'Cancel'
 };

@@ -46,13 +46,13 @@ const Close = styled.div`
     &:hover {
       opacity: 1;
     }
-  `}
+  `};
 `;
 
 export const Header: React.FunctionComponent<any> = ({
   children,
   closable,
-  setVisibility
+  onCancel
 }) => {
   return (
     <Container className="rtk-modal-header">
@@ -60,7 +60,7 @@ export const Header: React.FunctionComponent<any> = ({
         {children}
       </Title>
       {closable &&
-        <Close onClick={() => setVisibility(false)}>
+        <Close onClick={onCancel}>
           <Icon.TimesSolid />
         </Close>
       }
