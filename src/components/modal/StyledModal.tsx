@@ -55,4 +55,10 @@ export const ModalContainer = styled(motion.div)`
   `};
 `;
 
-export const StyledModal = styled.div``;
+export const ModalSentinel = styled.div`
+  width: 0;
+  height: 0;
+  overflow: hidden;
+`;
+
+

@@ -69,6 +69,7 @@ export interface GlobalTheme {
   buttonDangerActiveColor: string;
 
   // ---- Ghost Button ---- //
+  buttonGhostBackground: string;
   buttonGhostBorder: string;
 
   // ----- Link Button ---- //

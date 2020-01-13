@@ -11,6 +11,7 @@ import {
 export const Footer = styled.div`
   ${({ theme }) => css`
     width: 100%;
+    height: 60px;
     padding: ${theme.modalFooterPadding};
     box-sizing: border-box;
     
@@ -28,6 +29,8 @@ const DefaultFooterContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  
+  height: 100%;
 `;
 
 export const DefaultFooter: React.FunctionComponent<any> = ({

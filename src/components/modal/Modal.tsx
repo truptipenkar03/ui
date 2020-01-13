@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import {
-  motion
+  AnimatePresence,
 } from 'framer-motion';
 
 import {
@@ -12,7 +12,7 @@ import {
   ModalRoot,
   ModalMask,
   ModalContainer,
-  ModalWrapper
+  ModalWrapper, ModalSentinel
 } from "./StyledModal";
 
 import {
@@ -36,8 +36,12 @@ import {
 import {
   ButtonProps
 } from "../button/Button";
-import {AnimatePresence} from "framer-motion";
-import set = Reflect.set;
+
+enum KEY_CODES {
+  'ESC' = 27,
+  'TAB' = 9
+}
+
 
 export interface ModalProps {
   /** Content to show in the Modal */
@@ -92,11 +96,31 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
   visible
 }) => {
   const [isVisible, setVisibility] = React.useState<boolean>(visible || false);
-  const modalStart = React.useRef(null);
-  const modalEnd = React.useRef(null);
+  const previousActiveElement = React.useRef<any>(null);
+  const modalWrapper = React.useRef<HTMLDivElement>(null);
+  const modalSentinelStart = React.useRef<HTMLDivElement>(null);
+  const modalSentinelEnd = React.useRef<HTMLDivElement>(null);
 
   const theme = useTheme();
 
+  // store the active element when
+  React.useEffect(() => {
+    previousActiveElement.current = document.activeElement;
+
+    return () => previousActiveElement.current.focus();
+  }, []);
+
+  const checkFocus = React.useCallback(() => {
+    if (modalWrapper.current == null || modalSentinelStart.current == null || !visible) {
+      return;
+    }
+
+    if (!modalWrapper.current.contains(document.activeElement)) {
+      modalSentinelStart.current.focus();
+    }
+  }, [modalSentinelStart, modalWrapper, visible]);
+
+  // modifies the visibility of the modal
   const handleVisibility = React.useCallback(() => {
     if (visible) {
       document.body.style.overflow = 'hidden';
@@ -106,22 +130,50 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
     setVisibility(visible);
   }, [visible]);
 
+
+  // handle the ok click
   const handleOkClick = React.useCallback(() => {
      if (onOk) {
        onOk();
      }
   }, [onOk]);
 
-  const close = React.useCallback(() => {
+  // handle closing the modal and calling onCancel
+  const onClose = React.useCallback(() => {
     if (onCancel) {
       onCancel();
     }
     setVisibility(false);
   }, [onCancel]);
 
+  // handle keydown events for accessibility behaviours
   const handleKeyDown = React.useCallback((e) => {
     console.log(e.keyCode);
-  }, []);
+    const activeElement = document.activeElement;
+
+    if (!(modalSentinelEnd.current && modalSentinelStart.current)) {
+      return;
+    }
+
+    switch(e.keyCode) {
+      case KEY_CODES.ESC: {
+        onClose();
+        break
+      }
+      case KEY_CODES.TAB: {
+        if (e.shiftKey) {
+          if (activeElement === modalSentinelStart.current) {
+            modalSentinelEnd.current.focus();
+            break;
+          }
+        } else if (activeElement === modalSentinelEnd.current) {
+          modalSentinelStart.current.focus();
+          break;
+        }
+      }
+    }
+  }, [onClose, modalSentinelStart, modalSentinelEnd]);
+
   // In order to support clicking the mask to close we need to stop click events on
   // the modal container from bubbling up.
   const handleWrapClick = React.useCallback((e) => {
@@ -130,18 +182,22 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
 
   useAfterMountEffect(handleVisibility, [visible]);
 
+  // no deps because we want to be able to call this once the ref
+  // has been set and updated
+  React.useEffect(checkFocus);
+
   return (
     <Portal>
       <AnimatePresence>
         {isVisible &&
           <ModalRoot
-            className={`${className} rtk-modal`}
+            className={`rtk-modal-root`}
             exit={{ opacity: 0 }}
+            onKeyDown={handleKeyDown}
             transition={{ duration: theme.animationTimeVeryFast }}
-            tabIndex={-1}
           >
             <ModalMask
-              tabIndex={-1}
+              className={`rtk-modal-mask`}
               key="mask"
               theme={theme}
               initial={{ opacity: 0 }}
@@ -149,21 +205,29 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
               transition={{ duration: theme.animationTimeVeryFast }}
             />
             <ModalWrapper
+              className={`rtk-modal-wrapper`}
               role="document"
               tabIndex={-1}
               onKeyDown={handleKeyDown}
-              // onClick={close}
+              ref={modalWrapper}
+              onClick={onClose}
             >
               <ModalContainer
-                tabIndex={-1}
+                className={`${className} rtk-modal`}
+                role="dialog"
                 initial={{ y: 24, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: theme.animationTimeVeryFast }}
-                // onClick={handleWrapClick}
+                onClick={handleWrapClick}
               >
+                <ModalSentinel
+                  ref={modalSentinelStart}
+                  tabIndex={0}
+                  aria-hidden="true"
+                />
                 <Header
                   closable={closable}
-                  onCancel={close}
+                  onCancel={onClose}
                   theme={theme}
                   setVisibility={setVisibility}
                 >
@@ -180,11 +244,16 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
                       cancelButtonText={cancelButtonText}
                       okButtonProps={okButtonProps}
                       okButtonText={okButtonText}
-                      onCancel={close}
+                      onCancel={onClose}
                       onOk={handleOkClick}
                     />
                   }
                 </Footer>
+                <ModalSentinel
+                  ref={modalSentinelEnd}
+                  tabIndex={0}
+                  aria-hidden="true"
+                />
               </ModalContainer>
             </ModalWrapper>
           </ModalRoot>
