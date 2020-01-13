@@ -132,7 +132,7 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   modalFooterPadding: '0 32px',
   modalHeaderBackground: 'transparent',
   modalHeaderColor: themeColors.primary,
-  modalHeaderHeight: '60px',
+  modalHeaderMarginTop: '24px',
   modalHeaderPadding: '0 32px',
   modalMaskBackground: `rgba(${themeColors.blackRGB}, 0.45)`,
   modalMinHeight: '200px',

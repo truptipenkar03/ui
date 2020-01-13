@@ -155,7 +155,7 @@ export interface GlobalTheme {
   modalFooterPadding: string;
   modalHeaderBackground: string;
   modalHeaderColor: string;
-  modalHeaderHeight: string;
+  modalHeaderMarginTop: string;
   modalHeaderPadding: string;
   modalMaskBackground: string;
   modalMinHeight: string;

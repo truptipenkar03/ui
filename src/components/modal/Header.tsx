@@ -23,10 +23,10 @@ interface HeaderProps {
 const Container = styled.div`
   ${({ theme }) => css`
     width: 100%;
-    height: ${theme.modalHeaderHeight};
 
     display: flex;
     align-items: center;
+    margin-top: 24px;
     
     background: ${theme.modalHeaderBackground};
     color: ${theme.modalHeaderColor};

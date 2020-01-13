@@ -58,7 +58,6 @@ export const simple = () => {
   );
 };
 
-
 export const customFooter = () => {
   const [visible, setVisibility] = React.useState(false);
 
