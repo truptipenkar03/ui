@@ -39,7 +39,8 @@ import {
 
 enum KEY_CODES {
   'ESC' = 27,
-  'TAB' = 9
+  'TAB' = 9,
+  'ENTER' = 13
 }
 
 
@@ -103,13 +104,6 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
 
   const theme = useTheme();
 
-  // store the active element when
-  React.useEffect(() => {
-    previousActiveElement.current = document.activeElement;
-
-    return () => previousActiveElement.current.focus();
-  }, []);
-
   const checkFocus = React.useCallback(() => {
     if (modalWrapper.current == null || modalSentinelStart.current == null || !visible) {
       return;
@@ -132,14 +126,14 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
 
 
   // handle the ok click
-  const handleOkClick = React.useCallback(() => {
+  const handleOk = React.useCallback(() => {
      if (onOk) {
        onOk();
      }
   }, [onOk]);
 
   // handle closing the modal and calling onCancel
-  const onClose = React.useCallback(() => {
+  const handleClose = React.useCallback(() => {
     if (onCancel) {
       onCancel();
     }
@@ -148,7 +142,6 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
 
   // handle keydown events for accessibility behaviours
   const handleKeyDown = React.useCallback((e) => {
-    console.log(e.keyCode);
     const activeElement = document.activeElement;
 
     if (!(modalSentinelEnd.current && modalSentinelStart.current)) {
@@ -157,7 +150,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
 
     switch(e.keyCode) {
       case KEY_CODES.ESC: {
-        onClose();
+        handleClose();
         break
       }
       case KEY_CODES.TAB: {
@@ -170,9 +163,14 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
           modalSentinelStart.current.focus();
           break;
         }
+        break;
+      }
+      case KEY_CODES.ENTER: {
+        handleOk();
+        break;
       }
     }
-  }, [onClose, modalSentinelStart, modalSentinelEnd]);
+  }, [handleOk, handleClose, modalSentinelStart, modalSentinelEnd]);
 
   // In order to support clicking the mask to close we need to stop click events on
   // the modal container from bubbling up.
@@ -180,11 +178,18 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
      e.stopPropagation();
   }, []);
 
-  useAfterMountEffect(handleVisibility, [visible]);
+  // store which element was active before the modal opens
+  React.useEffect(() => {
+    previousActiveElement.current = document.activeElement;
 
-  // no deps because we want to be able to call this once the ref
-  // has been set and updated
+    return () => previousActiveElement.current.focus();
+  }, []);
+
+  // Want to check focus when the component updates to make sure it
+  // is in the right spot
   React.useEffect(checkFocus);
+
+  useAfterMountEffect(handleVisibility, [visible]);
 
   return (
     <Portal>
@@ -210,7 +215,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
               tabIndex={-1}
               onKeyDown={handleKeyDown}
               ref={modalWrapper}
-              onClick={onClose}
+              onClick={handleClose}
             >
               <ModalContainer
                 className={`${className} rtk-modal`}
@@ -227,7 +232,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
                 />
                 <Header
                   closable={closable}
-                  onCancel={onClose}
+                  onCancel={handleClose}
                   theme={theme}
                   setVisibility={setVisibility}
                 >
@@ -244,8 +249,8 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
                       cancelButtonText={cancelButtonText}
                       okButtonProps={okButtonProps}
                       okButtonText={okButtonText}
-                      onCancel={onClose}
-                      onOk={handleOkClick}
+                      onCancel={handleClose}
+                      onOk={handleOk}
                     />
                   }
                 </Footer>

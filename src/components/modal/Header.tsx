@@ -41,10 +41,15 @@ const Close = styled.div`
     cursor: pointer;
     
     transition: all ${theme.animationTimeFast}s;
-    opacity: 0.7;
+    opacity: 0.5;
 
-    &:hover {
+    &:hover, &:focus {
       opacity: 1;
+      outline: 0;
+    }
+    
+    &::-moz-focus-inner {
+      border: none;
     }
   `};
 `;
@@ -60,7 +65,10 @@ export const Header: React.FunctionComponent<any> = ({
         {children}
       </Title>
       {closable &&
-        <Close onClick={onCancel}>
+        <Close
+          onClick={onCancel}
+          tabIndex={0}
+        >
           <Icon.TimesSolid />
         </Close>
       }
