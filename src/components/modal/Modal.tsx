@@ -43,7 +43,6 @@ enum KEY_CODES {
   'ENTER' = 13
 }
 
-
 export interface ModalProps {
   /** Content to show in the Modal */
   children?: React.ReactNode;
@@ -53,6 +52,9 @@ export interface ModalProps {
 
   /** If true, the Modal can be closed from top right corner */
   closable?: boolean;
+
+  /** Icon to use as the for closing the modal in the top right corner */
+  closeIcon?: React.ReactNode;
 
   /** Props of the cancel button that can be overwritten */
   cancelButtonProps?: ButtonProps;
@@ -88,6 +90,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
   cancelButtonProps,
   cancelButtonText,
   closable,
+  closeIcon,
   title,
   footer,
   okButtonProps,
@@ -119,7 +122,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
     if (visible) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.removeAttribute('style');
+      document.body.style.overflow = 'unset';
     }
     setVisibility(visible);
   }, [visible]);
@@ -232,9 +235,9 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
                 />
                 <Header
                   closable={closable}
+                  closeIcon={closeIcon}
                   onCancel={handleClose}
                   theme={theme}
-                  setVisibility={setVisibility}
                 >
                   {title}
                 </Header>

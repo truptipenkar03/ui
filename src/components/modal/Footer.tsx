@@ -8,6 +8,19 @@ import {
   Button
 } from "..";
 
+import {
+  ButtonProps
+} from "../button/Button";
+
+interface FooterProps {
+  cancelButtonProps?: ButtonProps;
+  cancelButtonText?: React.ReactNode;
+  okButtonProps?: ButtonProps;
+  onCancel?: () => void;
+  okButtonText?: React.ReactNode;
+  onOk?: () => void;
+}
+
 export const Footer = styled.div`
   ${({ theme }) => css`
     width: 100%;
@@ -33,9 +46,9 @@ const DefaultFooterContainer = styled.div`
   height: 100%;
 `;
 
-export const DefaultFooter: React.FunctionComponent<any> = ({
+export const DefaultFooter: React.FunctionComponent<FooterProps> = ({
   cancelButtonProps,
-  cancelText,
+  cancelButtonText,
   okButtonProps,
   onCancel,
   okButtonText,
@@ -55,13 +68,13 @@ export const DefaultFooter: React.FunctionComponent<any> = ({
         ghost
         {...cancelButtonProps}
       >
-        {cancelText}
+        {cancelButtonText}
       </CancelButton>
     </DefaultFooterContainer>
   );
 };
 
 DefaultFooter.defaultProps = {
-  okText: 'Okay',
-  cancelText: 'Cancel'
+  okButtonText: 'Okay',
+  cancelButtonText: 'Cancel'
 };

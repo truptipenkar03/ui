@@ -59,6 +59,10 @@ export const ModalSentinel = styled.div`
   width: 0;
   height: 0;
   overflow: hidden;
+  
+  &:focus {
+    outline: 0;
+  }
 `;
 
 

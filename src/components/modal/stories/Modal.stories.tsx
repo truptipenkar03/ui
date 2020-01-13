@@ -44,7 +44,6 @@ export const simple = () => {
       <Modal
         title={'Add Contact'}
         onOk={onOk}
-        okButtonText={'Add'}
         onCancel={onCancel}
         visible={visible}
       >

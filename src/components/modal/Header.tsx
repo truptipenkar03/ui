@@ -8,6 +8,18 @@ import {
   Icon
 } from '../..';
 
+import {
+  GlobalTheme
+} from "../../theme/types";
+
+interface HeaderProps {
+  children?: React.ReactNode;
+  closable?: boolean;
+  closeIcon?: React.ReactNode;
+  onCancel?: () => void;
+  theme?: GlobalTheme;
+}
+
 const Container = styled.div`
   ${({ theme }) => css`
     width: 100%;
@@ -54,9 +66,10 @@ const Close = styled.div`
   `};
 `;
 
-export const Header: React.FunctionComponent<any> = ({
+export const Header: React.FunctionComponent<HeaderProps> = ({
   children,
   closable,
+  closeIcon,
   onCancel
 }) => {
   return (
@@ -69,7 +82,10 @@ export const Header: React.FunctionComponent<any> = ({
           onClick={onCancel}
           tabIndex={0}
         >
-          <Icon.TimesSolid />
+          {closeIcon ?
+            closeIcon :
+            <Icon.TimesSolid/>
+          }
         </Close>
       }
     </Container>
