@@ -23,13 +23,14 @@ interface HeaderProps {
 const Container = styled.div`
   ${({ theme }) => css`
     width: 100%;
-    
-    display: grid;
-    grid-template-columns: auto 0.1fr;
+    height: ${theme.modalHeaderHeight};
+
+    display: flex;
     align-items: center;
     
     background: ${theme.modalHeaderBackground};
     color: ${theme.modalHeaderColor};
+    padding: ${theme.modalHeaderPadding};
     
     border-top-right-radius: ${theme.modalBorderRadius};
     border-top-left-radius: ${theme.modalBorderRadius};
@@ -41,15 +42,16 @@ const Container = styled.div`
 `;
 
 const Title = styled.div`
-  ${({ theme }) => css`
-    padding: ${theme.modalHeaderPadding};
-  `};
+  flex: 1;
 `;
 
 const Close = styled.div`
   ${({ theme }) => css`
-    padding: ${theme.modalHeaderPadding};
-    align-self: end;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+    width: ${theme.modalHeaderHeight};
     cursor: pointer;
     
     transition: all ${theme.animationTimeFast}s;

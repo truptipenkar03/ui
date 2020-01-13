@@ -7,6 +7,8 @@ import styled, {
 const Container = styled.div`
   ${({ theme }) => css`
      padding: ${theme.modalContentPadding};
+     
+     flex: 1;
   `}
 `;
 export const Content: React.FunctionComponent<any> = ({

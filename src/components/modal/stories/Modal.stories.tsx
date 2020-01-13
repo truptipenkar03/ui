@@ -42,7 +42,7 @@ export const simple = () => {
     <div>
       <Button onClick={() => setVisibility(true)}>Open Simple Modal</Button>
       <Modal
-        title={'Add Contact'}
+        title={'Title'}
         onOk={onOk}
         onCancel={onCancel}
         visible={visible}

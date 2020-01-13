@@ -114,6 +114,12 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   inputPrefixLeft: '10px',
   inputSuffixRight: '10px',
 
+  // ---- Media Screen ---- //
+  mediaScreenSmall: '600px',
+  mediaScreenMedium: '748px',
+  mediaScreenLarge: '992px',
+  mediaScreenVeryLarge: '1200px',
+
   // ---- Modal ---- //
   modalBackground: themeColors.primaryBackground,
   modalBorder: 'none',
@@ -122,10 +128,12 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   modalBoxShadow: `0px 4px 12px rgba(${themeColors.blackRGB}, 0.15)`,
   modalContentPadding: '32px',
   modalFooterBackground: themeColors.secondaryBackground,
+  modalFooterHeight: '60px',
   modalFooterPadding: '0 32px',
   modalHeaderBackground: 'transparent',
   modalHeaderColor: themeColors.primary,
-  modalHeaderPadding: '24px 32px 0 32px',
+  modalHeaderHeight: '60px',
+  modalHeaderPadding: '0 32px',
   modalMaskBackground: `rgba(${themeColors.blackRGB}, 0.45)`,
   modalMinHeight: '200px',
   modalMinWidth: '520px',

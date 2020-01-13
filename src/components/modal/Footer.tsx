@@ -24,7 +24,7 @@ interface FooterProps {
 export const Footer = styled.div`
   ${({ theme }) => css`
     width: 100%;
-    height: 60px;
+    height: ${theme.modalFooterHeight};
     
     display: flex;
     align-items: center;

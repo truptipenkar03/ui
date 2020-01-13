@@ -137,9 +137,13 @@ export interface GlobalTheme {
   inputPrefixLeft: string;
   inputSuffixRight: string;
 
+  // ---- Media Screen ---- //
+  mediaScreenSmall: string;
+  mediaScreenMedium: string;
+  mediaScreenLarge: string;
+  mediaScreenVeryLarge: string;
 
   // ---- Modal ---- //
-
   modalBackground: string;
   modalBorder: string;
   modalBorderColor: string;
@@ -147,9 +151,11 @@ export interface GlobalTheme {
   modalBoxShadow: string;
   modalContentPadding: string;
   modalFooterBackground: string;
+  modalFooterHeight: string;
   modalFooterPadding: string;
   modalHeaderBackground: string;
   modalHeaderColor: string;
+  modalHeaderHeight: string;
   modalHeaderPadding: string;
   modalMaskBackground: string;
   modalMinHeight: string;
