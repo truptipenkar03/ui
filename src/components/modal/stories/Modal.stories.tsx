@@ -40,7 +40,7 @@ export const simple = () => {
 
   return (
     <div>
-      <Button onClick={() => setVisibility(true)}>Open</Button>
+      <Button onClick={() => setVisibility(true)}>Open Simple Modal</Button>
       <Modal
         title={'Add Contact'}
         onOk={onOk}
