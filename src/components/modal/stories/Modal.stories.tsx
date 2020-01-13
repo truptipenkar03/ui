@@ -31,7 +31,7 @@ export const simple = () => {
   const [visible, setVisibility] = React.useState(false);
 
   const onCancel = React.useCallback(() => {
-     setVisibility(false);
+    setVisibility(false);
   }, []);
 
   const onOk = React.useCallback(() => {
@@ -45,6 +45,100 @@ export const simple = () => {
         title={'Add Contact'}
         onOk={onOk}
         onCancel={onCancel}
+        visible={visible}
+      >
+        <ModalContent>
+          <Input label={'First Name'} />
+          <Input label={'Last Name'} />
+          <Input label={'Email'} />
+          <Input label={'Password'} />
+        </ModalContent>
+      </Modal>
+    </div>
+  );
+};
+
+
+export const customFooter = () => {
+  const [visible, setVisibility] = React.useState(false);
+
+  const onCancel = React.useCallback(() => {
+    setVisibility(false);
+  }, []);
+
+  const onOk = React.useCallback(() => {
+    setVisibility(false);
+  }, []);
+
+  return (
+    <div>
+      <Button onClick={() => setVisibility(true)}>Open Custom Footer Modal</Button>
+      <Modal
+        title={'Title'}
+        onOk={onOk}
+        onCancel={onCancel}
+        footer={(
+          <React.Fragment>
+            <Button
+              onClick={onCancel}
+              ghost
+            >
+              Cancel
+            </Button>
+            <div style={{ height: '1px', width: '16px' }}/>
+            <Button
+              onClick={onOk}
+            >
+              Finish
+            </Button>
+          </React.Fragment>
+        )}
+        visible={visible}
+      >
+        <ModalContent>
+          <Input label={'First Name'} />
+          <Input label={'Last Name'} />
+          <Input label={'Email'} />
+          <Input label={'Password'} />
+        </ModalContent>
+      </Modal>
+    </div>
+  );
+};
+
+export const asyncClose = () => {
+  const [visible, setVisibility] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+
+  const onCancel = React.useCallback(() => {
+    setVisibility(false);
+  }, []);
+
+  const onOk = React.useCallback(() => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setVisibility(false);
+      setLoading(false);
+    }, 3000);
+
+  }, []);
+
+  return (
+    <div>
+      <Button onClick={() => setVisibility(true)}>Open Modal with Async Logic</Button>
+      <Modal
+        title={'Title'}
+        onOk={onOk}
+        onCancel={onCancel}
+        closable={!loading}
+        allowKeyboard={!loading}
+        cancelButtonProps={{
+          disabled: loading
+        }}
+        okButtonProps={{
+          loading
+        }}
         visible={visible}
       >
         <ModalContent>

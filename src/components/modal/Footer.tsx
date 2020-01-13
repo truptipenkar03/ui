@@ -25,6 +25,11 @@ export const Footer = styled.div`
   ${({ theme }) => css`
     width: 100%;
     height: 60px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
     padding: ${theme.modalFooterPadding};
     box-sizing: border-box;
     
@@ -36,14 +41,7 @@ export const Footer = styled.div`
 
 const CancelButton = styled(Button)`
   margin-left: 16px;
-`;
-
-const DefaultFooterContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  
-  height: 100%;
+  justify-self: flex-end;
 `;
 
 export const DefaultFooter: React.FunctionComponent<FooterProps> = ({
@@ -56,7 +54,7 @@ export const DefaultFooter: React.FunctionComponent<FooterProps> = ({
 }) => {
 
   return (
-    <DefaultFooterContainer>
+    <React.Fragment>
       <Button
         onClick={onOk}
         {...okButtonProps}
@@ -70,7 +68,7 @@ export const DefaultFooter: React.FunctionComponent<FooterProps> = ({
       >
         {cancelButtonText}
       </CancelButton>
-    </DefaultFooterContainer>
+    </React.Fragment>
   );
 };
 

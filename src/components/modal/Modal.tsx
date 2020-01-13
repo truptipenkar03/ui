@@ -44,11 +44,11 @@ enum KEY_CODES {
 }
 
 export interface ModalProps {
+  /** If true, escape key will close the modal and enter key will execute `onOk` callback */
+  allowKeyboard?: boolean;
+
   /** Content to show in the Modal */
   children?: React.ReactNode;
-
-  /** classname for the Modal */
-  className?: string;
 
   /** If true, the Modal can be closed from top right corner */
   closable?: boolean;
@@ -66,13 +66,13 @@ export interface ModalProps {
   footer?: React.ReactNode;
 
   /** Function to call when Cancel or close button is clicked */
-  onCancel?: () => void;
+  onCancel: () => void;
 
   /** Text to show in okay button */
   okButtonText?: string;
 
   /** Function to call when Okay button is clicked */
-  onOk?: () => void;
+  onOk: () => void;
 
   /** Props of the cancel button that can be overwritten */
   okButtonProps?: ButtonProps;
@@ -85,7 +85,7 @@ export interface ModalProps {
 }
 
 export const Modal: React.FunctionComponent<ModalProps> = ({
-  className,
+  allowKeyboard,
   children,
   cancelButtonProps,
   cancelButtonText,
@@ -99,7 +99,6 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
   onCancel,
   visible
 }) => {
-  const [isVisible, setVisibility] = React.useState<boolean>(visible || false);
   const previousActiveElement = React.useRef<any>(null);
   const modalWrapper = React.useRef<HTMLDivElement>(null);
   const modalSentinelStart = React.useRef<HTMLDivElement>(null);
@@ -122,9 +121,8 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
     if (visible) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     }
-    setVisibility(visible);
   }, [visible]);
 
 
@@ -140,7 +138,6 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
     if (onCancel) {
       onCancel();
     }
-    setVisibility(false);
   }, [onCancel]);
 
   // handle keydown events for accessibility behaviours
@@ -153,7 +150,9 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
 
     switch(e.keyCode) {
       case KEY_CODES.ESC: {
-        handleClose();
+        if (allowKeyboard) {
+          handleClose();
+        }
         break
       }
       case KEY_CODES.TAB: {
@@ -169,11 +168,13 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
         break;
       }
       case KEY_CODES.ENTER: {
-        handleOk();
+        if (allowKeyboard) {
+          handleOk();
+        }
         break;
       }
     }
-  }, [handleOk, handleClose, modalSentinelStart, modalSentinelEnd]);
+  }, [handleOk, handleClose, modalSentinelStart, modalSentinelEnd, allowKeyboard]);
 
   // In order to support clicking the mask to close we need to stop click events on
   // the modal container from bubbling up.
@@ -197,15 +198,15 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
   return (
     <Portal>
       <AnimatePresence>
-        {isVisible &&
+        {visible &&
           <ModalRoot
-            className={`rtk-modal-root`}
+            className={'rtk-modal-root'}
             exit={{ opacity: 0 }}
             onKeyDown={handleKeyDown}
             transition={{ duration: theme.animationTimeVeryFast }}
           >
             <ModalMask
-              className={`rtk-modal-mask`}
+              className={'rtk-modal-mask'}
               key="mask"
               theme={theme}
               initial={{ opacity: 0 }}
@@ -213,7 +214,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
               transition={{ duration: theme.animationTimeVeryFast }}
             />
             <ModalWrapper
-              className={`rtk-modal-wrapper`}
+              className={'rtk-modal-wrapper'}
               role="document"
               tabIndex={-1}
               onKeyDown={handleKeyDown}
@@ -221,7 +222,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
               onClick={handleClose}
             >
               <ModalContainer
-                className={`${className} rtk-modal`}
+                className={'rtk-modal'}
                 role="dialog"
                 initial={{ y: 24, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -272,6 +273,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
 };
 
 Modal.defaultProps = {
+  allowKeyboard: true,
   visible: false,
   okButtonProps: {
     type: 'primary'
