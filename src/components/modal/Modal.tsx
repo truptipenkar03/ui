@@ -29,7 +29,6 @@ import {
 } from './Footer';
 
 import {
-  useAfterMountEffect,
   useTheme
 } from "../../hooks";
 
@@ -116,16 +115,6 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
     }
   }, [modalSentinelStart, modalWrapper, visible]);
 
-  // modifies the visibility of the modal
-  const handleVisibility = React.useCallback(() => {
-    if (visible) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  }, [visible]);
-
-
   // handle the ok click
   const handleOk = React.useCallback(() => {
      if (onOk) {
@@ -193,7 +182,13 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
   // is in the right spot
   React.useEffect(checkFocus);
 
-  useAfterMountEffect(handleVisibility, [visible]);
+  React.useEffect(() => {
+    if (visible) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [visible]);
 
   return (
     <Portal>

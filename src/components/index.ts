@@ -4,6 +4,7 @@ import { Collapse } from './collapse/Collapse';
 import { Floater } from './floater/Floater';
 import * as Icon from './icons';
 import { Input } from "./input/Input";
+import { Modal } from "./modal/Modal";
 import { Panel } from "./panel/Panel";
 import { Portal } from "./portal/Portal";
 
@@ -14,6 +15,7 @@ export {
   Floater,
   Icon,
   Input,
+  Modal,
   Panel,
   Portal
 };
