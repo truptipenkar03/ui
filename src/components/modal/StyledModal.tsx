@@ -63,6 +63,7 @@ export const ModalContainer = styled(motion.div)`
       height: 100%;
       width: 100%;
       
+      min-width: 0;
       border-radius: 0;
     }
   `};
