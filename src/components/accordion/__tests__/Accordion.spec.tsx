@@ -6,7 +6,7 @@ import {
 
 import {
   Accordion
-} from '../Accordion';
+} from '../..';
 
 describe('Accordion', () => {
   it('renders all children', () => {

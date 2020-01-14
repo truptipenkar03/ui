@@ -10,13 +10,13 @@ import {
 
 import {
   useTheme
-} from '../../hooks/useTheme';
+} from '../../hooks';
 
 export interface PanelProps {
-  /** Content to show in the paper */
+  /** Content to show in the panel */
   children?: React.ReactNode;
 
-  /** classname for the paper */
+  /** classname for the panel */
   className?: string;
 
   /** Function to handle click event */

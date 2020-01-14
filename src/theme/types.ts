@@ -69,6 +69,7 @@ export interface GlobalTheme {
   buttonDangerActiveColor: string;
 
   // ---- Ghost Button ---- //
+  buttonGhostBackground: string;
   buttonGhostBorder: string;
 
   // ----- Link Button ---- //
@@ -135,6 +136,31 @@ export interface GlobalTheme {
   inputPlaceholderColor: string;
   inputPrefixLeft: string;
   inputSuffixRight: string;
+
+  // ---- Media Screen ---- //
+  mediaScreenSmall: string;
+  mediaScreenMedium: string;
+  mediaScreenLarge: string;
+  mediaScreenVeryLarge: string;
+
+  // ---- Modal ---- //
+  modalBackground: string;
+  modalBorder: string;
+  modalBorderColor: string;
+  modalBorderRadius: string;
+  modalBoxShadow: string;
+  modalContentPadding: string;
+  modalFooterBackground: string;
+  modalFooterHeight: string;
+  modalFooterPadding: string;
+  modalHeaderBackground: string;
+  modalHeaderColor: string;
+  modalHeaderMarginTop: string;
+  modalHeaderPadding: string;
+  modalMaskBackground: string;
+  modalMinHeight: string;
+  modalMinWidth: string;
+
 
   colors: Colors;
 }

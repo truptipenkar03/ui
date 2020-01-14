@@ -27,8 +27,8 @@ export const colors: Colors = {
   secondaryRGB: '35,49,110',
   secondaryBackground: '#f1f1f1',
   secondaryBackgroundRGB: '241,241,241',
-  lightFontColor: '#EFEFEF',
-  lightFontColorRGB: '239, 239, 239',
+  lightFontColor: '#FFFFFF',
+  lightFontColorRGB: '255, 255, 255',
   white: '#FFFFFF',
   whiteRGB: '255,255,255',
 };

@@ -64,7 +64,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
       border: ${theme.buttonPrimaryBorder};  
       border-color: ${theme.buttonPrimaryBorderColor};
       
-      &:hover {
+      &:hover, &:focus {
         background: ${theme.buttonPrimaryHoverBackground};
         color: ${theme.buttonPrimaryHoverColor};
       }
@@ -75,12 +75,13 @@ export const StyledButton = styled.button<StyledButtonProps>`
       }
       
       ${customProps.ghost && css`
-        background: transparent;
+        background: ${theme.buttonGhostBackground};
         border: ${theme.buttonGhostBorder};
         border-color: ${theme.buttonPrimaryBackground};
         color: ${theme.buttonPrimaryBackground};
         
-        &:hover {
+        &:hover, &:focus {
+          background: ${theme.buttonPrimaryBackground};
           border: ${theme.buttonGhostBorder};
           border-color: transparent;
         }
@@ -99,7 +100,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
       border-color: ${theme.buttonDangerBorderColor};
       color: ${theme.buttonDangerColor};
 
-      &:hover {
+      &:hover, &:focus {
         background: ${theme.buttonDangerHoverBackground};
         color: ${theme.buttonDangerHoverColor};
       }
@@ -110,12 +111,13 @@ export const StyledButton = styled.button<StyledButtonProps>`
       }
       
       ${customProps.ghost && css`
-        background: transparent;
+        background: ${theme.buttonGhostBackground};
         border: ${theme.buttonGhostBorder};
         border-color: ${theme.buttonDangerBackground};
         color: ${theme.buttonDangerBackground};
         
-        &:hover {
+        &:hover, &:focus {
+          background: ${theme.buttonDangerBackground};
           border: ${theme.buttonGhostBorder};
           border-color: transparent;
         }
@@ -124,7 +126,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
           border: ${theme.buttonGhostBorder};
           border-color: transparent;
         }
-      `}
+      `};
       
     `};
     
@@ -135,7 +137,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
       border-color: ${theme.buttonLinkBorderColor};
       color: ${theme.buttonLinkColor};
 
-      &:hover {
+      &:hover, &:focus {
         background: ${theme.buttonLinkHoverBackground};
         color: ${theme.buttonLinkHoverColor};
         text-decoration: underline;
@@ -179,7 +181,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
     
     span {
       pointer-events: none;
-    }
+    }   
 
     &::-moz-focus-inner {
       border: none;

@@ -47,6 +47,7 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   buttonDangerActiveColor: themeColors.white,
 
   // ---- Ghost Button ---- //
+  buttonGhostBackground: themeColors.primaryBackground,
   buttonGhostBorder: '1px solid',
 
   // ----- Link Button ---- //
@@ -112,6 +113,30 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   inputPlaceholderColor: themeColors.placeholderDarkFontColor,
   inputPrefixLeft: '10px',
   inputSuffixRight: '10px',
+
+  // ---- Media Screen ---- //
+  mediaScreenSmall: '600px',
+  mediaScreenMedium: '748px',
+  mediaScreenLarge: '992px',
+  mediaScreenVeryLarge: '1200px',
+
+  // ---- Modal ---- //
+  modalBackground: themeColors.primaryBackground,
+  modalBorder: 'none',
+  modalBorderColor: 'transparent',
+  modalBorderRadius: '4px',
+  modalBoxShadow: `0px 4px 12px rgba(${themeColors.blackRGB}, 0.15)`,
+  modalContentPadding: '32px',
+  modalFooterBackground: themeColors.secondaryBackground,
+  modalFooterHeight: '60px',
+  modalFooterPadding: '0 32px',
+  modalHeaderBackground: 'transparent',
+  modalHeaderColor: themeColors.primary,
+  modalHeaderMarginTop: '24px',
+  modalHeaderPadding: '0 32px',
+  modalMaskBackground: `rgba(${themeColors.blackRGB}, 0.45)`,
+  modalMinHeight: '200px',
+  modalMinWidth: '520px',
 
   colors: {
     ...themeColors
