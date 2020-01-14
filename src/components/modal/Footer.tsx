@@ -38,7 +38,6 @@ export const Footer = styled.div`
 
 const CancelButton = styled(Button)`
   margin-left: 16px;
-  align-self: end;
 `;
 
 export const DefaultFooter: React.FunctionComponent<FooterProps> = ({

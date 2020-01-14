@@ -34,7 +34,7 @@ import {
 
 import {
   ButtonProps
-} from "../button/Button";
+} from "..";
 
 enum KEY_CODES {
   'ESC' = 27,
