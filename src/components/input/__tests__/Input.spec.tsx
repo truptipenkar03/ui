@@ -1,12 +1,13 @@
 import * as React from 'react';
 
 import {
-  mount, shallow
+  mount,
+  shallow
 } from "enzyme";
 
 import {
   Input
-} from '../Input';
+} from '../..';
 
 describe('Input', () => {
   it('renders input', () => {

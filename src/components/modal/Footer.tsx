@@ -5,12 +5,9 @@ import styled, {
 } from 'styled-components';
 
 import {
-  Button
-} from "..";
-
-import {
+  Button,
   ButtonProps
-} from "../button/Button";
+} from "..";
 
 interface FooterProps {
   cancelButtonProps?: ButtonProps;
@@ -41,7 +38,7 @@ export const Footer = styled.div`
 
 const CancelButton = styled(Button)`
   margin-left: 16px;
-  justify-self: flex-end;
+  align-self: end;
 `;
 
 export const DefaultFooter: React.FunctionComponent<FooterProps> = ({

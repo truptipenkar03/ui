@@ -28,7 +28,7 @@ export default {
 };
 
 export const simple = () => {
-  const [visible, setVisibility] = React.useState(true);
+  const [visible, setVisibility] = React.useState(false);
 
   const onCancel = React.useCallback(() => {
     setVisibility(false);

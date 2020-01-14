@@ -1,17 +1,14 @@
 import * as React from 'react';
 
 import {
-  mount, shallow
+  mount,
+  shallow
 } from 'enzyme';
 
 import {
   Modal,
   ModalProps
-} from '../Modal';
-
-import {
-  ButtonProps
-} from "../../button/Button";
+} from '../..';
 
 describe('Modal', () => {
   const defaultProps: ModalProps = {
@@ -62,7 +59,7 @@ describe('Modal', () => {
   });
 
   it('sets the cancelButtonProps prop', () => {
-    const buttonProps: ButtonProps = {
+    const buttonProps: any = {
       shape: 'circle'
     };
 
@@ -119,7 +116,7 @@ describe('Modal', () => {
   });
 
   it('sets the okButtonProps prop', () => {
-    const buttonProps: ButtonProps = {
+    const buttonProps: any = {
       shape: 'circle'
     };
 

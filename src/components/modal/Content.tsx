@@ -9,8 +9,9 @@ const Container = styled.div`
      padding: ${theme.modalContentPadding};
      
      flex: 1;
-  `}
+  `};
 `;
+
 export const Content: React.FunctionComponent<any> = ({
   children
 }) => {

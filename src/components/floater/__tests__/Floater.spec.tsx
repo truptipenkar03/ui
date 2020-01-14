@@ -11,7 +11,7 @@ import {
 
 import {
   Floater
-} from '../Floater';
+} from '../..';
 
 describe('Floater', () => {
 
