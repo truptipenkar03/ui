@@ -14,6 +14,7 @@ const makeExternalPredicate = externalArr => {
 
 const typescriptConfig = {
   cacheRoot: "tmp/.rpt2_cache",
+  tsconfig: './tsconfig.rollup.json',
   tsconfigOverride: {
     compilerOptions: {
       declaration: false
@@ -32,7 +33,7 @@ const external = makeExternalPredicate([
 
 const umd = Object.assign({}, config, {
   output: {
-    file: `lib/rtkwlf-ui.dev.js`,
+    file: `dist/rtkwlf-ui.dev.js`,
     format: "umd",
     name: "@rtkwlf-ui",
     exports: "named",
@@ -56,7 +57,7 @@ const umd = Object.assign({}, config, {
 
 const umdProd = Object.assign({}, umd, {
   output: Object.assign({}, umd.output, {
-    file: `lib/rtkwlf-ui.js`,
+    file: `dist/rtkwlf-ui.js`,
   }),
   plugins: [
     resolve(),
@@ -68,7 +69,7 @@ const umdProd = Object.assign({}, umd, {
 
 const cjs = Object.assign({}, config, {
   output: {
-    file: `lib/rtkwlf-ui.cjs.js`,
+    file: `dist/rtkwlf-ui.cjs.js`,
     format: "cjs",
     exports: "named",
   },
@@ -78,7 +79,7 @@ const cjs = Object.assign({}, config, {
 
 const es = Object.assign({}, config, {
   output: {
-    file: `lib/rtkwlf-ui.es.js`,
+    file: `dist/rtkwlf-ui.es.js`,
     format: "es",
     exports: "named",
   },

@@ -1,11 +1,21 @@
 export {
   Accordion,
-  AccordionProps
+  AccordionProps,
+  AccordionFunctionComponent
 } from './components/accordion/Accordion';
 
 export {
+  ItemGapType,
+  ItemKeyType,
+  ExpandedItemsType
+} from './components/accordion/types';
+
+export {
   Button,
-  ButtonProps
+  ButtonProps,
+  ButtonType,
+  ShapeType,
+  SizeType
 } from './components/button/Button';
 
 export {
@@ -24,7 +34,10 @@ export {
 
 export {
   Input,
-  InputProps
+  InputProps,
+  BorderType,
+  InputSize,
+  ValidationStatus
 } from './components/input/Input';
 
 export {
@@ -48,11 +61,20 @@ export {
 } from './hooks';
 
 export {
-  getRelativePosition
+  getRelativePosition,
 } from './utils';
+
+export {
+  Position
+} from './utils/getRelativePosition';
 
 export {
   createTheme
 } from './theme';
+
+export {
+  GlobalTheme,
+  Colors
+} from './theme/types';
 
 export * from './styled';

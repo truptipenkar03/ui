@@ -9,11 +9,17 @@
     "apiJsonFilePath": "<projectFolder>/dist/<unscopedPackageName>.api.json"
   },
   "dtsRollup": {
-    "enabled": true
+    "enabled": true,
+    "untrimmedFilePath": "<projectFolder>/dist/rtkwlf-ui.d.ts"
   },
   "messages": {
     "tsdocMessageReporting": {
       "tsdoc-undefined-tag": {
+        "logLevel": "none"
+      }
+    },
+    "extractorMessageReporting": {
+      "ae-missing-release-tag": {
         "logLevel": "none"
       }
     }
