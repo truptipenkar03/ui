@@ -1,0 +1,1 @@
+{"code":"import { useAfterMountEffect } from \"./useAfterMountEffect\";\r\nimport { useTheme } from \"./useTheme\";\r\nexport { useAfterMountEffect, useTheme };\r\n","references":["/Users/adam.aho/wolf/ui/src/hooks/useAfterMountEffect.ts","/Users/adam.aho/wolf/ui/src/hooks/useTheme.ts"]}
