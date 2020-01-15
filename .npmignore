@@ -14,5 +14,7 @@ coverage
 .npmrc
 *.png
 docs
+temp
 types
 tmp
+public

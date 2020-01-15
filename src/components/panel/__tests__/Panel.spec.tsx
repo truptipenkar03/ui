@@ -6,7 +6,7 @@ import {
 
 import {
   Panel
-} from '../..';
+} from '../Panel';
 
 describe('Panel', () => {
   it('renders', () => {

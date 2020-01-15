@@ -7,7 +7,7 @@ import {
 
 import {
   Input
-} from '../..';
+} from '../Input';
 
 describe('Input', () => {
   it('renders input', () => {
