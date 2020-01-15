@@ -8,4 +8,6 @@
 /src/**/*.stories.tsx
 /src/**/*.components.tsx
 /src/components/icons/*
+rollup.config.js
+api-extractor.json
 *.mdx

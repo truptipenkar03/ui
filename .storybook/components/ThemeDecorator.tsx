@@ -10,7 +10,7 @@ import {
 
 import {
   Button
-} from "../../src/components";
+} from "../../src/components/button/Button";
 
 import {
   createTheme,

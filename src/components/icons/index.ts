@@ -1,6 +1,15 @@
-export { default as CheckSolid } from './CheckSolid'
-export { default as CircleNotch } from './CircleNotch'
-export { default as Loading } from './Loading';
-export { default as MinusSolid } from './MinusSolid'
-export { default as PlusSolid } from './PlusSolid'
-export { default as TimesSolid } from './TimesSolid'
+import CheckSolid from './CheckSolid'
+import CircleNotch  from './CircleNotch'
+import Loading  from './Loading';
+import MinusSolid  from './MinusSolid'
+import PlusSolid  from './PlusSolid'
+import TimesSolid  from './TimesSolid'
+
+export const Icon = {
+  CheckSolid,
+  CircleNotch,
+  Loading,
+  MinusSolid,
+  PlusSolid,
+  TimesSolid
+};

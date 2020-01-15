@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "declaration": true,
+    "declarationDir": "types",
+    "rootDir": "src",
+    "outDir": "lib",
+    "strict": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "types": [],
+    "lib": ["es2017", "dom"]
+  },
+  "exclude": [
+    "node_modules",
+    "src/**/*.stories.tsx",
+    "src/**/story.components.tsx",
+    "src/**/*.spec.tsx",
+    "src/**/*.spec.ts"
+  ]
+}

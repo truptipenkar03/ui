@@ -1,6 +1,9 @@
 node_modules
 build
 lib
+temp
+types
+dist
 yarn-error.log
 coverage
 .idea
