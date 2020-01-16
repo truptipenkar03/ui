@@ -9,7 +9,9 @@
     "rootDir": "src",
     "outDir": "lib",
     "strict": true,
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
+    "esModuleInterop": false,
     "noImplicitAny": false,
     "types": [],
     "lib": ["es2017", "dom"]
