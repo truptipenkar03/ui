@@ -35,12 +35,13 @@ const umd = Object.assign({}, config, {
   output: {
     file: `dist/rtkwlf-ui.dev.js`,
     format: "umd",
-    name: "@rtkwlf-ui",
+    name: "ui",
     exports: "named",
     globals: {
       react: "React",
       'react-dom': 'ReactDOM',
-      'styled-components': 'styled'
+      'styled-components': 'styled',
+      'framer-motion': 'framer-motion'
     },
   },
   external: [
@@ -57,19 +58,18 @@ const umd = Object.assign({}, config, {
 
 const umdProd = Object.assign({}, umd, {
   output: Object.assign({}, umd.output, {
-    file: `dist/rtkwlf-ui.js`,
+    file: `dist/ui-umd.js`,
   }),
   plugins: [
     resolve(),
     commonjs(),
-    typescript(typescriptConfig),
-    terser(),
+    typescript(typescriptConfig)
   ],
 });
 
 const cjs = Object.assign({}, config, {
   output: {
-    file: `dist/rtkwlf-ui.cjs.js`,
+    file: `dist/ui.cjs.js`,
     format: "cjs",
     exports: "named",
   },
@@ -79,7 +79,7 @@ const cjs = Object.assign({}, config, {
 
 const es = Object.assign({}, config, {
   output: {
-    file: `dist/rtkwlf-ui.es.js`,
+    file: `dist/ui.es.js`,
     format: "es",
     exports: "named",
   },
