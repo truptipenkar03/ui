@@ -20,6 +20,7 @@ const Container = styled.div`
   ${({ theme }) => css`
     border-radius: 4px;
     padding: 20px;
+    
     background: ${theme.colors.secondaryBackground};
   `};
 `;

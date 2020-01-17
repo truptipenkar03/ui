@@ -214,6 +214,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
               tabIndex={-1}
               onKeyDown={handleKeyDown}
               ref={modalWrapper}
+
               onClick={handleClose}
             >
               <ModalContainer
@@ -222,6 +223,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
                 initial={{ y: 24, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: theme.animationTimeVeryFast }}
+                theme={theme}
                 onClick={handleWrapClick}
               >
                 <ModalSentinel
@@ -240,7 +242,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
                 <Content theme={theme}>
                   {children}
                 </Content>
-                <Footer>
+                <Footer theme={theme}>
                   {footer ?
                     footer :
                     <DefaultFooter
@@ -250,6 +252,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
                       okButtonText={okButtonText}
                       onCancel={handleClose}
                       onOk={handleOk}
+                      theme={theme}
                     />
                   }
                 </Footer>

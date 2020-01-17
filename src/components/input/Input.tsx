@@ -10,7 +10,8 @@ import {
   Container,
   Label,
   Status,
-  StyledInput, FeedbackMessage
+  StyledInput,
+  FeedbackMessage
 } from "./StyledInput";
 
 import {
@@ -181,7 +182,7 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
         validationStatus={validationStatus}
       />
       {hasFeedbackMessage &&
-        <FeedbackMessage>
+        <FeedbackMessage theme={theme}>
           <AnimatePresence>
             {(validationMessage && validationStatus) &&
               <motion.div
