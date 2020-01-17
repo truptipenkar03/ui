@@ -5,6 +5,10 @@ export {
 } from './components/accordion/Accordion';
 
 export {
+  AccordionItemProps
+} from './components/accordion/AccordionItem';
+
+export {
   ItemGapType,
   ItemKeyType,
   ExpandedItemsType
