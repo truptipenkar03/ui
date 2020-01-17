@@ -30,6 +30,8 @@ const Container = styled.div`
     border: ${theme.panelBorder};
     border-color: ${theme.panelBorderColor};
     border-radius: ${theme.panelBorderRadius};
+    padding: ${theme.panelPadding};
+    margin: ${theme.panelMargin};
     
     transition: all ${theme.animationTimeFast}s;
     
