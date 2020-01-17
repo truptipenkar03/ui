@@ -9,6 +9,10 @@ import {
   ButtonProps
 } from "../button/Button";
 
+import {
+  GlobalTheme
+} from "../../theme/types";
+
 interface FooterProps {
   cancelButtonProps?: ButtonProps;
   cancelButtonText?: React.ReactNode;
@@ -16,6 +20,7 @@ interface FooterProps {
   onCancel?: () => void;
   okButtonText?: React.ReactNode;
   onOk?: () => void;
+  theme: GlobalTheme;
 }
 
 export const Footer = styled.div`

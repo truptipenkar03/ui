@@ -4,20 +4,10 @@ import styled, {
   css
 } from 'styled-components';
 
-const Container = styled.div`
+export const Content = styled.div`
   ${({ theme }) => css`
      padding: ${theme.modalContentPadding};
      
      flex: 1;
   `};
 `;
-
-export const Content: React.FunctionComponent<any> = ({
-  children
-}) => {
-  return (
-    <Container>
-      {children}
-    </Container>
-  );
-};

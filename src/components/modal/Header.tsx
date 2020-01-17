@@ -72,21 +72,26 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
   children,
   closable,
   closeIcon,
-  onCancel
+  onCancel,
+  theme
 }) => {
   return (
-    <Container className="rtk-modal-header">
+    <Container
+      theme={theme}
+      className="rtk-modal-header"
+    >
       <Title>
         {children}
       </Title>
       {closable &&
         <Close
           onClick={onCancel}
+          theme={theme}
           tabIndex={0}
         >
           {closeIcon ?
             closeIcon :
-            <Icon.TimesSolid/>
+            <Icon.TimesSolid />
           }
         </Close>
       }
