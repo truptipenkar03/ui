@@ -41,7 +41,6 @@ export const ContentContainer: React.FunctionComponent<any> = ({
       key="content"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onClick={() => console.log('clicked')}
       style={{
         overflow: 'hidden'
       }}
