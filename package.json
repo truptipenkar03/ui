@@ -1,20 +1,18 @@
 {
   "name": "@rtkwlf/ui",
-  "version": "0.0.15-beta.4",
+  "version": "0.0.15-beta.5",
   "main": "dist/ui.cjs.js",
   "module": "dist/ui.es.js",
   "types": "dist/ui.d.ts",
   "license": "MIT",
   "scripts": {
     "svg": "npx @svgr/cli --icon --keep-existing --ext tsx -d src/components/icons assets/icons/",
-    "build": "rm -rf lib/ && npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:ts": "tsc -p ./tsconfig.rollup.json --emitDeclarationOnly --removeComments false && api-extractor run --local",
-    "build:js": "BABEL_ENV=build babel ./src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
     "storybook": "start-storybook -p 9000 --quiet -s public",
     "storybook:build": "build-storybook -o build/storybook/static -s public",
     "storybook:docs": "build-storybook --docs -o docs -s public",
-    "build:rollup": "rm -rf dist/ && rm -rf types/ && npm run rollup && npm run build:ts",
+    "build": "rm -rf dist/ && rm -rf types/ && npm run rollup && npm run build:ts",
     "test": "jest",
     "rollup": "rollup -c",
     "test:coverage": "jest --coverage",
@@ -23,6 +21,7 @@
     "lint:fix": "eslint '**/*.{ts,tsx}' --fix"
   },
   "dependencies": {
+    "@rollup/plugin-commonjs": "11.0.1",
     "framer-motion": "^1.6.12",
     "styled-components": "5.0.0-rc.2"
   },
@@ -82,12 +81,8 @@
     "react-dom": "16.12.0",
     "react-test-renderer": "^16.9.0",
     "rollup": "1.29.0",
-    "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-commonjs": "10.1.0",
-    "rollup-plugin-node-resolve": "5.2.0",
-    "rollup-plugin-terser": "5.2.0",
     "rollup-plugin-typescript2": "0.25.3",
-    "rollup-plugin-uglify": "6.0.4",
     "ts-loader": "6.2.1",
     "typescript": "^3.6.4"
   },
