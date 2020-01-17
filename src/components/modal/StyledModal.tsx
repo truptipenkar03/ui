@@ -8,9 +8,17 @@ import {
   motion
 } from 'framer-motion';
 
+import {
+  GlobalTheme
+} from "../../theme/types";
+
+interface StyledModalProps {
+  theme: GlobalTheme;
+}
+
 export const ModalRoot = styled(motion.div)``;
 
-export const ModalMask = styled(motion.div)`
+export const ModalMask = styled(motion.div)<StyledModalProps>`
   ${({ theme }) => css`
     position: fixed;
     top: 0;
@@ -27,7 +35,7 @@ export const ModalMask = styled(motion.div)`
   `};
 `;
 
-export const ModalWrapper = styled.div`
+export const ModalWrapper = styled.div<StyledModalProps>`
   ${() => css`
     position: fixed;
     top: 0;
@@ -43,7 +51,7 @@ export const ModalWrapper = styled.div`
   `};
 `;
 
-export const ModalContainer = styled(motion.div)`
+export const ModalContainer = styled(motion.div)<StyledModalProps>`
   ${({ theme }) => css`
     display: flex;
     flex-direction: column;
@@ -69,7 +77,7 @@ export const ModalContainer = styled(motion.div)`
   `};
 `;
 
-export const ModalSentinel = styled.div`
+export const ModalSentinel = styled.div<StyledModalProps>`
   width: 0;
   height: 0;
   overflow: hidden;
