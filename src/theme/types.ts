@@ -105,6 +105,8 @@ export interface GlobalTheme {
   panelBorder: string;
   panelBorderColor: string;
   panelBorderRadius: string;
+  panelPadding: string;
+  panelMargin: string;
   panelActiveBoxShadow: string;
   panelHoverBoxShadow: string;
 
