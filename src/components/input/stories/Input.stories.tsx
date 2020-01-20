@@ -14,7 +14,7 @@ import mdx from './Input.mdx';
 
 import {
   Button
-} from "../..";
+} from "../../button/Button";
 
 const ButtonContainer = styled.div`
   display: flex;

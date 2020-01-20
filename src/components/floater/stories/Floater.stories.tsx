@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import {
   Button
-} from '../..';
+} from '../../button/Button';
 
 import {
   Floater

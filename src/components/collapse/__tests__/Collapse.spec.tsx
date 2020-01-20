@@ -7,7 +7,7 @@ import {
 
 import {
   Collapse
-} from '../..';
+} from '../Collapse';
 
 import {
   act

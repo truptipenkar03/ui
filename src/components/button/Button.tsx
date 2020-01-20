@@ -10,15 +10,15 @@ import {
 
 import {
   Icon
-} from '..';
-
-import {
-  MouseEventHandler
-} from "react";
+} from "../icons";
 
 import {
   useTheme
 } from "../../hooks";
+
+import {
+  MouseEventHandler
+} from "react";
 
 export type ButtonType = 'primary' | 'danger' | 'link';
 export type ShapeType = 'circle' | 'default';

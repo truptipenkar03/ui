@@ -5,8 +5,16 @@ import {
 } from 'framer-motion';
 
 import {
+  ButtonProps
+} from '../button/Button';
+
+import {
   Portal
-} from "..";
+} from '../portal/Portal';
+
+import {
+  useTheme
+} from '../../hooks';
 
 import {
   ModalRoot,
@@ -27,14 +35,6 @@ import {
   DefaultFooter,
   Footer
 } from './Footer';
-
-import {
-  useTheme
-} from "../../hooks";
-
-import {
-  ButtonProps
-} from "..";
 
 enum KEY_CODES {
   'ESC' = 27,

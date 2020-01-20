@@ -6,7 +6,7 @@ import {
 
 import {
   Portal
-} from '../..';
+} from '../Portal';
 
 describe('Portal', () => {
   it('renders when visible', () => {

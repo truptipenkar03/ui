@@ -7,7 +7,7 @@ import styled, {
 import {
   Button,
   ButtonProps
-} from "..";
+} from "../button/Button";
 
 import {
   GlobalTheme

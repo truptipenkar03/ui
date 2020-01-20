@@ -14,3 +14,12 @@ coverage
 .npmrc
 *.png
 docs
+temp
+types
+tmp
+public
+rollup.config.js
+tsconfig.json
+tsconfig.rollup.json
+package-lock.json
+api-extractor.json

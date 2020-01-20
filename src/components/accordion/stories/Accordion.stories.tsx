@@ -10,7 +10,7 @@ import {
 import {
   Button,
   Input
-} from "../..";
+} from "../../..";
 
 // @ts-ignore
 import mdx from './Accordion.mdx';

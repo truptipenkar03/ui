@@ -11,7 +11,7 @@ import styled, {
 
 import {
   Icon
-} from "..";
+} from "../icons";
 
 import {
   GlobalTheme

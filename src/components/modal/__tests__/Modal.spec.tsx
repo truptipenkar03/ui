@@ -8,7 +8,7 @@ import {
 import {
   Modal,
   ModalProps
-} from '../..';
+} from '../Modal';
 
 describe('Modal', () => {
   const defaultProps: ModalProps = {
