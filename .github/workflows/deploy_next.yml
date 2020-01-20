@@ -48,10 +48,6 @@ jobs:
           git config --local user.name "GitHub Action"
       - name: Create tag
         run: npm version prerelease --preid beta
-      - name: Commit tag
-        run: |
-               git add -A
-               git commit -m "Automated Tag"
       - name: Push Tag
         uses: ad-m/github-push-action@master
         with:
