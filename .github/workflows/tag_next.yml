@@ -1,4 +1,4 @@
-name: Release Next
+name: Create Beta Tag
 on:
   push:
     branches:
@@ -27,25 +27,4 @@ jobs:
           branch: 'next'
           tags: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-  release:
-    name: Release
-    needs: tag
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '10.16'
-          scope: '@rtkwlf'
-      - name: Install
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Configure .npmrc for publish
-        run: 'echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc'
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-      - name: Publish to npm
-        run: npm publish --access public --tag next
 
