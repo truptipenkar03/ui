@@ -1,4 +1,4 @@
-name: Release Next
+name: Deploy Next
 on:
   push:
     tags:
@@ -6,8 +6,8 @@ on:
       - 'v*-beta*'
 
 jobs:
-  release:
-    name: Release
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
