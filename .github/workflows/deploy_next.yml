@@ -1,13 +1,40 @@
 name: Release Next
+#on:
+#  push:
+#    tags:
+#      - '!v*'
+#      - 'v*-beta*'
+#
+#jobs:
+#  release:
+#    name: Release
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v1
+#      - uses: actions/setup-node@v1
+#        with:
+#          node-version: '10.16'
+#          scope: '@rtkwlf'
+#      - name: Install
+#        run: npm install
+#      - name: Build
+#        run: npm run build
+#      - name: Configure .npmrc for publish
+#        run: 'echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc'
+#        env:
+#          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+#      - name: Publish to npm
+#        run: npm publish --access public --tag next
+
 on:
   push:
-    tags:
-      - '!v*'
-      - 'v*-beta*'
+    branches:
+      - next
+      - '!master'
 
 jobs:
   release:
-    name: Release
+    name: Create Tag
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -15,13 +42,19 @@ jobs:
         with:
           node-version: '10.16'
           scope: '@rtkwlf'
-      - name: Install
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Configure .npmrc for publish
-        run: 'echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc'
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-      - name: Publish to npm
-        run: npm publish --access public --tag next
+      - name: Create tag
+        run: npm version prerelease --preid beta
+      - name: Commit tag
+        run: |
+               git config --local user.email "action@github.com"
+               git config --local user.name "GitHub Action"
+               git add -A
+               git commit -m "Automated Tag"
+      - name: Push Tag
+        uses: ad-m/github-push-action@master
+        with:
+          branch: 'next'
+          tags: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+
