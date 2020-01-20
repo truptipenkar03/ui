@@ -42,12 +42,14 @@ jobs:
         with:
           node-version: '10.16'
           scope: '@rtkwlf'
+      - name: Configure Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
       - name: Create tag
         run: npm version prerelease --preid beta
       - name: Commit tag
         run: |
-               git config --local user.email "action@github.com"
-               git config --local user.name "GitHub Action"
                git add -A
                git commit -m "Automated Tag"
       - name: Push Tag
