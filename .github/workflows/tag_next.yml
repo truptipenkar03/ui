@@ -18,5 +18,5 @@ jobs:
       - name: Create tag
         run: npm version prerelease --preid beta
       - name: Push Tag
-        run: git push --follow-tags
+        run: git push origin next --follow-tags
 
