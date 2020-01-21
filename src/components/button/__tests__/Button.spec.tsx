@@ -60,6 +60,33 @@ describe('Button', () => {
     expect(wrapper.find('StyledButton').prop('customProps').ghost).toBe(true);
   });
 
+  it('renders with loading and ghost props', () => {
+    const wrapper = shallow(
+      <Button loading ghost>Test Button</Button>
+    );
+
+    // @ts-ignore
+    expect(wrapper.find('Icon.Loading'));
+  });
+
+  it('renders with danger type and loading prop', () => {
+    const wrapper = shallow(
+      <Button type='danger' loading>Test Button</Button>
+    );
+
+    // @ts-ignore
+    expect(wrapper.find('Icon.loading'));
+  });
+
+  it('renders with danger type, loading and ghost props', () => {
+    const wrapper = shallow(
+      <Button type='danger' loading ghost>Test Button</Button>
+    );
+
+    // @ts-ignore
+    expect(wrapper.find('Icon.Loading'));
+  });
+
   it('sets the shape prop', () => {
     const wrapper = shallow(
       <Button shape={'circle'}>Test Button</Button>
