@@ -230,7 +230,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
                   tabIndex={0}
                   aria-hidden="true"
                 />
-                <ModalBody>
+                <ModalBody className={'rtk-modal-body'}>
                   <Header
                     closable={closable}
                     closeIcon={closeIcon}
