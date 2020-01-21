@@ -7,7 +7,7 @@ import {
 
 import {
   Button
-} from '../..';
+} from '../../button/Button';
 
 // @ts-ignore
 import mdx from './Portal.mdx';

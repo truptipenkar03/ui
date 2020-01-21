@@ -25,11 +25,12 @@ export interface PanelProps {
 
 const Container = styled.div`
   ${({ onClick, theme }) => css`
-    width: 100%;
     background: ${theme.panelBackground};
     border: ${theme.panelBorder};
     border-color: ${theme.panelBorderColor};
     border-radius: ${theme.panelBorderRadius};
+    padding: ${theme.panelPadding};
+    margin: ${theme.panelMargin};
     
     transition: all ${theme.animationTimeFast}s;
     

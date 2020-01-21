@@ -2,9 +2,12 @@ import * as React from 'react';
 import styled from "styled-components";
 
 import {
-  Button,
+  Button
+} from '../../button/Button';
+
+import {
   Input
-} from '../..';
+} from '../../input/Input';
 
 // @ts-ignore
 import mdx from './Modal.mdx';

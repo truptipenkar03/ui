@@ -1,7 +1,3 @@
-import {
-  getRelativePosition
-} from "./getRelativePosition";
-
 export {
   getRelativePosition
-};
+} from "./getRelativePosition";

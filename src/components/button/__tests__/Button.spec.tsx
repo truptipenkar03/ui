@@ -7,7 +7,7 @@ import {
 
 import {
   Button
-} from '../..';
+} from '../Button';
 
 describe('Button', () => {
   it('renders without children', () => {

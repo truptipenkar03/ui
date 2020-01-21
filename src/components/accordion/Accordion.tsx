@@ -11,6 +11,7 @@ import {
 } from './context';
 
 import {
+  ExpandedItemsType,
   ItemGapType,
   ItemKeyType
 } from "./types";
@@ -30,7 +31,7 @@ export interface AccordionProps {
   classic?: boolean;
 
   /** Determines which collapses should be expanded on initial render */
-  defaultExpandedItems?: (string|number)[];
+  defaultExpandedItems?: ExpandedItemsType;
 
   /** Vertical gap between items */
   itemGap?: ItemGapType;
@@ -39,7 +40,7 @@ export interface AccordionProps {
   onChange?: (key: ItemKeyType) => void;
 
   /** Determines which collapses should be expanded */
-  expandedItems?: (string|number)[];
+  expandedItems?: ExpandedItemsType;
 }
 
 const Container = styled.div``;
@@ -53,7 +54,7 @@ export const Accordion: AccordionFunctionComponent<AccordionProps> = ({
   onChange,
   expandedItems: customExpandedItems
 }) => {
-  const [expandedItems, setExpandedItems] = React.useState<(string|number)[]>(defaultExpandedItems || []);
+  const [expandedItems, setExpandedItems] = React.useState<ExpandedItemsType>(defaultExpandedItems || []);
 
   const onCollapseChange = React.useCallback((key) => {
     // if there is no external control of items

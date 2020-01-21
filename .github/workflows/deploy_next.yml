@@ -1,9 +1,9 @@
-name: Release
+name: Release Next
 on:
   push:
     tags:
-      - v*
-      - '!v*-beta*'
+      - '!v*'
+      - 'v*-beta*'
 
 jobs:
   release:
@@ -24,4 +24,4 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
       - name: Publish to npm
-        run: npm publish --access public
+        run: npm publish --access public --tag next

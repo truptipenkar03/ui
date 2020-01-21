@@ -9,7 +9,7 @@ import {
 
 import {
   Portal
-} from '..';
+} from '../portal/Portal';
 
 import {
   Position,
