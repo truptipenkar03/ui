@@ -83,7 +83,14 @@ export interface ModalProps {
   visible: boolean;
 }
 
-export const Modal: React.FunctionComponent<ModalProps> = ({
+function onPropsChange(prevProps, props) {
+  console.log(prevProps);
+  console.log(props);
+
+  return false;
+}
+
+export const Modal: React.FunctionComponent<ModalProps> = React.memo(({
   allowKeyboard,
   children,
   cancelButtonProps,
@@ -96,7 +103,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
   okButtonText,
   onOk,
   onCancel,
-  visible
+  visible,
 }) => {
   const previousActiveElement = React.useRef<any>(null);
   const modalWrapper = React.useRef<HTMLDivElement>(null);
@@ -178,17 +185,14 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
     return () => previousActiveElement.current.focus();
   }, []);
 
-  // Want to check focus when the component updates to make sure it
-  // is in the right spot
-  React.useEffect(checkFocus);
-
   React.useEffect(() => {
     if (visible) {
       document.body.style.overflow = 'hidden';
+      checkFocus()
     } else {
       document.body.style.overflow = '';
     }
-  }, [visible]);
+  }, [visible, checkFocus]);
 
   return (
     <Portal>
@@ -269,7 +273,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
       </AnimatePresence>
     </Portal>
   );
-};
+}, onPropsChange);
 
 Modal.defaultProps = {
   allowKeyboard: true,
