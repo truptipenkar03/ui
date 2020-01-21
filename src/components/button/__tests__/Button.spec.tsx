@@ -65,8 +65,7 @@ describe('Button', () => {
       <Button loading ghost>Test Button</Button>
     );
 
-    // @ts-ignore
-    expect(wrapper.find('Icon.Loading'));
+    expect(wrapper.exists('Loading')).toBe(true);
   });
 
   it('renders with danger type and loading prop', () => {
@@ -74,8 +73,7 @@ describe('Button', () => {
       <Button type='danger' loading>Test Button</Button>
     );
 
-    // @ts-ignore
-    expect(wrapper.find('Icon.loading'));
+    expect(wrapper.exists('Loading')).toBe(true);
   });
 
   it('renders with danger type, loading and ghost props', () => {
@@ -83,8 +81,7 @@ describe('Button', () => {
       <Button type='danger' loading ghost>Test Button</Button>
     );
 
-    // @ts-ignore
-    expect(wrapper.find('Icon.Loading'));
+    expect(wrapper.exists('Loading')).toBe(true);
   });
 
   it('sets the shape prop', () => {
