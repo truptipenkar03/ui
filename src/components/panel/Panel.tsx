@@ -25,7 +25,6 @@ export interface PanelProps {
 
 const Container = styled.div`
   ${({ onClick, theme }) => css`
-    width: 100%;
     background: ${theme.panelBackground};
     border: ${theme.panelBorder};
     border-color: ${theme.panelBorderColor};
