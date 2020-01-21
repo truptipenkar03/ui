@@ -18,6 +18,7 @@ import {
 
 const ModalContent = styled.div`
   min-height: 200px;
+  width: 600px;
 `;
 
 export default {
@@ -147,6 +148,7 @@ export const asyncClose = () => {
           <Input label={'First Name'} />
           <Input label={'Last Name'} />
           <Input label={'Email'} />
+          <textarea />
           <Input label={'Password'} />
         </ModalContent>
       </Modal>

@@ -1,5 +1,3 @@
-// import * as React from 'react';
-
 import styled, {
   css
 } from 'styled-components';
@@ -40,31 +38,34 @@ export const ModalWrapper = styled.div<StyledModalProps>`
     position: fixed;
     top: 0;
     left: 0;
+    bottom: 0;
+    right: 0;
     z-index: 1000;
-    height: 100%;
-    width: 100%;
+    overflow: auto;
+
+    text-align: center;
     
-    display: flex;
-    
-    align-items: center;
-    justify-content: center;
+    &::before {
+      display: inline-block;
+      width: 0;
+      height: 100%;
+      vertical-align: middle;
+      content: '';
+    }
   `};
 `;
 
 export const ModalContainer = styled(motion.div)<StyledModalProps>`
   ${({ theme }) => css`
-    display: flex;
-    flex-direction: column;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+
     min-height: ${theme.modalMinHeight};
     min-width: ${theme.modalMinWidth};
     
-    background: ${theme.modalBackground};
-    border: ${theme.modalBorder};
-    border-color: ${theme.modalBorderColor};
-    border-radius: ${theme.modalBorderRadius};
-    
-    box-shadow: ${theme.modalBoxShadow};
-    
+    margin: 0 auto;
+
     outline: 0;
     
     @media (max-width: ${theme.mediaScreenSmall}) {
@@ -77,11 +78,27 @@ export const ModalContainer = styled(motion.div)<StyledModalProps>`
   `};
 `;
 
+export const ModalBody = styled(motion.div)<StyledModalProps>`
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    
+    background: ${theme.modalBackground};
+    border: ${theme.modalBorder};
+    border-color: ${theme.modalBorderColor};
+    border-radius: ${theme.modalBorderRadius};
+    
+    box-shadow: ${theme.modalBoxShadow};
+    
+    outline: 0;
+  `};
+`;
+
 export const ModalSentinel = styled.div<StyledModalProps>`
   width: 0;
   height: 0;
   overflow: hidden;
-  
+
   &:focus {
     outline: 0;
   }

@@ -20,7 +20,7 @@ import {
   ModalRoot,
   ModalMask,
   ModalContainer,
-  ModalWrapper, ModalSentinel
+  ModalWrapper, ModalSentinel, ModalBody
 } from "./StyledModal";
 
 import {
@@ -210,16 +210,15 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
             />
             <ModalWrapper
               className={'rtk-modal-wrapper'}
-              role="document"
+              role="dialog"
               tabIndex={-1}
               onKeyDown={handleKeyDown}
               ref={modalWrapper}
-
               onClick={handleClose}
             >
               <ModalContainer
                 className={'rtk-modal'}
-                role="dialog"
+                role="document"
                 initial={{ y: 24, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: theme.animationTimeVeryFast }}
@@ -231,31 +230,33 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
                   tabIndex={0}
                   aria-hidden="true"
                 />
-                <Header
-                  closable={closable}
-                  closeIcon={closeIcon}
-                  onCancel={handleClose}
-                  theme={theme}
-                >
-                  {title}
-                </Header>
-                <Content theme={theme}>
-                  {children}
-                </Content>
-                <Footer theme={theme}>
-                  {footer ?
-                    footer :
-                    <DefaultFooter
-                      cancelButtonProps={cancelButtonProps}
-                      cancelButtonText={cancelButtonText}
-                      okButtonProps={okButtonProps}
-                      okButtonText={okButtonText}
-                      onCancel={handleClose}
-                      onOk={handleOk}
-                      theme={theme}
-                    />
-                  }
-                </Footer>
+                <ModalBody>
+                  <Header
+                    closable={closable}
+                    closeIcon={closeIcon}
+                    onCancel={handleClose}
+                    theme={theme}
+                  >
+                    {title}
+                  </Header>
+                  <Content theme={theme}>
+                    {children}
+                  </Content>
+                  <Footer theme={theme}>
+                    {footer ?
+                      footer :
+                      <DefaultFooter
+                        cancelButtonProps={cancelButtonProps}
+                        cancelButtonText={cancelButtonText}
+                        okButtonProps={okButtonProps}
+                        okButtonText={okButtonText}
+                        onCancel={handleClose}
+                        onOk={handleOk}
+                        theme={theme}
+                      />
+                    }
+                  </Footer>
+                </ModalBody>
                 <ModalSentinel
                   ref={modalSentinelEnd}
                   tabIndex={0}
