@@ -15,7 +15,6 @@ import mdx from './Modal.mdx';
 import {
   Modal
 } from '../Modal';
-import {Field, Formik, withFormik} from "formik";
 
 const ModalContent = styled.div`
   min-height: 200px;

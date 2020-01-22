@@ -20,7 +20,9 @@ import {
   ModalRoot,
   ModalMask,
   ModalContainer,
-  ModalWrapper, ModalSentinel, ModalBody
+  ModalWrapper,
+  ModalSentinel,
+  ModalBody
 } from "./StyledModal";
 
 import {
@@ -83,14 +85,7 @@ export interface ModalProps {
   visible: boolean;
 }
 
-function onPropsChange(prevProps, props) {
-  console.log(prevProps);
-  console.log(props);
-
-  return false;
-}
-
-export const Modal: React.FunctionComponent<ModalProps> = React.memo(({
+export const Modal: React.FunctionComponent<ModalProps> = ({
   allowKeyboard,
   children,
   cancelButtonProps,
@@ -103,7 +98,7 @@ export const Modal: React.FunctionComponent<ModalProps> = React.memo(({
   okButtonText,
   onOk,
   onCancel,
-  visible,
+  visible
 }) => {
   const previousActiveElement = React.useRef<any>(null);
   const modalWrapper = React.useRef<HTMLDivElement>(null);
@@ -273,7 +268,7 @@ export const Modal: React.FunctionComponent<ModalProps> = React.memo(({
       </AnimatePresence>
     </Portal>
   );
-}, onPropsChange);
+};
 
 Modal.defaultProps = {
   allowKeyboard: true,
