@@ -47,7 +47,7 @@ export const ModalWrapper = styled.div<StyledModalProps>`
     
     @media (max-width: ${theme.mediaScreenSmall}) {
       overflow: hidden;
-    }
+    };
     
     &::before {
       display: inline-block;
@@ -99,7 +99,7 @@ export const ModalBody = styled(motion.div)<StyledModalProps>`
       
       border-radius: 0;
       box-shadow: none;
-    }
+    };
   `};
 `;
 
