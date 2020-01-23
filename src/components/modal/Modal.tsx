@@ -214,6 +214,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
               onKeyDown={handleKeyDown}
               ref={modalWrapper}
               onClick={handleClose}
+              theme={theme}
             >
               <ModalContainer
                 className={'rtk-modal'}
@@ -229,7 +230,10 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
                   tabIndex={0}
                   aria-hidden="true"
                 />
-                <ModalBody className={'rtk-modal-body'}>
+                <ModalBody
+                  className={'rtk-modal-body'}
+                  theme={theme}
+                >
                   <Header
                     closable={closable}
                     closeIcon={closeIcon}
