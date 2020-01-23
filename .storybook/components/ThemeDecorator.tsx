@@ -78,9 +78,13 @@ export default (storyFn: any) => {
     }
   },[themeIndex]);
 
+  // return (
+  //   <ThemeProvider theme={themes[themeIndex]}>
+  //     <Story onClick={onClick} storyFn={storyFn} />
+  //   </ThemeProvider>
+  // );
+
   return (
-    <ThemeProvider theme={themes[themeIndex]}>
-      <Story onClick={onClick} storyFn={storyFn} />
-    </ThemeProvider>
+    storyFn()
   );
 };
