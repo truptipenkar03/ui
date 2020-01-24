@@ -21,7 +21,7 @@ export const ModalMask = styled(motion.div)<StyledModalProps>`
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 1999;
     height: 100%;
     width: 100%;
 
@@ -40,7 +40,7 @@ export const ModalWrapper = styled.div<StyledModalProps>`
     left: 0;
     bottom: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 2000;
     overflow: auto;
 
     text-align: center;
