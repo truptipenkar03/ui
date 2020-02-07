@@ -86,6 +86,9 @@ export interface InputProps {
   /** Ref to be passed to the input */
   ref?: React.Ref<HTMLInputElement> | null;
 
+  /** If true, the input will be marked as required in the label */
+  required?: boolean;
+
   /** Disables typing in the input but keeps focus */
   readOnly?: boolean;
 
@@ -124,6 +127,7 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
     inputSuffix,
     borderType,
     readOnly,
+    required,
     value,
     validationMessage,
     validationComponent,
@@ -136,6 +140,7 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
     <Container className={`${className} rtk-input`}>
       {label && (
         <Label
+          required={required}
           theme={theme}
         >
           {label}
@@ -229,6 +234,7 @@ Input.defaultProps = {
   placeholder: '',
   size: 'default',
   readOnly: false,
+  required: false,
   value: undefined,
   validationStatus: undefined
 };
