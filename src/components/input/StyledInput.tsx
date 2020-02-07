@@ -20,10 +20,17 @@ export const Container = styled.div`
   width: 100%;
 `;
 
-export const Label = styled.label`
-  ${({ theme }) => css`
+export const Label = styled.label<{ required?: boolean }>`
+  ${({ theme, required }) => css`
     font-size: ${theme.inputLabelFontSize};
     color: ${theme.inputColor};
+
+    ${required && css`
+      ::before {
+        content: '* ';
+        color: ${theme.colors.danger};
+      }
+    `}
   `};
 `;
 

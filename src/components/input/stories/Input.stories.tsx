@@ -63,6 +63,8 @@ export const border = () => (
 export const label = () => (
   <Container>
     <Input label="Label" />
+    <Spacer />
+    <Input label="Label" required />
   </Container>
 );
 
