@@ -5,14 +5,9 @@ import {
 } from "../theme/types";
 
 const {
-  default: styled,
   css,
-  createGlobalStyle,
-  keyframes,
   ThemeProvider,
-  ThemeConsumer,
   ThemeContext,
-  ServerStyleSheet
 } = styledComponents as styledComponents.ThemedStyledComponentsModule<GlobalTheme>;
 
-export { styled, css, createGlobalStyle, keyframes, ThemeProvider, ThemeConsumer, ThemeContext, ServerStyleSheet };
+export { css, ThemeProvider, ThemeContext};
