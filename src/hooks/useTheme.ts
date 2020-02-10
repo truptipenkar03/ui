@@ -10,7 +10,7 @@ import {
 
 import {
   ThemeContext
-} from "../styled";
+} from "styled-components";
 
 // theme hook to get the current theme;
 export const useTheme = () => {

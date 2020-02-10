@@ -29,7 +29,13 @@ const myTheme = createTheme(colorOverrides, themeOverrides);
 Once you have created a new theme you can provide it to the components via the `ThemeProvider`.
 
 ```
-import { createTheme, ThemeProvider } from '@rtkwlf/ui';
+import {
+  createTheme
+} from '@rtkwlf/ui';
+
+import {
+  ThemeProvider
+} from 'styled-components';
 
 const myTheme = createTheme({
   primary: 'red'

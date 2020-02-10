@@ -104,6 +104,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
   const modalWrapper = React.useRef<HTMLDivElement>(null);
   const modalSentinelStart = React.useRef<HTMLDivElement>(null);
   const modalSentinelEnd = React.useRef<HTMLDivElement>(null);
+  const modalMouseDown = React.useRef<boolean>(false);
 
   const theme = useTheme();
 
@@ -130,6 +131,30 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
       onCancel();
     }
   }, [onCancel]);
+
+  // handle closing the modal when the masked element is clicked
+  const handleMaskClick = React.useCallback((e) => {
+    if (e.target === e.currentTarget && !modalMouseDown.current) {
+      handleClose();
+    }
+  }, [handleClose, modalMouseDown]);
+
+  // handle the mouse up event on the masked element to prevent closing
+  // when not intended
+  const handleMouseUp = React.useCallback(() => {
+    if (modalMouseDown.current) {
+      // set timeout of 0 will defer the execution of the callback
+      // until after the the onclick event is handled
+      setTimeout(() => {
+        modalMouseDown.current = false;
+      }, 0);
+    }
+  }, [modalMouseDown]);
+
+
+  const handleMouseDown = React.useCallback(() => {
+    modalMouseDown.current = true;
+  }, [modalMouseDown]);
 
   // handle keydown events for accessibility behaviours
   const handleKeyDown = React.useCallback((e) => {
@@ -213,7 +238,8 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
               tabIndex={-1}
               onKeyDown={handleKeyDown}
               ref={modalWrapper}
-              onClick={handleClose}
+              onClick={handleMaskClick}
+              onMouseUp={handleMouseUp}
               theme={theme}
             >
               <ModalContainer
@@ -223,7 +249,6 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: theme.animationTimeVeryFast }}
                 theme={theme}
-                onClick={handleWrapClick}
               >
                 <ModalSentinel
                   ref={modalSentinelStart}
@@ -232,6 +257,8 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
                 />
                 <ModalBody
                   className={'rtk-modal-body'}
+                  onClick={handleWrapClick}
+                  onMouseDown={handleMouseDown}
                   theme={theme}
                 >
                   <Header
