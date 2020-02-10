@@ -81,4 +81,7 @@ export {
   Colors
 } from './theme/types';
 
-export * from './styled';
+export {
+  ThemeProvider,
+  ThemeContext
+} from './styled';
