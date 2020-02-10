@@ -28,8 +28,8 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
 
   // ---- Primary Button ---- //
   buttonPrimaryBackground: themeColors.primary,
-  buttonPrimaryBorder: 'none',
-  buttonPrimaryBorderColor: 'none',
+  buttonPrimaryBorder: '1px solid',
+  buttonPrimaryBorderColor: 'transparent',
   buttonPrimaryColor: themeColors.lightFontColor,
   buttonPrimaryHoverBackground: themeColors.secondary,
   buttonPrimaryHoverColor: themeColors.white,
@@ -38,8 +38,8 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
 
   // ---- Danger Button ---- //
   buttonDangerBackground: themeColors.danger,
-  buttonDangerBorder: 'none',
-  buttonDangerBorderColor: 'none',
+  buttonDangerBorder: '1px solid',
+  buttonDangerBorderColor: 'transparent',
   buttonDangerColor: themeColors.lightFontColor,
   buttonDangerHoverBackground: themeColors.dangerSecondary,
   buttonDangerHoverColor: themeColors.white,
@@ -52,8 +52,8 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
 
   // ----- Link Button ---- //
   buttonLinkBackground: 'transparent',
-  buttonLinkBorder: 'none',
-  buttonLinkBorderColor: 'none',
+  buttonLinkBorder: '1px solid',
+  buttonLinkBorderColor: 'transparent',
   buttonLinkColor: themeColors.primary,
   buttonLinkHoverBackground: 'transparent',
   buttonLinkHoverColor: themeColors.secondary,
