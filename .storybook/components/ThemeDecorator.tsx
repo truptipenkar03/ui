@@ -43,7 +43,10 @@ const theme2 = createTheme({
   placeholderDarkFontColor: '#C9C7C7',
   placeholderLightFontColor: '#545450',
   lightFontColor: '#30302F',
-  darkFontColor: '#EFEFEF'
+  darkFontColor: '#EFEFEF',
+  titleFontColor: '#EFEFEF',
+  subtitleFontColor: '#EFEFEF',
+  bodyFontColor: '#C9C7C7'
 }, {
   buttonPrimaryColor: 'black',
   buttonPrimaryHoverColor: 'black',
