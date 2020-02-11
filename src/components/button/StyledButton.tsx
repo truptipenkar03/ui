@@ -2,6 +2,7 @@ import * as React from "react";
 import {MouseEventHandler} from "react";
 import styled, {css} from "styled-components";
 import {ButtonType, ShapeType, SizeType} from "./Button";
+import { GlobalTheme } from "../../theme/types";
 
 interface CustomProps {
   loading?: boolean;
@@ -19,6 +20,7 @@ interface StyledButtonProps {
   type?: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   ref?: React.Ref<HTMLButtonElement>;
+  theme?: GlobalTheme;
 }
 
 export const StyledButton = styled.button<StyledButtonProps>`
@@ -28,11 +30,11 @@ export const StyledButton = styled.button<StyledButtonProps>`
     align-items: center;
     justify-content: center;
 
-    border: ${theme.buttonBorder};
     border-radius: ${theme.buttonBorderRadius};
     cursor: pointer;
     font-size: ${theme.buttonDefaultFontSize};
     font-weight: ${theme.buttonFontWeight};
+    font-family: inherit;
     height: ${theme.buttonDefaultHeight};
     line-height: 1;
     padding: ${theme.buttonPadding};
