@@ -9,6 +9,9 @@ export interface Colors {
   darkFontColor: string;
   darkFontColorRGB: string;
   success: string;
+  titleFontColor: string;
+  subtitleFontColor: string;
+  bodyFontColor: string;
   placeholderLightFontColor: string;
   placeholderLightFontColorRGB: string;
   placeholderDarkFontColor: string;
@@ -163,6 +166,57 @@ export interface GlobalTheme {
   modalMinHeight: string;
   modalMinWidth: string;
 
+  // ---- Typography ---- //
+  typographyTitleFontFamily: string;
+  typographyTitle1Color: string;
+  typographyTitle1FontSize: string;
+  typographyTitle1FontWeight: string;
+  typographyTitle1LineHeight: string;
+  typographyTitle1LetterSpacing: string;
+
+  typographyTitle2Color: string;
+  typographyTitle2FontSize: string;
+  typographyTitle2FontWeight: string;
+  typographyTitle2LineHeight: string;
+  typographyTitle2LetterSpacing: string;
+
+  typographyTitle3Color: string;
+  typographyTitle3FontSize: string;
+  typographyTitle3FontWeight: string;
+  typographyTitle3LineHeight: string;
+  typographyTitle3LetterSpacing: string;
+
+  typographyTitle4Color: string;
+  typographyTitle4FontSize: string;
+  typographyTitle4FontWeight: string;
+  typographyTitle4LineHeight: string;
+  typographyTitle4LetterSpacing: string;
+
+  typographyTitle5Color: string;
+  typographyTitle5FontSize: string;
+  typographyTitle5FontWeight: string;
+  typographyTitle5LineHeight: string;
+  typographyTitle5LetterSpacing: string;
+
+  typographyTitle6Color: string;
+  typographyTitle6FontSize: string;
+  typographyTitle6FontWeight: string;
+  typographyTitle6LineHeight: string;
+  typographyTitle6LetterSpacing: string;
+
+  typographySubtitleColor: string;
+  typographySubtitleFontFamily: string;
+  typographySubtitleFontSize: string;
+  typographySubtitleFontWeight: string;
+  typographySubtitleLineHeight: string;
+  typographySubtitleLetterSpacing: string;
+
+  typographyBodyColor: string;
+  typographyBodyFontFamily: string;
+  typographyBodyFontSize: string;
+  typographyBodyFontWeight: string;
+  typographyBodyLineHeight: string;
+  typographyBodyLetterSpacing: string;
 
   colors: Colors;
 }

@@ -140,6 +140,59 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   modalMinHeight: '200px',
   modalMinWidth: '520px',
 
+  // ---- Typography ---- //
+  typographyTitleFontFamily: '"Encode Sans", sans-serif',
+
+  typographyTitle1Color: themeColors.titleFontColor,
+  typographyTitle1FontSize: '36px',
+  typographyTitle1FontWeight: '700',
+  typographyTitle1LineHeight: '1.1',
+  typographyTitle1LetterSpacing: '0',
+
+  typographyTitle2Color: themeColors.titleFontColor,
+  typographyTitle2FontSize: '24px',
+  typographyTitle2FontWeight: '700',
+  typographyTitle2LineHeight: '1.1',
+  typographyTitle2LetterSpacing: '0',
+
+  typographyTitle3Color: themeColors.titleFontColor,
+  typographyTitle3FontSize: '18px',
+  typographyTitle3FontWeight: '700',
+  typographyTitle3LineHeight: '1.1',
+  typographyTitle3LetterSpacing: '0',
+
+  typographyTitle4Color: themeColors.titleFontColor,
+  typographyTitle4FontSize: '16px',
+  typographyTitle4FontWeight: '700',
+  typographyTitle4LineHeight: '1.1',
+  typographyTitle4LetterSpacing: '0',
+
+  typographyTitle5Color: themeColors.titleFontColor,
+  typographyTitle5FontSize: '14px',
+  typographyTitle5FontWeight: '700',
+  typographyTitle5LineHeight: '1.1',
+  typographyTitle5LetterSpacing: '0',
+
+  typographyTitle6Color: themeColors.titleFontColor,
+  typographyTitle6FontSize: '12px',
+  typographyTitle6FontWeight: '700',
+  typographyTitle6LineHeight: '1.1',
+  typographyTitle6LetterSpacing: '0',
+
+  typographySubtitleColor: themeColors.subtitleFontColor,
+  typographySubtitleFontFamily: '"Lato" sans-serif',
+  typographySubtitleFontSize: '16px',
+  typographySubtitleFontWeight: '700',
+  typographySubtitleLineHeight: '1.5',
+  typographySubtitleLetterSpacing: '0',
+
+  typographyBodyColor: themeColors.bodyFontColor,
+  typographyBodyFontFamily: '"Lato" sans-serif',
+  typographyBodyFontSize: '16px',
+  typographyBodyFontWeight: '400',
+  typographyBodyLineHeight: '1.5',
+  typographyBodyLetterSpacing: '0',
+
   colors: {
     ...themeColors
   }

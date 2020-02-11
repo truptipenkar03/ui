@@ -85,3 +85,7 @@ export {
   ThemeProvider,
   ThemeContext
 } from './styled';
+
+export {
+  Typography
+} from './components/typography/Typography';
