@@ -16,7 +16,7 @@ export interface TitleProps {
 
 const StyledTitle = styled.span<TitleProps>`
   ${(props) => css`
-    font-family: 'Encode sans';
+    font-family: ${props.theme.typographyTitleFontFamily};
   
     ${props.level === 1 && css`
       color: ${props.theme.typographyTitle1Color};
