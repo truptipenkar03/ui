@@ -217,6 +217,10 @@ export interface GlobalTheme {
   typographyBodyFontWeight: string;
   typographyBodyLineHeight: string;
   typographyBodyLetterSpacing: string;
+  // ---- Divider ---- //
+  dividerBorder: string;
+  dividerBackground: string;
+  dividerTextPrimaryBackground: string;
 
   colors: Colors;
 }

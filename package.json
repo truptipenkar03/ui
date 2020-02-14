@@ -21,6 +21,8 @@
     "lint:fix": "eslint '**/*.{ts,tsx}' --fix"
   },
   "dependencies": {
+    "@storybook/addon-knobs": "^5.3.13",
+    "@types/storybook__addon-knobs": "^5.2.1",
     "framer-motion": "^1.6.12",
     "styled-components": "5.0.0-rc.2"
   },

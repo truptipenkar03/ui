@@ -2,6 +2,7 @@ const path = require("path");
 
 module.exports = [
   '@storybook/addon-docs/preset',
+  '@storybook/addon-knobs',
   {
     name: "@storybook/preset-typescript",
     options: {
