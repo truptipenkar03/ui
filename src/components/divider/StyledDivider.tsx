@@ -1,21 +1,22 @@
 import {Component, Orientation} from "./Divider";
 import styled, {css} from "styled-components";
+import * as React from "react";
 
 interface CustomProps {
     component?: Component;
     orientation?: Orientation;
     margin?: string;
     thickness?: string;
-    text?: string;
+    text?: React.ReactNode;
     textAlign?: string;
     bgColor?: string;
-    fontSize?: string;
+    fontSize?: number;
 }
 
 interface StyledDividerProps {
     customProps: CustomProps;
     className?: string;
-    height?: string;
+    height?: number;
 }
 
 export const StyledLi = styled.li<{orientation: Orientation}>`
@@ -57,16 +58,18 @@ export const StyledDivider = styled.hr<StyledDividerProps>`
         
         ${(customProps.text) && css`
             position: relative;
-            line-height: 2rem;
+            line-height: 1rem;
             outline: 0;
             border: 0;
-            height: 2.2rem;
-            text-align: center;
+            height: 1rem;
             border-left: 0;
+            display: flex;
+            justify-content: center;
+            border-top: unset;
             
             ${(customProps.fontSize) && css`
-                line-height: ${customProps.fontSize};
-                height: ${height};
+                line-height: ${height}rem;
+                height: ${height}rem;
             `};
             
             &:before{
@@ -76,15 +79,19 @@ export const StyledDivider = styled.hr<StyledDividerProps>`
                 top: 50%;
                 left: 0;
                 height: 1px;
+                transform: translateY(-50%);
                 background: linear-gradient(to right, ${theme.dividerBackground}, ${theme.dividerBackground}, ${theme.dividerBackground});
             }
             
             &:after{
                 content: attr(data-content);
-                position: relative;
+                position: absolute;
                 background: ${theme.dividerTextPrimaryBackground};
-                padding: 0 .5em;
-                vertical-align: middle;
+                padding: 0 .5em;  
+                display:flex;
+                flex-direction:row;
+                align-items: center;
+                justify-content: center;
             }
         `}; 
         
@@ -95,12 +102,12 @@ export const StyledDivider = styled.hr<StyledDividerProps>`
         `}; 
         
         ${(customProps.textAlign === 'left') && css`
-            text-align: left;
+            justify-content: flex-start;
             padding-left: 30px;
         `};    
         
         ${(customProps.textAlign === 'right') && css`
-            text-align: right;
+            justify-content: flex-end;
             padding-right: 30px;
         `};  
         
@@ -112,7 +119,7 @@ export const StyledDivider = styled.hr<StyledDividerProps>`
         
         ${(customProps.fontSize) && css`
             &:after{
-                font-size: ${customProps.fontSize};
+                font-size: ${customProps.fontSize}rem;
             }
         `};        
     `};

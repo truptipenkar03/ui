@@ -187,9 +187,9 @@ export const text = () => {
                 <Divider
                     text="Some text"
                     textAlign="left"
-                    thickness={select('Thickness', ['1px', '2px', '3px', '4px'], '3px', 'Thickness')}
+                    thickness={select('Thickness', ['1px', '2px', '3px', '4px'], '1px', 'Thickness')}
                     bgColor="#f1f1f1"
-                    fontSize={select('FontSize', ['1rem', '2rem', '3rem', '4rem'], '1rem', 'FontSize')}
+                    fontSize={select('FontSize (rem)', [0.5, 0.8, 1, 1.1, 1.2, 1.3, 1.4, 2, 3, 4], 1, 'FontSize')}
                 />
             </ContainerText>
 
@@ -199,8 +199,8 @@ export const text = () => {
                 <Divider
                     text="Some text"
                     bgColor="#f1f1f1"
-                    thickness={select('Thickness', ['1px', '2px', '3px', '4px'], '3px', 'Thickness')}
-                    fontSize={select('FontSize', ['1rem', '2rem', '3rem', '4rem'], '1rem', 'FontSize')}
+                    thickness={select('Thickness', ['1px', '2px', '3px', '4px'], '1px', 'Thickness')}
+                    fontSize={select('FontSize (rem)', [0.5, 0.8, 1, 1.1, 1.2, 1.3, 1.4, 2, 3, 4], 1, 'FontSize')}
                 />
             </ContainerText>
 
@@ -210,9 +210,9 @@ export const text = () => {
                 <Divider
                     text="Some text"
                     textAlign="right"
-                    thickness={select('Thickness', ['1px', '2px', '3px', '4px'], '3px', 'Thickness')}
+                    thickness={select('Thickness', ['1px', '2px', '3px', '4px'], '1px', 'Thickness')}
                     bgColor="#f1f1f1"
-                    fontSize={select('FontSize', ['1rem', '2rem', '3rem', '4rem'], '1rem', 'FontSize')}
+                    fontSize={select('FontSize (rem)', [0.5, 0.8, 1, 1.1, 1.2, 1.3, 1.4, 2, 3, 4], 1, 'FontSize')}
                     className="my-divider"
                 />
             </ContainerText>

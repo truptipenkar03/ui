@@ -94,10 +94,10 @@ describe('Divider', () => {
 
     it('sets fontSize prop', () => {
         const wrapper = shallow(
-            <Divider fontSize={"3rem"} />
+            <Divider fontSize={"3"} />
         );
 
         // @ts-ignore
-        expect(wrapper.find('StyledDivider').prop('customProps').fontSize).toBe('3rem');
+        expect(wrapper.find('StyledDivider').prop('customProps').fontSize).toBe('3');
     });
 });
