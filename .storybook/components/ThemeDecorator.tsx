@@ -48,6 +48,7 @@ const theme2 = createTheme({
   subtitleFontColor: '#EFEFEF',
   bodyFontColor: '#C9C7C7'
 }, {
+  typographyTitleFontFamily: 'Helvetica Neue',
   buttonPrimaryColor: 'black',
   buttonPrimaryHoverColor: 'black',
   buttonPrimaryActiveColor: 'black',
