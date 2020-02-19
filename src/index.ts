@@ -89,3 +89,10 @@ export {
 export {
   Typography
 } from './components/typography/Typography';
+
+export {
+  Divider,
+  DividerProps,
+  Component,
+  Orientation
+} from './components/divider/Divider';

@@ -193,6 +193,11 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   typographyBodyLineHeight: '1.5',
   typographyBodyLetterSpacing: '0',
 
+  // ---- Divider ---- //
+  dividerBorder: themeColors.borderColor,
+  dividerBackground: themeColors.borderColor,
+  dividerTextPrimaryBackground: themeColors.primaryBackground,
+
   colors: {
     ...themeColors
   }
