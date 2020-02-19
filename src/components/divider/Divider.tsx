@@ -35,7 +35,7 @@ export interface DividerProps {
     fontSize?: number;
 }
 
-export const Divider: React.FunctionComponent<DividerProps> = React.forwardRef<HTMLUListElement, DividerProps>((props) => {
+export const Divider: React.FunctionComponent<DividerProps> = (props) => {
     const {
         component,
         orientation,
@@ -65,7 +65,7 @@ export const Divider: React.FunctionComponent<DividerProps> = React.forwardRef<H
             />
         </DividerWrapper>
     )
-});
+};
 
 Divider.defaultProps = {
     component: '',
