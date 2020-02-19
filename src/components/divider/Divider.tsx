@@ -23,7 +23,7 @@ export interface DividerProps {
     margin?: string;
 
     /** shows text on top of the divider */
-    text?: React.ReactNode;
+    text?: string;
 
     /** aligns the text */
     textAlign?: string;

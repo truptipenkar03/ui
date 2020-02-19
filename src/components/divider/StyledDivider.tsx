@@ -1,13 +1,12 @@
 import {Component, Orientation} from "./Divider";
 import styled, {css} from "styled-components";
-import * as React from "react";
 
 interface CustomProps {
     component?: Component;
     orientation?: Orientation;
     margin?: string;
     thickness?: string;
-    text?: React.ReactNode;
+    text?: string;
     textAlign?: string;
     bgColor?: string;
     fontSize?: number;
