@@ -272,7 +272,10 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
                   <Content theme={theme}>
                     {children}
                   </Content>
-                  <Footer theme={theme}>
+                  <Footer
+                    className="rtk-modal-footer"
+                    theme={theme}
+                  >
                     {footer ?
                       footer :
                       <DefaultFooter
