@@ -1,10 +1,7 @@
-import * as React from "react";
+import * as React from 'react';
 import styled from 'styled-components';
 
-import {
-  Button,
-  SizeType
-} from '../Button';
+import { Button, SizeType } from '../Button';
 
 // @ts-ignore
 import mdx from './Button.mdx';
@@ -24,7 +21,7 @@ export default {
   component: Button,
   parameters: {
     docs: {
-      page: mdx
+      page: mdx,
     },
   },
 };
@@ -41,25 +38,41 @@ export const types = () => (
 
 export const ghost = () => (
   <Container>
-    <Button type="primary" ghost>Primary</Button>
+    <Button type="primary" ghost>
+      Primary
+    </Button>
     <Spacer />
-    <Button type="danger" ghost>Danger</Button>
+    <Button type="danger" ghost>
+      Danger
+    </Button>
     <Spacer />
-    <Button type="link" ghost>Link</Button>
+    <Button type="link" ghost>
+      Link
+    </Button>
   </Container>
 );
 
 export const disabled = () => (
   <Container>
-    <Button type="primary" disabled>Primary</Button>
+    <Button type="primary" disabled>
+      Primary
+    </Button>
     <Spacer />
-    <Button type="primary" ghost disabled>Ghost</Button>
+    <Button type="primary" ghost disabled>
+      Ghost
+    </Button>
     <Spacer />
-    <Button type="danger" disabled>Danger</Button>
+    <Button type="danger" disabled>
+      Danger
+    </Button>
     <Spacer />
-    <Button type="danger" ghost disabled>Ghost</Button>
+    <Button type="danger" ghost disabled>
+      Ghost
+    </Button>
     <Spacer />
-    <Button type="link" disabled>Link</Button>
+    <Button type="link" disabled>
+      Link
+    </Button>
   </Container>
 );
 
@@ -72,49 +85,29 @@ export const loading = () => {
 
   return (
     <React.Fragment>
-      <div style={{marginBottom: '15px' }}>
-        <Button onClick={handleToggle}>{loading ? 'Cancel Loading' : 'Start Loading'}</Button>
+      <div style={{ marginBottom: '15px' }}>
+        <Button onClick={handleToggle}>
+          {loading ? 'Cancel Loading' : 'Start Loading'}
+        </Button>
       </div>
       <Container>
-        <Button
-          type="primary"
-          onClick={handleToggle}
-          loading={loading}
-        >
+        <Button type="primary" onClick={handleToggle} loading={loading}>
           Primary
         </Button>
         <Spacer />
-        <Button
-          type="primary"
-          onClick={handleToggle}
-          loading={loading}
-          ghost
-        >
+        <Button type="primary" onClick={handleToggle} loading={loading} ghost>
           Ghost
         </Button>
         <Spacer />
-        <Button
-          type="danger"
-          onClick={handleToggle}
-          loading={loading}
-        >
+        <Button type="danger" onClick={handleToggle} loading={loading}>
           Danger
         </Button>
         <Spacer />
-        <Button
-          type="danger"
-          onClick={handleToggle}
-          loading={loading}
-          ghost
-        >
+        <Button type="danger" onClick={handleToggle} loading={loading} ghost>
           Danger
         </Button>
         <Spacer />
-        <Button
-          type="link"
-          onClick={handleToggle}
-          loading={loading}
-        >
+        <Button type="link" onClick={handleToggle} loading={loading}>
           Link
         </Button>
       </Container>
@@ -124,13 +117,21 @@ export const loading = () => {
 
 export const shape = () => (
   <Container>
-    <Button shape="circle" type="primary">P</Button>
+    <Button shape="circle" type="primary">
+      P
+    </Button>
     <Spacer />
-    <Button shape="circle" type="danger">D</Button>
+    <Button shape="circle" type="danger">
+      D
+    </Button>
     <Spacer />
-    <Button shape="circle" type="primary" ghost>G</Button>
+    <Button shape="circle" type="primary" ghost>
+      G
+    </Button>
     <Spacer />
-    <Button shape="circle" loading type="primary">P</Button>
+    <Button shape="circle" loading type="primary">
+      P
+    </Button>
   </Container>
 );
 
@@ -139,24 +140,21 @@ export const size = () => {
   return (
     <React.Fragment>
       <Container>
-        <Button onClick={() => setSize('small')}>
-          Small
-        </Button>
+        <Button onClick={() => setSize('small')}>Small</Button>
         <Spacer />
-        <Button onClick={() => setSize('default')}>
-          Default
-        </Button>
+        <Button onClick={() => setSize('default')}>Default</Button>
         <Spacer />
-        <Button onClick={() => setSize('large')}>
-          Large
-        </Button>
+        <Button onClick={() => setSize('large')}>Large</Button>
       </Container>
       <Container>
-        <Button size={size} type="primary">Primary</Button>
+        <Button size={size} type="primary">
+          Primary
+        </Button>
         <Spacer />
-        <Button size={size}  shape="circle" ghost>G</Button>
+        <Button size={size} shape="circle" ghost>
+          G
+        </Button>
       </Container>
     </React.Fragment>
   );
 };
-

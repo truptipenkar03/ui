@@ -67,7 +67,7 @@ export function getRegion(element: HTMLElement): Region {
     left: Number(x.toFixed(0)),
     top: Number(y.toFixed(0)),
     height: box.height,
-    width: box.width
+    width: box.width,
   };
 }
 
@@ -104,8 +104,8 @@ export function getPoint(anchorPoint: string, anchorRegion: Region): Position {
 
   return {
     top: Number(y.toFixed(0)),
-    left: Number(x.toFixed(0))
-  }
+    left: Number(x.toFixed(0)),
+  };
 }
 
 // position of the floater relative to the anchor point
@@ -126,11 +126,16 @@ export function getFloaterPosition(
 
   return {
     top: yv,
-    left: xv
+    left: xv,
   };
 }
 
-export function calculateRelativePosition(anchorElement: HTMLElement, floaterElement: HTMLElement, position: string[], isRelative: boolean) {
+export function calculateRelativePosition(
+  anchorElement: HTMLElement,
+  floaterElement: HTMLElement,
+  position: string[],
+  isRelative: boolean
+) {
   // current position of the anchor
   const anchorRegion = getRegion(anchorElement);
   const floaterRegion = getRegion(floaterElement);
@@ -141,18 +146,38 @@ export function calculateRelativePosition(anchorElement: HTMLElement, floaterEle
   // get floater point to attach to anchor
   const floaterPoint = getPoint(position[1], floaterRegion);
 
-  return getFloaterPosition(anchorRegion, floaterRegion, anchorPoint, floaterPoint, isRelative);
+  return getFloaterPosition(
+    anchorRegion,
+    floaterRegion,
+    anchorPoint,
+    floaterPoint,
+    isRelative
+  );
 }
 
-export const getRelativePosition = (anchorElement: HTMLElement, floaterElement: HTMLElement, position: string[], container?: HTMLElement): Position => {
-
+export const getRelativePosition = (
+  anchorElement: HTMLElement,
+  floaterElement: HTMLElement,
+  position: string[],
+  container?: HTMLElement
+): Position => {
   if (container) {
     const win = getWindow(container);
     const style = win && win.getComputedStyle(container);
     if (style && style.position === 'relative') {
-      return calculateRelativePosition(anchorElement, floaterElement, position, true);
+      return calculateRelativePosition(
+        anchorElement,
+        floaterElement,
+        position,
+        true
+      );
     }
   }
 
-  return calculateRelativePosition(anchorElement, floaterElement, position, false);
+  return calculateRelativePosition(
+    anchorElement,
+    floaterElement,
+    position,
+    false
+  );
 };

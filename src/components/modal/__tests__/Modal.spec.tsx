@@ -1,42 +1,27 @@
 import * as React from 'react';
 
-import {
-  mount,
-  shallow
-} from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
-import {
-  Modal,
-  ModalProps
-} from '../Modal';
+import { Modal, ModalProps } from '../Modal';
 
 describe('Modal', () => {
   const defaultProps: ModalProps = {
     onOk: jest.fn(),
     onCancel: jest.fn(),
-    visible: true
+    visible: true,
   };
 
   const defaultContent = <div id="content" />;
 
   it('renders the modal on mount', () => {
-    const wrapper = shallow(
-      <Modal
-        {...defaultProps}
-      >
-        {defaultContent}
-      </Modal>
-    );
+    const wrapper = shallow(<Modal {...defaultProps}>{defaultContent}</Modal>);
 
     expect(wrapper.exists('#content')).toBe(true);
   });
 
   it('sets the closable prop', () => {
     const wrapper = mount(
-      <Modal
-        {...defaultProps}
-        closable={true}
-      >
+      <Modal {...defaultProps} closable={true}>
         {defaultContent}
       </Modal>
     );
@@ -46,10 +31,7 @@ describe('Modal', () => {
 
   it('sets the closeIcon prop', () => {
     const wrapper = mount(
-      <Modal
-        {...defaultProps}
-        closeIcon={<div id="icon" />}
-      >
+      <Modal {...defaultProps} closeIcon={<div id="icon" />}>
         {defaultContent}
       </Modal>
     );
@@ -60,40 +42,42 @@ describe('Modal', () => {
 
   it('sets the cancelButtonProps prop', () => {
     const buttonProps: any = {
-      shape: 'circle'
+      shape: 'circle',
     };
 
     const wrapper = mount(
-      <Modal
-        {...defaultProps}
-        cancelButtonProps={{...buttonProps}}
-      >
+      <Modal {...defaultProps} cancelButtonProps={{ ...buttonProps }}>
         {defaultContent}
       </Modal>
     );
 
-    expect(wrapper.find('DefaultFooter').childAt(1).prop('shape')).toEqual('circle');
+    expect(
+      wrapper
+        .find('DefaultFooter')
+        .childAt(1)
+        .prop('shape')
+    ).toEqual('circle');
   });
 
   it('sets the cancelButtonText prop', () => {
     const wrapper = mount(
-      <Modal
-        {...defaultProps}
-        cancelButtonText={'Leave'}
-      >
+      <Modal {...defaultProps} cancelButtonText={'Leave'}>
         {defaultContent}
       </Modal>
     );
 
-    expect(wrapper.find('DefaultFooter').childAt(1).find('button').text()).toEqual('Leave');
+    expect(
+      wrapper
+        .find('DefaultFooter')
+        .childAt(1)
+        .find('button')
+        .text()
+    ).toEqual('Leave');
   });
 
   it('sets the footer prop', () => {
     const wrapper = mount(
-      <Modal
-        {...defaultProps}
-        footer={<div id="footer" />}
-      >
+      <Modal {...defaultProps} footer={<div id="footer" />}>
         {defaultContent}
       </Modal>
     );
@@ -104,53 +88,57 @@ describe('Modal', () => {
 
   it('sets the okButtonText prop', () => {
     const wrapper = mount(
-      <Modal
-        {...defaultProps}
-        okButtonText={'Add'}
-      >
+      <Modal {...defaultProps} okButtonText={'Add'}>
         {defaultContent}
       </Modal>
     );
 
-    expect(wrapper.find('DefaultFooter').childAt(0).find('button').text()).toEqual('Add');
+    expect(
+      wrapper
+        .find('DefaultFooter')
+        .childAt(0)
+        .find('button')
+        .text()
+    ).toEqual('Add');
   });
 
   it('sets the okButtonProps prop', () => {
     const buttonProps: any = {
-      shape: 'circle'
+      shape: 'circle',
     };
 
     const wrapper = mount(
-      <Modal
-        {...defaultProps}
-        okButtonProps={{...buttonProps}}
-      >
+      <Modal {...defaultProps} okButtonProps={{ ...buttonProps }}>
         {defaultContent}
       </Modal>
     );
 
-    expect(wrapper.find('DefaultFooter').childAt(0).prop('shape')).toEqual('circle');
+    expect(
+      wrapper
+        .find('DefaultFooter')
+        .childAt(0)
+        .prop('shape')
+    ).toEqual('circle');
   });
 
   it('sets the title prop', () => {
     const wrapper = shallow(
-      <Modal
-        {...defaultProps}
-        title={'Title'}
-      >
+      <Modal {...defaultProps} title={'Title'}>
         {defaultContent}
       </Modal>
     );
 
-    expect(wrapper.find('Header').childAt(0).text()).toEqual('Title');
+    expect(
+      wrapper
+        .find('Header')
+        .childAt(0)
+        .text()
+    ).toEqual('Title');
   });
 
   it('sets the visible prop', () => {
     const wrapper = shallow(
-      <Modal
-        {...defaultProps}
-        title={'Title'}
-      >
+      <Modal {...defaultProps} title={'Title'}>
         {defaultContent}
       </Modal>
     );
@@ -159,15 +147,8 @@ describe('Modal', () => {
     expect(wrapper.exists('#content')).toBe(false);
   });
 
-
   it('calls onOk callback', () => {
-    const wrapper = mount(
-      <Modal
-        {...defaultProps}
-      >
-        {defaultContent}
-      </Modal>
-    );
+    const wrapper = mount(<Modal {...defaultProps}>{defaultContent}</Modal>);
 
     const okButton = wrapper.find('DefaultFooter').childAt(0);
     okButton.simulate('click');
@@ -175,13 +156,7 @@ describe('Modal', () => {
   });
 
   it('calls onCancel callback', () => {
-    const wrapper = mount(
-      <Modal
-        {...defaultProps}
-      >
-        {defaultContent}
-      </Modal>
-    );
+    const wrapper = mount(<Modal {...defaultProps}>{defaultContent}</Modal>);
 
     const okButton = wrapper.find('DefaultFooter').childAt(1);
     okButton.simulate('click');

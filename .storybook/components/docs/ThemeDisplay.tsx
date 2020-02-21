@@ -1,23 +1,20 @@
 import * as React from 'react';
 
-import {
-  Source
-} from '@storybook/addon-docs/blocks';
+import { Source } from '@storybook/addon-docs/blocks';
 
-import {
-  getDefaultTheme
-} from "../../../src/theme";
+import { getDefaultTheme } from '../../../src/theme';
 
-import {
-  GlobalTheme
-} from "../../../src/theme/types";
+import { GlobalTheme } from '../../../src/theme/types';
 
 interface Props {
   component: keyof GlobalTheme;
   colors?: boolean;
 }
 
-export const ThemeDisplay: React.FunctionComponent<Props> = ({ component, colors }) => {
+export const ThemeDisplay: React.FunctionComponent<Props> = ({
+  component,
+  colors,
+}) => {
   const theme = getDefaultTheme();
 
   const themeSource = `

@@ -1,16 +1,10 @@
 import * as React from 'react';
 
-import styled, {
-  css
-} from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import {
-  MouseEventHandler
-} from "react";
+import { MouseEventHandler } from 'react';
 
-import {
-  useTheme
-} from '../../hooks';
+import { useTheme } from '../../hooks';
 
 export interface PanelProps {
   /** Content to show in the panel */
@@ -31,26 +25,27 @@ const Container = styled.div`
     border-radius: ${theme.panelBorderRadius};
     padding: ${theme.panelPadding};
     margin: ${theme.panelMargin};
-    
+
     transition: all ${theme.animationTimeFast}s;
-    
-    ${onClick && css`
-      &:hover {
-        cursor: pointer;
-        box-shadow: ${theme.panelHoverBoxShadow}; 
-      }
-      
-      &:active {
-        box-shadow: ${theme.panelActiveBoxShadow}; 
-      }
-    `}
+
+    ${onClick &&
+      css`
+        &:hover {
+          cursor: pointer;
+          box-shadow: ${theme.panelHoverBoxShadow};
+        }
+
+        &:active {
+          box-shadow: ${theme.panelActiveBoxShadow};
+        }
+      `}
   `};
 `;
 
 export const Panel: React.FunctionComponent<PanelProps> = ({
   children,
   className,
-  onClick
+  onClick,
 }) => {
   const theme = useTheme();
 
@@ -64,5 +59,3 @@ export const Panel: React.FunctionComponent<PanelProps> = ({
     </Container>
   );
 };
-
-

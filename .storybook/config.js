@@ -1,10 +1,6 @@
 import * as React from 'react';
 
-import {
-  addDecorator,
-  addParameters,
-  configure
-} from '@storybook/react';
+import { addDecorator, addParameters, configure } from '@storybook/react';
 
 import ThemeDecorator from './components/ThemeDecorator';
 import theme from './theme';
@@ -15,7 +11,7 @@ addParameters({
     theme: theme,
     showPanel: true,
     showRoots: true,
-    sidebarAnimations: false
+    sidebarAnimations: false,
   },
 });
 

@@ -1,8 +1,8 @@
-import * as React from "react";
-import {MouseEventHandler} from "react";
-import styled, {css} from "styled-components";
-import {ButtonType, ShapeType, SizeType} from "./Button";
-import { GlobalTheme } from "../../theme/types";
+import * as React from 'react';
+import { MouseEventHandler } from 'react';
+import styled, { css } from 'styled-components';
+import { ButtonType, ShapeType, SizeType } from './Button';
+import { GlobalTheme } from '../../theme/types';
 
 interface CustomProps {
   loading?: boolean;
@@ -48,137 +48,153 @@ export const StyledButton = styled.button<StyledButtonProps>`
    -webkit-tap-highlight-color: transparent;
    
    // ----------- Size Small --------- //
-    ${(customProps.size === 'small') && css`
-      font-size: ${theme.buttonSmallFontSize};
-      height: ${theme.buttonSmallHeight};
-    `}
+    ${customProps.size === 'small' &&
+      css`
+        font-size: ${theme.buttonSmallFontSize};
+        height: ${theme.buttonSmallHeight};
+      `}
     
    // ----------- Size Large --------- //
-    ${(customProps.size === 'large') && css`
-      font-size: ${theme.buttonLargeFontSize};
-      height: ${theme.buttonLargeHeight};
-    `}
+    ${customProps.size === 'large' &&
+      css`
+        font-size: ${theme.buttonLargeFontSize};
+        height: ${theme.buttonLargeHeight};
+      `}
 
     // ----------- Primary --------- //
-    ${(buttonType === 'primary') && css`
-      background: ${theme.buttonPrimaryBackground};
-      color: ${theme.buttonPrimaryColor};
-      border: ${theme.buttonPrimaryBorder};  
-      border-color: ${theme.buttonPrimaryBorderColor};
-      
-      &:hover, &:focus {
-        background: ${theme.buttonPrimaryHoverBackground};
-        color: ${theme.buttonPrimaryHoverColor};
-      }
-      
-      &:active {
-        background: ${theme.buttonPrimaryActiveBackground};
-        color: ${theme.buttonPrimaryActiveColor};
-      }
-      
-      ${customProps.ghost && css`
-        background: ${theme.buttonGhostBackground};
-        border: ${theme.buttonGhostBorder};
-        border-color: ${theme.buttonPrimaryBackground};
-        color: ${theme.buttonPrimaryBackground};
-        
-        &:hover, &:focus {
-          background: ${theme.buttonPrimaryBackground};
-          border: ${theme.buttonGhostBorder};
-          border-color: transparent;
+    ${buttonType === 'primary' &&
+      css`
+        background: ${theme.buttonPrimaryBackground};
+        color: ${theme.buttonPrimaryColor};
+        border: ${theme.buttonPrimaryBorder};
+        border-color: ${theme.buttonPrimaryBorderColor};
+
+        &:hover,
+        &:focus {
+          background: ${theme.buttonPrimaryHoverBackground};
+          color: ${theme.buttonPrimaryHoverColor};
         }
-  
+
         &:active {
-          border: ${theme.buttonGhostBorder};
-          border-color: transparent;
+          background: ${theme.buttonPrimaryActiveBackground};
+          color: ${theme.buttonPrimaryActiveColor};
         }
-      `}
-    `};
+
+        ${customProps.ghost &&
+          css`
+            background: ${theme.buttonGhostBackground};
+            border: ${theme.buttonGhostBorder};
+            border-color: ${theme.buttonPrimaryBackground};
+            color: ${theme.buttonPrimaryBackground};
+
+            &:hover,
+            &:focus {
+              background: ${theme.buttonPrimaryBackground};
+              border: ${theme.buttonGhostBorder};
+              border-color: transparent;
+            }
+
+            &:active {
+              border: ${theme.buttonGhostBorder};
+              border-color: transparent;
+            }
+          `}
+      `};
     
     // ----------- Danger --------- //
-    ${(buttonType === 'danger') && css`
-      background: ${theme.buttonDangerBackground};
-      border: ${theme.buttonDangerBorder};
-      border-color: ${theme.buttonDangerBorderColor};
-      color: ${theme.buttonDangerColor};
+    ${buttonType === 'danger' &&
+      css`
+        background: ${theme.buttonDangerBackground};
+        border: ${theme.buttonDangerBorder};
+        border-color: ${theme.buttonDangerBorderColor};
+        color: ${theme.buttonDangerColor};
 
-      &:hover, &:focus {
-        background: ${theme.buttonDangerHoverBackground};
-        color: ${theme.buttonDangerHoverColor};
-      }
-
-      &:active {
-        background: ${theme.buttonDangerActiveBackground};
-        color: ${theme.buttonDangerActiveColor};
-      }
-      
-      ${customProps.ghost && css`
-        background: ${theme.buttonGhostBackground};
-        border: ${theme.buttonGhostBorder};
-        border-color: ${theme.buttonDangerBackground};
-        color: ${theme.buttonDangerBackground};
-        
-        &:hover, &:focus {
-          background: ${theme.buttonDangerBackground};
-          border: ${theme.buttonGhostBorder};
-          border-color: transparent;
+        &:hover,
+        &:focus {
+          background: ${theme.buttonDangerHoverBackground};
+          color: ${theme.buttonDangerHoverColor};
         }
-  
+
         &:active {
-          border: ${theme.buttonGhostBorder};
-          border-color: transparent;
+          background: ${theme.buttonDangerActiveBackground};
+          color: ${theme.buttonDangerActiveColor};
         }
+
+        ${customProps.ghost &&
+          css`
+            background: ${theme.buttonGhostBackground};
+            border: ${theme.buttonGhostBorder};
+            border-color: ${theme.buttonDangerBackground};
+            color: ${theme.buttonDangerBackground};
+
+            &:hover,
+            &:focus {
+              background: ${theme.buttonDangerBackground};
+              border: ${theme.buttonGhostBorder};
+              border-color: transparent;
+            }
+
+            &:active {
+              border: ${theme.buttonGhostBorder};
+              border-color: transparent;
+            }
+          `};
       `};
-      
-    `};
     
     // ----------- Link --------- //
-    ${(buttonType === 'link') && css`
-      background: ${theme.buttonLinkBackground};
-      border: ${theme.buttonLinkBorder};
-      border-color: ${theme.buttonLinkBorderColor};
-      color: ${theme.buttonLinkColor};
+    ${buttonType === 'link' &&
+      css`
+        background: ${theme.buttonLinkBackground};
+        border: ${theme.buttonLinkBorder};
+        border-color: ${theme.buttonLinkBorderColor};
+        color: ${theme.buttonLinkColor};
 
-      &:hover, &:focus {
-        background: ${theme.buttonLinkHoverBackground};
-        color: ${theme.buttonLinkHoverColor};
-        text-decoration: underline;
-      }
+        &:hover,
+        &:focus {
+          background: ${theme.buttonLinkHoverBackground};
+          color: ${theme.buttonLinkHoverColor};
+          text-decoration: underline;
+        }
 
-      &:active {
-        background: ${theme.buttonLinkActiveBackground};
-        color: ${theme.buttonLinkActiveColor};
-        text-decoration: underline;
-      }
-    `};
+        &:active {
+          background: ${theme.buttonLinkActiveBackground};
+          color: ${theme.buttonLinkActiveColor};
+          text-decoration: underline;
+        }
+      `};
 
-    ${(disabled || customProps.loading) && css`
-      pointer-events: none;
-      opacity: 0.5;
-    `};
+    ${(disabled || customProps.loading) &&
+      css`
+        pointer-events: none;
+        opacity: 0.5;
+      `};
 
     // ----------- Circle --------- //
-    ${customProps.shape === 'circle' && css`
+    ${customProps.shape === 'circle' &&
+      css`
       padding: 0;
       min-width: ${theme.buttonDefaultHeight};
       text-align: center;
       border-radius: 50%;
       
       // ----------- Size Small --------- //
-      ${(customProps.size === 'small') && css`
-        min-width: ${theme.buttonSmallHeight};
-      `}
+      ${customProps.size === 'small' &&
+        css`
+          min-width: ${theme.buttonSmallHeight};
+        `}
       
      // ----------- Size Large --------- //
-      ${(customProps.size === 'large') && css`
-        min-width: ${theme.buttonLargeHeight};
-      `}
+      ${customProps.size === 'large' &&
+        css`
+          min-width: ${theme.buttonLargeHeight};
+        `}
 
-      ${customProps.loading && css`
-        span {
-          display: none;
-        }
-      `};
+      ${customProps.loading &&
+        css`
+          span {
+            display: none;
+          }
+        `};
     `}
     
     span {

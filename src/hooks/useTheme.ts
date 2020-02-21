@@ -1,16 +1,10 @@
 import * as React from 'react';
 
-import {
-  createTheme
-} from "../theme";
+import { createTheme } from '../theme';
 
-import {
-  GlobalTheme
-} from "../theme/types";
+import { GlobalTheme } from '../theme/types';
 
-import {
-  ThemeContext
-} from "../styled";
+import { ThemeContext } from '../styled';
 
 // theme hook to get the current theme;
 export const useTheme = () => {

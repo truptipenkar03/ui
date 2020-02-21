@@ -1,18 +1,14 @@
 import * as React from 'react';
 
-import {
-  mount
-} from "enzyme";
+import { mount } from 'enzyme';
 
-import {
-  Portal
-} from '../Portal';
+import { Portal } from '../Portal';
 
 describe('Portal', () => {
   it('renders when visible', () => {
     const wrapper = mount(
       <Portal>
-        <div id={"test1"} />
+        <div id={'test1'} />
       </Portal>
     );
 
@@ -21,9 +17,9 @@ describe('Portal', () => {
 
   it('renders under parent when disabled', () => {
     const wrapper = mount(
-      <div id={"parent"}>
+      <div id={'parent'}>
         <Portal disablePortal={true}>
-          <div id={"test1"} />
+          <div id={'test1'} />
         </Portal>
       </div>
     );
@@ -38,7 +34,7 @@ describe('Portal', () => {
 
     const wrapper = mount(
       <Portal container={() => element}>
-        <div id={"test1"} />
+        <div id={'test1'} />
       </Portal>
     );
 
@@ -60,9 +56,7 @@ describe('Portal', () => {
         </div>
       );
     }
-    const wrapper = mount(
-      <Parent />
-    );
+    const wrapper = mount(<Parent />);
 
     expect(wrapper.find('#test1').exists()).toBe(true);
     wrapper.setProps({ show: false });

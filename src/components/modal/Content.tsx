@@ -1,11 +1,9 @@
-import styled, {
-  css
-} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Content = styled.div`
   ${({ theme }) => css`
-     padding: ${theme.modalContentPadding};
-     overflow: auto;
-     flex: 1;
+    padding: ${theme.modalContentPadding};
+    overflow: auto;
+    flex: 1;
   `};
 `;

@@ -1,24 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import {
-  AnimatePresence,
-  motion,
-  MotionProps
-} from 'framer-motion';
+import { AnimatePresence, motion, MotionProps } from 'framer-motion';
 
-import {
-  Portal
-} from '../portal/Portal';
+import { Portal } from '../portal/Portal';
 
-import {
-  Position,
-  getRelativePosition
-} from '../../utils/getRelativePosition';
+import { Position, getRelativePosition } from '../../utils/getRelativePosition';
 
-import {
-  CSSProperties
-} from "react";
+import { CSSProperties } from 'react';
 
 export interface FloaterProps {
   /** Element to anchor portal to */
@@ -53,13 +42,10 @@ export interface FloaterProps {
 }
 
 const Container = styled.div<{ portalVisibility: boolean }>`
-  visibility: ${(props) => props.portalVisibility ?
-    'visible' :
-    'hidden'
-  };
+  visibility: ${props => (props.portalVisibility ? 'visible' : 'hidden')};
 `;
 
-export const Floater: React.FunctionComponent<FloaterProps> = (props) => {
+export const Floater: React.FunctionComponent<FloaterProps> = props => {
   const {
     anchorElement,
     animationProps,
@@ -70,16 +56,24 @@ export const Floater: React.FunctionComponent<FloaterProps> = (props) => {
     matchAnchorWidth,
     open,
     position,
-    style
+    style,
   } = props;
 
-  const [portalElement, setPortalElement] = React.useState<HTMLDivElement | null>(null);
-  const [portalPosition, setPortalPosition] = React.useState<Position| null>(null);
+  const [
+    portalElement,
+    setPortalElement,
+  ] = React.useState<HTMLDivElement | null>(null);
+  const [portalPosition, setPortalPosition] = React.useState<Position | null>(
+    null
+  );
 
   // set the ref when react calls it back
-  const handleRef = React.useCallback((ref) => {
-    setPortalElement(ref);
-  },[setPortalElement]);
+  const handleRef = React.useCallback(
+    ref => {
+      setPortalElement(ref);
+    },
+    [setPortalElement]
+  );
 
   // get the container for floater to mount to
   const getContainer = React.useCallback<() => HTMLElement | null>(() => {
@@ -87,14 +81,19 @@ export const Floater: React.FunctionComponent<FloaterProps> = (props) => {
       return container();
     }
 
-    return null
+    return null;
   }, [container]);
 
   // update the portal position
   const updatePortalPosition = React.useCallback(() => {
     if (portalElement && anchorElement) {
       const container = getContainer();
-      const portalPosition = getRelativePosition(anchorElement, portalElement, position, container ? container : undefined);
+      const portalPosition = getRelativePosition(
+        anchorElement,
+        portalElement,
+        position,
+        container ? container : undefined
+      );
       setPortalPosition(portalPosition);
     }
   }, [getContainer, position, portalElement, anchorElement]);
@@ -105,47 +104,42 @@ export const Floater: React.FunctionComponent<FloaterProps> = (props) => {
   // on open changes, update the portal position
   React.useEffect(() => {
     if (open) {
-      updatePortalPosition()
+      updatePortalPosition();
     } else {
       setPortalPosition(null);
     }
-  },[open, updatePortalPosition]);
+  }, [open, updatePortalPosition]);
 
-  const portalVisibility: boolean = (portalElement !== null && portalPosition !== null);
+  const portalVisibility: boolean =
+    portalElement !== null && portalPosition !== null;
 
   return (
     <AnimatePresence>
-      {(open && anchorElement) && (
-        <Portal
-          container={getContainer}
-          disablePortal={disableFloater}
-        >
+      {open && anchorElement && (
+        <Portal container={getContainer} disablePortal={disableFloater}>
           <motion.div
             key={floaterKey}
             ref={handleRef}
             style={{
               position: 'absolute',
-              width: matchAnchorWidth ?
-                `${anchorElement.offsetWidth}px` :
-                'auto',
+              width: matchAnchorWidth
+                ? `${anchorElement.offsetWidth}px`
+                : 'auto',
               top: -999, // default position before calc
               left: -999, // default position before calc
               ...portalPosition,
-              ...style
+              ...style,
             }}
             {...animationProps}
           >
-            <Container
-              portalVisibility={portalVisibility}
-            >
+            <Container portalVisibility={portalVisibility}>
               {children}
             </Container>
           </motion.div>
         </Portal>
-        )
-      }
+      )}
     </AnimatePresence>
-  )
+  );
 };
 
 Floater.defaultProps = {
@@ -153,14 +147,12 @@ Floater.defaultProps = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
-    transition: { duration: 0.3 }
+    transition: { duration: 0.3 },
   },
   disableFloater: false,
   container: undefined,
   floaterKey: 'floater',
   matchAnchorWidth: false,
   open: false,
-  position: ['bc', 'tc']
+  position: ['bc', 'tc'],
 };
-
-

@@ -1,17 +1,10 @@
 import * as React from 'react';
 
-import styled, {
-  css
-} from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import {
-  Button,
-  ButtonProps
-} from "../button/Button";
+import { Button, ButtonProps } from '../button/Button';
 
-import {
-  GlobalTheme
-} from "../../theme/types";
+import { GlobalTheme } from '../../theme/types';
 
 interface FooterProps {
   cancelButtonProps?: ButtonProps;
@@ -27,14 +20,14 @@ export const Footer = styled.div`
   ${({ theme }) => css`
     width: 100%;
     height: ${theme.modalFooterHeight};
-    
+
     display: flex;
     align-items: center;
     justify-content: flex-end;
 
     padding: ${theme.modalFooterPadding};
     box-sizing: border-box;
-    
+
     border-bottom-right-radius: ${theme.modalBorderRadius};
     border-bottom-left-radius: ${theme.modalBorderRadius};
     background: ${theme.modalFooterBackground};
@@ -51,22 +44,14 @@ export const DefaultFooter: React.FunctionComponent<FooterProps> = ({
   okButtonProps,
   onCancel,
   okButtonText,
-  onOk
+  onOk,
 }) => {
-
   return (
     <React.Fragment>
-      <Button
-        onClick={onOk}
-        {...okButtonProps}
-      >
+      <Button onClick={onOk} {...okButtonProps}>
         {okButtonText}
       </Button>
-      <CancelButton
-        onClick={onCancel}
-        ghost
-        {...cancelButtonProps}
-      >
+      <CancelButton onClick={onCancel} ghost {...cancelButtonProps}>
         {cancelButtonText}
       </CancelButton>
     </React.Fragment>
@@ -75,5 +60,5 @@ export const DefaultFooter: React.FunctionComponent<FooterProps> = ({
 
 DefaultFooter.defaultProps = {
   okButtonText: 'Okay',
-  cancelButtonText: 'Cancel'
+  cancelButtonText: 'Cancel',
 };

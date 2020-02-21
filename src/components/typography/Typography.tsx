@@ -1,17 +1,11 @@
-import {
-  Title
-} from './Title';
+import { Title } from './Title';
 
-import {
-  Subtitle
-} from './Subtitle';
+import { Subtitle } from './Subtitle';
 
-import {
-  Body
-} from './Body';
+import { Body } from './Body';
 
 export const Typography = {
   Title,
   Subtitle,
-  Body
+  Body,
 };

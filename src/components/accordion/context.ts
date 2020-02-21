@@ -1,10 +1,6 @@
 import * as React from 'react';
 
-import {
-  ItemGapType,
-  ExpandedItemsType,
-  ItemKeyType
-} from "./types";
+import { ItemGapType, ExpandedItemsType, ItemKeyType } from './types';
 
 interface AccordionContext {
   itemGap?: ItemGapType;

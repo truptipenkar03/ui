@@ -1,16 +1,10 @@
 import * as React from 'react';
 
-import styled, {
-  css
-} from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import {
-  Icon
-} from '../icons';
+import { Icon } from '../icons';
 
-import {
-  GlobalTheme
-} from "../../theme/types";
+import { GlobalTheme } from '../../theme/types';
 
 interface HeaderProps {
   children?: React.ReactNode;
@@ -27,11 +21,11 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     margin-top: 24px;
-    
+
     background: ${theme.modalHeaderBackground};
     color: ${theme.modalHeaderColor};
     padding: ${theme.modalHeaderPadding};
-    
+
     border-top-right-radius: ${theme.modalBorderRadius};
     border-top-left-radius: ${theme.modalBorderRadius};
 
@@ -50,18 +44,19 @@ const Close = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    
+
     width: ${theme.modalHeaderHeight};
     cursor: pointer;
-    
+
     transition: all ${theme.animationTimeFast}s;
     opacity: 0.5;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       opacity: 1;
       outline: 0;
     }
-    
+
     &::-moz-focus-inner {
       border: none;
     }
@@ -73,32 +68,20 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
   closable,
   closeIcon,
   onCancel,
-  theme
+  theme,
 }) => {
   return (
-    <Container
-      theme={theme}
-      className="rtk-modal-header"
-    >
-      <Title>
-        {children}
-      </Title>
-      {closable &&
-        <Close
-          onClick={onCancel}
-          theme={theme}
-          tabIndex={0}
-        >
-          {closeIcon ?
-            closeIcon :
-            <Icon.TimesSolid />
-          }
+    <Container theme={theme} className="rtk-modal-header">
+      <Title>{children}</Title>
+      {closable && (
+        <Close onClick={onCancel} theme={theme} tabIndex={0}>
+          {closeIcon ? closeIcon : <Icon.TimesSolid />}
         </Close>
-      }
+      )}
     </Container>
   );
 };
 
 Header.defaultProps = {
-  closable: true
+  closable: true,
 };

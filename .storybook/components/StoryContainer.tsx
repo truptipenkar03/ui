@@ -8,9 +8,5 @@ const Container = styled.div`
 `;
 
 export const StoryContainer: React.FunctionComponent = ({ children }) => {
-  return (
-    <Container>
-      {children}
-    </Container>
-  );
+  return <Container>{children}</Container>;
 };

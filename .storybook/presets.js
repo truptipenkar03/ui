@@ -1,18 +1,18 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = [
   '@storybook/addon-docs/preset',
   '@storybook/addon-knobs',
   {
-    name: "@storybook/preset-typescript",
+    name: '@storybook/preset-typescript',
     options: {
       tsDocgenLoaderOptions: {
-        tsconfigPath: path.resolve(__dirname, "../tsconfig.json")
+        tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
       },
       include: [
-        path.resolve(__dirname, "../src"),
-        path.resolve(__dirname, "./components")
-      ]
-    }
-  }
+        path.resolve(__dirname, '../src'),
+        path.resolve(__dirname, './components'),
+      ],
+    },
+  },
 ];

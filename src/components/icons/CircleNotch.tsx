@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 const CircleNotch = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 512 512" width="1em" height="1em" {...props}>

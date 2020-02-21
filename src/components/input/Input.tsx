@@ -1,8 +1,6 @@
 import * as React from 'react';
 
-import {
-  useTheme
-} from "../../hooks";
+import { useTheme } from '../../hooks';
 
 import {
   Prefix,
@@ -11,24 +9,18 @@ import {
   Label,
   Status,
   StyledInput,
-  FeedbackMessage
-} from "./StyledInput";
+  FeedbackMessage,
+} from './StyledInput';
 
-import {
-  Suffix
-} from './Suffix';
+import { Suffix } from './Suffix';
 
-import {
-  AnimatePresence,
-  motion
-} from "framer-motion";
+import { AnimatePresence, motion } from 'framer-motion';
 
 export type BorderType = 'full' | 'bottom' | 'none';
 export type InputSize = 'small' | 'default' | 'large';
 export type ValidationStatus = 'success' | 'error' | 'loading';
 
 export interface InputProps {
-
   /** Type of border for the input */
   borderType?: BorderType;
 
@@ -105,8 +97,10 @@ export interface InputProps {
   validationComponent?: (error: string) => React.ReactNode;
 }
 
-
-export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+export const Input: React.FunctionComponent<InputProps> = React.forwardRef<
+  HTMLInputElement,
+  InputProps
+>((props, ref) => {
   const {
     className,
     disabled,
@@ -131,7 +125,7 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
     value,
     validationMessage,
     validationComponent,
-    validationStatus
+    validationStatus,
   } = props;
 
   const theme = useTheme();
@@ -139,19 +133,13 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
   return (
     <Container className={`${className} rtk-input`}>
       {label && (
-        <Label
-          required={required}
-          theme={theme}
-        >
+        <Label required={required} theme={theme}>
           {label}
         </Label>
       )}
       <AffixContainer>
         {inputPrefix && (
-          <Prefix
-            inputSize={size}
-            theme={theme}
-          >
+          <Prefix inputSize={size} theme={theme}>
             {inputPrefix}
           </Prefix>
         )}
@@ -186,10 +174,10 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
         value={value}
         validationStatus={validationStatus}
       />
-      {hasFeedbackMessage &&
+      {hasFeedbackMessage && (
         <FeedbackMessage theme={theme}>
           <AnimatePresence>
-            {(validationMessage && validationStatus) &&
+            {validationMessage && validationStatus && (
               <motion.div
                 key="validate-message"
                 style={{ position: 'relative' }}
@@ -198,20 +186,18 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<HTMLI
                 exit={{ opacity: 0, top: -5 }}
                 transition={{ duration: theme.animationTimeVeryFast }}
               >
-                {validationComponent ?
-                  validationComponent(validationMessage) :
-                  <Status
-                    validationStatus={validationStatus}
-                    theme={theme}
-                  >
+                {validationComponent ? (
+                  validationComponent(validationMessage)
+                ) : (
+                  <Status validationStatus={validationStatus} theme={theme}>
                     {validationMessage}
                   </Status>
-                }
+                )}
               </motion.div>
-            }
+            )}
           </AnimatePresence>
         </FeedbackMessage>
-      }
+      )}
     </Container>
   );
 });
@@ -236,6 +222,5 @@ Input.defaultProps = {
   readOnly: false,
   required: false,
   value: undefined,
-  validationStatus: undefined
+  validationStatus: undefined,
 };
-

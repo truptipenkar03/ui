@@ -1,13 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import {
-  Button
-} from '../../button/Button';
+import { Button } from '../../button/Button';
 
-import {
-  Floater
-} from '../Floater';
+import { Floater } from '../Floater';
 
 // @ts-ignore
 import mdx from './Floater.mdx';
@@ -17,7 +13,7 @@ export default {
   component: Floater,
   parameters: {
     docs: {
-      page: mdx
+      page: mdx,
     },
   },
 };
@@ -30,9 +26,9 @@ const ButtonContainer = styled.div`
 const Container = styled.div`
   background: white;
   height: 100px;
-  
+
   border-radius: 7px;
-  box-shadow: 0 0 7px rgba(0, 0, 0, 0.20);
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
 `;
 
 export const simple = () => {
@@ -47,13 +43,18 @@ export const simple = () => {
     }
   }, [setOpen, open]);
 
-  const handleRef = React.useCallback((node) => {
-    setRef(node);
-  }, [setRef]);
+  const handleRef = React.useCallback(
+    node => {
+      setRef(node);
+    },
+    [setRef]
+  );
 
   return (
     <React.Fragment>
-      <Button onClick={handleClick} ref={handleRef}>{open ? 'Hide' : 'Show'}</Button>
+      <Button onClick={handleClick} ref={handleRef}>
+        {open ? 'Hide' : 'Show'}
+      </Button>
       <Floater
         anchorElement={buttonRef}
         position={['bc', 'tc']}
@@ -68,7 +69,10 @@ export const simple = () => {
 export const complex = () => {
   const [hasMountedFloater, setHasMountedFloater] = React.useState(false);
   const [anchorElement, setAnchorElement] = React.useState(null);
-  const [floaterPosition, setFloaterPosition] = React.useState<string[]>(['bc', 'tc']);
+  const [floaterPosition, setFloaterPosition] = React.useState<string[]>([
+    'bc',
+    'tc',
+  ]);
 
   const handleButtonClick = (e: any, position: string[]) => {
     const element = e.target;
@@ -89,21 +93,15 @@ export const complex = () => {
   return (
     <div>
       <ButtonContainer>
-        <Button
-          onClick={(e) => handleButtonClick(e, ['tc', 'bc'])}
-        >
+        <Button onClick={e => handleButtonClick(e, ['tc', 'bc'])}>
           Move to Top
         </Button>
         <span style={{ display: 'inline-block', width: '20px' }} />
-        <Button
-          onClick={(e) => handleButtonClick(e, ['bc', 'tc'])}
-        >
+        <Button onClick={e => handleButtonClick(e, ['bc', 'tc'])}>
           Move to Bottom
         </Button>
         <span style={{ display: 'inline-block', width: '20px' }} />
-        <Button
-          onClick={(e) => handleButtonClick(e, ['cr', 'cl'])}
-        >
+        <Button onClick={e => handleButtonClick(e, ['cr', 'cl'])}>
           Move to Right
         </Button>
       </ButtonContainer>
@@ -115,7 +113,7 @@ export const complex = () => {
           initial: { opacity: 0 },
           animate: { opacity: 1 },
           exit: { opacity: 0 },
-          positionTransition: hasMountedFloater ? { type: 'tween' } : false
+          positionTransition: hasMountedFloater ? { type: 'tween' } : false,
         }}
         matchAnchorWidth
       >

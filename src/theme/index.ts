@@ -1,14 +1,8 @@
-import {
-  colors
-} from './colors';
+import { colors } from './colors';
 
-import {
-  Colors,
-  GlobalTheme
-} from "./types";
+import { Colors, GlobalTheme } from './types';
 
 export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
-
   // ---- Animation ---- //
   animationTimeVeryFast: 0.1,
   animationTimeFast: 0.25,
@@ -86,7 +80,6 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   panelMargin: '32px',
   panelActiveBoxShadow: `0px 0px 4px rgba(${themeColors.blackRGB},0.20)`,
   panelHoverBoxShadow: `0px 7px 21px rgba(${themeColors.blackRGB},0.07)`,
-
 
   // ---- Input ---- //
   inputBackground: themeColors.primaryBackground,
@@ -199,20 +192,23 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   dividerTextPrimaryBackground: themeColors.primaryBackground,
 
   colors: {
-    ...themeColors
-  }
+    ...themeColors,
+  },
 });
 
-export const createTheme = (colorOverrides: Partial<Colors>, themeOverrides: Partial<GlobalTheme>): GlobalTheme => {
+export const createTheme = (
+  colorOverrides: Partial<Colors>,
+  themeOverrides: Partial<GlobalTheme>
+): GlobalTheme => {
   const themeColors = {
     ...colors,
-    ...colorOverrides
+    ...colorOverrides,
   };
 
   const theme = getDefaultTheme(themeColors);
 
   return {
     ...theme,
-    ...themeOverrides
+    ...themeOverrides,
   };
 };

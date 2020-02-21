@@ -1,20 +1,12 @@
 import * as React from 'react';
 
-import {
-  AnimatePresence,
-} from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
-import {
-  ButtonProps
-} from '../button/Button';
+import { ButtonProps } from '../button/Button';
 
-import {
-  Portal
-} from '../portal/Portal';
+import { Portal } from '../portal/Portal';
 
-import {
-  useTheme
-} from '../../hooks';
+import { useTheme } from '../../hooks';
 
 import {
   ModalRoot,
@@ -22,26 +14,19 @@ import {
   ModalContainer,
   ModalWrapper,
   ModalSentinel,
-  ModalBody
-} from "./StyledModal";
+  ModalBody,
+} from './StyledModal';
 
-import {
-  Header
-} from './Header';
+import { Header } from './Header';
 
-import {
-  Content
-} from './Content';
+import { Content } from './Content';
 
-import {
-  DefaultFooter,
-  Footer
-} from './Footer';
+import { DefaultFooter, Footer } from './Footer';
 
 enum KEY_CODES {
   'ESC' = 27,
   'TAB' = 9,
-  'ENTER' = 13
+  'ENTER' = 13,
 }
 
 export interface ModalProps {
@@ -98,7 +83,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
   okButtonText,
   onOk,
   onCancel,
-  visible
+  visible,
 }) => {
   const previousActiveElement = React.useRef<any>(null);
   const modalWrapper = React.useRef<HTMLDivElement>(null);
@@ -109,7 +94,11 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
   const theme = useTheme();
 
   const checkFocus = React.useCallback(() => {
-    if (modalWrapper.current == null || modalSentinelStart.current == null || !visible) {
+    if (
+      modalWrapper.current == null ||
+      modalSentinelStart.current == null ||
+      !visible
+    ) {
       return;
     }
 
@@ -120,9 +109,9 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
 
   // handle the ok click
   const handleOk = React.useCallback(() => {
-     if (onOk) {
-       onOk();
-     }
+    if (onOk) {
+      onOk();
+    }
   }, [onOk]);
 
   // handle closing the modal and calling onCancel
@@ -133,11 +122,14 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
   }, [onCancel]);
 
   // handle closing the modal when the masked element is clicked
-  const handleMaskClick = React.useCallback((e) => {
-    if (e.target === e.currentTarget && !modalMouseDown.current) {
-      handleClose();
-    }
-  }, [handleClose, modalMouseDown]);
+  const handleMaskClick = React.useCallback(
+    e => {
+      if (e.target === e.currentTarget && !modalMouseDown.current) {
+        handleClose();
+      }
+    },
+    [handleClose, modalMouseDown]
+  );
 
   // handle the mouse up event on the masked element to prevent closing
   // when not intended
@@ -151,51 +143,53 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
     }
   }, [modalMouseDown]);
 
-
   const handleMouseDown = React.useCallback(() => {
     modalMouseDown.current = true;
   }, [modalMouseDown]);
 
   // handle keydown events for accessibility behaviours
-  const handleKeyDown = React.useCallback((e) => {
-    const activeElement = document.activeElement;
+  const handleKeyDown = React.useCallback(
+    e => {
+      const activeElement = document.activeElement;
 
-    if (!(modalSentinelEnd.current && modalSentinelStart.current)) {
-      return;
-    }
-
-    switch(e.keyCode) {
-      case KEY_CODES.ESC: {
-        if (allowKeyboard) {
-          handleClose();
-        }
-        break
+      if (!(modalSentinelEnd.current && modalSentinelStart.current)) {
+        return;
       }
-      case KEY_CODES.TAB: {
-        if (e.shiftKey) {
-          if (activeElement === modalSentinelStart.current) {
-            modalSentinelEnd.current.focus();
-            break;
+
+      switch (e.keyCode) {
+        case KEY_CODES.ESC: {
+          if (allowKeyboard) {
+            handleClose();
           }
-        } else if (activeElement === modalSentinelEnd.current) {
-          modalSentinelStart.current.focus();
           break;
         }
-        break;
-      }
-      case KEY_CODES.ENTER: {
-        if (allowKeyboard) {
-          handleOk();
+        case KEY_CODES.TAB: {
+          if (e.shiftKey) {
+            if (activeElement === modalSentinelStart.current) {
+              modalSentinelEnd.current.focus();
+              break;
+            }
+          } else if (activeElement === modalSentinelEnd.current) {
+            modalSentinelStart.current.focus();
+            break;
+          }
+          break;
         }
-        break;
+        case KEY_CODES.ENTER: {
+          if (allowKeyboard) {
+            handleOk();
+          }
+          break;
+        }
       }
-    }
-  }, [handleOk, handleClose, modalSentinelStart, modalSentinelEnd, allowKeyboard]);
+    },
+    [handleOk, handleClose, modalSentinelStart, modalSentinelEnd, allowKeyboard]
+  );
 
   // In order to support clicking the mask to close we need to stop click events on
   // the modal container from bubbling up.
-  const handleWrapClick = React.useCallback((e) => {
-     e.stopPropagation();
+  const handleWrapClick = React.useCallback(e => {
+    e.stopPropagation();
   }, []);
 
   // store which element was active before the modal opens
@@ -208,7 +202,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
   React.useEffect(() => {
     if (visible) {
       document.body.style.overflow = 'hidden';
-      checkFocus()
+      checkFocus();
     } else {
       document.body.style.overflow = '';
     }
@@ -217,7 +211,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
   return (
     <Portal>
       <AnimatePresence>
-        {visible &&
+        {visible && (
           <ModalRoot
             className={'rtk-modal-root'}
             exit={{ opacity: 0 }}
@@ -269,15 +263,11 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
                   >
                     {title}
                   </Header>
-                  <Content theme={theme}>
-                    {children}
-                  </Content>
-                  <Footer
-                    className="rtk-modal-footer"
-                    theme={theme}
-                  >
-                    {footer ?
-                      footer :
+                  <Content theme={theme}>{children}</Content>
+                  <Footer className="rtk-modal-footer" theme={theme}>
+                    {footer ? (
+                      footer
+                    ) : (
                       <DefaultFooter
                         cancelButtonProps={cancelButtonProps}
                         cancelButtonText={cancelButtonText}
@@ -287,7 +277,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
                         onOk={handleOk}
                         theme={theme}
                       />
-                    }
+                    )}
                   </Footer>
                 </ModalBody>
                 <ModalSentinel
@@ -298,7 +288,7 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
               </ModalContainer>
             </ModalWrapper>
           </ModalRoot>
-        }
+        )}
       </AnimatePresence>
     </Portal>
   );
@@ -308,9 +298,9 @@ Modal.defaultProps = {
   allowKeyboard: true,
   visible: false,
   okButtonProps: {
-    type: 'primary'
+    type: 'primary',
   },
   cancelButtonProps: {
-    ghost: true
-  }
+    ghost: true,
+  },
 };

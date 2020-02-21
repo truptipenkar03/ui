@@ -3,41 +3,31 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import {
-  Accordion
-} from '../Accordion';
+import { Accordion } from '../Accordion';
 
-import {
-  Button,
-  Input
-} from "../../..";
+import { Button, Input } from '../../..';
 
 // @ts-ignore
 import mdx from './Accordion.mdx';
 
-import {
-  ItemKeyType
-} from "../types";
+import { ItemKeyType } from '../types';
 
 export default {
   title: 'Components/Accordion',
   component: Accordion,
   parameters: {
     docs: {
-      page: mdx
+      page: mdx,
     },
   },
 };
-
 
 const StyledCollapseContent = styled.div`
   min-height: 200px;
 `;
 
 const CollapseContent = ({ children }: any) => (
-  <StyledCollapseContent>
-    {children}
-  </StyledCollapseContent>
+  <StyledCollapseContent>{children}</StyledCollapseContent>
 );
 
 const AccordionContainer = styled.div`
@@ -47,17 +37,13 @@ const AccordionContainer = styled.div`
 
 export const standard = () => (
   <AccordionContainer>
-    <Accordion
-      classic={false}
-      defaultExpandedItems={["1", "3"]}
-      itemGap={20}
-    >
+    <Accordion classic={false} defaultExpandedItems={['1', '3']} itemGap={20}>
       <Accordion.Item itemKey="1">
         <CollapseContent>
-          <Input label={"First Name"} />
-          <Input label={"Last Name"} />
-          <Input label={"Email"} />
-          <Input label={"Phone Number"} />
+          <Input label={'First Name'} />
+          <Input label={'Last Name'} />
+          <Input label={'Email'} />
+          <Input label={'Phone Number'} />
         </CollapseContent>
       </Accordion.Item>
       <Accordion.Item itemKey="2">
@@ -72,10 +58,7 @@ export const standard = () => (
 
 export const classic = () => (
   <AccordionContainer>
-    <Accordion
-      itemGap={20}
-      classic
-    >
+    <Accordion itemGap={20} classic>
       <Accordion.Item itemKey="1">
         <CollapseContent />
       </Accordion.Item>
@@ -90,16 +73,19 @@ export const classic = () => (
 );
 
 export const external = () => {
-  const itemKeys = ['1', '2' , '3'];
+  const itemKeys = ['1', '2', '3'];
   const [selectedItems, setSelectedItems] = React.useState<any>([]);
 
-  const handleOnChange = React.useCallback((key) => {
-    const items = selectedItems.includes(key) ?
-      selectedItems.filter((i: ItemKeyType) => i !== key) :
-      selectedItems.concat(key);
+  const handleOnChange = React.useCallback(
+    key => {
+      const items = selectedItems.includes(key)
+        ? selectedItems.filter((i: ItemKeyType) => i !== key)
+        : selectedItems.concat(key);
 
-    setSelectedItems(items)
-  }, [selectedItems]);
+      setSelectedItems(items);
+    },
+    [selectedItems]
+  );
 
   const handleOnClick = React.useCallback(() => {
     if (selectedItems.length === itemKeys.length) {
@@ -113,8 +99,10 @@ export const external = () => {
 
   return (
     <AccordionContainer>
-      <Button onClick={handleOnClick}>{isFullyExpanded ? 'Close All' : 'Expand All'}</Button>
-      <div style={{ height: '20px' }}/>
+      <Button onClick={handleOnClick}>
+        {isFullyExpanded ? 'Close All' : 'Expand All'}
+      </Button>
+      <div style={{ height: '20px' }} />
       <Accordion
         itemGap={20}
         expandedItems={selectedItems}

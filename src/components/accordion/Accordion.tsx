@@ -1,22 +1,14 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import {
-  AccordionItem,
-  AccordionItemProps
-} from './AccordionItem';
+import { AccordionItem, AccordionItemProps } from './AccordionItem';
 
-import {
-  AccordionContext
-} from './context';
+import { AccordionContext } from './context';
 
-import {
-  ExpandedItemsType,
-  ItemGapType,
-  ItemKeyType
-} from "./types";
+import { ExpandedItemsType, ItemGapType, ItemKeyType } from './types';
 
-export interface AccordionFunctionComponent<T = {}> extends React.FunctionComponent<T> {
+export interface AccordionFunctionComponent<T = {}>
+  extends React.FunctionComponent<T> {
   Item: React.FunctionComponent<AccordionItemProps>;
 }
 
@@ -52,45 +44,46 @@ export const Accordion: AccordionFunctionComponent<AccordionProps> = ({
   defaultExpandedItems,
   itemGap,
   onChange,
-  expandedItems: customExpandedItems
+  expandedItems: customExpandedItems,
 }) => {
-  const [expandedItems, setExpandedItems] = React.useState<ExpandedItemsType>(defaultExpandedItems || []);
+  const [expandedItems, setExpandedItems] = React.useState<ExpandedItemsType>(
+    defaultExpandedItems || []
+  );
 
-  const onCollapseChange = React.useCallback((key) => {
-    // if there is no external control of items
-    if (customExpandedItems == null) {
-      function getItems(key: ItemKeyType) {
-        return expandedItems.includes(key) ?
-          expandedItems.filter((i: ItemKeyType) => i !== key) :
-          expandedItems.concat(key);
+  const onCollapseChange = React.useCallback(
+    key => {
+      // if there is no external control of items
+      if (customExpandedItems == null) {
+        function getItems(key: ItemKeyType) {
+          return expandedItems.includes(key)
+            ? expandedItems.filter((i: ItemKeyType) => i !== key)
+            : expandedItems.concat(key);
+        }
+
+        function getClassicItems(key: ItemKeyType) {
+          return expandedItems.includes(key) ? [] : [key];
+        }
+
+        const newItems = classic ? getClassicItems(key) : getItems(key);
+        setExpandedItems(newItems);
       }
 
-      function getClassicItems(key: ItemKeyType) {
-        return expandedItems.includes(key) ?
-          [] :
-          [key];
+      if (onChange) {
+        onChange(key);
       }
-
-      const newItems = classic ? getClassicItems(key) : getItems(key);
-      setExpandedItems(newItems);
-    }
-
-    if (onChange) {
-      onChange(key);
-    }
-  }, [expandedItems, customExpandedItems, onChange, classic]);
+    },
+    [expandedItems, customExpandedItems, onChange, classic]
+  );
 
   return (
     <AccordionContext.Provider
       value={{
         itemGap,
         expandedItems: customExpandedItems || expandedItems,
-        onChange: onCollapseChange
+        onChange: onCollapseChange,
       }}
     >
-      <Container className={className}>
-        {children}
-      </Container>
+      <Container className={className}>{children}</Container>
     </AccordionContext.Provider>
   );
 };
@@ -101,7 +94,7 @@ Accordion.defaultProps = {
   className: '',
   defaultExpandedItems: [],
   itemGap: 20,
-  onChange: undefined
+  onChange: undefined,
 };
 
 Accordion.Item = AccordionItem;

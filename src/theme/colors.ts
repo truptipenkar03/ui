@@ -1,6 +1,4 @@
-import {
-  Colors
-} from "./types";
+import { Colors } from './types';
 
 export const colors: Colors = {
   black: '#000000',

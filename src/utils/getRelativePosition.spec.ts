@@ -3,36 +3,36 @@ import {
   getRegion,
   getPoint,
   getFloaterPosition,
-  calculateRelativePosition
-} from "./getRelativePosition";
+  calculateRelativePosition,
+} from './getRelativePosition';
 
 const getMockWindow = (window: any) => ({
-  ...window
+  ...window,
 });
 
 const getMockDocument = (document: any) => ({
-  ...document
+  ...document,
 });
 
 const getMockElement = (element: any) => ({
   getBoundingClientRect: () => element.boundingRect,
-  ...element
+  ...element,
 });
 
 describe('utils:getRelativePosition', () => {
   describe('getScroll', () => {
-     it('should return pageYOffset', () => {
-       const mockWindow = getMockWindow({
-         pageYOffset: 300
-       });
+    it('should return pageYOffset', () => {
+      const mockWindow = getMockWindow({
+        pageYOffset: 300,
+      });
 
-       const scrollTop = getScroll(mockWindow, true);
-       expect(scrollTop).toEqual(300);
-     });
+      const scrollTop = getScroll(mockWindow, true);
+      expect(scrollTop).toEqual(300);
+    });
 
     it('should return pageXOffset', () => {
       const mockWindow = getMockWindow({
-        pageXOffset: 0
+        pageXOffset: 0,
       });
 
       const scrollLeft = getScroll(mockWindow, false);
@@ -43,9 +43,9 @@ describe('utils:getRelativePosition', () => {
       const mockWindow = getMockWindow({
         document: {
           documentElement: {
-            scrollTop: 300
-          }
-        }
+            scrollTop: 300,
+          },
+        },
       });
 
       const scrollTop = getScroll(mockWindow, true);
@@ -56,9 +56,9 @@ describe('utils:getRelativePosition', () => {
       const mockWindow = getMockWindow({
         document: {
           documentElement: {
-            scrollLeft: 0
-          }
-        }
+            scrollLeft: 0,
+          },
+        },
       });
 
       const scrollLeft = getScroll(mockWindow, false);
@@ -70,9 +70,9 @@ describe('utils:getRelativePosition', () => {
         document: {
           documentElement: {},
           body: {
-            scrollTop: 300
-          }
-        }
+            scrollTop: 300,
+          },
+        },
       });
 
       const scrollTop = getScroll(mockWindow, true);
@@ -84,9 +84,9 @@ describe('utils:getRelativePosition', () => {
         document: {
           documentElement: {},
           body: {
-            scrollLeft: 0
-          }
-        }
+            scrollLeft: 0,
+          },
+        },
       });
 
       const scrollLeft = getScroll(mockWindow, false);
@@ -101,18 +101,18 @@ describe('utils:getRelativePosition', () => {
           height: 30,
           width: 100,
           left: 0,
-          top: 0
+          top: 0,
         },
         ownerDocument: getMockDocument({
           defaultView: getMockWindow({
             pageYOffset: 400,
-            pageXOffset: 0
+            pageXOffset: 0,
           }),
           documentElement: {
             clientLeft: 0,
-            clientTop: 0
-          }
-        })
+            clientTop: 0,
+          },
+        }),
       });
 
       const region = getRegion(mockElement);
@@ -121,7 +121,7 @@ describe('utils:getRelativePosition', () => {
         left: 0,
         top: 400,
         height: 30,
-        width: 100
+        width: 100,
       });
     });
   });
@@ -131,7 +131,7 @@ describe('utils:getRelativePosition', () => {
       left: 0,
       top: 400,
       height: 30,
-      width: 100
+      width: 100,
     };
 
     it('returns the top-left point', () => {
@@ -139,7 +139,7 @@ describe('utils:getRelativePosition', () => {
 
       expect(point).toEqual({
         top: 400,
-        left: 0
+        left: 0,
       });
     });
 
@@ -148,7 +148,7 @@ describe('utils:getRelativePosition', () => {
 
       expect(point).toEqual({
         top: 400,
-        left: 50
+        left: 50,
       });
     });
 
@@ -157,7 +157,7 @@ describe('utils:getRelativePosition', () => {
 
       expect(point).toEqual({
         top: 400,
-        left: 100
+        left: 100,
       });
     });
 
@@ -166,7 +166,7 @@ describe('utils:getRelativePosition', () => {
 
       expect(point).toEqual({
         top: 415,
-        left: 0
+        left: 0,
       });
     });
 
@@ -175,7 +175,7 @@ describe('utils:getRelativePosition', () => {
 
       expect(point).toEqual({
         top: 415,
-        left: 50
+        left: 50,
       });
     });
 
@@ -184,7 +184,7 @@ describe('utils:getRelativePosition', () => {
 
       expect(point).toEqual({
         top: 415,
-        left: 100
+        left: 100,
       });
     });
 
@@ -193,7 +193,7 @@ describe('utils:getRelativePosition', () => {
 
       expect(point).toEqual({
         top: 430,
-        left: 0
+        left: 0,
       });
     });
 
@@ -202,7 +202,7 @@ describe('utils:getRelativePosition', () => {
 
       expect(point).toEqual({
         top: 430,
-        left: 50
+        left: 50,
       });
     });
 
@@ -211,7 +211,7 @@ describe('utils:getRelativePosition', () => {
 
       expect(point).toEqual({
         top: 430,
-        left: 100
+        left: 100,
       });
     });
   });
@@ -221,24 +221,24 @@ describe('utils:getRelativePosition', () => {
       left: 0,
       top: 400,
       height: 30,
-      width: 100
+      width: 100,
     };
 
     const floaterRegion = {
       left: 0,
       top: 400,
       height: 100,
-      width: 100
+      width: 100,
     };
 
     const anchorPoint = {
       top: 400,
-      left: 0
+      left: 0,
     };
 
     const floaterPoint = {
       top: 500,
-      left: 100
+      left: 100,
     };
 
     // position is calculated assume the tl of anchor is positioned with br of floater
@@ -253,7 +253,7 @@ describe('utils:getRelativePosition', () => {
 
       expect(position).toEqual({
         top: 300,
-        left: -100
+        left: -100,
       });
     });
 
@@ -268,7 +268,7 @@ describe('utils:getRelativePosition', () => {
 
       expect(position).toEqual({
         top: -100,
-        left: -100
+        left: -100,
       });
     });
   });

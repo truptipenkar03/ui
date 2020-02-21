@@ -1,12 +1,8 @@
 import * as React from 'react';
 
-import styled, {
-  css
-} from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import {
-  useTheme
-} from '../../hooks';
+import { useTheme } from '../../hooks';
 
 const StyledSubtitle = styled.span`
   ${({ theme }) => css`
@@ -19,14 +15,8 @@ const StyledSubtitle = styled.span`
   `}
 `;
 
-export const Subtitle: React.FunctionComponent = ({
-  children
-}) => {
+export const Subtitle: React.FunctionComponent = ({ children }) => {
   const theme = useTheme();
 
-  return (
-    <StyledSubtitle theme={theme}>
-      {children}
-    </StyledSubtitle>
-  );
+  return <StyledSubtitle theme={theme}>{children}</StyledSubtitle>;
 };

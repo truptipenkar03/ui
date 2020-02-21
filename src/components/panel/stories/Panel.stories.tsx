@@ -4,13 +4,11 @@ import styled from 'styled-components';
 // @ts-ignore
 import mdx from './Panel.mdx';
 
-import {
-  Panel
-} from '../Panel';
+import { Panel } from '../Panel';
 
 const Parent = styled.div`
   padding: 20px;
-  background: #F1F1F1;
+  background: #f1f1f1;
 `;
 
 const Container = styled.div`
@@ -29,7 +27,7 @@ export default {
   component: Panel,
   parameters: {
     docs: {
-      page: mdx
+      page: mdx,
     },
   },
 };
@@ -57,4 +55,3 @@ export const clickable = () => {
     </Parent>
   );
 };
-

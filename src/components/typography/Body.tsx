@@ -1,12 +1,8 @@
 import * as React from 'react';
 
-import styled, {
-  css
-} from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import {
-  useTheme
-} from '../../hooks';
+import { useTheme } from '../../hooks';
 
 const StyledBody = styled.span`
   ${({ theme }) => css`
@@ -19,14 +15,8 @@ const StyledBody = styled.span`
   `}
 `;
 
-export const Body: React.FunctionComponent = ({
-  children
-}) => {
+export const Body: React.FunctionComponent = ({ children }) => {
   const theme = useTheme();
 
-  return (
-    <StyledBody theme={theme}>
-      {children}
-    </StyledBody>
-  );
+  return <StyledBody theme={theme}>{children}</StyledBody>;
 };

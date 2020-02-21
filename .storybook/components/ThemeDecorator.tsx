@@ -1,26 +1,18 @@
 import * as React from 'react';
 
-import styled, {
-  css
-} from "styled-components";
+import styled, { css } from 'styled-components';
 
-import {
-  ThemeProvider
-} from "../../src/styled";
+import { ThemeProvider } from '../../src/styled';
 
-import {
-  Button
-} from "../../src/components/button/Button";
+import { Button } from '../../src/components/button/Button';
 
-import {
-  createTheme,
-} from "../../src/theme";
+import { createTheme } from '../../src/theme';
 
 const Container = styled.div`
   ${({ theme }) => css`
     border-radius: 4px;
     padding: 20px;
-    
+
     background: ${theme.colors.secondaryBackground};
   `};
 `;
@@ -34,45 +26,50 @@ const Header = styled.div`
 
 const theme1 = createTheme({}, {});
 
-const theme2 = createTheme({
-  primary: 'orange',
-  primaryBackground: '#484f5e',
-  secondary: '#ad7101',
-  secondaryBackground: '#1F2728',
-  borderColor: '#5C5F68',
-  placeholderDarkFontColor: '#C9C7C7',
-  placeholderLightFontColor: '#545450',
-  lightFontColor: '#30302F',
-  darkFontColor: '#EFEFEF',
-  titleFontColor: '#EFEFEF',
-  subtitleFontColor: '#EFEFEF',
-  bodyFontColor: '#C9C7C7'
-}, {
-  typographyTitleFontFamily: 'Helvetica Neue',
-  buttonPrimaryColor: 'black',
-  buttonPrimaryHoverColor: 'black',
-  buttonPrimaryActiveColor: 'black',
-});
+const theme2 = createTheme(
+  {
+    primary: 'orange',
+    primaryBackground: '#484f5e',
+    secondary: '#ad7101',
+    secondaryBackground: '#1F2728',
+    borderColor: '#5C5F68',
+    placeholderDarkFontColor: '#C9C7C7',
+    placeholderLightFontColor: '#545450',
+    lightFontColor: '#30302F',
+    darkFontColor: '#EFEFEF',
+    titleFontColor: '#EFEFEF',
+    subtitleFontColor: '#EFEFEF',
+    bodyFontColor: '#C9C7C7',
+  },
+  {
+    typographyTitleFontFamily: 'Helvetica Neue',
+    buttonPrimaryColor: 'black',
+    buttonPrimaryHoverColor: 'black',
+    buttonPrimaryActiveColor: 'black',
+  }
+);
 
 const themes = {
   theme1,
-  theme2
+  theme2,
 };
 
-const Story = ({ onClick, storyFn} : any) => {
+const Story = ({ onClick, storyFn }: any) => {
   return (
     <Container>
       <Header>
         <Button size="small" shape="circle" onClick={onClick} />
       </Header>
-      <div style={{ height: '15px' }}/>
+      <div style={{ height: '15px' }} />
       {storyFn()}
     </Container>
-  )
+  );
 };
 
 export default (storyFn: any) => {
-  const [themeIndex, setThemeIndex] = React.useState<'theme1' | 'theme2'>('theme1');
+  const [themeIndex, setThemeIndex] = React.useState<'theme1' | 'theme2'>(
+    'theme1'
+  );
 
   const onClick = React.useCallback(() => {
     if (themeIndex === 'theme1') {
@@ -80,7 +77,7 @@ export default (storyFn: any) => {
     } else {
       setThemeIndex('theme1');
     }
-  },[themeIndex]);
+  }, [themeIndex]);
 
   return (
     <ThemeProvider theme={themes[themeIndex]}>

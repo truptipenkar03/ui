@@ -1,13 +1,13 @@
 import * as styledComponents from 'styled-components';
 
-import {
-  GlobalTheme
-} from "../theme/types";
+import { GlobalTheme } from '../theme/types';
 
 const {
   css,
   ThemeProvider,
   ThemeContext,
-} = styledComponents as styledComponents.ThemedStyledComponentsModule<GlobalTheme>;
+} = styledComponents as styledComponents.ThemedStyledComponentsModule<
+  GlobalTheme
+>;
 
-export { css, ThemeProvider, ThemeContext};
+export { css, ThemeProvider, ThemeContext };

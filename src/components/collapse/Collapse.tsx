@@ -1,26 +1,16 @@
 import * as React from 'react';
 
-import styled, {
-  css
-} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Header from './Header';
 
-import {
-  ContentContainer,
-  Content
-} from './Content';
+import { ContentContainer, Content } from './Content';
 
-import {
-  useAfterMountEffect
-} from "../../hooks";
+import { useAfterMountEffect } from '../../hooks';
 
-import {
-  useTheme
-} from "../../hooks";
+import { useTheme } from '../../hooks';
 
 export interface CollapseProps {
-
   /** Option to handle if collapse is expanded */
   expanded?: boolean;
 
@@ -50,14 +40,15 @@ export interface CollapseProps {
 }
 
 const Container = styled.div`
-  ${({theme}) => css`
-    &:hover, :focus-within {
+  ${({ theme }) => css`
+    &:hover,
+    :focus-within {
       .rtk-collapse-header {
         background: ${theme.collapseHeaderOpenBackground};
         border: 1px solid transparent;
-        color: ${theme.collapseHeaderOpenColor}      
+        color: ${theme.collapseHeaderOpenColor};
       }
-    };
+    }
   `};
   }
 `;
@@ -71,9 +62,11 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
   destroyOnClose,
   header,
   itemKey,
-  onChange
+  onChange,
 }) => {
-  const [isExpanded, setExpanded] = React.useState<boolean | undefined>(defaultExpanded);
+  const [isExpanded, setExpanded] = React.useState<boolean | undefined>(
+    defaultExpanded
+  );
 
   const theme = useTheme();
 
@@ -84,7 +77,6 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
       if (onChange) {
         onChange(itemKey);
       }
-
     } else if (onChange) {
       onChange(itemKey);
     }
@@ -97,10 +89,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
   useAfterMountEffect(handleSetExpanded, [expanded]);
 
   return (
-    <Container
-      className={`${className} rtk-collapse`}
-      theme={theme}
-    >
+    <Container className={`${className} rtk-collapse`} theme={theme}>
       <Header
         icon={icon}
         expanded={isExpanded}
@@ -114,11 +103,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
         destroyOnClose={destroyOnClose}
         theme={theme}
       >
-        <Content
-          theme={theme}
-        >
-          {children}
-        </Content>
+        <Content theme={theme}>{children}</Content>
       </ContentContainer>
     </Container>
   );
@@ -132,5 +117,5 @@ Collapse.defaultProps = {
   destroyOnClose: false,
   header: '',
   onChange: undefined,
-  itemKey: ''
+  itemKey: '',
 };

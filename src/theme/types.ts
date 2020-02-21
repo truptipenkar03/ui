@@ -33,7 +33,6 @@ export interface Colors {
 }
 
 export interface GlobalTheme {
-
   // ---- Animation Time ---- //
   animationTimeVeryFast: number;
   animationTimeFast: number;
@@ -102,7 +101,6 @@ export interface GlobalTheme {
   collapseHeaderHeight: string;
   collapseIconSize: string;
 
-
   // ---- Panel ---- //
   panelBackground: string;
   panelBorder: string;
@@ -112,7 +110,6 @@ export interface GlobalTheme {
   panelMargin: string;
   panelActiveBoxShadow: string;
   panelHoverBoxShadow: string;
-
 
   // ---- Input ---- //
   inputBackground: string;

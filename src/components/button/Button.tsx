@@ -1,24 +1,14 @@
 import * as React from 'react';
 
-import {
-  StyledButton
-} from "./StyledButton";
+import { StyledButton } from './StyledButton';
 
-import {
-  motion
-} from "framer-motion";
+import { motion } from 'framer-motion';
 
-import {
-  Icon
-} from "../icons";
+import { Icon } from '../icons';
 
-import {
-  useTheme
-} from "../../hooks";
+import { useTheme } from '../../hooks';
 
-import {
-  MouseEventHandler
-} from "react";
+import { MouseEventHandler } from 'react';
 
 export type ButtonType = 'primary' | 'danger' | 'link';
 export type ShapeType = 'circle' | 'default';
@@ -60,7 +50,7 @@ export interface ButtonProps {
 }
 
 function getTypeStyle(type, ghost, theme) {
-  switch(type) {
+  switch (type) {
     case 'primary': {
       if (ghost) {
         return theme.buttonPrimaryBackground;
@@ -79,7 +69,10 @@ function getTypeStyle(type, ghost, theme) {
   }
 }
 
-export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<
+  HTMLButtonElement,
+  ButtonProps
+>((props, ref) => {
   const {
     children,
     className,
@@ -102,26 +95,27 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<HTM
         loading,
         ghost,
         shape,
-        size
+        size,
       }}
       theme={theme}
       {...rest}
     >
-      {loading &&
+      {loading && (
         <>
-          <Icon.Loading
-            fill={getTypeStyle(type, ghost, theme)}
-          />
+          <Icon.Loading fill={getTypeStyle(type, ghost, theme)} />
           <motion.div
-            key={"loading"}
+            key={'loading'}
             animate={{
               marginRight: shape === 'circle' ? 0 : 5,
-              transition: { type: 'tween'}
+              transition: { type: 'tween' },
             }}
-            transition={{ type: 'tween', duration: theme.animationTimeVeryFast }}
+            transition={{
+              type: 'tween',
+              duration: theme.animationTimeVeryFast,
+            }}
           />
         </>
-      }
+      )}
       <span>{children}</span>
     </StyledButton>
   );
@@ -136,5 +130,5 @@ Button.defaultProps = {
   loading: false,
   onClick: undefined,
   shape: 'default',
-  size: 'default'
+  size: 'default',
 };

@@ -12,12 +12,8 @@ export interface PortalProps {
   disablePortal?: boolean;
 }
 
-export const Portal: React.FunctionComponent<PortalProps> = (props) => {
-  const {
-    children,
-    container,
-    disablePortal
-  } = props;
+export const Portal: React.FunctionComponent<PortalProps> = props => {
+  const { children, container, disablePortal } = props;
 
   const [mountNode, setMountNode] = React.useState<HTMLElement | null>(null);
 
@@ -38,10 +34,10 @@ export const Portal: React.FunctionComponent<PortalProps> = (props) => {
     return React.cloneElement(children as React.ReactElement);
   }
 
-  return mountNode ? ReactDOM.createPortal(children, mountNode): mountNode;
+  return mountNode ? ReactDOM.createPortal(children, mountNode) : mountNode;
 };
 
 Portal.defaultProps = {
   children: '',
-  disablePortal: false
+  disablePortal: false,
 };

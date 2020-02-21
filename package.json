@@ -1,6 +1,6 @@
 {
   "name": "@rtkwlf/ui",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "main": "dist/ui.cjs.js",
   "module": "dist/ui.es.js",
   "types": "dist/ui.d.ts",
@@ -13,6 +13,8 @@
     "storybook:build": "build-storybook -o build/storybook/static -s public",
     "storybook:docs": "build-storybook --docs -o docs -s public",
     "build": "rm -rf dist/ && rm -rf types/ && npm run rollup && npm run build:ts",
+    "prettier:write": "prettier --write '{src,.storybook}/**/*.{js,tsx,ts}'",
+    "prettier:check": "prettier --check '{src,.storybook}/**/*.{js,tsx,ts}'",
     "test": "jest",
     "rollup": "rollup -c",
     "test:coverage": "jest --coverage",
@@ -21,8 +23,6 @@
     "lint:fix": "eslint '**/*.{ts,tsx}' --fix"
   },
   "dependencies": {
-    "@storybook/addon-knobs": "^5.3.13",
-    "@types/storybook__addon-knobs": "^5.2.1",
     "framer-motion": "^1.6.12",
     "styled-components": "5.0.0-rc.2"
   },
@@ -43,6 +43,7 @@
     "@microsoft/api-extractor": "7.7.3",
     "@rollup/plugin-commonjs": "11.0.1",
     "@storybook/addon-docs": "5.3.3",
+    "@storybook/addon-knobs": "5.3.13",
     "@storybook/addon-storysource": "5.3.3",
     "@storybook/addons": "5.3.3",
     "@storybook/client-api": "5.3.3",
@@ -58,6 +59,7 @@
     "@types/react-dom": "16.9.1",
     "@types/react-test-renderer": "16.9.0",
     "@types/storybook__addon-info": "4.1.2",
+    "@types/storybook__addon-knobs": "5.2.1",
     "@types/storybook__react": "4.0.2",
     "@types/styled-components": "4.4.1",
     "@typescript-eslint/eslint-plugin": "2.6.1",
@@ -74,9 +76,11 @@
     "eslint-plugin-react": "7.16.0",
     "eslint-plugin-react-hooks": "2.2.0",
     "formik": "2.1.2",
+    "husky": "4.2.3",
     "install": "0.13.0",
     "jest": "24.8.0",
     "jest-styled-components": "7.0.0-beta.1",
+    "lint-staged": "10.0.7",
     "prop-types": "15.7.2",
     "react-docgen-typescript": "1.15.0",
     "react-docgen-typescript-loader": "3.4.0",

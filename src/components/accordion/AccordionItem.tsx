@@ -1,13 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import {
-  Collapse
-} from "../collapse/Collapse";
+import { Collapse } from '../collapse/Collapse';
 
-import {
-  AccordionContext
-} from './context';
+import { AccordionContext } from './context';
 
 interface CollapseSpacerProps {
   itemGap?: number;
@@ -33,23 +29,21 @@ export interface AccordionItemProps {
   header?: React.ReactNode;
 
   /** Unique key to identify collapse. Used for Accordion */
-  itemKey: string | number ;
+  itemKey: string | number;
 
   /** Function to handle when collapse state changes */
   onChange?: (itemKey?: string | number) => void;
 }
 
 const CollapseSpacer = styled.div<CollapseSpacerProps>`
-  height: ${(props) => `${props.itemGap}px`};
+  height: ${props => `${props.itemGap}px`};
 `;
 
 /** Accordion.Item */
-export const AccordionItem: React.FunctionComponent<AccordionItemProps> = (props) => (
+export const AccordionItem: React.FunctionComponent<AccordionItemProps> = props => (
   <AccordionContext.Consumer>
-    {(value) => {
-      const {
-        itemKey,
-      } = props;
+    {value => {
+      const { itemKey } = props;
 
       const isExpanded = value.expandedItems.includes(itemKey);
 

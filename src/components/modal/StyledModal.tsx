@@ -1,14 +1,8 @@
-import styled, {
-  css
-} from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import {
-  motion
-} from 'framer-motion';
+import { motion } from 'framer-motion';
 
-import {
-  GlobalTheme
-} from "../../theme/types";
+import { GlobalTheme } from '../../theme/types';
 
 interface StyledModalProps {
   theme: GlobalTheme;
@@ -26,7 +20,7 @@ export const ModalMask = styled(motion.div)<StyledModalProps>`
     width: 100%;
 
     background: ${theme.modalMaskBackground};
-    
+
     @media (max-width: ${theme.mediaScreenSmall}) {
       visibility: hidden;
     }
@@ -44,11 +38,11 @@ export const ModalWrapper = styled.div<StyledModalProps>`
     overflow: auto;
 
     text-align: center;
-    
+
     @media (max-width: ${theme.mediaScreenSmall}) {
       overflow: hidden;
-    };
-    
+    }
+
     &::before {
       display: inline-block;
       width: 0;
@@ -67,15 +61,15 @@ export const ModalContainer = styled(motion.div)<StyledModalProps>`
 
     min-height: ${theme.modalMinHeight};
     min-width: ${theme.modalMinWidth};
-    
+
     margin: 0 auto;
 
     outline: 0;
-    
+
     @media (max-width: ${theme.mediaScreenSmall}) {
       height: 100%;
       width: 100%;
-      
+
       min-width: 0;
     }
   `};
@@ -89,17 +83,17 @@ export const ModalBody = styled(motion.div)<StyledModalProps>`
     border: ${theme.modalBorder};
     border-color: ${theme.modalBorderColor};
     border-radius: ${theme.modalBorderRadius};
-    
+
     box-shadow: ${theme.modalBoxShadow};
-    
+
     outline: 0;
-    
+
     @media (max-width: ${theme.mediaScreenSmall}) {
       height: 100%;
-      
+
       border-radius: 0;
       box-shadow: none;
-    };
+    }
   `};
 `;
 
@@ -112,5 +106,3 @@ export const ModalSentinel = styled.div<StyledModalProps>`
     outline: 0;
   }
 `;
-
-

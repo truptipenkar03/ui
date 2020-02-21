@@ -1,12 +1,5 @@
-import {
-  useAfterMountEffect
-} from "./useAfterMountEffect";
+import { useAfterMountEffect } from './useAfterMountEffect';
 
-import {
-  useTheme
-} from "./useTheme";
+import { useTheme } from './useTheme';
 
-export {
-  useAfterMountEffect,
-  useTheme
-};
+export { useAfterMountEffect, useTheme };

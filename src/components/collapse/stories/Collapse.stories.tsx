@@ -1,9 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import {
-  Collapse
-} from '../Collapse';
+import { Collapse } from '../Collapse';
 
 // @ts-ignore
 import mdx from './Collapse.mdx';
@@ -13,7 +11,7 @@ export default {
   component: Collapse,
   parameters: {
     docs: {
-      page: mdx
+      page: mdx,
     },
   },
 };
@@ -28,9 +26,7 @@ const StyledCollapseContent = styled.div`
 `;
 
 const CollapseContent = ({ children }: any) => (
-  <StyledCollapseContent>
-    {children}
-  </StyledCollapseContent>
+  <StyledCollapseContent>{children}</StyledCollapseContent>
 );
 
 const TestContent = () => {
@@ -40,17 +36,12 @@ const TestContent = () => {
     return () => console.log('unmounted');
   }, []);
 
-  return (
-    <CollapseContent />
-  );
+  return <CollapseContent />;
 };
 
 export const simple = () => (
   <Container>
-    <Collapse
-      header="Click Me"
-      itemKey="default"
-    >
+    <Collapse header="Click Me" itemKey="default">
       <CollapseContent />
     </Collapse>
   </Container>
@@ -58,11 +49,7 @@ export const simple = () => (
 
 export const open = () => (
   <Container>
-    <Collapse
-      header="Click Me"
-      defaultExpanded
-      itemKey="default"
-    >
+    <Collapse header="Click Me" defaultExpanded itemKey="default">
       <TestContent />
     </Collapse>
   </Container>
@@ -70,11 +57,7 @@ export const open = () => (
 
 export const destroy = () => (
   <Container>
-    <Collapse
-      header="Click Me"
-      itemKey="default"
-      destroyOnClose
-    >
+    <Collapse header="Click Me" itemKey="default" destroyOnClose>
       <TestContent />
     </Collapse>
   </Container>

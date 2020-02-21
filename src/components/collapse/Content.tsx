@@ -1,13 +1,8 @@
 import * as React from 'react';
 
-import {
-  AnimatePresence,
-  motion
-} from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
-import styled, {
-  css
-} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface ContentContainerProps {
   animate: 'open' | 'closed';
@@ -25,14 +20,14 @@ export const ContentContainer: React.FunctionComponent<any> = ({
   animate,
   children,
   destroyOnClose,
-  theme
+  theme,
 }) => {
   const variants = {
     closed: {
-      height: 0
+      height: 0,
     },
     open: {
-      height: 'auto'
+      height: 'auto',
     },
   };
 
@@ -42,7 +37,7 @@ export const ContentContainer: React.FunctionComponent<any> = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       style={{
-        overflow: 'hidden'
+        overflow: 'hidden',
       }}
       initial="closed"
       exit="closed"
@@ -56,10 +51,7 @@ export const ContentContainer: React.FunctionComponent<any> = ({
 
   return (
     <AnimatePresence initial={false}>
-      { destroyOnClose ?
-        animate === 'open' && content :
-        content
-      }
+      {destroyOnClose ? animate === 'open' && content : content}
     </AnimatePresence>
   );
 };
@@ -72,22 +64,17 @@ const StyledContent = styled.div<ContentProps>`
     border-color: ${theme.collapseBorderColor};
     border-radius: ${theme.collapseBorderRadius};
     border-top: none;
-    
+
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   `};
 `;
 
-export const Content: React.FunctionComponent<ContentProps> = (props) => {
-  const {
-    children
-  } = props;
+export const Content: React.FunctionComponent<ContentProps> = props => {
+  const { children } = props;
 
   return (
-    <StyledContent
-      className={'rtk-collapse-content'}
-      {...props}
-    >
+    <StyledContent className={'rtk-collapse-content'} {...props}>
       {children}
     </StyledContent>
   );

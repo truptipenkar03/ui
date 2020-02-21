@@ -1,16 +1,8 @@
-import styled, {
-  css
-} from "styled-components";
+import styled, { css } from 'styled-components';
 
-import {
-  GlobalTheme
-} from "../../theme/types";
+import { GlobalTheme } from '../../theme/types';
 
-import {
-  InputProps,
-  InputSize,
-  ValidationStatus
-} from "./Input";
+import { InputProps, InputSize, ValidationStatus } from './Input';
 
 interface StyledInputProps extends InputProps {
   inputSize?: InputSize;
@@ -25,12 +17,13 @@ export const Label = styled.label<{ required?: boolean }>`
     font-size: ${theme.inputLabelFontSize};
     color: ${theme.inputColor};
 
-    ${required && css`
-      ::before {
-        content: '* ';
-        color: ${theme.colors.danger};
-      }
-    `}
+    ${required &&
+      css`
+        ::before {
+          content: '* ';
+          color: ${theme.colors.danger};
+        }
+      `}
   `};
 `;
 
@@ -42,17 +35,20 @@ export const Status = styled.div<{
     font-size: ${theme.inputStatusFontSize};
     color: ${theme.inputStatusColor};
 
-    ${validationStatus === 'error' && css`
-      color: ${theme.inputStatusErrorColor};
-    `}
+    ${validationStatus === 'error' &&
+      css`
+        color: ${theme.inputStatusErrorColor};
+      `}
 
-    ${validationStatus === 'success' && css`
-      color: ${theme.inputStatusSuccessColor};
-    `}
+    ${validationStatus === 'success' &&
+      css`
+        color: ${theme.inputStatusSuccessColor};
+      `}
     
-    ${validationStatus === 'loading' && css`
-      color: ${theme.inputStatusLoadingColor};
-    `}
+    ${validationStatus === 'loading' &&
+      css`
+        color: ${theme.inputStatusLoadingColor};
+      `}
   `};
 `;
 
@@ -72,39 +68,48 @@ export const Prefix = styled.div<{
 
     height: ${theme.inputDefaultHeight};
     left: ${theme.inputPrefixLeft};
-    
+
     svg {
       width: ${theme.inputDefaultFontSize}px;
       height: ${theme.inputDefaultFontSize}px;
     }
-    
-    ${inputSize === 'small' && css`
-      height: ${theme.inputSmallHeight};
-      
-      svg {
-        width: ${theme.inputSmallFontSize}px;
-        height: ${theme.inputSmallFontSize}px;
-      }
-    `}
-    
-    ${inputSize === 'large' && css`
-      height: ${theme.inputLargeHeight};
-      
-      svg {
-        width: ${theme.inputLargeFontSize}px;
-        height: ${theme.inputLargeFontSize}px;
-      }
-    `}
+
+    ${inputSize === 'small' &&
+      css`
+        height: ${theme.inputSmallHeight};
+
+        svg {
+          width: ${theme.inputSmallFontSize}px;
+          height: ${theme.inputSmallFontSize}px;
+        }
+      `}
+
+    ${inputSize === 'large' &&
+      css`
+        height: ${theme.inputLargeHeight};
+
+        svg {
+          width: ${theme.inputLargeFontSize}px;
+          height: ${theme.inputLargeFontSize}px;
+        }
+      `}
   `};
 `;
 
-
 export const FeedbackMessage = styled.div`
-  height: ${({ theme }) => theme.inputStatusMessageHeight}
+  height: ${({ theme }) => theme.inputStatusMessageHeight};
 `;
 
 export const StyledInput = styled.input<StyledInputProps>`
-  ${({ borderType, theme, inputSize, inputPrefix, inputSuffix, validationStatus, hasFeedbackIcon }) => css`
+  ${({
+    borderType,
+    theme,
+    inputSize,
+    inputPrefix,
+    inputSuffix,
+    validationStatus,
+    hasFeedbackIcon,
+  }) => css`
     height: ${theme.inputDefaultHeight};
     font-size: ${theme.inputDefaultFontSize}px;
     
@@ -125,82 +130,99 @@ export const StyledInput = styled.input<StyledInputProps>`
     
     transition: all ${theme.animationTimeFast}s;
     
-    ${inputSize === 'small' && css`
-      height: ${theme.inputSmallHeight};
-      font-size: ${theme.inputSmallFontSize}px;
-    `}
+    ${inputSize === 'small' &&
+      css`
+        height: ${theme.inputSmallHeight};
+        font-size: ${theme.inputSmallFontSize}px;
+      `}
     
-    ${inputSize === 'large' && css`
-      height: ${theme.inputLargeHeight};
-      font-size: ${theme.inputLargeFontSize}px;
-    `}
+    ${inputSize === 'large' &&
+      css`
+        height: ${theme.inputLargeHeight};
+        font-size: ${theme.inputLargeFontSize}px;
+      `}
     
-    ${borderType === 'bottom' && css`
-      padding: 10px 5px;
-      background: transparent;
-      border: none;
-      border-radius: 0;
-      border-bottom: ${theme.inputBorder};
-      border-color: ${theme.inputBorderColor};
-    `};
+    ${borderType === 'bottom' &&
+      css`
+        padding: 10px 5px;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        border-bottom: ${theme.inputBorder};
+        border-color: ${theme.inputBorderColor};
+      `};
     
-    ${borderType === 'none' && css`
-      padding: 10px 0;
-      background: transparent;
-      border: none;
-      color: ${theme.inputColor};
-    `};
+    ${borderType === 'none' &&
+      css`
+        padding: 10px 0;
+        background: transparent;
+        border: none;
+        color: ${theme.inputColor};
+      `};
     
     // has prefix
-    ${inputPrefix && css`
-      padding-left: ${theme.inputDefaultFontSize + 15}px;
-      
-      ${inputSize === 'small' && css`
-        padding-left: ${theme.inputSmallFontSize + 15}px;
-      `}
-      
-      ${inputSize === 'large' && css`
-        padding-left: ${theme.inputLargeFontSize + 15}px;
-      `}
-    `};
+    ${inputPrefix &&
+      css`
+        padding-left: ${theme.inputDefaultFontSize + 15}px;
+
+        ${inputSize === 'small' &&
+          css`
+            padding-left: ${theme.inputSmallFontSize + 15}px;
+          `}
+
+        ${inputSize === 'large' &&
+          css`
+            padding-left: ${theme.inputLargeFontSize + 15}px;
+          `}
+      `};
     
     // has suffix
-    ${inputSuffix && css`
+    ${inputSuffix &&
+      css`
       padding-right: ${theme.inputDefaultFontSize + 15}px;
       
-      ${inputSize === 'small' && css`
-        padding-right: ${theme.inputSmallFontSize + 15}px;
-      `}
+      ${inputSize === 'small' &&
+        css`
+          padding-right: ${theme.inputSmallFontSize + 15}px;
+        `}
       
-      ${inputSize === 'large' && css`
-        padding-right: ${theme.inputLargeFontSize + 15}px;
-      `}
+      ${inputSize === 'large' &&
+        css`
+          padding-right: ${theme.inputLargeFontSize + 15}px;
+        `}
       
        // has suffix and feedback icon
-       ${(validationStatus !== undefined && hasFeedbackIcon) && css`
-          padding-right: ${theme.inputDefaultFontSize*2 + 20}px;
-      
-          ${inputSize === 'small' && css`
-            padding-right: ${theme.inputSmallFontSize*2 + 20}px;
-          `}
-          
-          ${inputSize === 'large' && css`
-            padding-right: ${theme.inputLargeFontSize*2 + 20}px;
-          `}
-       `}
+       ${validationStatus !== undefined &&
+         hasFeedbackIcon &&
+         css`
+           padding-right: ${theme.inputDefaultFontSize * 2 + 20}px;
+
+           ${inputSize === 'small' &&
+             css`
+               padding-right: ${theme.inputSmallFontSize * 2 + 20}px;
+             `}
+
+           ${inputSize === 'large' &&
+             css`
+               padding-right: ${theme.inputLargeFontSize * 2 + 20}px;
+             `}
+         `}
     `};
 
-    ${validationStatus === 'error' && css`
-      border-color: ${theme.inputStatusErrorBorderColor};
-    `};
+    ${validationStatus === 'error' &&
+      css`
+        border-color: ${theme.inputStatusErrorBorderColor};
+      `};
 
-    ${validationStatus === 'success' && css`
-      border-color: ${theme.inputStatusSuccessBorderColor};
-    `};
+    ${validationStatus === 'success' &&
+      css`
+        border-color: ${theme.inputStatusSuccessBorderColor};
+      `};
     
-    ${validationStatus === 'loading' && css`
-      border-color: ${theme.inputStatusLoadingBorderColor};
-    `};
+    ${validationStatus === 'loading' &&
+      css`
+        border-color: ${theme.inputStatusLoadingBorderColor};
+      `};
 
     &:read-only {
       cursor: pointer;
@@ -218,15 +240,17 @@ export const StyledInput = styled.input<StyledInputProps>`
     &:focus {
       border-color: ${theme.inputFocusBorderColor};
 
-      ${borderType === 'bottom' && css`
-        border: none;
-        border-bottom: 1px solid ${theme.inputFocusBorderColor};
-        border-radius: 0;
-      `};
+      ${borderType === 'bottom' &&
+        css`
+          border: none;
+          border-bottom: 1px solid ${theme.inputFocusBorderColor};
+          border-radius: 0;
+        `};
 
-      ${borderType === 'none' && css`
-        border: none;
-      `};
+      ${borderType === 'none' &&
+        css`
+          border: none;
+        `};
 
       outline: none;
     }

@@ -1,12 +1,8 @@
 import * as React from 'react';
 
-import {
-  mount, shallow
-} from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
-import {
-  Accordion
-} from '../Accordion';
+import { Accordion } from '../Accordion';
 
 describe('Accordion', () => {
   it('renders all children', () => {
@@ -24,9 +20,7 @@ describe('Accordion', () => {
   it('opens every clicked item', () => {
     const mockOnChange = jest.fn();
     const wrapper = mount(
-      <Accordion
-        onChange={mockOnChange}
-      >
+      <Accordion onChange={mockOnChange}>
         <Accordion.Item itemKey={'1'}>Accordion Item 1</Accordion.Item>
         <Accordion.Item itemKey={'2'}>Accordion Item 2</Accordion.Item>
         <Accordion.Item itemKey={'3'}>Accordion Item 3</Accordion.Item>
@@ -53,9 +47,7 @@ describe('Accordion', () => {
 
   it('opens one item at a time', () => {
     const wrapper = mount(
-      <Accordion
-        classic
-      >
+      <Accordion classic>
         <Accordion.Item itemKey={'1'}>Accordion Item 1</Accordion.Item>
         <Accordion.Item itemKey={'2'}>Accordion Item 2</Accordion.Item>
         <Accordion.Item itemKey={'3'}>Accordion Item 3</Accordion.Item>
@@ -77,33 +69,43 @@ describe('Accordion', () => {
 
   it('opens item 1 by default', () => {
     const wrapper = mount(
-      <Accordion
-        defaultExpandedItems={['1']}
-      >
+      <Accordion defaultExpandedItems={['1']}>
         <Accordion.Item itemKey={'1'}>Accordion Item 1</Accordion.Item>
         <Accordion.Item itemKey={'2'}>Accordion Item 2</Accordion.Item>
         <Accordion.Item itemKey={'3'}>Accordion Item 3</Accordion.Item>
       </Accordion>
     );
 
-    expect(wrapper.find('Collapse').at(0).prop('expanded')).toBe(true);
+    expect(
+      wrapper
+        .find('Collapse')
+        .at(0)
+        .prop('expanded')
+    ).toBe(true);
   });
 
   it('opens items that are passed in as external props', () => {
     const wrapper = mount(
-      <Accordion
-        defaultExpandedItems={['1']}
-      >
+      <Accordion defaultExpandedItems={['1']}>
         <Accordion.Item itemKey={'1'}>Accordion Item 1</Accordion.Item>
         <Accordion.Item itemKey={'2'}>Accordion Item 2</Accordion.Item>
         <Accordion.Item itemKey={'3'}>Accordion Item 3</Accordion.Item>
       </Accordion>
     );
 
-    wrapper.setProps({expandedItems: ['2']});
+    wrapper.setProps({ expandedItems: ['2'] });
 
-    expect(wrapper.find('Collapse').at(0).prop('expanded')).toBe(false);
-    expect(wrapper.find('Collapse').at(1).prop('expanded')).toBe(true);
+    expect(
+      wrapper
+        .find('Collapse')
+        .at(0)
+        .prop('expanded')
+    ).toBe(false);
+    expect(
+      wrapper
+        .find('Collapse')
+        .at(1)
+        .prop('expanded')
+    ).toBe(true);
   });
-
 });

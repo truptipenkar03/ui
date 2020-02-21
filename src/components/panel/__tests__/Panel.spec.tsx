@@ -1,18 +1,14 @@
 import * as React from 'react';
 
-import {
-  shallow
-} from "enzyme";
+import { shallow } from 'enzyme';
 
-import {
-  Panel
-} from '../Panel';
+import { Panel } from '../Panel';
 
 describe('Panel', () => {
   it('renders', () => {
     const wrapper = shallow(
       <Panel>
-        <div id={"test1"}/>
+        <div id={'test1'} />
       </Panel>
     );
 
@@ -23,7 +19,7 @@ describe('Panel', () => {
     const onClickMock = jest.fn();
     const wrapper = shallow(
       <Panel onClick={onClickMock}>
-        <div id={"test1"}/>
+        <div id={'test1'} />
       </Panel>
     );
 

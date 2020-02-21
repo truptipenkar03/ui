@@ -1,15 +1,11 @@
 import * as React from 'react';
 
-import styled, {
-  css
-} from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import {
-  GlobalTheme
-} from "../../theme/types";
+import { GlobalTheme } from '../../theme/types';
 
-import PlusSolid from "../icons/PlusSolid";
-import MinusSolid from "../icons/MinusSolid";
+import PlusSolid from '../icons/PlusSolid';
+import MinusSolid from '../icons/MinusSolid';
 
 interface HeaderProps {
   icon?: React.ReactNode;
@@ -35,8 +31,7 @@ interface StyledHeaderProps {
   theme: any;
 }
 
-const HeaderContent = styled.div`
-`;
+const HeaderContent = styled.div``;
 
 const HeaderIconContainer = styled.div`
   display: flex;
@@ -59,37 +54,34 @@ const StyledHeader = styled.div<StyledHeaderProps>`
 
     padding: ${theme.collapseHeaderPadding};
     height: ${theme.collapseHeaderHeight};
-  
+
     box-sizing: border-box;
     user-select: none;
     cursor: pointer;
-    
+
     transition: all ${theme.animationTimeVeryFast}s;
-    
+
     &:hover {
       background: ${theme.collapseHeaderHoverBackground};
       border: 1px solid transparent;
       color: ${theme.collapseHeaderHoverColor};
-    };
-    
-    ${customProps.expanded && css`
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-    `};
+    }
+
+    ${customProps.expanded &&
+      css`
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      `};
   `};
 `;
 
 const HeaderIcon: React.FunctionComponent<HeaderIconProps> = ({
   icon,
   expanded,
-  theme
+  theme,
 }) => {
   if (icon) {
-    return (
-      <HeaderIconContainer>
-        {icon}
-      </HeaderIconContainer>
-    );
+    return <HeaderIconContainer>{icon}</HeaderIconContainer>;
   } else if (expanded) {
     return (
       <HeaderIconContainer>
@@ -98,7 +90,7 @@ const HeaderIcon: React.FunctionComponent<HeaderIconProps> = ({
           width={theme.collapseIconSize}
         />
       </HeaderIconContainer>
-    )
+    );
   }
 
   return (
@@ -108,7 +100,7 @@ const HeaderIcon: React.FunctionComponent<HeaderIconProps> = ({
         width={theme.collapseIconSize}
       />
     </HeaderIconContainer>
-  )
+  );
 };
 
 const Header: React.FunctionComponent<HeaderProps> = ({
@@ -116,24 +108,18 @@ const Header: React.FunctionComponent<HeaderProps> = ({
   children,
   onClick,
   expanded,
-  theme
+  theme,
 }) => (
   <StyledHeader
     className="rtk-collapse-header"
     theme={theme}
     onClick={onClick}
     customProps={{
-      expanded
+      expanded,
     }}
   >
-    <HeaderContent>
-      {children}
-    </HeaderContent>
-    <HeaderIcon
-      icon={icon}
-      expanded={expanded}
-      theme={theme}
-    />
+    <HeaderContent>{children}</HeaderContent>
+    <HeaderIcon icon={icon} expanded={expanded} theme={theme} />
   </StyledHeader>
 );
 

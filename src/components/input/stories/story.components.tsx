@@ -8,15 +8,11 @@ const StyledContainer = styled.div`
 `;
 
 export const Container = ({ children }: any) => (
-  <StyledContainer>
-    {children}
-  </StyledContainer>
+  <StyledContainer>{children}</StyledContainer>
 );
 
 const StyledSpacer = styled.div`
   height: 20px;
 `;
 
-export const Spacer = () => (
-  <StyledSpacer />
-);
+export const Spacer = () => <StyledSpacer />;

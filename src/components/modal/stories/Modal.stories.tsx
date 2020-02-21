@@ -1,20 +1,14 @@
 import * as React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import {
-  Button
-} from '../../button/Button';
+import { Button } from '../../button/Button';
 
-import {
-  Input
-} from '../../input/Input';
+import { Input } from '../../input/Input';
 
 // @ts-ignore
 import mdx from './Modal.mdx';
 
-import {
-  Modal
-} from '../Modal';
+import { Modal } from '../Modal';
 
 const ModalContent = styled.div`
   min-height: 200px;
@@ -25,7 +19,7 @@ export default {
   component: Modal,
   parameters: {
     docs: {
-      page: mdx
+      page: mdx,
     },
   },
 };
@@ -44,12 +38,7 @@ export const simple = () => {
   return (
     <div>
       <Button onClick={() => setVisibility(true)}>Open Simple Modal</Button>
-      <Modal
-        title={'Title'}
-        onOk={onOk}
-        onCancel={onCancel}
-        visible={visible}
-      >
+      <Modal title={'Title'} onOk={onOk} onCancel={onCancel} visible={visible}>
         <ModalContent>
           <Input label={'First Name'} />
           <Input label={'Last Name'} />
@@ -74,27 +63,22 @@ export const customFooter = () => {
 
   return (
     <div>
-      <Button onClick={() => setVisibility(true)}>Open Custom Footer Modal</Button>
+      <Button onClick={() => setVisibility(true)}>
+        Open Custom Footer Modal
+      </Button>
       <Modal
         title={'Title'}
         onOk={onOk}
         onCancel={onCancel}
-        footer={(
+        footer={
           <React.Fragment>
-            <Button
-              onClick={onCancel}
-              ghost
-            >
+            <Button onClick={onCancel} ghost>
               Cancel
             </Button>
-            <div style={{ height: '1px', width: '16px' }}/>
-            <Button
-              onClick={onOk}
-            >
-              Finish
-            </Button>
+            <div style={{ height: '1px', width: '16px' }} />
+            <Button onClick={onOk}>Finish</Button>
           </React.Fragment>
-        )}
+        }
         visible={visible}
       >
         <ModalContent>
@@ -123,12 +107,13 @@ export const asyncClose = () => {
       setVisibility(false);
       setLoading(false);
     }, 3000);
-
   }, []);
 
   return (
     <div>
-      <Button onClick={() => setVisibility(true)}>Open Modal with Async Logic</Button>
+      <Button onClick={() => setVisibility(true)}>
+        Open Modal with Async Logic
+      </Button>
       <Modal
         title={'Title'}
         onOk={onOk}
@@ -136,10 +121,10 @@ export const asyncClose = () => {
         closable={!loading}
         allowKeyboard={!loading}
         cancelButtonProps={{
-          disabled: loading
+          disabled: loading,
         }}
         okButtonProps={{
-          loading
+          loading,
         }}
         visible={visible}
       >

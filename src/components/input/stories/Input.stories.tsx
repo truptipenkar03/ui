@@ -1,25 +1,19 @@
 import * as React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import {
-  Input
-} from '../Input';
+import { Input } from '../Input';
 
-import {
-  Container
-} from './story.components';
+import { Container } from './story.components';
 
 // @ts-ignore
 import mdx from './Input.mdx';
 
-import {
-  Button
-} from "../../button/Button";
+import { Button } from '../../button/Button';
 
 const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
-  
+
   margin-bottom: 15px;
 `;
 
@@ -33,7 +27,7 @@ export default {
   component: Input,
   parameters: {
     docs: {
-      page: mdx
+      page: mdx,
     },
   },
 };
@@ -73,21 +67,13 @@ export const validation = () => {
   return (
     <Container>
       <ButtonContainer>
-        <Button onClick={() => setStatus(undefined)}>
-          Default
-        </Button>
+        <Button onClick={() => setStatus(undefined)}>Default</Button>
         <Spacer />
-        <Button onClick={() => setStatus('success')}>
-          Success
-        </Button>
+        <Button onClick={() => setStatus('success')}>Success</Button>
         <Spacer />
-        <Button onClick={() => setStatus('error')}>
-          Error
-        </Button>
+        <Button onClick={() => setStatus('error')}>Error</Button>
         <Spacer />
-        <Button onClick={() => setStatus('loading')}>
-          Loading
-        </Button>
+        <Button onClick={() => setStatus('loading')}>Loading</Button>
         <Spacer />
       </ButtonContainer>
       <Input
@@ -96,7 +82,7 @@ export const validation = () => {
         validationMessage={status ? `This is the ${status} status` : undefined}
       />
     </Container>
-  )
+  );
 };
 
 export const disabled = () => (
@@ -110,4 +96,3 @@ export const affix = () => (
     <Input inputPrefix={'A'} inputSuffix={'A'} />
   </Container>
 );
-

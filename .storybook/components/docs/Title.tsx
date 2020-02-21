@@ -7,20 +7,20 @@ interface TitleProps {
 }
 
 const Subtitle = styled.div<any>`
- color: grey;
- font-size: 18px;
- margin-bottom: 40px;
+  color: grey;
+  font-size: 18px;
+  margin-bottom: 40px;
 `;
 
 const StyledTitle = styled.div`
- font-size: 32px;
- font-weight: bold;
- margin-bottom: 10px;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
 `;
 
 export const Title: React.FunctionComponent<TitleProps> = ({
   title,
-  subtitle
+  subtitle,
 }) => (
   <React.Fragment>
     <StyledTitle>{title}</StyledTitle>
