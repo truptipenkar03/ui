@@ -6,7 +6,7 @@ import { useTheme } from '../../hooks';
 
 const StyledSubtitle = styled.span`
   ${({ theme }) => css`
-    display: inline-block;
+    display: block;
     color: ${theme.typographySubtitleColor};
     font-family: ${theme.typographySubtitleFontFamily};
     font-size: ${theme.typographySubtitleFontSize};

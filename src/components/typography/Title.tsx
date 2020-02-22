@@ -12,7 +12,7 @@ export interface TitleProps {
 
 const StyledTitle = styled.span<TitleProps>`
   ${props => css`
-    display: inline-block;
+    display: block;
     font-family: ${props.theme.typographyTitleFontFamily};
   
     ${props.level === 1 &&
