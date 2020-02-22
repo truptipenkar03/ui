@@ -71,15 +71,10 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   collapseHeaderHeight: '32px',
   collapseIconSize: '10px',
 
-  // ---- Panel ---- //
-  panelBackground: themeColors.primaryBackground,
-  panelBorder: 'none',
-  panelBorderColor: 'none',
-  panelBorderRadius: '4px',
-  panelPadding: '24px',
-  panelMargin: '32px',
-  panelActiveBoxShadow: `0px 0px 4px rgba(${themeColors.blackRGB},0.20)`,
-  panelHoverBoxShadow: `0px 7px 21px rgba(${themeColors.blackRGB},0.07)`,
+  // ---- Layout ---- //
+  layoutHeaderHeight: '60px',
+  layoutFooterHeight: '60px',
+  layoutSidebarWidthFull: '100px',
 
   // ---- Input ---- //
   inputBackground: themeColors.primaryBackground,
@@ -132,6 +127,16 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   modalMaskBackground: `rgba(${themeColors.blackRGB}, 0.45)`,
   modalMinHeight: '200px',
   modalMinWidth: '520px',
+
+  // ---- Panel ---- //
+  panelBackground: themeColors.primaryBackground,
+  panelBorder: 'none',
+  panelBorderColor: 'none',
+  panelBorderRadius: '4px',
+  panelPadding: '24px',
+  panelMargin: '32px',
+  panelActiveBoxShadow: `0px 0px 4px rgba(${themeColors.blackRGB},0.20)`,
+  panelHoverBoxShadow: `0px 7px 21px rgba(${themeColors.blackRGB},0.07)`,
 
   // ---- Typography ---- //
   typographyTitleFontFamily: '"Encode Sans", sans-serif',

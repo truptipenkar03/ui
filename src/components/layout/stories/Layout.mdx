@@ -1,0 +1,23 @@
+import { Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { Title, SectionTitle } from '../../../../.storybook/components';
+import { Layout } from '../Layout';
+
+<Title
+  title="Layout"
+  subtitle="Provides overall application layout for views"
+/>
+
+<SectionTitle>Simple Layout</SectionTitle>
+
+<Preview>
+  <Story id="components-layout--simple"/>
+</Preview>
+
+<SectionTitle>Sidebar Layout</SectionTitle>
+
+<Preview>
+  <Story id="components-layout--sidebar"/>
+</Preview>
+
+<SectionTitle>Props</SectionTitle>
+<Props of={Layout} />

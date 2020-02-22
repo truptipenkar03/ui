@@ -4,6 +4,10 @@ import styled, { css } from 'styled-components';
 
 import { useTheme } from '../../hooks';
 
+interface SubtitleProps {
+  className?: string;
+}
+
 const StyledSubtitle = styled.span`
   ${({ theme }) => css`
     display: block;
@@ -16,8 +20,15 @@ const StyledSubtitle = styled.span`
   `}
 `;
 
-export const Subtitle: React.FunctionComponent = ({ children }) => {
+export const Subtitle: React.FunctionComponent<SubtitleProps> = ({
+  children,
+  className,
+}) => {
   const theme = useTheme();
 
-  return <StyledSubtitle theme={theme}>{children}</StyledSubtitle>;
+  return (
+    <StyledSubtitle className={`${className} rtk-type-subtitle`} theme={theme}>
+      {children}
+    </StyledSubtitle>
+  );
 };

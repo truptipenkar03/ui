@@ -4,6 +4,10 @@ import styled, { css } from 'styled-components';
 
 import { useTheme } from '../../hooks';
 
+interface Body {
+  className?: string;
+}
+
 const StyledBody = styled.span`
   ${({ theme }) => css`
     color: ${theme.typographyBodyColor};
@@ -15,8 +19,15 @@ const StyledBody = styled.span`
   `}
 `;
 
-export const Body: React.FunctionComponent = ({ children }) => {
+export const Body: React.FunctionComponent<Body> = ({
+  children,
+  className,
+}) => {
   const theme = useTheme();
 
-  return <StyledBody theme={theme}>{children}</StyledBody>;
+  return (
+    <StyledBody className={`${className} rtk-type-body`} theme={theme}>
+      {children}
+    </StyledBody>
+  );
 };
