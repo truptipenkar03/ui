@@ -20,15 +20,14 @@ export interface LayoutProps {
   className?: string;
   sidebar?: React.ReactNode;
 }
+/* ${sidebar &&
+  css`
+    display: flex;
+    flex-direction: row;
+  `} */
 
-const Container = styled.div<{ sidebar: boolean }>`
-  ${({ sidebar }) => css`
-    ${sidebar &&
-      css`
-        display: flex;
-        flex-direction: row;
-      `}
-
+const Container = styled.div`
+  ${({}) => css`
     height: 100%;
   `}
 `;
@@ -49,13 +48,12 @@ export const Layout: LayoutComponent<LayoutProps> = ({
   sidebar,
 }) => {
   return (
-    <Container
-      className={`${className} rtk-layout`}
-      sidebar={sidebar !== undefined}
-    >
-      {sidebar && <Sidebar>{sidebar}</Sidebar>}
-      <LayoutContainer>{children}</LayoutContainer>
-    </Container>
+    <React.Fragment>
+      <Sidebar>{sidebar}</Sidebar>
+      <Container className={`${className} rtk-layout`}>
+        <LayoutContainer>{children}</LayoutContainer>
+      </Container>
+    </React.Fragment>
   );
 };
 

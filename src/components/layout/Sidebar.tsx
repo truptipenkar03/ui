@@ -14,7 +14,7 @@ interface SidebarContainerProps {
   theme: GlobalTheme;
 }
 
-const Container = styled.div<SidebarContainerProps>`
+const Container = styled.aside<SidebarContainerProps>`
   ${({ theme }) => css`
     height: 100%;
 
