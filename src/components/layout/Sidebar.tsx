@@ -17,7 +17,21 @@ interface SidebarContainerProps {
 const Container = styled.div<SidebarContainerProps>`
   ${({ theme }) => css`
     height: 100%;
-    width: ${theme.layoutSidebarWidthFull};
+
+    width: ${theme.layoutSidebarWidthLarge};
+    padding: ${theme.layoutSidebarPaddingLarge};
+
+    box-sizing: border-box;
+
+    @media (max-width: ${theme.mediaScreenMedium}) {
+      width: ${theme.layoutSidebarWidthMedium};
+      padding: ${theme.layoutSidebarPaddingMedium};
+    }
+
+    @media (max-width: ${theme.mediaScreenSmall}) {
+      width: ${theme.layoutSidebarWidthSmall};
+      padding: ${theme.layoutSidebarPaddingSmall};
+    }
   `}
 `;
 

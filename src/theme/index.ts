@@ -74,7 +74,12 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   // ---- Layout ---- //
   layoutHeaderHeight: '60px',
   layoutFooterHeight: '60px',
-  layoutSidebarWidthFull: '100px',
+  layoutSidebarPaddingLarge: '16px',
+  layoutSidebarPaddingMedium: '8px',
+  layoutSidebarPaddingSmall: '0px',
+  layoutSidebarWidthLarge: '225px',
+  layoutSidebarWidthMedium: '150px',
+  layoutSidebarWidthSmall: '55px',
 
   // ---- Input ---- //
   inputBackground: themeColors.primaryBackground,
@@ -105,7 +110,7 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   inputSuffixRight: '10px',
 
   // ---- Media Screen ---- //
-  mediaScreenSmall: '600px',
+  mediaScreenSmall: '700px',
   mediaScreenMedium: '748px',
   mediaScreenLarge: '992px',
   mediaScreenVeryLarge: '1200px',
