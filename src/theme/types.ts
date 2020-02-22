@@ -219,6 +219,7 @@ export interface GlobalTheme {
   dividerBorder: string;
   dividerBackground: string;
   dividerTextPrimaryBackground: string;
+  dividerTextColor: string;
 
   colors: Colors;
 }

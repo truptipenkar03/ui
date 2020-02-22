@@ -28,19 +28,19 @@ export const StyledLi = styled.li<{ orientation: Orientation }>`
 export const StyledDivider = styled.hr<StyledDividerProps>`
   ${({ customProps, theme, height }) => css`
     width: 100%;
+    color: ${theme.dividerTextColor}
+      ${customProps.orientation === 'vertical' &&
+        css`
+          margin: 2px 5px 0 5px;
+          width: auto;
+          color: ${theme.dividerBorder};
+          height: inherit;
 
-    ${customProps.orientation === 'vertical' &&
-      css`
-        margin: 2px 5px 0 5px;
-        width: auto;
-        color: ${theme.dividerBorder};
-        height: inherit;
-
-        ${customProps.margin &&
-          css`
-            margin: 2px ${customProps.margin} 0 ${customProps.margin};
-          `}
-      `};
+          ${customProps.margin &&
+            css`
+              margin: 2px ${customProps.margin} 0 ${customProps.margin};
+            `}
+        `};
 
     ${(customProps.orientation === 'horizontal' || !customProps.orientation) &&
       css`

@@ -190,6 +190,7 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   dividerBorder: themeColors.borderColor,
   dividerBackground: themeColors.borderColor,
   dividerTextPrimaryBackground: themeColors.primaryBackground,
+  dividerTextColor: themeColors.bodyFontColor,
 
   colors: {
     ...themeColors,
