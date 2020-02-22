@@ -6,6 +6,7 @@ import { useTheme } from '../../hooks';
 
 const StyledBody = styled.span`
   ${({ theme }) => css`
+    display: inline-block;
     color: ${theme.typographyBodyColor};
     font-family: ${theme.typographyBodyFontFamily};
     font-size: ${theme.typographyBodyFontSize};
