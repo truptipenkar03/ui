@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 
 import { useTheme } from '../../hooks';
 
-interface Body {
+export interface Body {
   className?: string;
 }
 

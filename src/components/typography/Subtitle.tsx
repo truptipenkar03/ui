@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 
 import { useTheme } from '../../hooks';
 
-interface SubtitleProps {
+export interface SubtitleProps {
   className?: string;
 }
 
