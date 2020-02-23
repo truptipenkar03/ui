@@ -2,16 +2,16 @@ import * as React from 'react';
 
 import styled, { css } from 'styled-components';
 
-import { Header } from './Header';
+import { Header, HeaderProps } from './Header';
 
-import { Content } from './Content';
+import { Content, ContentProps } from './Content';
 
-import { Footer } from './Footer';
+import { Footer, FooterProps } from './Footer';
 
 export interface LayoutComponent<T> extends React.FunctionComponent<T> {
-  Header: any;
-  Content: any;
-  Footer: any;
+  Header: React.FunctionComponent<HeaderProps>;
+  Content: React.FunctionComponent<ContentProps>;
+  Footer: React.FunctionComponent<FooterProps>;
 }
 
 export interface LayoutProps {

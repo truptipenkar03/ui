@@ -34,6 +34,8 @@ export {
   ValidationStatus,
 } from './components/input/Input';
 
+export { Layout, LayoutProps } from './components/layout/Layout';
+
 export { Modal, ModalProps } from './components/modal/Modal';
 
 export { Panel, PanelProps } from './components/panel/Panel';

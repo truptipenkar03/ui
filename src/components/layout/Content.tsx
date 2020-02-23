@@ -6,7 +6,7 @@ import { useTheme } from '../../hooks';
 
 import { GlobalTheme } from '../../theme/types';
 
-interface ContentProps {
+export interface ContentProps {
   className?: string;
 }
 
