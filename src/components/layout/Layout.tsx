@@ -8,8 +8,6 @@ import { Content } from './Content';
 
 import { Footer } from './Footer';
 
-import { Sidebar } from './Sidebar';
-
 export interface LayoutComponent<T> extends React.FunctionComponent<T> {
   Header: any;
   Content: any;
@@ -18,13 +16,7 @@ export interface LayoutComponent<T> extends React.FunctionComponent<T> {
 
 export interface LayoutProps {
   className?: string;
-  sidebar?: React.ReactNode;
 }
-/* ${sidebar &&
-  css`
-    display: flex;
-    flex-direction: row;
-  `} */
 
 const Container = styled.div`
   ${({}) => css`
@@ -45,11 +37,9 @@ const LayoutContainer = styled.div`
 export const Layout: LayoutComponent<LayoutProps> = ({
   children,
   className,
-  sidebar,
 }) => {
   return (
     <React.Fragment>
-      <Sidebar>{sidebar}</Sidebar>
       <Container className={`${className} rtk-layout`}>
         <LayoutContainer>{children}</LayoutContainer>
       </Container>

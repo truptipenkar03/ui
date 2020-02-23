@@ -31,15 +31,3 @@ export const simple = () => {
     </Container>
   );
 };
-
-export const sidebar = () => {
-  return (
-    <Container>
-      <Layout sidebar={<div>sidebar</div>}>
-        <Layout.Header>Header</Layout.Header>
-        <Layout.Content>Content</Layout.Content>
-        <Layout.Footer>Footer</Layout.Footer>
-      </Layout>
-    </Container>
-  );
-};
