@@ -6,8 +6,8 @@ import { Layout } from '../Layout';
 
 describe('Layout', () => {
   it('renders Layout', () => {
-    const wrapper = shallow(<Layout />);
+    const wrapper = shallow(<Layout>children</Layout>);
 
-    expect(wrapper.exists('StyledLayout__Container')).toBe(true);
+    expect(wrapper.exists('Layout__Container')).toBe(true);
   });
 });
