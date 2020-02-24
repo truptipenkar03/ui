@@ -101,15 +101,11 @@ export interface GlobalTheme {
   collapseHeaderHeight: string;
   collapseIconSize: string;
 
-  // ---- Panel ---- //
-  panelBackground: string;
-  panelBorder: string;
-  panelBorderColor: string;
-  panelBorderRadius: string;
-  panelPadding: string;
-  panelMargin: string;
-  panelActiveBoxShadow: string;
-  panelHoverBoxShadow: string;
+  // ---- Divider ---- //
+  dividerBorder: string;
+  dividerBackground: string;
+  dividerTextPrimaryBackground: string;
+  dividerTextColor: string;
 
   // ---- Input ---- //
   inputBackground: string;
@@ -139,6 +135,13 @@ export interface GlobalTheme {
   inputPrefixLeft: string;
   inputSuffixRight: string;
 
+  // ---- Layout ---- //
+  layoutHeaderHeight: string;
+  layoutHeaderPaddingSmall: string;
+  layoutHeaderPaddingMedium: string;
+  layoutHeaderPaddingLarge: string;
+  layoutFooterHeight: string;
+
   // ---- Media Screen ---- //
   mediaScreenSmall: string;
   mediaScreenMedium: string;
@@ -162,6 +165,16 @@ export interface GlobalTheme {
   modalMaskBackground: string;
   modalMinHeight: string;
   modalMinWidth: string;
+
+  // ---- Panel ---- //
+  panelBackground: string;
+  panelBorder: string;
+  panelBorderColor: string;
+  panelBorderRadius: string;
+  panelPadding: string;
+  panelMargin: string;
+  panelActiveBoxShadow: string;
+  panelHoverBoxShadow: string;
 
   // ---- Typography ---- //
   typographyTitleFontFamily: string;
@@ -214,10 +227,6 @@ export interface GlobalTheme {
   typographyBodyFontWeight: string;
   typographyBodyLineHeight: string;
   typographyBodyLetterSpacing: string;
-  // ---- Divider ---- //
-  dividerBorder: string;
-  dividerBackground: string;
-  dividerTextPrimaryBackground: string;
 
   colors: Colors;
 }

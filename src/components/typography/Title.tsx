@@ -7,11 +7,13 @@ import { useTheme } from '../../hooks';
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
 export interface TitleProps {
+  className?: string;
   level?: Level;
 }
 
 const StyledTitle = styled.span<TitleProps>`
   ${props => css`
+    display: block;
     font-family: ${props.theme.typographyTitleFontFamily};
   
     ${props.level === 1 &&
@@ -72,12 +74,17 @@ const StyledTitle = styled.span<TitleProps>`
 
 export const Title: React.FunctionComponent<TitleProps> = ({
   children,
+  className,
   level,
 }) => {
   const theme = useTheme();
 
   return (
-    <StyledTitle theme={theme} level={level}>
+    <StyledTitle
+      className={`${className} rtk-type-title-h${level}`}
+      theme={theme}
+      level={level}
+    >
       {children}
     </StyledTitle>
   );
