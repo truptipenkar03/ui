@@ -4,6 +4,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import styled, { css } from 'styled-components';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
+
 import { Icon } from '../icons';
 
 import { GlobalTheme } from '../../theme/types';
@@ -45,11 +49,15 @@ export const Suffix: React.FunctionComponent<any> = ({
   let suffixContent;
   switch (validationStatus) {
     case 'error': {
-      suffixContent = <Icon.TimesSolid color={theme.colors.danger} />;
+      suffixContent = (
+        <FontAwesomeIcon icon={faTimes} color={theme.colors.red} />
+      );
       break;
     }
     case 'success': {
-      suffixContent = <Icon.CheckSolid color={theme.colors.success} />;
+      suffixContent = (
+        <FontAwesomeIcon icon={faCheck} color={theme.colors.green} />
+      );
       break;
     }
     case 'loading': {
@@ -81,7 +89,7 @@ export const Suffix: React.FunctionComponent<any> = ({
         {hasFeedback && (
           <motion.div
             key="feedback"
-            style={{ position: 'relative', height: '1em' }}
+            style={{ position: 'relative' }}
             initial={{ opacity: 0, right: '-10px' }}
             animate={{ opacity: 1, right: '0px' }}
             exit={{ opacity: 0, right: '-10px' }}

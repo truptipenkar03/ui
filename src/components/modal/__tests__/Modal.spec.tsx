@@ -26,7 +26,7 @@ describe('Modal', () => {
       </Modal>
     );
 
-    expect(wrapper.exists('TimesSolid')).toBe(true);
+    expect(wrapper.exists('FontAwesomeIcon')).toBe(true);
   });
 
   it('sets the closeIcon prop', () => {
@@ -37,7 +37,7 @@ describe('Modal', () => {
     );
 
     expect(wrapper.exists('#icon')).toBe(true);
-    expect(wrapper.exists('TimesSolid')).toBe(false);
+    expect(wrapper.exists('FontAwesomeIcon')).toBe(false);
   });
 
   it('sets the cancelButtonProps prop', () => {

@@ -102,7 +102,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<
     >
       {loading && (
         <>
-          <Icon.Loading fill={getTypeStyle(type, ghost, theme)} />
+          <Icon.Loading color={getTypeStyle(type, ghost, theme)} />
           <motion.div
             key={'loading'}
             animate={{

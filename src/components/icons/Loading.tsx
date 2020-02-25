@@ -2,16 +2,17 @@ import * as React from 'react';
 
 import styled from 'styled-components';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+
 import { useTheme } from '../../hooks';
 
-import CircleNotch from './CircleNotch';
-
 export interface LoadingProps {
-  fill?: string;
+  color?: string;
 }
 
-const CircleNotchSpinner = styled(CircleNotch)`
-  fill: ${props => props.fill};
+const IconSpinner = styled(FontAwesomeIcon)`
   animation: spin 1s linear infinite;
 
   @keyframes spin {
@@ -21,10 +22,12 @@ const CircleNotchSpinner = styled(CircleNotch)`
   }
 `;
 
-const Loading: React.FunctionComponent<LoadingProps> = ({ fill }) => {
+const Loading: React.FunctionComponent<LoadingProps> = ({ color }) => {
   const theme = useTheme();
 
-  return <CircleNotchSpinner fill={fill || theme.colors.primary} />;
+  return (
+    <IconSpinner icon={faCircleNotch} color={color || theme.colors.primary} />
+  );
 };
 
 export default Loading;

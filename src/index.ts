@@ -24,7 +24,7 @@ export { Collapse, CollapseProps } from './components/collapse/Collapse';
 
 export { Floater, FloaterProps } from './components/floater/Floater';
 
-export { Icon } from './components/icons';
+export { Icon, IconProps } from './components/icons';
 
 export {
   Input,

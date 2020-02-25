@@ -23,3 +23,7 @@ tsconfig.json
 tsconfig.rollup.json
 package-lock.json
 api-extractor.json
+.huskyrc.json
+.prettierignore
+.prettierrc.json
+.lintstagedrc.json

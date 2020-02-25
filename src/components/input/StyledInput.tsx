@@ -176,7 +176,6 @@ export const StyledInput = styled.input<StyledInputProps>`
           `}
       `};
     
-    // has suffix
     ${inputSuffix &&
       css`
       padding-right: ${theme.inputDefaultFontSize + 15}px;
@@ -191,7 +190,6 @@ export const StyledInput = styled.input<StyledInputProps>`
           padding-right: ${theme.inputLargeFontSize + 15}px;
         `}
       
-       // has suffix and feedback icon
        ${validationStatus !== undefined &&
          hasFeedbackIcon &&
          css`

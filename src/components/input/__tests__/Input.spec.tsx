@@ -55,7 +55,7 @@ describe('Input', () => {
       />
     );
 
-    expect(wrapper.exists('TimesSolid')).toBe(true);
+    expect(wrapper.exists('FontAwesomeIcon')).toBe(true);
     expect(wrapper.exists('StyledInput__Status')).toBe(true);
   });
 
@@ -68,7 +68,7 @@ describe('Input', () => {
       />
     );
 
-    expect(wrapper.exists('TimesSolid')).toBe(true);
+    expect(wrapper.exists('FontAwesomeIcon')).toBe(true);
     expect(wrapper.exists('StyledInput__Status')).toBe(false);
   });
 
@@ -81,7 +81,7 @@ describe('Input', () => {
       />
     );
 
-    expect(wrapper.exists('TimesSolid')).toBe(false);
+    expect(wrapper.exists('FontAwesomeIcon')).toBe(false);
     expect(wrapper.exists('StyledInput__Status')).toBe(true);
   });
 

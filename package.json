@@ -6,7 +6,6 @@
   "types": "dist/ui.d.ts",
   "license": "MIT",
   "scripts": {
-    "svg": "npx @svgr/cli --icon --keep-existing --ext tsx -d src/components/icons assets/icons/",
     "build:types": "tsc --emitDeclarationOnly",
     "build:ts": "tsc -p ./tsconfig.rollup.json --emitDeclarationOnly --removeComments false && api-extractor run --local",
     "storybook": "start-storybook -p 9000 --quiet -s public",
@@ -23,7 +22,11 @@
     "lint:fix": "eslint '**/*.{ts,tsx}' --fix"
   },
   "dependencies": {
-    "framer-motion": "^1.6.12",
+    "@fortawesome/fontawesome-svg-core": "1.2.27",
+    "@fortawesome/free-solid-svg-icons": "5.12.1",
+    "@fortawesome/react-fontawesome": "0.1.8",
+    "framer-motion": "1.6.12",
+    "polished": "3.4.4",
     "styled-components": "5.0.0-rc.2"
   },
   "peerDependencies": {
@@ -50,7 +53,6 @@
     "@storybook/preset-typescript": "1.1.0",
     "@storybook/react": "5.3.3",
     "@storybook/source-loader": "5.3.3",
-    "@svgr/cli": "4.3.2",
     "@testing-library/react-hooks": "3.2.1",
     "@types/classnames": "2.2.9",
     "@types/enzyme": "3.10.3",

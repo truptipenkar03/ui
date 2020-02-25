@@ -1,35 +1,21 @@
 export interface Colors {
   black: string;
-  blackRGB: string;
-  borderColor: string;
-  danger: string;
-  dangerRGB: string;
-  dangerSecondary: string;
-  dangerSecondaryRGB: string;
-  darkFontColor: string;
-  darkFontColorRGB: string;
-  success: string;
-  titleFontColor: string;
-  subtitleFontColor: string;
-  bodyFontColor: string;
-  placeholderLightFontColor: string;
-  placeholderLightFontColorRGB: string;
-  placeholderDarkFontColor: string;
-  placeholderDarkFontColorRGB: string;
+  body: string;
+  border: string;
+  blue: string;
+  green: string;
+  orange: string;
   primary: string;
-  primaryRGB: string;
   primaryBackground: string;
-  primaryBackgroundRGB: string;
-  primaryGrey: string;
-  primaryGreyRGB: string;
+  purple: string;
+  red: string;
   secondary: string;
-  secondaryRGB: string;
   secondaryBackground: string;
-  secondaryBackgroundRGB: string;
-  lightFontColor: string;
-  lightFontColorRGB: string;
+  subtitle: string;
+  teritary: string;
+  title: string;
   white: string;
-  whiteRGB: string;
+  yellow: string;
 }
 
 export interface GlobalTheme {

@@ -1,15 +1,15 @@
-import CheckSolid from './CheckSolid';
-import CircleNotch from './CircleNotch';
+import Check from './Check';
 import Loading from './Loading';
-import MinusSolid from './MinusSolid';
-import PlusSolid from './PlusSolid';
-import TimesSolid from './TimesSolid';
+import Minus from './Minus';
+import Plus from './Plus';
+import Times from './Times';
 
 export const Icon = {
-  CheckSolid,
-  CircleNotch,
+  Check,
   Loading,
-  MinusSolid,
-  PlusSolid,
-  TimesSolid,
+  Minus,
+  Plus,
+  Times,
 };
+
+export { IconProps } from './types';

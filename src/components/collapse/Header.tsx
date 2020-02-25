@@ -4,8 +4,8 @@ import styled, { css } from 'styled-components';
 
 import { GlobalTheme } from '../../theme/types';
 
-import PlusSolid from '../icons/PlusSolid';
-import MinusSolid from '../icons/MinusSolid';
+import Plus from '../icons/Plus';
+import Minus from '../icons/Minus';
 
 interface HeaderProps {
   icon?: React.ReactNode;
@@ -85,9 +85,11 @@ const HeaderIcon: React.FunctionComponent<HeaderIconProps> = ({
   } else if (expanded) {
     return (
       <HeaderIconContainer>
-        <MinusSolid
-          height={theme.collapseIconSize}
-          width={theme.collapseIconSize}
+        <Minus
+          style={{
+            height: theme.collapseIconSize,
+            width: theme.collapseIconSize,
+          }}
         />
       </HeaderIconContainer>
     );
@@ -95,9 +97,11 @@ const HeaderIcon: React.FunctionComponent<HeaderIconProps> = ({
 
   return (
     <HeaderIconContainer>
-      <PlusSolid
-        height={theme.collapseIconSize}
-        width={theme.collapseIconSize}
+      <Plus
+        style={{
+          height: theme.collapseIconSize,
+          width: theme.collapseIconSize,
+        }}
       />
     </HeaderIconContainer>
   );
