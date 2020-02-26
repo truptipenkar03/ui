@@ -1,6 +1,6 @@
 {
   "name": "@rtkwlf/ui",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "main": "dist/ui.cjs.js",
   "module": "dist/ui.es.js",
   "types": "dist/ui.d.ts",
@@ -21,6 +21,14 @@
     "lint": "eslint '**/*.{ts,tsx}'",
     "lint:fix": "eslint '**/*.{ts,tsx}' --fix"
   },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "1.2.27",
+    "@fortawesome/free-solid-svg-icons": "5.12.1",
+    "@fortawesome/react-fontawesome": "0.1.8",
+    "framer-motion": "1.6.12",
+    "polished": "3.4.4",
+    "styled-components": "5.0.0-rc.2"
+  },
   "peerDependencies": {
     "react": "16.11.0",
     "react-dom": "16.11.0",
@@ -35,9 +43,6 @@
     "@babel/preset-env": "7.5.5",
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.6.0",
-    "@fortawesome/fontawesome-svg-core": "1.2.27",
-    "@fortawesome/free-solid-svg-icons": "5.12.1",
-    "@fortawesome/react-fontawesome": "0.1.8",
     "@microsoft/api-extractor": "7.7.3",
     "@rollup/plugin-commonjs": "11.0.1",
     "@storybook/addon-docs": "5.3.3",
@@ -73,13 +78,11 @@
     "eslint-plugin-react": "7.16.0",
     "eslint-plugin-react-hooks": "2.2.0",
     "formik": "2.1.2",
-    "framer-motion": "1.8.4",
     "husky": "4.2.3",
     "install": "0.13.0",
     "jest": "24.8.0",
     "jest-styled-components": "7.0.0-beta.1",
     "lint-staged": "10.0.7",
-    "polished": "3.4.4",
     "prop-types": "15.7.2",
     "react-docgen-typescript": "1.15.0",
     "react-docgen-typescript-loader": "3.4.0",
@@ -87,7 +90,6 @@
     "react-test-renderer": "16.9.0",
     "rollup": "1.29.0",
     "rollup-plugin-typescript2": "0.25.3",
-    "styled-components": "5.0.1",
     "ts-loader": "6.2.1",
     "typescript": "3.6.4"
   },
