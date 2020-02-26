@@ -4,10 +4,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import styled, { css } from 'styled-components';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons';
-
 import { Icon } from '../icons';
 
 import { GlobalTheme } from '../../theme/types';
@@ -49,15 +45,11 @@ export const Suffix: React.FunctionComponent<any> = ({
   let suffixContent;
   switch (validationStatus) {
     case 'error': {
-      suffixContent = (
-        <FontAwesomeIcon icon={faTimes} color={theme.colors.red} />
-      );
+      suffixContent = <Icon.Times color={theme.colors.red} />;
       break;
     }
     case 'success': {
-      suffixContent = (
-        <FontAwesomeIcon icon={faCheck} color={theme.colors.green} />
-      );
+      suffixContent = <Icon.Check color={theme.colors.green} />;
       break;
     }
     case 'loading': {
