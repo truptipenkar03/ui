@@ -109,6 +109,18 @@ describe('Input', () => {
     ).toBe('label');
   });
 
+  it('sets the description prop', () => {
+    const wrapper = shallow(<Input description={'description'} />);
+
+    expect(
+      wrapper
+        .find('StyledInput__Description')
+        .children()
+        .first()
+        .text()
+    ).toBe('description');
+  });
+
   it('sets the htmlType prop', () => {
     const wrapper = mount(<Input htmlType={'password'} />);
 

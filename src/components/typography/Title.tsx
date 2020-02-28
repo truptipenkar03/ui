@@ -4,16 +4,15 @@ import styled, { css } from 'styled-components';
 
 import { useTheme } from '../../hooks';
 
-type Level = 1 | 2 | 3 | 4 | 5 | 6;
+export type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
 export interface TitleProps {
   className?: string;
   level?: Level;
 }
 
-const StyledTitle = styled.span<TitleProps>`
+const StyledTitle = styled.div<TitleProps>`
   ${props => css`
-    display: block;
     font-family: ${props.theme.typographyTitleFontFamily};
   
     ${props.level === 1 &&

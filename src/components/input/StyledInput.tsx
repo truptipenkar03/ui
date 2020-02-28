@@ -4,6 +4,8 @@ import { GlobalTheme } from '../../theme/types';
 
 import { InputProps, InputSize, ValidationStatus } from './Input';
 
+import { Typography } from '../typography/Typography';
+
 interface StyledInputProps extends InputProps {
   inputSize?: InputSize;
 }
@@ -12,18 +14,21 @@ export const Container = styled.div`
   width: 100%;
 `;
 
-export const Label = styled.label<{ required?: boolean }>`
+export const Label = styled(Typography.Body)<{ required?: boolean }>`
   ${({ theme, required }) => css`
-    font-size: ${theme.inputLabelFontSize};
-    color: ${theme.inputColor};
-
     ${required &&
       css`
         ::before {
           content: '* ';
-          color: ${theme.colors.danger};
+          color: ${theme.colors.red};
         }
       `}
+  `};
+`;
+
+export const Description = styled(Typography.Description)`
+  ${() => css`
+    margin-bottom: 4px;
   `};
 `;
 

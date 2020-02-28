@@ -8,9 +8,8 @@ export interface SubtitleProps {
   className?: string;
 }
 
-const StyledSubtitle = styled.span`
+const StyledSubtitle = styled.div`
   ${({ theme }) => css`
-    display: block;
     color: ${theme.typographySubtitleColor};
     font-family: ${theme.typographySubtitleFontFamily};
     font-size: ${theme.typographySubtitleFontSize};

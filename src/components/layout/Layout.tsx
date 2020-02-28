@@ -8,6 +8,8 @@ import { Content, ContentProps } from './Content';
 
 import { Footer, FooterProps } from './Footer';
 
+export { HeaderProps, ContentProps, FooterProps };
+
 export interface LayoutComponent<T> extends React.FunctionComponent<T> {
   Header: React.FunctionComponent<HeaderProps>;
   Content: React.FunctionComponent<ContentProps>;
@@ -20,16 +22,8 @@ export interface LayoutProps {
 
 const Container = styled.div`
   ${({}) => css`
-    height: 100%;
-  `}
-`;
-
-const LayoutContainer = styled.div`
-  ${() => css`
     display: flex;
     flex-direction: column;
-
-    flex: 1;
     height: 100%;
   `}
 `;
@@ -39,9 +33,7 @@ export const Layout: LayoutComponent<LayoutProps> = ({
   className,
 }) => {
   return (
-    <Container className={`${className} rtk-layout`}>
-      <LayoutContainer>{children}</LayoutContainer>
-    </Container>
+    <Container className={`${className} rtk-layout`}>{children}</Container>
   );
 };
 

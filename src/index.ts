@@ -34,7 +34,14 @@ export {
   ValidationStatus,
 } from './components/input/Input';
 
-export { Layout, LayoutProps } from './components/layout/Layout';
+export {
+  Layout,
+  LayoutProps,
+  LayoutComponent,
+  HeaderProps,
+  ContentProps,
+  FooterProps,
+} from './components/layout/Layout';
 
 export { Modal, ModalProps } from './components/modal/Modal';
 
@@ -54,7 +61,14 @@ export { GlobalTheme, Colors } from './theme/types';
 
 export { ThemeProvider, ThemeContext } from './styled';
 
-export { Typography } from './components/typography/Typography';
+export {
+  Typography,
+  Level,
+  BodyProps,
+  DescriptionProps,
+  SubtitleProps,
+  TitleProps,
+} from './components/typography/Typography';
 
 export {
   Divider,

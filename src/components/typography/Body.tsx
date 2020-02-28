@@ -4,11 +4,11 @@ import styled, { css } from 'styled-components';
 
 import { useTheme } from '../../hooks';
 
-export interface Body {
+export interface BodyProps {
   className?: string;
 }
 
-const StyledBody = styled.span`
+const StyledBody = styled.div`
   ${({ theme }) => css`
     color: ${theme.typographyBodyColor};
     font-family: ${theme.typographyBodyFontFamily};
@@ -19,7 +19,7 @@ const StyledBody = styled.span`
   `}
 `;
 
-export const Body: React.FunctionComponent<Body> = ({
+export const Body: React.FunctionComponent<BodyProps> = ({
   children,
   className,
 }) => {

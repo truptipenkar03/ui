@@ -58,7 +58,11 @@ export const label = () => (
   <Container>
     <Input label="Label" />
     <Spacer />
-    <Input label="Label" required />
+    <Input
+      label="Label"
+      description="This is why this input is required"
+      required
+    />
   </Container>
 );
 

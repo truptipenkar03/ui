@@ -5,6 +5,7 @@ import { useTheme } from '../../hooks';
 import {
   Prefix,
   AffixContainer,
+  Description,
   Container,
   Label,
   Status,
@@ -29,6 +30,9 @@ export interface InputProps {
 
   /** Default value of the input */
   defaultValue?: string;
+
+  /** Description of the input */
+  description?: React.ReactNode;
 
   /** Disabled state of the input */
   disabled?: boolean;
@@ -105,6 +109,7 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<
     className,
     disabled,
     defaultValue,
+    description,
     htmlType,
     id,
     label,
@@ -137,6 +142,7 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<
           {label}
         </Label>
       )}
+      {description && <Description theme={theme}>{description}</Description>}
       <AffixContainer>
         {inputPrefix && (
           <Prefix inputSize={size} theme={theme}>

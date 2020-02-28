@@ -90,7 +90,6 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   inputDefaultHeight: '32px',
   inputDefaultFontSize: 14,
   inputStatusMessageHeight: '15px',
-  inputLabelFontSize: '12px',
   inputStatusFontSize: '12px',
   inputStatusColor: themeColors.body,
   inputStatusErrorColor: themeColors.red,
@@ -194,6 +193,13 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   typographyBodyFontWeight: '400',
   typographyBodyLineHeight: '1.5',
   typographyBodyLetterSpacing: '0',
+
+  typographyDescriptionColor: themeColors.description,
+  typographyDescriptionFontFamily: '"Lato" sans-serif',
+  typographyDescriptionFontSize: '12px',
+  typographyDescriptionFontWeight: '400',
+  typographyDescriptionLineHeight: '1.5',
+  typographyDescriptionLetterSpacing: '0',
 
   // ---- Divider ---- //
   dividerBorder: themeColors.border,

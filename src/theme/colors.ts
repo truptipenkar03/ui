@@ -2,9 +2,10 @@ import { Colors } from './types';
 
 export const colors: Colors = {
   black: '#000000',
-  body: '#515358',
+  body: '#000000',
   border: '#CCCCCC',
   blue: '#23618E',
+  description: '#707F86',
   green: '#518042',
   orange: '#F58220',
   primary: '#23618E',

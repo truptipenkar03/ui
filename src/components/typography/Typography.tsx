@@ -1,11 +1,16 @@
-import { Title } from './Title';
+import { Title, TitleProps, Level } from './Title';
 
-import { Subtitle } from './Subtitle';
+import { Subtitle, SubtitleProps } from './Subtitle';
 
-import { Body } from './Body';
+import { Body, BodyProps } from './Body';
+
+import { Description, DescriptionProps } from './Description';
 
 export const Typography = {
   Title,
   Subtitle,
   Body,
+  Description,
 };
+
+export { TitleProps, SubtitleProps, BodyProps, DescriptionProps, Level };

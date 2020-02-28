@@ -3,6 +3,7 @@ export interface Colors {
   body: string;
   border: string;
   blue: string;
+  description: string;
   green: string;
   orange: string;
   primary: string;
@@ -111,7 +112,6 @@ export interface GlobalTheme {
   inputStatusSuccessBorderColor: string;
   inputStatusLoadingColor: string;
   inputStatusLoadingBorderColor: string;
-  inputLabelFontSize: string;
   inputSmallHeight: string;
   inputSmallFontSize: number;
   inputLargeHeight: string;
@@ -213,6 +213,13 @@ export interface GlobalTheme {
   typographyBodyFontWeight: string;
   typographyBodyLineHeight: string;
   typographyBodyLetterSpacing: string;
+
+  typographyDescriptionColor: string;
+  typographyDescriptionFontFamily: string;
+  typographyDescriptionFontSize: string;
+  typographyDescriptionFontWeight: string;
+  typographyDescriptionLineHeight: string;
+  typographyDescriptionLetterSpacing: string;
 
   colors: Colors;
 }
