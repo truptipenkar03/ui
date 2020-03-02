@@ -68,6 +68,7 @@ export {
   DescriptionProps,
   SubtitleProps,
   TitleProps,
+  LabelProps,
 } from './components/typography/Typography';
 
 export {

@@ -201,6 +201,14 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   typographyDescriptionLineHeight: '1.5',
   typographyDescriptionLetterSpacing: '0',
 
+  typographyLabelColor: themeColors.label,
+  typographyLabelFontFamily: '"Lato" sans-serif',
+  typographyLabelFontSize: '11px',
+  typographyLabelFontWeight: '600',
+  typographyLabelLineHeight: '1.5',
+  typographyLabelLetterSpacing: '0',
+  typographyLabelTextTransform: 'uppercase',
+
   // ---- Divider ---- //
   dividerBorder: themeColors.border,
   dividerBackground: themeColors.border,

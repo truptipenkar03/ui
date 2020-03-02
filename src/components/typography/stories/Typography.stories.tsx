@@ -49,6 +49,13 @@ export const subtitle = () => (
   </Container>
 );
 
+export const other = () => (
+  <Container>
+    <Typography.Description>Description</Typography.Description>
+    <Typography.Label>Label</Typography.Label>
+  </Container>
+);
+
 export const body = () => (
   <Typography.Body>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique

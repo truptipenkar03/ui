@@ -7,6 +7,7 @@ export const colors: Colors = {
   blue: '#23618E',
   description: '#707F86',
   green: '#518042',
+  label: '#000000',
   orange: '#F58220',
   primary: '#23618E',
   primaryBackground: '#FFFFFF',

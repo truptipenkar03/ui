@@ -32,4 +32,18 @@ describe('Typography', () => {
 
     expect(wrapper.exists('Body__StyledBody')).toBe(true);
   });
+
+  it('renders Description', () => {
+    const wrapper = shallow(
+      <Typography.Description>Description</Typography.Description>
+    );
+
+    expect(wrapper.exists('Description__StyledDescription')).toBe(true);
+  });
+
+  it('renders Label', () => {
+    const wrapper = shallow(<Typography.Label>Label</Typography.Label>);
+
+    expect(wrapper.exists('Label__StyledLabel')).toBe(true);
+  });
 });

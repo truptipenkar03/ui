@@ -5,6 +5,7 @@ export interface Colors {
   blue: string;
   description: string;
   green: string;
+  label: string;
   orange: string;
   primary: string;
   primaryBackground: string;
@@ -220,6 +221,14 @@ export interface GlobalTheme {
   typographyDescriptionFontWeight: string;
   typographyDescriptionLineHeight: string;
   typographyDescriptionLetterSpacing: string;
+
+  typographyLabelColor: string;
+  typographyLabelFontFamily: string;
+  typographyLabelFontSize: string;
+  typographyLabelFontWeight: string;
+  typographyLabelLineHeight: string;
+  typographyLabelLetterSpacing: string;
+  typographyLabelTextTransform: string;
 
   colors: Colors;
 }
