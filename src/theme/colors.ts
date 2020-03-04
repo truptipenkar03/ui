@@ -16,7 +16,7 @@ export const colors: Colors = {
   secondary: '#58595B',
   secondaryBackground: '#F1F1F1',
   subtitle: '#000000',
-  teritary: '#F58220',
+  tertiary: '#F58220',
   title: '#000000',
   white: '#FFFFFF',
   yellow: '#EAA543',

@@ -14,7 +14,7 @@ export interface Colors {
   secondary: string;
   secondaryBackground: string;
   subtitle: string;
-  teritary: string;
+  tertiary: string;
   title: string;
   white: string;
   yellow: string;
@@ -47,6 +47,26 @@ export interface GlobalTheme {
   buttonPrimaryHoverColor: string;
   buttonPrimaryActiveBackground: string;
   buttonPrimaryActiveColor: string;
+
+  // ---- Secondary Button ---- //
+  buttonSecondaryBackground: string;
+  buttonSecondaryBorder: string;
+  buttonSecondaryBorderColor: string;
+  buttonSecondaryColor: string;
+  buttonSecondaryHoverBackground: string;
+  buttonSecondaryHoverColor: string;
+  buttonSecondaryActiveBackground: string;
+  buttonSecondaryActiveColor: string;
+
+  // ---- Tertiary Button ---- //
+  buttonTertiaryBackground: string;
+  buttonTertiaryBorder: string;
+  buttonTertiaryBorderColor: string;
+  buttonTertiaryColor: string;
+  buttonTertiaryHoverBackground: string;
+  buttonTertiaryHoverColor: string;
+  buttonTertiaryActiveBackground: string;
+  buttonTertiaryActiveColor: string;
 
   // ---- Danger Button ---- //
   buttonDangerBackground: string;

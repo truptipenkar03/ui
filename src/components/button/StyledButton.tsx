@@ -100,6 +100,86 @@ export const StyledButton = styled.button<StyledButtonProps>`
             }
           `}
       `};
+
+      // ----------- Secondary --------- //
+      ${buttonType === 'secondary' &&
+        css`
+          background: ${theme.buttonSecondaryBackground};
+          color: ${theme.buttonSecondaryColor};
+          border: ${theme.buttonSecondaryBorder};
+          border-color: ${theme.buttonSecondaryBorderColor};
+
+          &:hover,
+          &:focus {
+            background: ${theme.buttonSecondaryHoverBackground};
+            color: ${theme.buttonSecondaryHoverColor};
+          }
+
+          &:active {
+            background: ${theme.buttonSecondaryActiveBackground};
+            color: ${theme.buttonSecondaryActiveColor};
+          }
+
+          ${customProps.ghost &&
+            css`
+              background: ${theme.buttonGhostBackground};
+              border: ${theme.buttonGhostBorder};
+              border-color: ${theme.buttonSecondaryBackground};
+              color: ${theme.buttonSecondaryBackground};
+
+              &:hover,
+              &:focus {
+                background: ${theme.buttonSecondaryBackground};
+                border: ${theme.buttonGhostBorder};
+                border-color: transparent;
+              }
+
+              &:active {
+                border: ${theme.buttonGhostBorder};
+                border-color: transparent;
+              }
+            `}
+        `};
+
+      // ----------- Tertiary --------- //
+      ${buttonType === 'tertiary' &&
+        css`
+          background: ${theme.buttonTertiaryBackground};
+          color: ${theme.buttonTertiaryColor};
+          border: ${theme.buttonTertiaryBorder};
+          border-color: ${theme.buttonTertiaryBorderColor};
+
+          &:hover,
+          &:focus {
+            background: ${theme.buttonTertiaryHoverBackground};
+            color: ${theme.buttonTertiaryHoverColor};
+          }
+
+          &:active {
+            background: ${theme.buttonTertiaryActiveBackground};
+            color: ${theme.buttonTertiaryActiveColor};
+          }
+
+          ${customProps.ghost &&
+            css`
+              background: ${theme.buttonGhostBackground};
+              border: ${theme.buttonGhostBorder};
+              border-color: ${theme.buttonTertiaryBackground};
+              color: ${theme.buttonTertiaryBackground};
+
+              &:hover,
+              &:focus {
+                background: ${theme.buttonTertiaryBackground};
+                border: ${theme.buttonGhostBorder};
+                border-color: transparent;
+              }
+
+              &:active {
+                border: ${theme.buttonGhostBorder};
+                border-color: transparent;
+              }
+            `}
+        `};
     
     // ----------- Danger --------- //
     ${buttonType === 'danger' &&

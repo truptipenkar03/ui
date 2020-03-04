@@ -32,6 +32,26 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   buttonPrimaryActiveBackground: `${darken(0.1, themeColors.primary)}`,
   buttonPrimaryActiveColor: themeColors.white,
 
+  // ---- Secondary Button ---- //
+  buttonSecondaryBackground: themeColors.secondary,
+  buttonSecondaryBorder: '1px solid',
+  buttonSecondaryBorderColor: 'transparent',
+  buttonSecondaryColor: themeColors.white,
+  buttonSecondaryHoverBackground: `${darken(0.1, themeColors.secondary)}`,
+  buttonSecondaryHoverColor: themeColors.white,
+  buttonSecondaryActiveBackground: `${darken(0.1, themeColors.secondary)}`,
+  buttonSecondaryActiveColor: themeColors.white,
+
+  // ---- Tertiary Button ---- //
+  buttonTertiaryBackground: themeColors.tertiary,
+  buttonTertiaryBorder: '1px solid',
+  buttonTertiaryBorderColor: 'transparent',
+  buttonTertiaryColor: themeColors.black,
+  buttonTertiaryHoverBackground: `${darken(0.1, themeColors.tertiary)}`,
+  buttonTertiaryHoverColor: themeColors.black,
+  buttonTertiaryActiveBackground: `${darken(0.1, themeColors.tertiary)}`,
+  buttonTertiaryActiveColor: themeColors.black,
+
   // ---- Danger Button ---- //
   buttonDangerBackground: themeColors.red,
   buttonDangerBorder: '1px solid',

@@ -30,6 +30,10 @@ export const types = () => (
   <Container>
     <Button type="primary">Primary</Button>
     <Spacer />
+    <Button type="secondary">Secondary</Button>
+    <Spacer />
+    <Button type="tertiary">Tertiary</Button>
+    <Spacer />
     <Button type="danger">Danger</Button>
     <Spacer />
     <Button type="link">Link</Button>
@@ -40,6 +44,14 @@ export const ghost = () => (
   <Container>
     <Button type="primary" ghost>
       Primary
+    </Button>
+    <Spacer />
+    <Button type="secondary" ghost>
+      Secondary
+    </Button>
+    <Spacer />
+    <Button type="tertiary" ghost>
+      Tertiary
     </Button>
     <Spacer />
     <Button type="danger" ghost>

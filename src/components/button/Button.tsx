@@ -10,7 +10,12 @@ import { useTheme } from '../../hooks';
 
 import { MouseEventHandler } from 'react';
 
-export type ButtonType = 'primary' | 'danger' | 'link';
+export type ButtonType =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'danger'
+  | 'link';
 export type ShapeType = 'circle' | 'default';
 export type SizeType = 'small' | 'default' | 'large';
 
