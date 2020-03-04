@@ -7,6 +7,7 @@ import { useTheme } from '../../hooks';
 import { GlobalTheme } from '../../theme/types';
 
 export interface ContentProps {
+  /** classname for the Layout.Content */
   className?: string;
 }
 

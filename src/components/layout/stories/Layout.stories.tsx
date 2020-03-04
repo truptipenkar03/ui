@@ -6,8 +6,27 @@ import { Layout } from '../Layout';
 // @ts-ignore
 import mdx from './Layout.mdx';
 
-const Container = styled.div`
-  height: 768px;
+const Header = styled(Layout.Header)`
+  background: lightblue;
+`;
+
+const Content = styled.div`
+  height: 100px;
+  width: 100%;
+
+  background: lightgray;
+`;
+
+const Footer = styled(Layout.Footer)`
+  background: lightblue;
+`;
+
+const Sider = styled(Layout.Sider)`
+  background: lightyellow;
+`;
+
+const Spacer = styled.div`
+  height: 32px;
 `;
 
 export default {
@@ -22,12 +41,36 @@ export default {
 
 export const simple = () => {
   return (
-    <Container>
+    <div>
       <Layout>
-        <Layout.Header>Header</Layout.Header>
-        <Layout.Content>Content</Layout.Content>
-        <Layout.Footer>Footer</Layout.Footer>
+        <Header></Header>
+        <Layout.Content>
+          <Content />
+        </Layout.Content>
+        <Footer></Footer>
       </Layout>
-    </Container>
+      <Spacer />
+      <Layout hasSider>
+        <Sider></Sider>
+        <Layout>
+          <Header></Header>
+          <Layout.Content>
+            <Content />
+          </Layout.Content>
+          <Footer></Footer>
+        </Layout>
+      </Layout>
+      <Spacer />
+      <Layout>
+        <Header></Header>
+        <Layout hasSider>
+          <Sider></Sider>
+          <Layout.Content>
+            <Content />
+          </Layout.Content>
+        </Layout>
+        <Footer></Footer>
+      </Layout>
+    </div>
   );
 };

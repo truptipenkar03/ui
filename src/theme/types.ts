@@ -148,6 +148,9 @@ export interface GlobalTheme {
   layoutHeaderPaddingMedium: string;
   layoutHeaderPaddingLarge: string;
   layoutFooterHeight: string;
+  layoutSiderWidthSmall: string;
+  layoutSiderWidthMedium: string;
+  layoutSiderWidthLarge: string;
 
   // ---- Media Screen ---- //
   mediaScreenSmall: string;

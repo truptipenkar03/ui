@@ -99,6 +99,9 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   layoutHeaderPaddingMedium: '0 16px',
   layoutHeaderPaddingLarge: '0 24px',
   layoutFooterHeight: '60px',
+  layoutSiderWidthSmall: '100px',
+  layoutSiderWidthMedium: '200px',
+  layoutSiderWidthLarge: '300px',
 
   // ---- Input ---- //
   inputBackground: themeColors.primaryBackground,

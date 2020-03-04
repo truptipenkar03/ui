@@ -7,6 +7,7 @@ import { useTheme } from '../../hooks';
 import { GlobalTheme } from '../../theme/types';
 
 export interface FooterProps {
+  /** classname for the Layout.Footer */
   className?: string;
 }
 

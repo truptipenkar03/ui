@@ -41,6 +41,7 @@ export {
   HeaderProps,
   ContentProps,
   FooterProps,
+  SiderProps,
 } from './components/layout/Layout';
 
 export { Modal, ModalProps } from './components/modal/Modal';
