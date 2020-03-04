@@ -25,8 +25,9 @@ const Container = styled.div`
     border-radius: ${theme.panelBorderRadius};
     padding: ${theme.panelPadding};
     margin: ${theme.panelMargin};
-
     transition: all ${theme.animationTimeFast}s;
+
+    box-sizing: border-box;
 
     ${onClick &&
       css`

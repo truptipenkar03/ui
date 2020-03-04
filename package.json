@@ -27,7 +27,7 @@
     "@fortawesome/react-fontawesome": "0.1.8",
     "framer-motion": "1.6.12",
     "polished": "3.4.4",
-    "styled-components": "5.0.0-rc.2"
+    "styled-components": "5.0.1"
   },
   "peerDependencies": {
     "react": "16.11.0",

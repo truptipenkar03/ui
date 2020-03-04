@@ -154,12 +154,12 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   // ---- Panel ---- //
   panelBackground: themeColors.primaryBackground,
   panelBorder: 'none',
-  panelBorderColor: 'none',
+  panelBorderColor: 'transparent',
   panelBorderRadius: '4px',
   panelPadding: '24px',
   panelMargin: '32px',
-  panelActiveBoxShadow: `0px 0px 4px rgba(${rgba(themeColors.black, 0.2)}`,
-  panelHoverBoxShadow: `0px 7px 21px rgba(${rgba(themeColors.black, 0.07)}`,
+  panelActiveBoxShadow: `0px 0px 4px ${rgba(themeColors.black, 0.2)}`,
+  panelHoverBoxShadow: `0px 7px 21px ${rgba(themeColors.black, 0.07)}`,
 
   // ---- Typography ---- //
   typographyTitleFontFamily: '"Encode Sans", sans-serif',
