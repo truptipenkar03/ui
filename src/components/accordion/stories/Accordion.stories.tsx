@@ -112,7 +112,7 @@ export const external = () => {
         <Accordion.Item itemKey={itemKeys[0]}>
           <CollapseContent />
         </Accordion.Item>
-        <Accordion.Item itemKey={itemKeys[1]}>
+        <Accordion.Item itemKey={itemKeys[1]} disabled>
           <CollapseContent />
         </Accordion.Item>
         <Accordion.Item itemKey={itemKeys[2]}>

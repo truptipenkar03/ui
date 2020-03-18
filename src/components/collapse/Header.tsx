@@ -8,9 +8,10 @@ import Plus from '../icons/Plus';
 import Minus from '../icons/Minus';
 
 interface HeaderProps {
+  disabled?: boolean;
+  expanded?: boolean;
   icon?: React.ReactNode;
   children: React.ReactNode;
-  expanded?: boolean;
   onClick: () => void;
   theme: GlobalTheme;
 }
@@ -108,6 +109,7 @@ const HeaderIcon: React.FunctionComponent<HeaderIconProps> = ({
 };
 
 const Header: React.FunctionComponent<HeaderProps> = ({
+  disabled,
   icon,
   children,
   onClick,
@@ -123,7 +125,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({
     }}
   >
     <HeaderContent>{children}</HeaderContent>
-    <HeaderIcon icon={icon} expanded={expanded} theme={theme} />
+    {!disabled && <HeaderIcon icon={icon} expanded={expanded} theme={theme} />}
   </StyledHeader>
 );
 

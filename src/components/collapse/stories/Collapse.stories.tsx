@@ -62,3 +62,11 @@ export const destroy = () => (
     </Collapse>
   </Container>
 );
+
+export const disabled = () => (
+  <Container>
+    <Collapse header="Click Me" itemKey="default" disabled>
+      <TestContent />
+    </Collapse>
+  </Container>
+);

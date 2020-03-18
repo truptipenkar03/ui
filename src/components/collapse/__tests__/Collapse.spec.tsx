@@ -46,6 +46,44 @@ describe('Collapse', () => {
     expect(wrapper.find('Header').prop('expanded')).toBe(true);
   });
 
+  it('sets the disabled prop', () => {
+    const wrapper = shallow(
+      <Collapse disabled header={'Header'}>
+        Content
+      </Collapse>
+    );
+
+    expect(wrapper.find('Collapse__Container').prop('disabled')).toBe(true);
+    expect(wrapper.find('Header').prop('disabled')).toBe(true);
+  });
+
+  it('should not call onChange when disabled', () => {
+    const onChangeMock = jest.fn();
+    const wrapper = mount(
+      <Collapse disabled onChange={() => onChangeMock} header={'Header'}>
+        Content
+      </Collapse>
+    );
+
+    wrapper.find('Header__StyledHeader').simulate('click');
+    expect(onChangeMock).toBeCalledTimes(0);
+  });
+
+  it('should not expand collapse via external control when disabled', () => {
+    const wrapper = mount(
+      <Collapse disabled expanded={false}>
+        Content
+      </Collapse>
+    );
+
+    wrapper.setProps({ expanded: true });
+
+    expect(wrapper.find('Header').prop('expanded')).toBe(false);
+    expect(wrapper.find('ContentContainer').prop('animate')).toStrictEqual(
+      'closed'
+    );
+  });
+
   it('sets the destroyOnClose prop', () => {
     const wrapper = shallow(
       <Collapse itemKey={'test'} header={'Header'} destroyOnClose>
@@ -97,7 +135,11 @@ describe('Collapse', () => {
 
     // need to mount to the DOM in order for event to propagate
     const wrapper = mount(
-      <Collapse onChange={onChangeMock} itemKey={'test'} header={'Header'}>
+      <Collapse
+        onChange={key => onChangeMock(key)}
+        itemKey={'test'}
+        header={'Header'}
+      >
         Content
       </Collapse>
     );
