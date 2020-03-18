@@ -8,6 +8,7 @@
   "scripts": {
     "build:types": "tsc --emitDeclarationOnly",
     "build:ts": "tsc -p ./tsconfig.rollup.json --emitDeclarationOnly --removeComments false && api-extractor run --local",
+    "gen": "plop",
     "storybook": "start-storybook -p 9000 --quiet -s public",
     "storybook:build": "build-storybook -o build/storybook/static -s public",
     "storybook:docs": "build-storybook --docs -o docs -s public",
@@ -83,6 +84,7 @@
     "jest": "24.8.0",
     "jest-styled-components": "7.0.0-beta.1",
     "lint-staged": "10.0.7",
+    "plop": "2.6.0",
     "prop-types": "15.7.2",
     "react-docgen-typescript": "1.15.0",
     "react-docgen-typescript-loader": "3.4.0",

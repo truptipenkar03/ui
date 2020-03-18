@@ -1,9 +1,8 @@
 import * as React from 'react';
 
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import { Divider } from '../Divider';
-import { Button } from '../../..';
 
 describe('Divider', () => {
   it('renders horizontal divider', () => {
