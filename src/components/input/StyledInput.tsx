@@ -136,12 +136,6 @@ export const StyledInput = styled.input<StyledInputProps>`
     
     transition: all ${theme.animationTimeFast}s;
     
-    ${type === 'textarea' &&
-      css`
-        height: 6rem;
-        padding: ${theme.inputTextAreaPadding};
-      `}
-    
     ${inputSize === 'small' &&
       css`
         height: ${theme.inputSmallHeight};
@@ -152,6 +146,13 @@ export const StyledInput = styled.input<StyledInputProps>`
       css`
         height: ${theme.inputLargeHeight};
         font-size: ${theme.inputLargeFontSize}px;
+      `}
+
+    ${type === 'textarea' &&
+      css`
+        height: 6em;
+        padding: ${theme.inputTextAreaPadding};
+        resize: vertical;
       `}
     
     ${borderType === 'bottom' &&

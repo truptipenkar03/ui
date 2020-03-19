@@ -38,7 +38,7 @@ export interface InputProps {
   disabled?: boolean;
 
   /** HTML input type attribute */
-  htmlType?: 'text' | 'textarea' | 'number' | 'date' | 'password';
+  htmlType?: 'text' | 'textarea' | 'number' | 'password';
 
   /** id of the input to be used with Formik */
   id?: string;

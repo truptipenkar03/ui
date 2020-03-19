@@ -9,7 +9,7 @@ describe('Input', () => {
   it('renders input', () => {
     const wrapper = shallow(<Input />);
 
-    expect(wrapper.exists('StyledInput__Container')).toBe(true);
+    expect(wrapper.find('StyledInput__Container')).toExist();
   });
 
   it('sets the placeholder', () => {
@@ -55,7 +55,7 @@ describe('Input', () => {
         validationMessage={'This is the message'}
       />
     );
-    expect(wrapper.exists('FontAwesomeIcon')).toBe(true);
+    expect(wrapper.find('FontAwesomeIcon')).toExist();
     expect(wrapper.find('StyledInput__Status')).toHaveStyleRule(
       'color',
       colors.red
@@ -72,8 +72,8 @@ describe('Input', () => {
       />
     );
 
-    expect(wrapper.exists('FontAwesomeIcon')).toBe(true);
-    expect(wrapper.exists('StyledInput__Status')).toBe(false);
+    expect(wrapper.find('FontAwesomeIcon')).toExist();
+    expect(wrapper.find('StyledInput__Status')).not.toExist();
   });
 
   it('sets the error message and removes the error icon', () => {
@@ -134,9 +134,7 @@ describe('Input', () => {
 
   it('renders a text area tag when set by htmlType', () => {
     const wrapper = mount(<Input htmlType={'textarea'} />);
-
-    // @ts-ignore
-    expect(wrapper.find('textarea').exists()).toBeTruthy();
+    expect(wrapper.find('textarea')).toExist();
   });
 
   it('sets the inputSize prop', () => {
