@@ -43,6 +43,25 @@ export const size = () => (
     <Input size="small" />
     <Input />
     <Input size="large" />
+    <Input size="small" htmlType="textarea" />
+    <Input htmlType="textarea" />
+    <Input size="large" htmlType="textarea" />
+  </Container>
+);
+
+export const types = () => (
+  <Container>
+    <Input description="Number" htmlType="number" defaultValue="123" />
+    <Input
+      description="Password"
+      placeholder="Put in a secret"
+      htmlType="password"
+    />
+    <Input
+      description="Textarea"
+      placeholder="Multiline text box"
+      htmlType="textarea"
+    />
   </Container>
 );
 
@@ -84,6 +103,13 @@ export const validation = () => {
         label="With Suffix"
         validationStatus={status}
         validationMessage={status ? `This is the ${status} status` : undefined}
+      />
+      <Spacer />
+      <Input
+        htmlType="textarea"
+        placeholder={'Multiple lines \nof text \nin here'}
+        validationStatus="success"
+        validationMessage="Validation continues to work for text areas!"
       />
     </Container>
   );

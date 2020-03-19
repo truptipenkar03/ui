@@ -3,12 +3,13 @@ import * as React from 'react';
 import { mount, shallow } from 'enzyme';
 
 import { Input } from '../Input';
+import { colors } from '../../../theme/colors';
 
 describe('Input', () => {
   it('renders input', () => {
     const wrapper = shallow(<Input />);
 
-    expect(wrapper.exists('StyledInput__Container')).toBe(true);
+    expect(wrapper.find('StyledInput__Container')).toExist();
   });
 
   it('sets the placeholder', () => {
@@ -54,9 +55,12 @@ describe('Input', () => {
         validationMessage={'This is the message'}
       />
     );
-
-    expect(wrapper.exists('FontAwesomeIcon')).toBe(true);
-    expect(wrapper.exists('StyledInput__Status')).toBe(true);
+    expect(wrapper.find('FontAwesomeIcon')).toExist();
+    expect(wrapper.find('StyledInput__Status')).toHaveStyleRule(
+      'color',
+      colors.red
+    );
+    wrapper.unmount();
   });
 
   it('sets the error icon and removes the error message', () => {
@@ -68,8 +72,8 @@ describe('Input', () => {
       />
     );
 
-    expect(wrapper.exists('FontAwesomeIcon')).toBe(true);
-    expect(wrapper.exists('StyledInput__Status')).toBe(false);
+    expect(wrapper.find('FontAwesomeIcon')).toExist();
+    expect(wrapper.find('StyledInput__Status')).not.toExist();
   });
 
   it('sets the error message and removes the error icon', () => {
@@ -126,6 +130,11 @@ describe('Input', () => {
 
     // @ts-ignore
     expect(wrapper.find('input').getDOMNode().type).toBe('password');
+  });
+
+  it('renders a text area tag when set by htmlType', () => {
+    const wrapper = mount(<Input htmlType={'textarea'} />);
+    expect(wrapper.find('textarea')).toExist();
   });
 
   it('sets the inputSize prop', () => {

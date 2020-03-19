@@ -109,13 +109,14 @@ export const StyledInput = styled.input<StyledInputProps>`
   ${({
     borderType,
     theme,
+    type,
     inputSize,
     inputPrefix,
     inputSuffix,
     validationStatus,
     hasFeedbackIcon,
   }) => css`
-    height: ${theme.inputDefaultHeight};
+    height: ${theme.inputDefaultHeight};               
     font-size: ${theme.inputDefaultFontSize}px;
     
     width: 100%;
@@ -145,6 +146,13 @@ export const StyledInput = styled.input<StyledInputProps>`
       css`
         height: ${theme.inputLargeHeight};
         font-size: ${theme.inputLargeFontSize}px;
+      `}
+
+    ${type === 'textarea' &&
+      css`
+        height: 6em;
+        padding: ${theme.inputTextAreaPadding};
+        resize: vertical;
       `}
     
     ${borderType === 'bottom' &&
