@@ -109,13 +109,14 @@ export const StyledInput = styled.input<StyledInputProps>`
   ${({
     borderType,
     theme,
+    type,
     inputSize,
     inputPrefix,
     inputSuffix,
     validationStatus,
     hasFeedbackIcon,
   }) => css`
-    height: ${theme.inputDefaultHeight};
+    height: ${theme.inputDefaultHeight};               
     font-size: ${theme.inputDefaultFontSize}px;
     
     width: 100%;
@@ -134,6 +135,12 @@ export const StyledInput = styled.input<StyledInputProps>`
     box-sizing: border-box;
     
     transition: all ${theme.animationTimeFast}s;
+    
+    ${type === 'textarea' &&
+      css`
+        height: 6rem;
+        padding: ${theme.inputTextAreaPadding};
+      `}
     
     ${inputSize === 'small' &&
       css`

@@ -126,6 +126,7 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   inputLargeHeight: '44px',
   inputLargeFontSize: 18,
   inputPadding: '0 10px',
+  inputTextAreaPadding: '10px 10px',
   inputPlaceholderColor: `${rgba(themeColors.body, 0.7)}`,
   inputPrefixLeft: '10px',
   inputSuffixRight: '10px',

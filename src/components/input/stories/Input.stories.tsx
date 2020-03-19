@@ -46,6 +46,23 @@ export const size = () => (
   </Container>
 );
 
+export const types = () => (
+  <Container>
+    <Input description="Number" htmlType="number" defaultValue="123" />
+    <Input
+      description="Password"
+      placeholder="Put in a secret"
+      htmlType="password"
+    />
+    <Input description="Date" htmlType="date" />
+    <Input
+      description="Textarea"
+      placeholder="Multiline text box"
+      htmlType="textarea"
+    />
+  </Container>
+);
+
 export const border = () => (
   <Container>
     <Input placeholder="Input with border" />

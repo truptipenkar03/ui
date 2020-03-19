@@ -38,7 +38,7 @@ export interface InputProps {
   disabled?: boolean;
 
   /** HTML input type attribute */
-  htmlType?: 'text' | 'number' | 'date' | 'password';
+  htmlType?: 'text' | 'textarea' | 'number' | 'date' | 'password';
 
   /** id of the input to be used with Formik */
   id?: string;
@@ -163,6 +163,7 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<
         defaultValue={defaultValue}
         hasFeedbackIcon={hasFeedbackIcon}
         type={htmlType}
+        as={htmlType === 'textarea' ? 'textarea' : undefined}
         id={id}
         name={name}
         onBlur={onBlur}
