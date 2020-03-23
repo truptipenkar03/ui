@@ -2,7 +2,8 @@ import { Colors } from './types';
 
 export const colors: Colors = {
   black: '#000000',
-  body: '#000000',
+  body: '#58595B',
+  bodyDisabled: '#CCCCCC',
   border: '#CCCCCC',
   blue: '#23618E',
   description: '#707F86',
@@ -17,6 +18,7 @@ export const colors: Colors = {
   secondaryBackground: '#F1F1F1',
   subtitle: '#000000',
   tertiary: '#F58220',
+  tertiaryBackground: '#EEEEEE',
   title: '#000000',
   white: '#FFFFFF',
   yellow: '#EAA543',

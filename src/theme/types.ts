@@ -1,6 +1,7 @@
 export interface Colors {
   black: string;
   body: string;
+  bodyDisabled: string;
   border: string;
   blue: string;
   description: string;
@@ -15,6 +16,7 @@ export interface Colors {
   secondaryBackground: string;
   subtitle: string;
   tertiary: string;
+  tertiaryBackground: string;
   title: string;
   white: string;
   yellow: string;
@@ -159,6 +161,11 @@ export interface GlobalTheme {
   mediaScreenLarge: string;
   mediaScreenVeryLarge: string;
 
+  // ---- Menu ---- //
+  menuItemPadding: string;
+  menuItemHoverColor: string;
+  menuItemHoverBackground: string;
+
   // ---- Modal ---- //
   modalBackground: string;
   modalBorder: string;
@@ -238,6 +245,7 @@ export interface GlobalTheme {
   typographyBodyFontWeight: string;
   typographyBodyLineHeight: string;
   typographyBodyLetterSpacing: string;
+  typographyBodyDisabledColor: string;
 
   typographyDescriptionColor: string;
   typographyDescriptionFontFamily: string;

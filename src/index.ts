@@ -46,6 +46,14 @@ export {
 
 export { Modal, ModalProps } from './components/modal/Modal';
 
+export {
+  MenuFunctionComponent,
+  Menu,
+  MenuProps,
+  MenuItemProps,
+  MenuItemGroupProps,
+} from './components/menu/Menu';
+
 export { Panel, PanelProps } from './components/panel/Panel';
 
 export { Portal, PortalProps } from './components/portal/Portal';
