@@ -3,16 +3,18 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 export interface {{ pascalCase name }}Props {
-  // fill out your props here
+  /** className of the {{ lowerCase name }} component */
+  className?: string;
 }
 
 const Container = styled.div``;
 
 export const {{ pascalCase name }}: React.FunctionComponent<{{ pascalCase name }}Props> = ({
-  children
+  children,
+  className
 }) => {
   return (
-    <Container>
+    <Container className={`${className} rtk-{{ dashCase name }} `}>
       {children}
     </Container>
   );

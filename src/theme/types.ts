@@ -194,6 +194,10 @@ export interface GlobalTheme {
   panelActiveBoxShadow: string;
   panelHoverBoxShadow: string;
 
+  // ---- Tabs ---- //
+  tabsInkbarThickness: string;
+  tabsItemPadding: string;
+
   // ---- Typography ---- //
   typographyTitleFontFamily: string;
   typographyTitle1Color: string;

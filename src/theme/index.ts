@@ -170,6 +170,10 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   panelActiveBoxShadow: `0px 0px 4px ${rgba(themeColors.black, 0.2)}`,
   panelHoverBoxShadow: `0px 7px 21px ${rgba(themeColors.black, 0.07)}`,
 
+  // ---- Tabs ---- //
+  tabsInkbarThickness: '4px',
+  tabsItemPadding: '8px 16px',
+
   // ---- Typography ---- //
   typographyTitleFontFamily: '"Encode Sans", sans-serif',
 

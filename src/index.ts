@@ -71,6 +71,13 @@ export { GlobalTheme, Colors } from './theme/types';
 export { ThemeProvider, ThemeContext } from './styled';
 
 export {
+  Tabs,
+  TabsProps,
+  TabsItemProps,
+  TabsFunctionComponent,
+} from './components/tabs/Tabs';
+
+export {
   Typography,
   Level,
   BodyProps,
