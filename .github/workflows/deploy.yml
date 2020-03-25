@@ -6,8 +6,8 @@ on:
       - '!v*-beta*'
 
 jobs:
-  release:
-    name: Release to Github Packages and NPM
+  release-github:
+    name: Release to Github Packages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -24,6 +24,19 @@ jobs:
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  release-npm:
+    name: Release to NPM
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.16'
+          scope: '@rtkwlf'
+      - name: Install
+        run: npm install
+      - name: Build
+        run: npm run build
       - name: Configure .npmrc for publish to npm
         run: 'echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc'
       - name: Publish to npm
