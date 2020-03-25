@@ -13,6 +13,7 @@ coverage
 .github
 .npmrc
 *.png
+*.tgz
 docs
 temp
 types
