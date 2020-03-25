@@ -90,6 +90,8 @@ export const TabsItem: React.FunctionComponent<TabsItemProps> = ({
     if (defaultSelectedItem === itemKey && tabItemRef.current !== null) {
       setSelectedItem();
     }
+    // we only need to run on initial mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // handles when the selected item changes
@@ -97,6 +99,8 @@ export const TabsItem: React.FunctionComponent<TabsItemProps> = ({
     if (selectedItem === itemKey && tabItemRef.current !== null) {
       setSelectedItem();
     }
+    // we only care when the selected item has changed
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedItem]);
 
   return (
