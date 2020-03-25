@@ -1,5 +1,4 @@
-Arctic Wolf UI
-==============
+# Arctic Wolf UI
  
 ### Installation
 
