@@ -17,6 +17,21 @@ describe('Tabs', () => {
     expect(wrapper.exists('TabsItem')).toBe(true);
   });
 
+  it('has the correct display names', () => {
+    const onTabClickMock = jest.fn();
+
+    const wrapper = shallow(
+      <div>
+        <Tabs onTabClick={onTabClickMock}>
+          <Tabs.Item title={<div id="1" />} itemKey="1" />
+        </Tabs>
+      </div>
+    );
+
+    expect(wrapper.find('Tabs')).toExist();
+    expect(wrapper.find('TabsItem')).toExist();
+  });
+
   it('sets the defaultSelectedItem prop', () => {
     const onTabClickMock = jest.fn();
 

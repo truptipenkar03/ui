@@ -59,6 +59,8 @@ export const Layout: LayoutComponent<LayoutProps> = ({
   );
 };
 
+Layout.displayName = 'Layout';
+
 Layout.defaultProps = {
   hasSider: false,
 };

@@ -33,3 +33,5 @@ export const Content: React.FunctionComponent<ContentProps> = ({
     </Container>
   );
 };
+
+Content.displayName = 'LayoutContent';

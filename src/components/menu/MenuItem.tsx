@@ -75,3 +75,5 @@ export const MenuItem: React.FunctionComponent<MenuItemProps> = ({
     </Container>
   );
 };
+
+MenuItem.displayName = 'MenuItem';

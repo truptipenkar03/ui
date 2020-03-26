@@ -60,3 +60,5 @@ export const Panel: React.FunctionComponent<PanelProps> = ({
     </Container>
   );
 };
+
+Panel.displayName = 'Panel';

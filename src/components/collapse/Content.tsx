@@ -79,3 +79,5 @@ export const Content: React.FunctionComponent<ContentProps> = props => {
     </StyledContent>
   );
 };
+
+Content.displayName = 'CollapseContent';

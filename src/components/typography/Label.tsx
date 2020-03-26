@@ -32,3 +32,5 @@ export const Label: React.FunctionComponent<LabelProps> = ({
     </StyledLabel>
   );
 };
+
+Label.displayName = 'Label';

@@ -294,6 +294,8 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
   );
 };
 
+Modal.displayName = 'Modal';
+
 Modal.defaultProps = {
   allowKeyboard: true,
   visible: false,

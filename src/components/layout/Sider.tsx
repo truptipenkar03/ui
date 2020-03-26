@@ -43,3 +43,5 @@ export const Sider: React.FunctionComponent<SiderProps> = ({
     </StyledSider>
   );
 };
+
+Sider.displayName = 'LayoutSider';

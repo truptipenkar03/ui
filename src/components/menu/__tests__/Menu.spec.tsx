@@ -11,6 +11,22 @@ describe('Menu', () => {
     expect(wrapper.exists('Menu__Container')).toBe(true);
   });
 
+  it('has the correct display names', () => {
+    const wrapper = shallow(
+      <div>
+        <Menu>
+          <Menu.ItemGroup title="title">
+            <Menu.Item itemKey="1">item 1</Menu.Item>
+          </Menu.ItemGroup>
+        </Menu>
+      </div>
+    );
+
+    expect(wrapper.find('Menu')).toExist();
+    expect(wrapper.find('MenuItem')).toExist();
+    expect(wrapper.find('MenuItemGroup')).toExist();
+  });
+
   it('renders with Menu.Item', () => {
     const wrapper = shallow(
       <Menu>

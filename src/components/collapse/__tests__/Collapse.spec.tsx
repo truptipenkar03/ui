@@ -13,10 +13,20 @@ describe('Collapse', () => {
     expect(wrapper.find('Content').children()).toHaveLength(0);
   });
 
+  it('has the correct display name Collapse', () => {
+    const wrapper = shallow(
+      <div>
+        <Collapse>child</Collapse>
+      </div>
+    );
+
+    expect(wrapper.find('Collapse')).toExist();
+  });
+
   it('renders with children', () => {
     const wrapper = shallow(<Collapse itemKey={'test'}>Content</Collapse>);
 
-    expect(wrapper.find('Content').children()).toHaveLength(1);
+    expect(wrapper.find('CollapseContent').children()).toHaveLength(1);
   });
 
   it('renders header content', () => {
@@ -26,7 +36,7 @@ describe('Collapse', () => {
       </Collapse>
     );
 
-    expect(wrapper.find('Header').children()).toHaveLength(1);
+    expect(wrapper.find('CollapseHeader').children()).toHaveLength(1);
   });
 
   it('sets the defaultExpanded prop', () => {
@@ -43,7 +53,7 @@ describe('Collapse', () => {
       </Collapse>
     );
 
-    expect(wrapper.find('Header').prop('expanded')).toBe(true);
+    expect(wrapper.find('CollapseHeader').prop('expanded')).toBe(true);
   });
 
   it('sets the disabled prop', () => {
@@ -54,7 +64,7 @@ describe('Collapse', () => {
     );
 
     expect(wrapper.find('Collapse__Container').prop('disabled')).toBe(true);
-    expect(wrapper.find('Header').prop('disabled')).toBe(true);
+    expect(wrapper.find('CollapseHeader').prop('disabled')).toBe(true);
   });
 
   it('should not call onChange when disabled', () => {
@@ -78,7 +88,7 @@ describe('Collapse', () => {
 
     wrapper.setProps({ expanded: true });
 
-    expect(wrapper.find('Header').prop('expanded')).toBe(false);
+    expect(wrapper.find('CollapseHeader').prop('expanded')).toBe(false);
     expect(wrapper.find('ContentContainer').prop('animate')).toStrictEqual(
       'closed'
     );
@@ -106,7 +116,7 @@ describe('Collapse', () => {
       </Collapse>
     );
 
-    expect(wrapper.exists('Content')).toBe(true);
+    expect(wrapper.exists('CollapseContent')).toBe(true);
 
     // creating a promise with a setTimeout so we can wait for the animation of the collapse
     // closing to finish before checking the dom
@@ -127,7 +137,7 @@ describe('Collapse', () => {
     });
 
     // @ts-ignore
-    expect(contentContainer.exists('Content')).toBe(false);
+    expect(contentContainer.exists('CollapseContent')).toBe(false);
   });
 
   it('calls onChange handler', () => {
@@ -144,8 +154,8 @@ describe('Collapse', () => {
       </Collapse>
     );
 
-    wrapper.find('Header__StyledHeader').simulate('click');
+    wrapper.find('CollapseHeader').simulate('click');
     expect(onChangeMock).toBeCalledWith('test');
-    expect(wrapper.find('Header').prop('expanded')).toBe(true);
+    expect(wrapper.find('CollapseHeader').prop('expanded')).toBe(true);
   });
 });

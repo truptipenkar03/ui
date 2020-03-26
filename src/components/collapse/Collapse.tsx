@@ -129,6 +129,8 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
   );
 };
 
+Collapse.displayName = 'Collapse';
+
 Collapse.defaultProps = {
   disabled: false,
   expanded: undefined,

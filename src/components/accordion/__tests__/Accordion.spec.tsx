@@ -17,6 +17,28 @@ describe('Accordion', () => {
     expect(wrapper.exists('Accordion__Container')).toBe(true);
   });
 
+  it('has the correct display name Accordion', () => {
+    const wrapper = shallow(
+      <div>
+        <Accordion>child</Accordion>
+      </div>
+    );
+
+    expect(wrapper.find('Accordion')).toExist();
+  });
+
+  it('has the correct display name for Item', () => {
+    const wrapper = shallow(
+      <div>
+        <Accordion>
+          <Accordion.Item itemKey="1">item</Accordion.Item>
+        </Accordion>
+      </div>
+    );
+
+    expect(wrapper.find('AccordionItem')).toExist();
+  });
+
   it('opens every clicked item', () => {
     const mockOnChange = jest.fn();
     const wrapper = mount(

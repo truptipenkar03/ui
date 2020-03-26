@@ -82,6 +82,8 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
   );
 };
 
+Header.displayName = 'ModalHeader';
+
 Header.defaultProps = {
   closable: true,
 };

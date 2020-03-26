@@ -64,3 +64,5 @@ export const AccordionItem: React.FunctionComponent<AccordionItemProps> = props 
     }}
   </AccordionContext.Consumer>
 );
+
+AccordionItem.displayName = 'AccordionItem';

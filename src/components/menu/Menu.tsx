@@ -52,5 +52,7 @@ export const Menu: MenuFunctionComponent<MenuProps> = ({
   );
 };
 
+Menu.displayName = 'Menu';
+
 Menu.Item = MenuItem;
 Menu.ItemGroup = MenuItemGroup;

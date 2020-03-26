@@ -142,6 +142,8 @@ export const Floater: React.FunctionComponent<FloaterProps> = props => {
   );
 };
 
+Floater.displayName = 'Floater';
+
 Floater.defaultProps = {
   animationProps: {
     initial: { opacity: 0 },

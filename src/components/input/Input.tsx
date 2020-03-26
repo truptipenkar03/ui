@@ -209,6 +209,8 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<
   );
 });
 
+Input.displayName = 'Input';
+
 Input.defaultProps = {
   borderType: 'full',
   className: '',

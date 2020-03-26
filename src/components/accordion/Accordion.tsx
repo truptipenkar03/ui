@@ -99,4 +99,6 @@ Accordion.defaultProps = {
 
 Accordion.Item = AccordionItem;
 
+Accordion.displayName = 'Accordion';
+
 export default Accordion;

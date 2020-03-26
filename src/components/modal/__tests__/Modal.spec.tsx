@@ -19,6 +19,16 @@ describe('Modal', () => {
     expect(wrapper.exists('#content')).toBe(true);
   });
 
+  it('has the correct display names', () => {
+    const wrapper = shallow(
+      <div>
+        <Modal {...defaultProps}>{defaultContent}</Modal>
+      </div>
+    );
+
+    expect(wrapper.find('Modal')).toExist();
+  });
+
   it('sets the closable prop', () => {
     const wrapper = mount(
       <Modal {...defaultProps} closable={true}>
@@ -53,7 +63,7 @@ describe('Modal', () => {
 
     expect(
       wrapper
-        .find('DefaultFooter')
+        .find('DefaultModalFooter')
         .childAt(1)
         .prop('shape')
     ).toEqual('circle');
@@ -68,7 +78,7 @@ describe('Modal', () => {
 
     expect(
       wrapper
-        .find('DefaultFooter')
+        .find('DefaultModalFooter')
         .childAt(1)
         .find('button')
         .text()
@@ -83,7 +93,7 @@ describe('Modal', () => {
     );
 
     expect(wrapper.exists('#footer')).toBe(true);
-    expect(wrapper.exists('DefaultFooter')).toBe(false);
+    expect(wrapper.exists('DefaultModalFooter')).toBe(false);
   });
 
   it('sets the okButtonText prop', () => {
@@ -95,7 +105,7 @@ describe('Modal', () => {
 
     expect(
       wrapper
-        .find('DefaultFooter')
+        .find('DefaultModalFooter')
         .childAt(0)
         .find('button')
         .text()
@@ -115,7 +125,7 @@ describe('Modal', () => {
 
     expect(
       wrapper
-        .find('DefaultFooter')
+        .find('DefaultModalFooter')
         .childAt(0)
         .prop('shape')
     ).toEqual('circle');
@@ -130,7 +140,7 @@ describe('Modal', () => {
 
     expect(
       wrapper
-        .find('Header')
+        .find('ModalHeader')
         .childAt(0)
         .text()
     ).toEqual('Title');
@@ -150,7 +160,7 @@ describe('Modal', () => {
   it('calls onOk callback', () => {
     const wrapper = mount(<Modal {...defaultProps}>{defaultContent}</Modal>);
 
-    const okButton = wrapper.find('DefaultFooter').childAt(0);
+    const okButton = wrapper.find('DefaultModalFooter').childAt(0);
     okButton.simulate('click');
     expect(defaultProps.onOk).toHaveBeenCalled();
   });
@@ -158,7 +168,7 @@ describe('Modal', () => {
   it('calls onCancel callback', () => {
     const wrapper = mount(<Modal {...defaultProps}>{defaultContent}</Modal>);
 
-    const okButton = wrapper.find('DefaultFooter').childAt(1);
+    const okButton = wrapper.find('DefaultModalFooter').childAt(1);
     okButton.simulate('click');
     expect(defaultProps.onCancel).toHaveBeenCalled();
   });

@@ -31,3 +31,5 @@ export const Subtitle: React.FunctionComponent<SubtitleProps> = ({
     </StyledSubtitle>
   );
 };
+
+Subtitle.displayName = 'Subtitle';

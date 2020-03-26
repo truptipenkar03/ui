@@ -129,4 +129,6 @@ const Header: React.FunctionComponent<HeaderProps> = ({
   </StyledHeader>
 );
 
+Header.displayName = 'CollapseHeader';
+
 export default Header;

@@ -117,6 +117,8 @@ export const Tabs: TabsFunctionComponent<TabsProps> = ({
 
 Tabs.Item = TabsItem;
 
+Tabs.displayName = 'Tabs';
+
 Tabs.defaultProps = {
   placement: 'top',
 };

@@ -34,3 +34,5 @@ export const Description: React.FunctionComponent<DescriptionProps> = ({
     </StyledDescription>
   );
 };
+
+Description.displayName = 'Description';

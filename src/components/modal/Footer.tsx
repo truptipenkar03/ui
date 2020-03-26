@@ -58,6 +58,8 @@ export const DefaultFooter: React.FunctionComponent<FooterProps> = ({
   );
 };
 
+DefaultFooter.displayName = 'DefaultModalFooter';
+
 DefaultFooter.defaultProps = {
   okButtonText: 'Okay',
   cancelButtonText: 'Cancel',

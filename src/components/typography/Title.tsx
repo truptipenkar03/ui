@@ -89,6 +89,8 @@ export const Title: React.FunctionComponent<TitleProps> = ({
   );
 };
 
+Title.displayName = 'Title';
+
 Title.defaultProps = {
   level: 1,
 };

@@ -12,6 +12,16 @@ describe('Input', () => {
     expect(wrapper.find('StyledInput__Container')).toExist();
   });
 
+  it('has the correct display name', () => {
+    const wrapper = shallow(
+      <div>
+        <Input />
+      </div>
+    );
+
+    expect(wrapper.find('Input')).toExist();
+  });
+
   it('sets the placeholder', () => {
     const wrapper = mount(<Input placeholder="test" />);
 

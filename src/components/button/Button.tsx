@@ -126,6 +126,8 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<
   );
 });
 
+Button.displayName = 'Button';
+
 Button.defaultProps = {
   type: 'primary',
   children: '',

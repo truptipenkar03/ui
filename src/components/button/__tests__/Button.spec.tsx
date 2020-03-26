@@ -11,6 +11,16 @@ describe('Button', () => {
     expect(wrapper.exists('StyledButton')).toBe(true);
   });
 
+  it('has the correct display name Button', () => {
+    const wrapper = shallow(
+      <div>
+        <Button>child</Button>
+      </div>
+    );
+
+    expect(wrapper.find('Button')).toExist();
+  });
+
   it('renders with children', () => {
     const wrapper = shallow(<Button>Test Button</Button>);
 

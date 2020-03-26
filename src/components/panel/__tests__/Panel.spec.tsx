@@ -15,6 +15,18 @@ describe('Panel', () => {
     expect(wrapper.find('#test1').exists()).toBe(true);
   });
 
+  it('has the correct display name', () => {
+    const wrapper = shallow(
+      <div>
+        <Panel>
+          <div id={'test1'} />
+        </Panel>
+      </div>
+    );
+
+    expect(wrapper.find('Panel')).toExist();
+  });
+
   it('calls onClick handler', () => {
     const onClickMock = jest.fn();
     const wrapper = shallow(

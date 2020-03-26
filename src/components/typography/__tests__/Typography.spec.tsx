@@ -5,6 +5,24 @@ import { shallow } from 'enzyme';
 import { Typography } from '../Typography';
 
 describe('Typography', () => {
+  it('has the correct display names', () => {
+    const wrapper = shallow(
+      <div>
+        <Typography.Title>Title</Typography.Title>
+        <Typography.Subtitle>Subtitle</Typography.Subtitle>
+        <Typography.Body>Body</Typography.Body>
+        <Typography.Description>Description</Typography.Description>
+        <Typography.Label>Label</Typography.Label>
+      </div>
+    );
+
+    expect(wrapper.find('Body')).toExist();
+    expect(wrapper.find('Description')).toExist();
+    expect(wrapper.find('Label')).toExist();
+    expect(wrapper.find('Subtitle')).toExist();
+    expect(wrapper.find('Title')).toExist();
+  });
+
   it('renders Title', () => {
     const wrapper = shallow(<Typography.Title>Title</Typography.Title>);
 

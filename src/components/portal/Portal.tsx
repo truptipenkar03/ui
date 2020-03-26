@@ -37,6 +37,8 @@ export const Portal: React.FunctionComponent<PortalProps> = props => {
   return mountNode ? ReactDOM.createPortal(children, mountNode) : mountNode;
 };
 
+Portal.displayName = 'Portal';
+
 Portal.defaultProps = {
   children: '',
   disablePortal: false,

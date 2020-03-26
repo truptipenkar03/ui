@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { mount, ReactWrapper } from 'enzyme';
+import { shallow, mount, ReactWrapper } from 'enzyme';
 
 import { act } from 'react-dom/test-utils';
 
@@ -25,6 +25,16 @@ describe('Floater', () => {
 
   beforeEach(() => {
     test.appendChild(anchorElement);
+  });
+
+  it('has the correct display name Floater', () => {
+    const wrapper = shallow(
+      <div>
+        <Floater {...defaultProps} open={true} />
+      </div>
+    );
+
+    expect(wrapper.find('Floater')).toExist();
   });
 
   it('sets the open prop to true', async () => {

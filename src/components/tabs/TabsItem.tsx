@@ -115,3 +115,5 @@ export const TabsItem: React.FunctionComponent<TabsItemProps> = ({
     </Container>
   );
 };
+
+TabsItem.displayName = 'TabsItem';

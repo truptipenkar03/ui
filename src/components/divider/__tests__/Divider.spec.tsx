@@ -11,6 +11,16 @@ describe('Divider', () => {
     expect(wrapper.exists('StyledDivider')).toBe(true);
   });
 
+  it('has the correct display name Divider', () => {
+    const wrapper = shallow(
+      <div>
+        <Divider />
+      </div>
+    );
+
+    expect(wrapper.find('Divider')).toExist();
+  });
+
   it('sets component prop', () => {
     const wrapper = shallow(<Divider component={'li'} />);
 

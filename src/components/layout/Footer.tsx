@@ -33,3 +33,5 @@ export const Footer: React.FunctionComponent<FooterProps> = ({
     </Container>
   );
 };
+
+Footer.displayName = 'LayoutFooter';

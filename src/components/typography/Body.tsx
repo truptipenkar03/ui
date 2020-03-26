@@ -51,3 +51,5 @@ export const Body: React.FunctionComponent<BodyProps> = ({
     </StyledBody>
   );
 };
+
+Body.displayName = 'Body';

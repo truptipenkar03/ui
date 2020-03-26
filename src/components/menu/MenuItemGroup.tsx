@@ -32,3 +32,5 @@ export const MenuItemGroup: React.FunctionComponent<MenuItemGroupProps> = ({
     </Container>
   );
 };
+
+MenuItemGroup.displayName = 'MenuItemGroup';

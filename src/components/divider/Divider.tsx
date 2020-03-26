@@ -76,6 +76,8 @@ export const Divider: React.FunctionComponent<DividerProps> = props => {
   );
 };
 
+Divider.displayName = 'Divider';
+
 Divider.defaultProps = {
   component: '',
   orientation: 'horizontal',

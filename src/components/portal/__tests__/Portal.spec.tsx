@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import { Portal } from '../Portal';
 
@@ -13,6 +13,18 @@ describe('Portal', () => {
     );
 
     expect(wrapper.find('#test1').exists()).toBe(true);
+  });
+
+  it('has the correct display name', () => {
+    const wrapper = shallow(
+      <div>
+        <Portal>
+          <div id={'test1'} />
+        </Portal>
+      </div>
+    );
+
+    expect(wrapper.find('Portal')).toExist();
   });
 
   it('renders under parent when disabled', () => {
