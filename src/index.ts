@@ -24,7 +24,7 @@ export { Collapse, CollapseProps } from './components/collapse/Collapse';
 
 export { Floater, FloaterProps } from './components/floater/Floater';
 
-export { Icon, IconProps } from './components/icons';
+export { Icon, IconProps, SortState } from './components/icons';
 
 export {
   Input,
@@ -69,6 +69,13 @@ export { createTheme } from './theme';
 export { GlobalTheme, Colors } from './theme/types';
 
 export { ThemeProvider, ThemeContext } from './styled';
+
+export {
+  Table,
+  TableProps,
+  ColumnProps,
+  Justify,
+} from './components/table/Table';
 
 export {
   Tabs,

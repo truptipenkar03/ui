@@ -10,6 +10,8 @@ export interface SubtitleProps {
 
 const StyledSubtitle = styled.div`
   ${({ theme }) => css`
+    user-select: none;
+
     color: ${theme.typographySubtitleColor};
     font-family: ${theme.typographySubtitleFontFamily};
     font-size: ${theme.typographySubtitleFontSize};

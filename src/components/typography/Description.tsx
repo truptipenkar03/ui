@@ -10,6 +10,8 @@ export interface DescriptionProps {
 
 const StyledDescription = styled.div`
   ${({ theme }) => css`
+    user-select: none;
+
     color: ${theme.typographyDescriptionColor};
     font-family: ${theme.typographyDescriptionFontFamily};
     font-size: ${theme.typographyDescriptionFontSize};

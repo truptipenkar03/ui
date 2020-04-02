@@ -10,6 +10,8 @@ export interface LabelProps {
 
 const StyledLabel = styled.label`
   ${({ theme }) => css`
+    user-select: none;
+
     text-transform: ${theme.typographyLabelTextTransform};
     color: ${theme.typographyLabelColor};
     font-family: ${theme.typographyLabelFontFamily};

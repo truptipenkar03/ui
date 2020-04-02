@@ -15,6 +15,7 @@ export interface Colors {
   secondary: string;
   secondaryBackground: string;
   subtitle: string;
+  tableBorder: string;
   tertiary: string;
   tertiaryBackground: string;
   title: string;
@@ -193,6 +194,15 @@ export interface GlobalTheme {
   panelMargin: string;
   panelActiveBoxShadow: string;
   panelHoverBoxShadow: string;
+
+  // ---- Table ---- //
+  tableEmptyContainerHeight: string;
+  tableHeadCellPadding: string;
+  tableHeadBorder: string;
+  tableHeadBorderColor: string;
+  tableBodyCellPadding: string;
+  tableBodyRowBorder: string;
+  tableBodyRowBorderColor: string;
 
   // ---- Tabs ---- //
   tabsInkbarThickness: string;

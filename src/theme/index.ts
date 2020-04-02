@@ -170,6 +170,15 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   panelActiveBoxShadow: `0px 0px 4px ${rgba(themeColors.black, 0.2)}`,
   panelHoverBoxShadow: `0px 7px 21px ${rgba(themeColors.black, 0.07)}`,
 
+  // ---- Table ---- //
+  tableEmptyContainerHeight: '100px',
+  tableHeadBorder: '2px solid',
+  tableHeadBorderColor: themeColors.tableBorder,
+  tableHeadCellPadding: '8px 16px',
+  tableBodyCellPadding: '8px 16px',
+  tableBodyRowBorder: '1px solid',
+  tableBodyRowBorderColor: themeColors.tableBorder,
+
   // ---- Tabs ---- //
   tabsInkbarThickness: '4px',
   tabsItemPadding: '8px 16px',
@@ -214,14 +223,14 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   typographyTitle6LetterSpacing: '0',
 
   typographySubtitleColor: themeColors.subtitle,
-  typographySubtitleFontFamily: '"Lato" sans-serif',
+  typographySubtitleFontFamily: '"Lato", sans-serif',
   typographySubtitleFontSize: '16px',
   typographySubtitleFontWeight: '700',
   typographySubtitleLineHeight: '1.5',
   typographySubtitleLetterSpacing: '0',
 
   typographyBodyColor: themeColors.body,
-  typographyBodyFontFamily: '"Lato" sans-serif',
+  typographyBodyFontFamily: '"Lato", sans-serif',
   typographyBodyFontSize: '16px',
   typographyBodyFontWeight: '400',
   typographyBodyLineHeight: '1.5',
@@ -229,14 +238,14 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   typographyBodyDisabledColor: themeColors.bodyDisabled,
 
   typographyDescriptionColor: themeColors.description,
-  typographyDescriptionFontFamily: '"Lato" sans-serif',
+  typographyDescriptionFontFamily: '"Lato", sans-serif',
   typographyDescriptionFontSize: '12px',
   typographyDescriptionFontWeight: '400',
   typographyDescriptionLineHeight: '1.5',
   typographyDescriptionLetterSpacing: '0',
 
   typographyLabelColor: themeColors.label,
-  typographyLabelFontFamily: '"Lato" sans-serif',
+  typographyLabelFontFamily: '"Lato", sans-serif',
   typographyLabelFontSize: '11px',
   typographyLabelFontWeight: '600',
   typographyLabelLineHeight: '1.5',

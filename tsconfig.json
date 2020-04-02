@@ -15,6 +15,7 @@
     "node_modules",
     "src/**/*.stories.tsx",
     "src/**/story.components.tsx",
-    "src/**/*.spec.tsx"
+    "src/**/*.spec.tsx",
+    "docs/*"
   ]
 }

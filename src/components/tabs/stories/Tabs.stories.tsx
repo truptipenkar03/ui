@@ -9,7 +9,7 @@ import { Tabs } from '../Tabs';
 import mdx from './Tabs.mdx';
 
 const Container = styled.div`
-  background: white;
+  background: transparent;
   height: 60px;
 
   display: flex;

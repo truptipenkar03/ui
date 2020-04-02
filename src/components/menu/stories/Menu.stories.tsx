@@ -9,7 +9,7 @@ import { Menu } from '../Menu';
 import mdx from './Menu.mdx';
 
 const Container = styled.div`
-  background: white;
+  background: transparent;
 
   max-width: 300px;
 `;

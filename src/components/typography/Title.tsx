@@ -14,6 +14,7 @@ export interface TitleProps {
 const StyledTitle = styled.div<TitleProps>`
   ${props => css`
     font-family: ${props.theme.typographyTitleFontFamily};
+    user-select: none;
   
     ${props.level === 1 &&
       css`
