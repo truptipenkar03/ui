@@ -36,7 +36,7 @@ export interface ButtonProps {
   ghost?: boolean;
 
   /** HTML Type of the button */
-  htmlType?: string;
+  htmlType?: 'button' | 'submit' | 'reset';
 
   /** Loading state of the button */
   loading?: boolean;
@@ -82,6 +82,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<
     children,
     className,
     ghost,
+    htmlType,
     loading,
     type,
     shape,
@@ -102,6 +103,7 @@ export const Button: React.FunctionComponent<ButtonProps> = React.forwardRef<
         shape,
         size,
       }}
+      type={htmlType}
       theme={theme}
       {...rest}
     >

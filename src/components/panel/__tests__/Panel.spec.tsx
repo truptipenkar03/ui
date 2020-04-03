@@ -15,6 +15,16 @@ describe('Panel', () => {
     expect(wrapper.find('#test1').exists()).toBe(true);
   });
 
+  it('removes margin when hasMargin is false', () => {
+    const wrapper = shallow(
+      <Panel hasMargin={false}>
+        <div id={'test1'} />
+      </Panel>
+    );
+
+    expect(wrapper.find('Panel__Container')).toHaveStyleRule('margin', '0');
+  });
+
   it('has the correct display name', () => {
     const wrapper = shallow(
       <div>

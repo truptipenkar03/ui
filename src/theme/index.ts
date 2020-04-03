@@ -166,7 +166,7 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   panelBorderColor: 'transparent',
   panelBorderRadius: '4px',
   panelPadding: '24px',
-  panelMargin: '32px',
+  panelMargin: '16px',
   panelActiveBoxShadow: `0px 0px 4px ${rgba(themeColors.black, 0.2)}`,
   panelHoverBoxShadow: `0px 7px 21px ${rgba(themeColors.black, 0.07)}`,
 
