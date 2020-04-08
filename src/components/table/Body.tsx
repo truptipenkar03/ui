@@ -15,7 +15,7 @@ import { GlobalTheme } from '../../theme/types';
 interface BodyProps<T> {
   columns: ColumnProps<T>[];
   data: T[];
-  emptyState?: React.ReactNode;
+  emptyComponent?: React.ReactNode;
 }
 
 const TD = styled.td<{
@@ -38,7 +38,7 @@ const EmptyContentContainer = styled.div`
 `;
 
 export const Body = <T extends any = any>(props: BodyProps<T>) => {
-  const { columns, data, emptyState } = props;
+  const { columns, data, emptyComponent } = props;
 
   const theme = useTheme();
 
@@ -61,7 +61,7 @@ export const Body = <T extends any = any>(props: BodyProps<T>) => {
           <TD colSpan={columns.length}>
             <EmptyContentContainer theme={theme}>
               <Typography.Body>
-                {emptyState == null ? 'No Data' : emptyState}
+                {emptyComponent == null ? 'No Data' : emptyComponent}
               </Typography.Body>
             </EmptyContentContainer>
           </TD>
@@ -82,7 +82,7 @@ export const Body = <T extends any = any>(props: BodyProps<T>) => {
         ))}
       </tr>
     ));
-  }, [data, columns, emptyState, renderDataIndex, theme]);
+  }, [data, columns, emptyComponent, renderDataIndex, theme]);
 
   return <tbody>{renderBodyCell()}</tbody>;
 };

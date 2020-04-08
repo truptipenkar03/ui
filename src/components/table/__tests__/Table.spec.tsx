@@ -62,7 +62,26 @@ describe('Table', () => {
 
   it('renders a the empty state when there is no data', () => {
     const wrapper = mount(
-      <Table columns={columns} data={data} emptyState={<div id="test" />} />
+      <Table columns={columns} data={data} emptyComponent={<div id="test" />} />
+    );
+
+    expect(wrapper.find('#test')).toExist();
+  });
+
+  it('renders loading state when loading is true', () => {
+    const wrapper = mount(<Table columns={columns} data={data} loading />);
+
+    expect(wrapper.find('Loading')).toExist();
+  });
+
+  it('renders custom loading component when loading is true', () => {
+    const wrapper = mount(
+      <Table
+        columns={columns}
+        data={data}
+        loading
+        loadingComponent={<div id="test" />}
+      />
     );
 
     expect(wrapper.find('#test')).toExist();

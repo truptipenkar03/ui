@@ -7,11 +7,17 @@ import { Table, ColumnProps } from '../Table';
 
 import { Icon } from '../../icons/index';
 
+import { Button } from '../../button/Button';
+
 // @ts-ignore
 import mdx from './Table.mdx';
 
 const IconSpacer = styled.span`
   margin-left: 16px;
+`;
+
+const ButtonSpacer = styled.div`
+  height: 16px;
 `;
 
 const Actions = () => (
@@ -236,7 +242,84 @@ export const empty = () => {
     <Table
       data={[]}
       columns={columns}
-      emptyState={<div>It appears you have no users.</div>}
+      emptyComponent={<div>It appears you have no users.</div>}
     />
+  );
+};
+
+export const loading = () => {
+  interface User {
+    key: string | number;
+    name: string;
+    age: number;
+    address: string;
+  }
+
+  const [loading, setLoading] = React.useState(false);
+
+  const fetchData = React.useCallback(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
+  const [tableData, setTableData] = React.useState<User[]>([
+    {
+      key: '1',
+      name: 'John Brown',
+      age: 61,
+      address: 'British Columbia No. 1 Lake Park',
+    },
+    {
+      key: '2',
+      name: 'Jim Green',
+      age: 70,
+      address: 'Ontario No. 1 Lake Park',
+    },
+    {
+      key: '3',
+      name: 'Joe Flack',
+      age: 40,
+      address: 'Winnepeg No. 1 Lake Park',
+    },
+  ]);
+
+  const columns: ColumnProps<User>[] = [
+    {
+      key: 'name',
+      dataIndex: 'name',
+      title: 'Name',
+      width: 15,
+    },
+    {
+      key: 'age',
+      dataIndex: 'age',
+      title: 'Age',
+      width: 15,
+      justify: 'center',
+    },
+    {
+      key: 'address',
+      dataIndex: 'address',
+      title: 'Address',
+    },
+    {
+      key: 'actions',
+      title: 'Actions',
+      render: () => <Actions />,
+      width: 5,
+      justify: 'flex-end',
+    },
+  ];
+
+  return (
+    <>
+      <Button loading={loading} onClick={fetchData}>
+        Fetch Data
+      </Button>
+      <ButtonSpacer />
+      <Table data={tableData} columns={columns} loading={loading} />
+    </>
   );
 };
