@@ -5,11 +5,13 @@ import styled from 'styled-components';
 
 import { Tabs } from '../Tabs';
 
+import { useTheme } from '../../../hooks/useTheme';
+
 // @ts-ignore
 import mdx from './Tabs.mdx';
 
 const Container = styled.div`
-  background: transparent;
+  background: ${({ theme }) => theme.colors.primary};
   height: 60px;
 
   display: flex;
@@ -29,23 +31,26 @@ export default {
 export const simple = () => {
   const [selectedTab, setSelectedTab] = React.useState<string | number>('2');
 
+  const theme = useTheme();
+
   return (
-    <Container>
+    <Container theme={theme}>
       <Tabs
         defaultSelectedItem="2"
         selectedItem={selectedTab}
         onTabClick={key => setSelectedTab(key)}
       >
-        <Tabs.Item title="Tab 1" itemKey="1" />
-        <Tabs.Item title="Tab 2" itemKey="2" />
+        <Tabs.Item title="Home" itemKey="1" />
+        <Tabs.Item title="Incidents" itemKey="2" />
         <Tabs.Item
           title={
             <div>
-              <span>Tab 3</span>
+              <span>Tickets</span>
             </div>
           }
           itemKey="3"
         />
+        <Tabs.Item title="Customers" itemKey="4" />
       </Tabs>
     </Container>
   );

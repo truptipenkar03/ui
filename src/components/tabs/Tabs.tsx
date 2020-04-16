@@ -55,7 +55,7 @@ const TabsContainer = styled.div<StyledTabsContainerProps>`
 const Inkbar = styled.div<{ theme: GlobalTheme }>`
   ${({ theme }) => css`
     position: relative;
-    background: ${theme.colors.primary};
+    background: ${theme.colors.orange};
     height: ${theme.tabsInkbarThickness};
 
     transition: all ${theme.animationTimeVeryFast}s ease-in-out;
@@ -101,15 +101,14 @@ export const Tabs: TabsFunctionComponent<TabsProps> = ({
         >
           {children}
         </TabsContainer>
-        {activeItem == null ? null : (
-          <Inkbar
-            theme={theme}
-            style={{
-              width: activeItem.width,
-              left: activeItem.x,
-            }}
-          />
-        )}
+        <Inkbar
+          theme={theme}
+          style={{
+            visibility: activeItem == null ? 'hidden' : 'visible',
+            width: activeItem == null ? 'unset' : activeItem.width,
+            left: activeItem == null ? 'unset' : activeItem.x,
+          }}
+        />
       </Container>
     </TabsContext.Provider>
   );

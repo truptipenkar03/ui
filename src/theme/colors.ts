@@ -17,6 +17,8 @@ export const colors: Colors = {
   secondary: '#58595B',
   secondaryBackground: '#F1F1F1',
   tableBorder: '#F0F4F7',
+  tabItemHorizontal: '#FFFFFF',
+  tabItemVertical: '#58595B',
   subtitle: '#58595B',
   tertiary: '#F58220',
   tertiaryBackground: '#EEEEEE',

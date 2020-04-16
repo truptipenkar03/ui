@@ -21,28 +21,20 @@ export interface TabsItemProps {
   title: React.ReactNode;
 }
 
-const Container = styled.div``;
-
-const Title = styled(Typography.Body)<{
-  theme: GlobalTheme;
-  isSelected: boolean;
-}>`
-  ${({ theme, isSelected }) => css`
-    user-select: none;
-    box-sizing: border-box;
+const Container = styled.div`
+  ${({ theme }: { theme: GlobalTheme }) => css`
     cursor: pointer;
+    box-sizing: border-box;
 
     padding: ${theme.tabsItemPadding};
+  `}
+`;
+
+const TabBody = styled(Typography.Body)`
+  ${({ theme }: { theme: GlobalTheme }) => css`
+    color: ${theme.colors.tabItemHorizontal};
+
     transition: color ${theme.animationTimeVeryFast}s ease-in-out;
-
-    ${isSelected &&
-      css`
-        color: ${theme.colors.primary};
-      `}
-
-    &:hover {
-      color: ${theme.colors.primary};
-    }
   `}
 `;
 
@@ -104,14 +96,10 @@ export const TabsItem: React.FunctionComponent<TabsItemProps> = ({
   }, [selectedItem]);
 
   return (
-    <Container
-      ref={tabItemRef}
-      className={`${className} rtk-tabs-item`}
-      onClick={handleClick}
-    >
-      <Title theme={theme} isSelected={itemKey === selectedItem}>
+    <Container className={`${className} rtk-tabs-item`} onClick={handleClick}>
+      <TabBody theme={theme} ref={tabItemRef}>
         {title}
-      </Title>
+      </TabBody>
     </Container>
   );
 };

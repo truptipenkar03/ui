@@ -16,6 +16,8 @@ export interface Colors {
   secondaryBackground: string;
   subtitle: string;
   tableBorder: string;
+  tabItemHorizontal: string;
+  tabItemVertical: string;
   tertiary: string;
   tertiaryBackground: string;
   title: string;

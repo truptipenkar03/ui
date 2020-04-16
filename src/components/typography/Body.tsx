@@ -11,6 +11,9 @@ export interface BodyProps {
 
   /** If true, the style of the text will change */
   disabled?: boolean;
+
+  /** Reference to the body element */
+  ref?: React.Ref<HTMLDivElement>;
 }
 
 interface StyledBodyProps {
@@ -34,11 +37,12 @@ const StyledBody = styled.div<StyledBodyProps>`
   `}
 `;
 
-export const Body: React.FunctionComponent<BodyProps> = ({
-  children,
-  className,
-  disabled,
-}) => {
+export const Body: React.FunctionComponent<BodyProps> = React.forwardRef<
+  HTMLDivElement,
+  BodyProps
+>((props, ref) => {
+  const { className, disabled, children } = props;
+
   const theme = useTheme();
 
   return (
@@ -46,10 +50,11 @@ export const Body: React.FunctionComponent<BodyProps> = ({
       className={`${className} rtk-type-body`}
       theme={theme}
       disabled={disabled}
+      ref={ref}
     >
       {children}
     </StyledBody>
   );
-};
+});
 
 Body.displayName = 'Body';
