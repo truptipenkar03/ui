@@ -210,6 +210,14 @@ export interface GlobalTheme {
   tabsInkbarThickness: string;
   tabsItemPadding: string;
 
+  // ---- Tooltip ---- //
+  tooltipArrowSize: string;
+  tooltipBorder: string;
+  tooltipBorderColor: string;
+  tooltipBorderRadius: string;
+  tooltipBoxShadow: string;
+  tooltipMargin: string;
+
   // ---- Typography ---- //
   typographyTitleFontFamily: string;
   typographyTitle1Color: string;

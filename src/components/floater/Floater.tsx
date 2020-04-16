@@ -63,6 +63,7 @@ export const Floater: React.FunctionComponent<FloaterProps> = props => {
     portalElement,
     setPortalElement,
   ] = React.useState<HTMLDivElement | null>(null);
+
   const [portalPosition, setPortalPosition] = React.useState<Position | null>(
     null
   );
@@ -132,7 +133,10 @@ export const Floater: React.FunctionComponent<FloaterProps> = props => {
             }}
             {...animationProps}
           >
-            <Container portalVisibility={portalVisibility}>
+            <Container
+              portalVisibility={portalVisibility}
+              className="rtk-floater"
+            >
               {children}
             </Container>
           </motion.div>
@@ -149,7 +153,7 @@ Floater.defaultProps = {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
-    transition: { duration: 0.3 },
+    transition: { duration: 0.1 },
   },
   disableFloater: false,
   container: undefined,
