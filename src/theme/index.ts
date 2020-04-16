@@ -94,7 +94,7 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   collapseIconSize: '10px',
 
   // ---- Layout ---- //
-  layoutHeaderHeight: '60px',
+  layoutHeaderHeight: '44px',
   layoutHeaderPaddingSmall: '0 8px',
   layoutHeaderPaddingMedium: '0 16px',
   layoutHeaderPaddingLarge: '0 24px',
