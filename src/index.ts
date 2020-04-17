@@ -94,6 +94,10 @@ export {
   LabelProps,
 } from './components/typography/Typography';
 
+export { Tooltip, TooltipProps } from './components/tooltip/Tooltip';
+
+export { Placement } from './components/tooltip/placements';
+
 export {
   Divider,
   DividerProps,
