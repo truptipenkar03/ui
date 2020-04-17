@@ -25,15 +25,15 @@ const positions: Placement[] = [
   'topLeft',
   'top',
   'topRight',
-  'rightTop',
-  'right',
   'rightBottom',
+  'right',
+  'rightTop',
   'bottomRight',
   'bottom',
   'bottomLeft',
-  'leftBottom',
-  'left',
   'leftTop',
+  'left',
+  'leftBottom',
 ];
 
 const Overlay = styled.div`
