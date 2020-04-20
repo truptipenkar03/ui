@@ -27,6 +27,23 @@ describe('Menu', () => {
     expect(wrapper.find('MenuItemGroup')).toExist();
   });
 
+  it('sets the defaultSelectedItem prop', () => {
+    const wrapper = shallow(
+      <Menu defaultSelectedItem={'1'}>
+        <Menu.Item itemKey="1">
+          <div id="item-1" />
+        </Menu.Item>
+        <Menu.Item itemKey="2">
+          <div id="item-2" />
+        </Menu.Item>
+      </Menu>
+    );
+
+    expect(
+      wrapper.find('ContextProvider').prop('value').selectedItem
+    ).toStrictEqual('1');
+  });
+
   it('renders with Menu.Item', () => {
     const wrapper = shallow(
       <Menu>

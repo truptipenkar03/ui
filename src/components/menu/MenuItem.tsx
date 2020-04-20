@@ -23,11 +23,12 @@ export interface MenuItemProps {
 
 interface ContainerProps {
   disabled?: boolean;
+  isSelected: boolean;
   theme: GlobalTheme;
 }
 
-const Container = styled.div<ContainerProps>`
-  ${({ disabled, theme }) => css`
+const Container = styled.div`
+  ${({ disabled, theme, isSelected }: ContainerProps) => css`
     padding: ${theme.menuItemPadding};
 
     cursor: pointer;
@@ -39,6 +40,13 @@ const Container = styled.div<ContainerProps>`
       }
       background: ${theme.menuItemHoverBackground};
     }
+
+    ${isSelected &&
+      css`
+        .rtk-type-body {
+          color: ${theme.menuItemHoverColor};
+        }
+      `}
 
     ${disabled &&
       css`
@@ -55,7 +63,7 @@ export const MenuItem: React.FunctionComponent<MenuItemProps> = ({
   itemKey,
 }) => {
   const theme = useTheme();
-  const { onClick } = React.useContext(MenuContext);
+  const { onClick, selectedItem } = React.useContext(MenuContext);
 
   const handleClick = React.useCallback(() => {
     if (onClick && !disabled) {
@@ -68,6 +76,7 @@ export const MenuItem: React.FunctionComponent<MenuItemProps> = ({
       className={`${className} rtk-menu-item`}
       key={itemKey}
       disabled={disabled}
+      isSelected={selectedItem === itemKey}
       theme={theme}
       onClick={handleClick}
     >

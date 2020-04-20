@@ -4,6 +4,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { Tooltip } from '../Tooltip';
+import { Menu } from '../../menu/Menu';
 import { Placement } from '../placements';
 
 import { Button } from '../../button/Button';
@@ -76,13 +77,20 @@ export const simple = () => {
 export const visible = () => {
   const [visible, setVisible] = React.useState(false);
 
+  const overlay = (
+    <Menu onClick={key => console.log(key)} defaultSelectedItem="1">
+      <Menu.Item itemKey="1">Item 1</Menu.Item>
+      <Menu.Item itemKey="2">Item 2</Menu.Item>
+    </Menu>
+  );
+
   return (
     <>
       <Button onClick={() => setVisible(!visible)}>
         Click to Show Tooltip
       </Button>
       <Spacer />
-      <Tooltip placement={'bottom'} overlay={<Overlay />} visible={visible}>
+      <Tooltip placement={'bottom'} overlay={overlay} visible={visible}>
         <Button ghost>Tooltip Here</Button>
       </Tooltip>
     </>

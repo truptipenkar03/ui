@@ -19,6 +19,9 @@ export interface MenuProps {
   /** className of the menu */
   className?: string;
 
+  /** the item that is selected on first render */
+  defaultSelectedItem?: string | number;
+
   /** Called when any of the menu items are clicked */
   onClick?: (itemKey: string | number) => void;
 }
@@ -30,12 +33,18 @@ const Container = styled.div`
 export const Menu: MenuFunctionComponent<MenuProps> = ({
   className,
   children,
+  defaultSelectedItem,
   onClick,
 }) => {
+  const [selectedItem, setSelectedItem] = React.useState<string | number>(
+    defaultSelectedItem || ''
+  );
+
   const handleItemClick = React.useCallback(
     (key: string | number) => {
       if (onClick) {
         onClick(key);
+        setSelectedItem(key);
       }
     },
     [onClick]
@@ -45,6 +54,7 @@ export const Menu: MenuFunctionComponent<MenuProps> = ({
     <MenuContext.Provider
       value={{
         onClick: handleItemClick,
+        selectedItem,
       }}
     >
       <Container className={`${className} rtk-menu`}>{children}</Container>
