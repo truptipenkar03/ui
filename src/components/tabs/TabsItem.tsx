@@ -25,6 +25,7 @@ const Container = styled.div`
   ${({ theme, isSelected }: { theme: GlobalTheme; isSelected: boolean }) => css`
     cursor: pointer;
     box-sizing: border-box;
+    user-select: none;
 
     padding: ${theme.tabsItemPadding};
 
