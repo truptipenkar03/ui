@@ -1,3 +1,4 @@
+import CaretDown from './CaretDown';
 import Check from './Check';
 import Loading from './Loading';
 import Minus from './Minus';
@@ -7,6 +8,7 @@ import Sort from './Sort';
 import Times from './Times';
 
 export const Icon = {
+  CaretDown,
   Check,
   Loading,
   Minus,
