@@ -30,6 +30,16 @@ describe('Tooltip', () => {
     ]);
   });
 
+  it('sets the gap prop', () => {
+    const wrapper = shallow(
+      <Tooltip gap={20} placement="bottom">
+        <div id="test"></div>
+      </Tooltip>
+    );
+
+    expect(wrapper.find('TooltipContainer').prop('gap')).toStrictEqual(20);
+  });
+
   it('renders the overlay', async () => {
     const wrapper = mount(
       <Tooltip placement="bottom" overlay={<div id="overlay"></div>} visible>

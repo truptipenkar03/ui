@@ -12,17 +12,20 @@ export interface TooltipProps {
   /** className of the dropdown component */
   className?: string;
 
+  /** distance the tooltip will render from the anchor element (in pixels) */
+  gap?: string;
+
+  /** if true, the arrow on the tooltip will be removed */
+  hideArrow?: boolean;
+
+  /** content to show in the dropdown */
+  overlay?: React.ReactNode;
+
   /** the placement of the tooltip with respect to the trigger node */
   placement: Placement;
 
   /** trigger to show the dropdown item. (click to come later) */
   trigger?: 'hover';
-
-  /** content to show in the dropdown */
-  overlay?: React.ReactNode;
-
-  /** if true, the arrow on the tooltip will be removed */
-  hideArrow?: boolean;
 
   /** if true, the tooltip will be shown. Use this to customize the tooltips behaviour */
   visible?: boolean;
@@ -37,6 +40,7 @@ const Container = styled.div`
 export const Tooltip: React.FunctionComponent<TooltipProps> = ({
   children,
   className,
+  gap,
   hideArrow,
   placement,
   overlay,
@@ -85,7 +89,7 @@ export const Tooltip: React.FunctionComponent<TooltipProps> = ({
         position={placements[placement]}
         open={isOpen}
       >
-        <TooltipContainer placement={placement} hideArrow={hideArrow}>
+        <TooltipContainer placement={placement} gap={gap} hideArrow={hideArrow}>
           {overlay}
         </TooltipContainer>
       </Floater>

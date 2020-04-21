@@ -9,6 +9,7 @@ import { Placement } from './placements';
 import { GlobalTheme } from '../../theme/types';
 
 interface TooltipContainerProps {
+  gap?: string;
   placement: Placement;
   hideArrow?: boolean;
 }
@@ -23,12 +24,13 @@ interface ArrowProps {
 }
 
 interface TooltipContentProps {
+  gap?: string;
   placement: Placement;
   theme: GlobalTheme;
 }
 
 export const TooltipContent = styled.div`
-  ${({ placement, theme }: TooltipContentProps) => css`
+  ${({ placement, gap, theme }: TooltipContentProps) => css`
     position: relative;
 
     ${(placement === 'top' ||
@@ -36,7 +38,7 @@ export const TooltipContent = styled.div`
       placement === 'topRight') &&
       css`
         padding-bottom: ${`calc(${theme.tooltipArrowSize} / 2)`};
-        margin-bottom: ${theme.tooltipMargin};
+        margin-bottom: ${gap == null ? theme.tooltipMargin : gap};
       `}
 
     ${(placement === 'right' ||
@@ -44,7 +46,7 @@ export const TooltipContent = styled.div`
       placement === 'rightBottom') &&
       css`
         padding-left: ${`calc(${theme.tooltipArrowSize} / 2)`};
-        margin-left: ${theme.tooltipMargin};
+        margin-left: ${gap == null ? theme.tooltipMargin : gap};
       `}
 
     ${(placement === 'bottom' ||
@@ -52,7 +54,7 @@ export const TooltipContent = styled.div`
       placement === 'bottomLeft') &&
       css`
         padding-top: ${`calc(${theme.tooltipArrowSize} / 2)`};
-        margin-top: ${theme.tooltipMargin};
+        margin-top: ${gap == null ? theme.tooltipMargin : gap};
       `}
 
     ${(placement === 'left' ||
@@ -60,7 +62,7 @@ export const TooltipContent = styled.div`
       placement === 'leftBottom') &&
       css`
         padding-right: ${`calc(${theme.tooltipArrowSize} / 2)`};
-        margin-right: ${theme.tooltipMargin};
+        margin-right: ${gap == null ? theme.tooltipMargin : gap};
       `}
   `}
 `;
@@ -203,13 +205,14 @@ export const Arrow = styled.div`
 
 export const TooltipContainer: React.FunctionComponent<TooltipContainerProps> = ({
   children,
+  gap,
   hideArrow,
   placement,
 }) => {
   const theme = useTheme();
 
   return (
-    <TooltipContent placement={placement} theme={theme}>
+    <TooltipContent placement={placement} gap={gap} theme={theme}>
       {!hideArrow && <Arrow placement={placement} theme={theme} />}
       <OverlayContainer theme={theme}>{children}</OverlayContainer>
     </TooltipContent>
