@@ -44,8 +44,8 @@ export const Menu: MenuFunctionComponent<MenuProps> = ({
     (key: string | number) => {
       if (onClick) {
         onClick(key);
-        setSelectedItem(key);
       }
+      setSelectedItem(key);
     },
     [onClick]
   );
