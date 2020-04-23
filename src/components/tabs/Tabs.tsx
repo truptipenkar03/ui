@@ -24,7 +24,7 @@ export interface TabsProps {
   defaultSelectedItem?: string | number;
 
   /** callback to handle when a tab item is clicked */
-  onTabClick: (key: string | number) => void;
+  onTabClick?: (key: string | number) => void;
 
   /** placement of the tabs */
   placement?: 'top';
@@ -77,7 +77,7 @@ export const Tabs: TabsFunctionComponent<TabsProps> = ({
   const handleTabClick = React.useCallback(
     key => {
       // prevents onTabClick from being called when the tab item is already selected
-      if (activeItem && activeItem.itemKey !== key) {
+      if (activeItem && activeItem.itemKey !== key && onTabClick) {
         onTabClick(key);
       }
     },
