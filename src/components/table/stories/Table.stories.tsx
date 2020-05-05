@@ -80,8 +80,12 @@ export const simple = () => {
     },
     {
       key: 'age',
-      dataIndex: 'age',
       title: 'Age',
+      render: ({ record: { age } }) => (
+        <span>
+          <b>{age}</b> y/o
+        </span>
+      ),
       width: 15,
       justify: 'center',
     },

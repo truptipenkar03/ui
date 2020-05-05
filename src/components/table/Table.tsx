@@ -24,7 +24,7 @@ export interface ColumnProps<T> {
   dataIndex?: string;
 
   /** allows for customization of what is rendered in the column where `record` is the record for the row */
-  render?: (record: T) => React.ReactNode;
+  render?: React.FunctionComponent<{ record: T }>;
 
   /** choose how to align text/components in the column */
   justify?: Justify;
