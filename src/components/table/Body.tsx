@@ -74,13 +74,17 @@ export const Body = <T extends any = any>(props: BodyProps<T>) => {
         {columns.map(c => {
           const Renderer = c.render;
           return (
-              <TD key={c.key} theme={theme}>
-                <Cell justify={c.justify}>
-                  <Typography.Body>
-                    {Renderer == null ? renderDataIndex(c, d) : <Renderer {...d} />}
-                  </Typography.Body>
-                </Cell>
-              </TD>
+            <TD key={c.key} theme={theme}>
+              <Cell justify={c.justify}>
+                <Typography.Body>
+                  {Renderer == null ? (
+                    renderDataIndex(c, d)
+                  ) : (
+                    <Renderer {...d} />
+                  )}
+                </Typography.Body>
+              </Cell>
+            </TD>
           );
         })}
       </tr>
