@@ -21,6 +21,7 @@
     "src/**/*.stories.tsx",
     "src/**/story.components.tsx",
     "src/**/*.spec.tsx",
-    "src/**/*.spec.ts"
+    "src/**/*.spec.ts",
+    "setupTest.ts"
   ]
 }
