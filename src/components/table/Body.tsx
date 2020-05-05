@@ -69,17 +69,20 @@ export const Body = <T extends any = any>(props: BodyProps<T>) => {
       );
     }
 
-    return data.map(d => (
-      <tr key={d.key}>
-        {columns.map(c => (
-          <TD key={c.key} theme={theme}>
-            <Cell justify={c.justify}>
-              <Typography.Body>
-                {c.render == null ? renderDataIndex(c, d) : c.render(d)}
-              </Typography.Body>
-            </Cell>
-          </TD>
-        ))}
+    return data.map((d, index) => (
+      <tr key={index}>
+        {columns.map(c => {
+          const Renderer = c.render;
+          return (
+              <TD key={c.key} theme={theme}>
+                <Cell justify={c.justify}>
+                  <Typography.Body>
+                    {Renderer == null ? renderDataIndex(c, d) : <Renderer {...d} />}
+                  </Typography.Body>
+                </Cell>
+              </TD>
+          );
+        })}
       </tr>
     ));
   }, [data, columns, emptyComponent, renderDataIndex, theme]);
