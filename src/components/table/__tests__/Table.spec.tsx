@@ -16,7 +16,7 @@ describe('Table', () => {
       key: 'name',
       dataIndex: 'name',
       title: 'Name',
-      render: data => <div id="test"></div>,
+      render: ({ record: { age } }) => <div id="test">{age}</div>,
       width: 10,
       sortable: true,
     },
@@ -58,6 +58,7 @@ describe('Table', () => {
     const wrapper = mount(<Table columns={columns} data={data} />);
 
     expect(wrapper.find('#test')).toExist();
+    expect(wrapper.find('#test')).toHaveText(data[0].age.toString());
   });
 
   it('renders a the empty state when there is no data', () => {

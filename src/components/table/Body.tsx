@@ -80,7 +80,7 @@ export const Body = <T extends any = any>(props: BodyProps<T>) => {
                   {Renderer == null ? (
                     renderDataIndex(c, d)
                   ) : (
-                    <Renderer {...d} />
+                    <Renderer record={d} />
                   )}
                 </Typography.Body>
               </Cell>
