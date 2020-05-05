@@ -40,6 +40,7 @@ describe('Menu', () => {
     );
 
     expect(
+      // @ts-ignore
       wrapper.find('ContextProvider').prop('value').selectedItem
     ).toStrictEqual('1');
   });

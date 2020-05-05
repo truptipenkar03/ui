@@ -32,12 +32,12 @@ describe('Tooltip', () => {
 
   it('sets the gap prop', () => {
     const wrapper = shallow(
-      <Tooltip gap={20} placement="bottom">
+      <Tooltip gap="20" placement="bottom">
         <div id="test"></div>
       </Tooltip>
     );
 
-    expect(wrapper.find('TooltipContainer').prop('gap')).toStrictEqual(20);
+    expect(wrapper.find('TooltipContainer').prop('gap')).toStrictEqual('20');
   });
 
   it('renders the overlay', async () => {
@@ -61,6 +61,7 @@ describe('Tooltip', () => {
       tooltip = await promise;
     });
 
+    // @ts-ignore
     expect(tooltip.find('#overlay')).toExist();
   });
 });

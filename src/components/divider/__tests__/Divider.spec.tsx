@@ -82,11 +82,11 @@ describe('Divider', () => {
   });
 
   it('sets textAlign prop', () => {
-    const wrapper = shallow(<Divider textAlign={'30px'} />);
+    const wrapper = shallow(<Divider textAlign={'left'} />);
 
     // @ts-ignore
     expect(wrapper.find('StyledDivider').prop('customProps').textAlign).toBe(
-      '30px'
+      'left'
     );
   });
 
@@ -100,11 +100,9 @@ describe('Divider', () => {
   });
 
   it('sets fontSize prop', () => {
-    const wrapper = shallow(<Divider fontSize={'3'} />);
+    const wrapper = shallow(<Divider fontSize={3} />);
 
     // @ts-ignore
-    expect(wrapper.find('StyledDivider').prop('customProps').fontSize).toBe(
-      '3'
-    );
+    expect(wrapper.find('StyledDivider').prop('customProps').fontSize).toBe(3);
   });
 });
