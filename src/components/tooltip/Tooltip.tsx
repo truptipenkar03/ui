@@ -88,7 +88,7 @@ export const Tooltip: React.FunctionComponent<TooltipProps> = ({
         anchorElement={triggerRef.current}
         position={placements[placement]}
         open={isOpen}
-        style={{zIndex: 99999}}
+        style={{ zIndex: 99999 }}
       >
         <TooltipContainer placement={placement} gap={gap} hideArrow={hideArrow}>
           {overlay}
