@@ -61,7 +61,7 @@ export const Suffix: React.FunctionComponent<SuffixProps> = ({
       break;
     }
     case 'warning': {
-      suffixContent = <Icon.Exclamation color={theme.colors.yellow} />;
+      suffixContent = <Icon.Exclamation color={theme.colors.orange} />;
       break;
     }
     case 'loading': {
