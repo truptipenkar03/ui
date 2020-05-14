@@ -19,7 +19,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 export type BorderType = 'full' | 'bottom' | 'none';
 export type InputSize = 'small' | 'default' | 'large';
-export type ValidationStatus = 'success' | 'error' | 'loading';
+export type ValidationStatus = 'success' | 'error' | 'warning' | 'loading';
 
 export interface InputProps {
   /** Type of border for the input */

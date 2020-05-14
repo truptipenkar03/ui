@@ -135,6 +135,8 @@ export interface GlobalTheme {
   inputStatusColor: string;
   inputStatusErrorColor: string;
   inputStatusErrorBorderColor: string;
+  inputStatusWarningColor: string;
+  inputStatusWarningBorderColor: string;
   inputStatusSuccessColor: string;
   inputStatusSuccessBorderColor: string;
   inputStatusLoadingColor: string;

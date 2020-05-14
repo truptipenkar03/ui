@@ -49,6 +49,11 @@ export const Status = styled.div<{
       css`
         color: ${theme.inputStatusSuccessColor};
       `}
+      
+    ${validationStatus === 'warning' &&
+      css`
+        color: ${theme.inputStatusWarningColor};
+      `}    
     
     ${validationStatus === 'loading' &&
       css`
@@ -228,6 +233,11 @@ export const StyledInput = styled.input<StyledInputProps>`
     ${validationStatus === 'success' &&
       css`
         border-color: ${theme.inputStatusSuccessBorderColor};
+      `};
+      
+    ${validationStatus === 'warning' &&
+      css`
+        border-color: ${theme.inputStatusWarningColor};
       `};
     
     ${validationStatus === 'loading' &&

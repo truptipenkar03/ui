@@ -1,10 +1,9 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { Input } from '../Input';
+import { Input, ValidationStatus } from '../Input';
 
 import { Container } from './story.components';
-
 // @ts-ignore
 import mdx from './Input.mdx';
 
@@ -86,7 +85,9 @@ export const label = () => (
 );
 
 export const validation = () => {
-  const [status, setStatus] = React.useState<any>(undefined);
+  const [status, setStatus] = React.useState<ValidationStatus | undefined>(
+    undefined
+  );
   return (
     <Container>
       <ButtonContainer>
@@ -95,6 +96,8 @@ export const validation = () => {
         <Button onClick={() => setStatus('success')}>Success</Button>
         <Spacer />
         <Button onClick={() => setStatus('error')}>Error</Button>
+        <Spacer />
+        <Button onClick={() => setStatus('warning')}>Warning</Button>
         <Spacer />
         <Button onClick={() => setStatus('loading')}>Loading</Button>
         <Spacer />
