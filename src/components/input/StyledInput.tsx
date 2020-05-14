@@ -237,7 +237,7 @@ export const StyledInput = styled.input<StyledInputProps>`
       
     ${validationStatus === 'warning' &&
       css`
-        border-color: ${theme.inputStatusWarningColor};
+        border-color: ${theme.inputStatusWarningBorderColor};
       `};
     
     ${validationStatus === 'loading' &&
