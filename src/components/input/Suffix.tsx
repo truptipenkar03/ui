@@ -8,7 +8,7 @@ import { Icon } from '../icons';
 
 import { GlobalTheme } from '../../theme/types';
 
-import { InputSize } from './Input';
+import { InputProps, InputSize } from './Input';
 
 export const StyledSuffix = styled.div<{
   theme: GlobalTheme;
@@ -35,7 +35,15 @@ export const StyledSuffix = styled.div<{
   `};
 `;
 
-export const Suffix: React.FunctionComponent<any> = ({
+interface SuffixProps
+  extends Pick<
+    InputProps,
+    'validationStatus' | 'inputSuffix' | 'size' | 'hasFeedbackIcon'
+  > {
+  theme: GlobalTheme;
+}
+
+export const Suffix: React.FunctionComponent<SuffixProps> = ({
   validationStatus,
   theme,
   inputSuffix,
@@ -50,6 +58,10 @@ export const Suffix: React.FunctionComponent<any> = ({
     }
     case 'success': {
       suffixContent = <Icon.Check color={theme.colors.green} />;
+      break;
+    }
+    case 'warning': {
+      suffixContent = <Icon.Exclamation color={theme.colors.orange} />;
       break;
     }
     case 'loading': {

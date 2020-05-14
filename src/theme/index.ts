@@ -118,6 +118,8 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   inputStatusColor: themeColors.body,
   inputStatusErrorColor: themeColors.red,
   inputStatusErrorBorderColor: themeColors.red,
+  inputStatusWarningColor: themeColors.orange,
+  inputStatusWarningBorderColor: themeColors.orange,
   inputStatusSuccessColor: themeColors.green,
   inputStatusSuccessBorderColor: themeColors.green,
   inputStatusLoadingColor: themeColors.body,
