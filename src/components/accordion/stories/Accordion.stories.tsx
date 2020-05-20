@@ -38,7 +38,7 @@ const AccordionContainer = styled.div`
 export const standard = () => (
   <AccordionContainer>
     <Accordion classic={false} defaultExpandedItems={['1', '3']} itemGap={20}>
-      <Accordion.Item itemKey="1">
+      <Accordion.Item itemKey="1" footer={<Button>Submit</Button>}>
         <CollapseContent>
           <Input label={'First Name'} />
           <Input label={'Last Name'} />
@@ -109,7 +109,7 @@ export const external = () => {
         defaultExpandedItems={selectedItems}
         onChange={handleOnChange}
       >
-        <Accordion.Item itemKey={itemKeys[0]}>
+        <Accordion.Item itemKey={itemKeys[0]} footer={<div>A footer</div>}>
           <CollapseContent />
         </Accordion.Item>
         <Accordion.Item itemKey={itemKeys[1]} disabled>

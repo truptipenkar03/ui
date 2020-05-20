@@ -39,6 +39,34 @@ describe('Collapse', () => {
     expect(wrapper.find('CollapseHeader').children()).toHaveLength(1);
   });
 
+  it('renders footer and un-sets body radius', () => {
+    const wrapper = shallow(
+      <Collapse itemKey={'test'} header={'Header'} footer={'Footer'}>
+        Content
+      </Collapse>
+    );
+
+    expect(wrapper.find('CollapseContentFooter').children()).toHaveLength(1);
+    expect(wrapper.find('CollapseContentBody')).toHaveProp(
+      'hasBorderRadius',
+      false
+    );
+  });
+
+  it('does not render footer and sets body radius', () => {
+    const wrapper = shallow(
+      <Collapse itemKey={'test'} header={'Header'}>
+        Content
+      </Collapse>
+    );
+
+    expect(wrapper.find('CollapseContentFooter')).not.toExist();
+    expect(wrapper.find('CollapseContentBody')).toHaveProp(
+      'hasBorderRadius',
+      true
+    );
+  });
+
   it('sets the defaultExpanded prop', () => {
     const onChangeMock = jest.fn();
 

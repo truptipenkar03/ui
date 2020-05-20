@@ -104,6 +104,7 @@ export interface GlobalTheme {
   collapseBoxShadow: string;
   collapseContentPadding: string;
   collapseContentBackground: string;
+  collapseContentFooterHoverColor: string;
   collapseHeaderColor: string;
   collapseHeaderBackground: string;
   collapseHeaderHoverBackground: string;

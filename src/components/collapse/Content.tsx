@@ -4,19 +4,15 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import styled, { css } from 'styled-components';
 
+import { GlobalTheme } from '../../theme/types';
+
 interface ContentContainerProps {
   animate: 'open' | 'closed';
   destroyOnClose?: boolean;
   theme: any;
 }
 
-interface ContentProps {
-  theme: any;
-}
-
-export const ContentContainer: React.FunctionComponent<any> = ({
-  onMouseEnter,
-  onMouseLeave,
+export const ContentContainer: React.FunctionComponent<ContentContainerProps> = ({
   animate,
   children,
   destroyOnClose,
@@ -34,8 +30,6 @@ export const ContentContainer: React.FunctionComponent<any> = ({
   const content = (
     <motion.div
       key="content"
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
       style={{
         overflow: 'hidden',
       }}
@@ -56,9 +50,67 @@ export const ContentContainer: React.FunctionComponent<any> = ({
   );
 };
 
+interface ContentBodyProps {
+  theme: GlobalTheme;
+  hasBorderRadius: boolean;
+}
+
+const StyledContentBody = styled.div<ContentBodyProps>`
+  ${({ theme, hasBorderRadius }) => css`
+    padding: ${theme.collapseContentPadding};
+    background: ${theme.collapseContentBackground};
+
+    ${hasBorderRadius &&
+      css`
+        border-radius: 0 0 ${theme.collapseBorderRadius}
+          ${theme.collapseBorderRadius};
+      `}}
+  `};
+`;
+
+export const ContentBody: React.FunctionComponent<ContentBodyProps> = props => {
+  const { children } = props;
+
+  return (
+    <StyledContentBody className={'rtk-collapse-content-body'} {...props}>
+      {children}
+    </StyledContentBody>
+  );
+};
+
+ContentBody.displayName = 'CollapseContentBody';
+
+interface ContentFooterProps {
+  theme: GlobalTheme;
+}
+
+const StyledFooter = styled.div<ContentFooterProps>`
+  ${({ theme }) => css`
+    background: ${theme.collapseContentBackground};
+    padding: ${theme.collapseContentPadding};
+    border-radius: 0 0 ${theme.collapseBorderRadius}
+      ${theme.collapseBorderRadius};
+  `};
+`;
+
+export const ContentFooter: React.FunctionComponent<ContentFooterProps> = props => {
+  const { children } = props;
+
+  return (
+    <StyledFooter className={'rtk-collapse-content-footer'} {...props}>
+      {children}
+    </StyledFooter>
+  );
+};
+
+ContentFooter.displayName = 'CollapseContentFooter';
+
+interface ContentProps {
+  theme: GlobalTheme;
+}
+
 const StyledContent = styled.div<ContentProps>`
   ${({ theme }) => css`
-    padding: ${theme.collapseContentPadding};
     background: ${theme.collapseContentBackground};
     border: ${theme.collapseBorder};
     border-color: ${theme.collapseBorderColor};

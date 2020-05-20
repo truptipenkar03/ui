@@ -31,6 +31,9 @@ export interface AccordionItemProps {
   /** Content to render in the header */
   header?: React.ReactNode;
 
+  /** Content to render in the footer */
+  footer?: React.ReactNode;
+
   /** Unique key to identify collapse. Used for Accordion */
   itemKey: string | number;
 

@@ -21,21 +21,15 @@ const Container = styled.div`
   padding: 10px;
 `;
 
-const StyledCollapseContent = styled.div`
+const StyledCollapseContentBody = styled.div`
   height: 200px;
 `;
 
 const CollapseContent = ({ children }: any) => (
-  <StyledCollapseContent>{children}</StyledCollapseContent>
+  <StyledCollapseContentBody>{children}</StyledCollapseContentBody>
 );
 
 const TestContent = () => {
-  React.useEffect(() => {
-    console.log('mounted');
-
-    return () => console.log('unmounted');
-  }, []);
-
   return <CollapseContent />;
 };
 
@@ -67,6 +61,19 @@ export const disabled = () => (
   <Container>
     <Collapse header="Click Me" itemKey="default" disabled>
       <TestContent />
+    </Collapse>
+  </Container>
+);
+
+export const footer = () => (
+  <Container>
+    <Collapse
+      header="Click Me"
+      defaultExpanded
+      itemKey="default"
+      footer="Collapse Footer"
+    >
+      <CollapseContent>Collapse Body</CollapseContent>
     </Collapse>
   </Container>
 );
