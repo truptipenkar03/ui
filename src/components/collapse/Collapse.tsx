@@ -4,7 +4,12 @@ import styled, { css } from 'styled-components';
 
 import Header from './Header';
 
-import { ContentContainer, Content } from './Content';
+import {
+  ContentContainer,
+  Content,
+  ContentBody,
+  ContentFooter,
+} from './Content';
 
 import { useAfterMountEffect } from '../../hooks';
 
@@ -35,6 +40,9 @@ export interface CollapseProps {
   /** Content to render in the header */
   header?: React.ReactNode;
 
+  /** Content to render in the footer */
+  footer?: React.ReactNode;
+
   /** Unique key to identify collapse. Used for Accordion */
   itemKey?: string | number;
 
@@ -56,6 +64,9 @@ const Container = styled.div<{ disabled?: boolean }>`
         border: 1px solid transparent;
         color: ${theme.collapseHeaderOpenColor};
       }
+      .rtk-collapse-content-footer {
+        background: ${theme.collapseContentFooterHoverColor};
+      }
     }
   `};
   }
@@ -70,6 +81,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
   defaultExpanded,
   destroyOnClose,
   header,
+  footer,
   itemKey,
   onChange,
 }) => {
@@ -123,7 +135,12 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
         destroyOnClose={destroyOnClose}
         theme={theme}
       >
-        <Content theme={theme}>{children}</Content>
+        <Content theme={theme}>
+          <ContentBody theme={theme} hasFooter={!!footer}>
+            {children}
+          </ContentBody>
+          {footer && <ContentFooter theme={theme}>{footer}</ContentFooter>}
+        </Content>
       </ContentContainer>
     </Container>
   );

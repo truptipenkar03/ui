@@ -83,6 +83,7 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   collapseBoxShadow: 'none',
   collapseContentPadding: '10px',
   collapseContentBackground: themeColors.primaryBackground,
+  collapseContentFooterHoverColor: themeColors.tertiaryBackground,
   collapseHeaderColor: themeColors.body,
   collapseHeaderBackground: themeColors.primaryBackground,
   collapseHeaderHoverBackground: themeColors.primary,
