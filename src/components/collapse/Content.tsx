@@ -52,15 +52,15 @@ export const ContentContainer: React.FunctionComponent<ContentContainerProps> = 
 
 interface ContentBodyProps {
   theme: GlobalTheme;
-  hasBorderRadius: boolean;
+  hasFooter: boolean;
 }
 
 const StyledContentBody = styled.div<ContentBodyProps>`
-  ${({ theme, hasBorderRadius }) => css`
+  ${({ theme, hasFooter }) => css`
     padding: ${theme.collapseContentPadding};
     background: ${theme.collapseContentBackground};
 
-    ${hasBorderRadius &&
+    ${!hasFooter &&
       css`
         border-radius: 0 0 ${theme.collapseBorderRadius}
           ${theme.collapseBorderRadius};

@@ -48,8 +48,8 @@ describe('Collapse', () => {
 
     expect(wrapper.find('CollapseContentFooter').children()).toHaveLength(1);
     expect(wrapper.find('CollapseContentBody')).toHaveProp(
-      'hasBorderRadius',
-      false
+      'hasFooter',
+      true
     );
   });
 
@@ -62,8 +62,8 @@ describe('Collapse', () => {
 
     expect(wrapper.find('CollapseContentFooter')).not.toExist();
     expect(wrapper.find('CollapseContentBody')).toHaveProp(
-      'hasBorderRadius',
-      true
+      'hasFooter',
+      false
     );
   });
 

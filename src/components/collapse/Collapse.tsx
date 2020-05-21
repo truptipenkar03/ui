@@ -136,7 +136,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = ({
         theme={theme}
       >
         <Content theme={theme}>
-          <ContentBody theme={theme} hasBorderRadius={!footer}>
+          <ContentBody theme={theme} hasFooter={!!footer}>
             {children}
           </ContentBody>
           {footer && <ContentFooter theme={theme}>{footer}</ContentFooter>}
