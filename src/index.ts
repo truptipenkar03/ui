@@ -54,6 +54,11 @@ export {
   MenuItemGroupProps,
 } from './components/menu/Menu';
 
+export {
+  NotificationBox,
+  NotificationBoxProps,
+} from './components/notificationBox/NotificationBox';
+
 export { Panel, PanelProps } from './components/panel/Panel';
 
 export { Portal, PortalProps } from './components/portal/Portal';

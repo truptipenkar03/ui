@@ -5,6 +5,7 @@ export interface Colors {
   border: string;
   blue: string;
   description: string;
+  gray: string;
   green: string;
   label: string;
   orange: string;
@@ -190,6 +191,18 @@ export interface GlobalTheme {
   modalMaskBackground: string;
   modalMinHeight: string;
   modalMinWidth: string;
+
+  // ---- NotificationBox ---- //
+  notificationBoxMinHeight: string;
+  notificationBoxMaxWidth: string;
+  notificationBoxErrorBackground: string;
+  notificationBoxSuccessBackground: string;
+  notificationBoxWarningBackground: string;
+  notificationBoxInfoBackground: string;
+  notificationBoxDefaultBackground: string;
+  notificationBoxBorderRadius: string;
+  notificationBoxBoxShadow: string;
+  notificationBoxPadding: string;
 
   // ---- Panel ---- //
   panelBackground: string;

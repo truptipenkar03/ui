@@ -94,6 +94,12 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   collapseHeaderHeight: '32px',
   collapseIconSize: '10px',
 
+  // ---- Divider ---- //
+  dividerBorder: themeColors.border,
+  dividerBackground: themeColors.border,
+  dividerTextPrimaryBackground: themeColors.primaryBackground,
+  dividerTextColor: themeColors.body,
+
   // ---- Layout ---- //
   layoutHeaderHeight: '44px',
   layoutHeaderPaddingSmall: '0 8px',
@@ -163,6 +169,18 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   modalMaskBackground: `${rgba(themeColors.black, 0.45)}`,
   modalMinHeight: '200px',
   modalMinWidth: '520px',
+
+  // ---- NotificationBox ---- //
+  notificationBoxMinHeight: '46px',
+  notificationBoxMaxWidth: '520px',
+  notificationBoxErrorBackground: `${rgba(themeColors.red, 0.25)}`,
+  notificationBoxSuccessBackground: `${rgba(themeColors.green, 0.25)}`,
+  notificationBoxWarningBackground: `${rgba(themeColors.yellow, 0.25)}`,
+  notificationBoxInfoBackground: `${rgba(themeColors.blue, 0.25)}`,
+  notificationBoxDefaultBackground: `${rgba(themeColors.gray, 0.25)}`,
+  notificationBoxBorderRadius: '4px',
+  notificationBoxBoxShadow: `0px 0px 4px ${rgba(themeColors.black, 0.2)}`,
+  notificationBoxPadding: '8px 16px',
 
   // ---- Panel ---- //
   panelBackground: themeColors.primaryBackground,
@@ -263,12 +281,6 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   typographyLabelLineHeight: '1.5',
   typographyLabelLetterSpacing: '0',
   typographyLabelTextTransform: 'uppercase',
-
-  // ---- Divider ---- //
-  dividerBorder: themeColors.border,
-  dividerBackground: themeColors.border,
-  dividerTextPrimaryBackground: themeColors.primaryBackground,
-  dividerTextColor: themeColors.body,
 
   colors: {
     ...themeColors,
