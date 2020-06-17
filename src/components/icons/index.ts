@@ -1,6 +1,9 @@
+import ArrowDown from './ArrowDown';
+import ArrowUp from './ArrowUp';
 import CaretDown from './CaretDown';
 import Check from './Check';
 import CheckCircle from './CheckCircle';
+import ChevronUp from './ChevronUp';
 import Exclamation from './Exclamation';
 import ExclamationCircle from './ExclamationCircle';
 import ExclamationTriangle from './ExclamationTriangle';
@@ -14,9 +17,12 @@ import Times from './Times';
 import TimesCircle from './TimesCircle';
 
 export const Icon = {
+  ArrowDown,
+  ArrowUp,
   CaretDown,
   Check,
   CheckCircle,
+  ChevronUp,
   Exclamation,
   ExclamationCircle,
   ExclamationTriangle,
