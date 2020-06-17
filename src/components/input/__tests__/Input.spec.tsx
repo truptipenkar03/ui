@@ -58,59 +58,6 @@ describe('Input', () => {
     expect(wrapper.find('input').getDOMNode().disabled).toBe(true);
   });
 
-  it('sets the error message and icon', () => {
-    const wrapper = mount(
-      <Input
-        validationStatus={'error'}
-        validationMessage={'This is the message'}
-      />
-    );
-    expect(wrapper.find('FontAwesomeIcon')).toExist();
-    expect(wrapper.find('StyledInput__Status')).toHaveStyleRule(
-      'color',
-      colors.red
-    );
-    wrapper.unmount();
-  });
-
-  it('sets the error icon and removes the error message', () => {
-    const wrapper = mount(
-      <Input
-        validationStatus={'error'}
-        validationMessage={'This is the message'}
-        hasFeedbackMessage={false}
-      />
-    );
-
-    expect(wrapper.find('FontAwesomeIcon')).toExist();
-    expect(wrapper.find('StyledInput__Status')).not.toExist();
-  });
-
-  it('sets the error message and removes the error icon', () => {
-    const wrapper = mount(
-      <Input
-        validationStatus={'error'}
-        validationMessage={'This is the message'}
-        hasFeedbackIcon={false}
-      />
-    );
-
-    expect(wrapper.exists('FontAwesomeIcon')).toBe(false);
-    expect(wrapper.exists('StyledInput__Status')).toBe(true);
-  });
-
-  it('sets the custom validation message component', () => {
-    const wrapper = mount(
-      <Input
-        validationStatus={'error'}
-        validationMessage={'This is the message'}
-        validationComponent={message => <div id={'test'} />}
-      />
-    );
-
-    expect(wrapper.exists('#test')).toBe(true);
-  });
-
   it('sets the label prop', () => {
     const wrapper = shallow(<Input label={'label'} />);
 
@@ -166,18 +113,6 @@ describe('Input', () => {
 
     // @ts-ignore
     expect(wrapper.find('input').getDOMNode().value).toBe('test');
-  });
-
-  it('sets the inputPrefix prop', () => {
-    const wrapper = shallow(<Input inputPrefix={'A'} />);
-
-    expect(wrapper.exists('StyledInput__Prefix')).toBe(true);
-  });
-
-  it('sets the inputSuffix prop', () => {
-    const wrapper = mount(<Input inputSuffix={<div id="test" />} />);
-
-    expect(wrapper.exists('#test')).toBe(true);
   });
 
   it('sets the readOnly prop', () => {

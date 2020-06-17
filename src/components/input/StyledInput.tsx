@@ -2,12 +2,15 @@ import styled, { css } from 'styled-components';
 
 import { GlobalTheme } from '../../theme/types';
 
-import { InputProps, InputSize, ValidationStatus } from './Input';
+import { InputProps, InputSize } from './Input';
+
+import { Status } from '../formItem/FormItem';
 
 import { Typography } from '../typography/Typography';
 
 interface StyledInputProps extends InputProps {
   inputSize?: InputSize;
+  status?: Status;
 }
 
 export const Container = styled.div`
@@ -29,36 +32,6 @@ export const Label = styled(Typography.Body)<{ required?: boolean }>`
 export const Description = styled(Typography.Description)`
   ${() => css`
     margin-bottom: 4px;
-  `};
-`;
-
-export const Status = styled.div<{
-  theme: GlobalTheme;
-  validationStatus?: ValidationStatus;
-}>`
-  ${({ theme, validationStatus }) => css`
-    font-size: ${theme.inputStatusFontSize};
-    color: ${theme.inputStatusColor};
-
-    ${validationStatus === 'error' &&
-      css`
-        color: ${theme.inputStatusErrorColor};
-      `}
-
-    ${validationStatus === 'success' &&
-      css`
-        color: ${theme.inputStatusSuccessColor};
-      `}
-      
-    ${validationStatus === 'warning' &&
-      css`
-        color: ${theme.inputStatusWarningColor};
-      `}    
-    
-    ${validationStatus === 'loading' &&
-      css`
-        color: ${theme.inputStatusLoadingColor};
-      `}
   `};
 `;
 
@@ -111,16 +84,7 @@ export const FeedbackMessage = styled.div`
 `;
 
 export const StyledInput = styled.input<StyledInputProps>`
-  ${({
-    borderType,
-    theme,
-    type,
-    inputSize,
-    inputPrefix,
-    inputSuffix,
-    validationStatus,
-    hasFeedbackIcon,
-  }) => css`
+  ${({ borderType, theme, type, inputSize, status }) => css`
     height: ${theme.inputDefaultHeight};               
     font-size: ${theme.inputDefaultFontSize}px;
     
@@ -139,7 +103,7 @@ export const StyledInput = styled.input<StyledInputProps>`
 
     box-sizing: border-box;
     
-    transition: all ${theme.animationTimeFast}s;
+    transition: border ${theme.animationTimeFast}s;
     
     ${inputSize === 'small' &&
       css`
@@ -177,70 +141,23 @@ export const StyledInput = styled.input<StyledInputProps>`
         border: none;
         color: ${theme.inputColor};
       `};
-    
-    // has prefix
-    ${inputPrefix &&
-      css`
-        padding-left: ${theme.inputDefaultFontSize + 15}px;
 
-        ${inputSize === 'small' &&
-          css`
-            padding-left: ${theme.inputSmallFontSize + 15}px;
-          `}
-
-        ${inputSize === 'large' &&
-          css`
-            padding-left: ${theme.inputLargeFontSize + 15}px;
-          `}
-      `};
-    
-    ${inputSuffix &&
-      css`
-      padding-right: ${theme.inputDefaultFontSize + 15}px;
-      
-      ${inputSize === 'small' &&
-        css`
-          padding-right: ${theme.inputSmallFontSize + 15}px;
-        `}
-      
-      ${inputSize === 'large' &&
-        css`
-          padding-right: ${theme.inputLargeFontSize + 15}px;
-        `}
-      
-       ${validationStatus !== undefined &&
-         hasFeedbackIcon &&
-         css`
-           padding-right: ${theme.inputDefaultFontSize * 2 + 20}px;
-
-           ${inputSize === 'small' &&
-             css`
-               padding-right: ${theme.inputSmallFontSize * 2 + 20}px;
-             `}
-
-           ${inputSize === 'large' &&
-             css`
-               padding-right: ${theme.inputLargeFontSize * 2 + 20}px;
-             `}
-         `}
-    `};
-
-    ${validationStatus === 'error' &&
+    ${status === 'error' &&
       css`
         border-color: ${theme.inputStatusErrorBorderColor};
       `};
 
-    ${validationStatus === 'success' &&
+    ${status === 'success' &&
       css`
         border-color: ${theme.inputStatusSuccessBorderColor};
       `};
       
-    ${validationStatus === 'warning' &&
+    ${status === 'warning' &&
       css`
         border-color: ${theme.inputStatusWarningBorderColor};
       `};
     
-    ${validationStatus === 'loading' &&
+    ${status === 'loading' &&
       css`
         border-color: ${theme.inputStatusLoadingBorderColor};
       `};

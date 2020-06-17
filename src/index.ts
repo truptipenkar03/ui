@@ -31,7 +31,6 @@ export {
   InputProps,
   BorderType,
   InputSize,
-  ValidationStatus,
 } from './components/input/Input';
 
 export {

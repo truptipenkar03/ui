@@ -11,6 +11,7 @@ import Pencil from './Pencil';
 import Plus from './Plus';
 import Sort from './Sort';
 import Times from './Times';
+import TimesCircle from './TimesCircle';
 
 export const Icon = {
   CaretDown,
@@ -26,6 +27,7 @@ export const Icon = {
   Plus,
   Sort,
   Times,
+  TimesCircle,
 };
 
 export { SortState } from './Sort';

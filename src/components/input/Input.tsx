@@ -2,24 +2,12 @@ import * as React from 'react';
 
 import { useTheme } from '../../hooks';
 
-import {
-  Prefix,
-  AffixContainer,
-  Description,
-  Container,
-  Label,
-  Status,
-  StyledInput,
-  FeedbackMessage,
-} from './StyledInput';
+import { Description, Container, Label, StyledInput } from './StyledInput';
 
-import { Suffix } from './Suffix';
-
-import { AnimatePresence, motion } from 'framer-motion';
+import { FormItemContext } from '../formItem/FormItemContext';
 
 export type BorderType = 'full' | 'bottom' | 'none';
 export type InputSize = 'small' | 'default' | 'large';
-export type ValidationStatus = 'success' | 'error' | 'warning' | 'loading';
 
 export interface InputProps {
   /** Type of border for the input */
@@ -42,18 +30,6 @@ export interface InputProps {
 
   /** id of the input to be used with Formik */
   id?: string;
-
-  /** Set to `true` to use validation message */
-  hasFeedbackMessage?: boolean;
-
-  /** Set to `true` to use validation icon */
-  hasFeedbackIcon?: boolean;
-
-  /** Content to show inside the input to the left */
-  inputPrefix?: React.ReactNode;
-
-  /** Content to show inside the input to the right */
-  inputSuffix?: React.ReactNode;
 
   /** Label of the input */
   label?: React.ReactNode;
@@ -90,15 +66,6 @@ export interface InputProps {
 
   /** value of the input */
   value?: string;
-
-  /** Validation status to provide feedback to the user */
-  validationStatus?: ValidationStatus;
-
-  /** Message to show along with the `validationStatus` */
-  validationMessage?: string | null;
-
-  /** Custom component used to display the validation message */
-  validationComponent?: (error: string) => React.ReactNode;
 }
 
 export const Input: React.FunctionComponent<InputProps> = React.forwardRef<
@@ -114,26 +81,21 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<
     id,
     label,
     name,
-    hasFeedbackMessage,
-    hasFeedbackIcon,
     onBlur,
     onChange,
     onClick,
     onFocus,
     placeholder,
     size,
-    inputPrefix,
-    inputSuffix,
     borderType,
     readOnly,
     required,
     value,
-    validationMessage,
-    validationComponent,
-    validationStatus,
   } = props;
 
   const theme = useTheme();
+
+  const { status } = React.useContext(FormItemContext);
 
   return (
     <Container className={`${className} rtk-input`}>
@@ -143,25 +105,10 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<
         </Label>
       )}
       {description && <Description theme={theme}>{description}</Description>}
-      <AffixContainer>
-        {inputPrefix && (
-          <Prefix inputSize={size} theme={theme}>
-            {inputPrefix}
-          </Prefix>
-        )}
-        <Suffix
-          validationStatus={validationStatus}
-          theme={theme}
-          inputSuffix={inputSuffix}
-          size={size}
-          hasFeedbackIcon={hasFeedbackIcon}
-        />
-      </AffixContainer>
       <StyledInput
         label={null}
         disabled={disabled}
         defaultValue={defaultValue}
-        hasFeedbackIcon={hasFeedbackIcon}
         type={htmlType}
         as={htmlType === 'textarea' ? 'textarea' : undefined}
         id={id}
@@ -173,38 +120,12 @@ export const Input: React.FunctionComponent<InputProps> = React.forwardRef<
         placeholder={placeholder}
         borderType={borderType}
         inputSize={size}
-        inputSuffix={inputSuffix}
-        inputPrefix={inputPrefix}
         ref={ref}
         readOnly={readOnly}
         theme={theme}
         value={value}
-        validationStatus={validationStatus}
+        status={status}
       />
-      {hasFeedbackMessage && (
-        <FeedbackMessage theme={theme}>
-          <AnimatePresence>
-            {validationMessage && validationStatus && (
-              <motion.div
-                key="validate-message"
-                style={{ position: 'relative' }}
-                initial={{ opacity: 0, top: -5 }}
-                animate={{ opacity: 1, top: 0 }}
-                exit={{ opacity: 0, top: -5 }}
-                transition={{ duration: theme.animationTimeVeryFast }}
-              >
-                {validationComponent ? (
-                  validationComponent(validationMessage)
-                ) : (
-                  <Status validationStatus={validationStatus} theme={theme}>
-                    {validationMessage}
-                  </Status>
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </FeedbackMessage>
-      )}
     </Container>
   );
 });
@@ -217,8 +138,6 @@ Input.defaultProps = {
   disabled: false,
   defaultValue: undefined,
   htmlType: undefined,
-  hasFeedbackMessage: true,
-  hasFeedbackIcon: true,
   id: undefined,
   name: undefined,
   label: '',
@@ -231,5 +150,4 @@ Input.defaultProps = {
   readOnly: false,
   required: false,
   value: undefined,
-  validationStatus: undefined,
 };

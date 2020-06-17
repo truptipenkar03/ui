@@ -6,6 +6,7 @@ import { useTheme } from '../../hooks';
 
 export interface DescriptionProps {
   className?: string;
+  otherProps?: any;
 }
 
 const StyledDescription = styled.div`
@@ -24,6 +25,7 @@ const StyledDescription = styled.div`
 export const Description: React.FunctionComponent<DescriptionProps> = ({
   children,
   className,
+  otherProps,
 }) => {
   const theme = useTheme();
 
@@ -31,6 +33,7 @@ export const Description: React.FunctionComponent<DescriptionProps> = ({
     <StyledDescription
       className={`${className} rtk-type-description`}
       theme={theme}
+      {...otherProps}
     >
       {children}
     </StyledDescription>

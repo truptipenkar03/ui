@@ -132,16 +132,9 @@ export interface GlobalTheme {
   inputDefaultHeight: string;
   inputDefaultFontSize: number;
   inputFontFamily: string;
-  inputStatusMessageHeight: string;
-  inputStatusFontSize: string;
-  inputStatusColor: string;
-  inputStatusErrorColor: string;
   inputStatusErrorBorderColor: string;
-  inputStatusWarningColor: string;
   inputStatusWarningBorderColor: string;
-  inputStatusSuccessColor: string;
   inputStatusSuccessBorderColor: string;
-  inputStatusLoadingColor: string;
   inputStatusLoadingBorderColor: string;
   inputSmallHeight: string;
   inputSmallFontSize: number;
@@ -150,8 +143,6 @@ export interface GlobalTheme {
   inputPadding: string;
   inputTextAreaPadding: string;
   inputPlaceholderColor: string;
-  inputPrefixLeft: string;
-  inputSuffixRight: string;
 
   // ---- Layout ---- //
   layoutHeaderHeight: string;
