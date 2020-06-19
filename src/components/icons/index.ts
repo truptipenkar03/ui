@@ -7,6 +7,8 @@ import ChevronUp from './ChevronUp';
 import Exclamation from './Exclamation';
 import ExclamationCircle from './ExclamationCircle';
 import ExclamationTriangle from './ExclamationTriangle';
+import Folder from './Folder';
+import FolderOpen from './FolderOpen';
 import InfoCircle from './InfoCircle';
 import Loading from './Loading';
 import Minus from './Minus';
@@ -26,6 +28,8 @@ export const Icon = {
   Exclamation,
   ExclamationCircle,
   ExclamationTriangle,
+  Folder,
+  FolderOpen,
   InfoCircle,
   Loading,
   Minus,
