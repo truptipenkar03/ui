@@ -24,14 +24,21 @@ export interface FormItemProps {
 
   /** if true, the status icon will be shown */
   hasIcon?: boolean;
+
+  /** label for the form item */
+  label?: React.ReactNode;
 }
 
 const Container = styled.div`
   position: relative;
 `;
 
+const Label = styled(Typography.Body)`
+  color: ${({ theme }) => theme.colors.black};
+`;
+
 const StatusContainer = styled.div`
-  height: 16px;
+  margin-bottom: 8px;
 `;
 
 const StatusMessage = styled(Typography.Description)`
@@ -64,42 +71,46 @@ export const FormItem: React.FunctionComponent<FormItemProps> = ({
   children,
   className,
   hasIcon,
+  label,
   message,
   status,
 }) => {
   const theme = useTheme();
   return (
-    <Container className={`${className} rtk-form-item `}>
-      <FormItemContext.Provider
-        value={{
-          status,
-          message,
-        }}
-      >
-        {children}
-      </FormItemContext.Provider>
-      <AnimatePresence>
-        {status && hasIcon && <FormItemIcon status={status} />}
-      </AnimatePresence>
-      <StatusContainer>
+    <div className={`${className} rtk-form-item`}>
+      <Label theme={theme}>{label}</Label>
+      <Container>
+        <FormItemContext.Provider
+          value={{
+            status,
+            message,
+          }}
+        >
+          {children}
+        </FormItemContext.Provider>
         <AnimatePresence>
-          {message && status && (
-            <motion.div
-              key="validate-message"
-              style={{ position: 'relative' }}
-              initial={{ opacity: 0, top: -5 }}
-              animate={{ opacity: 1, top: 0 }}
-              exit={{ opacity: 0, top: -5 }}
-              transition={{ duration: theme.animationTimeVeryFast }}
-            >
-              <StatusMessage otherProps={{ status }} theme={theme}>
-                {message}
-              </StatusMessage>
-            </motion.div>
-          )}
+          {status && hasIcon && <FormItemIcon status={status} />}
         </AnimatePresence>
-      </StatusContainer>
-    </Container>
+        <StatusContainer>
+          <AnimatePresence>
+            {message && status && (
+              <motion.div
+                key="validate-message"
+                style={{ position: 'relative' }}
+                initial={{ opacity: 0, top: -5 }}
+                animate={{ opacity: 1, top: 0 }}
+                exit={{ opacity: 0, top: -5 }}
+                transition={{ duration: theme.animationTimeVeryFast }}
+              >
+                <StatusMessage otherProps={{ status }} theme={theme}>
+                  {message}
+                </StatusMessage>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </StatusContainer>
+      </Container>
+    </div>
   );
 };
 

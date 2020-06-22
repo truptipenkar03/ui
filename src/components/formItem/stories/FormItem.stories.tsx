@@ -80,8 +80,19 @@ export const simple = () => {
           success
         </label>
       </FlexContainer>
-      <FormItem status={status} message={`This is a ${status} message`}>
+      <FormItem
+        label="Label"
+        status={status}
+        message={`This is a ${status} message`}
+      >
         <Input />
+      </FormItem>
+      <FormItem
+        label="Label"
+        status={status}
+        message={`This is a ${status} message`}
+      >
+        <Input htmlType="textarea" />
       </FormItem>
     </React.Fragment>
   );
