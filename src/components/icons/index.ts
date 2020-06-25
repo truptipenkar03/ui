@@ -19,7 +19,7 @@ import Pencil from './Pencil';
 import Plus from './Plus';
 import Sort from './Sort';
 import StickyNote from './StickyNote';
-import Ticket from './Ticket';
+import TicketAlt from './TicketAlt';
 import Times from './Times';
 import TimesCircle from './TimesCircle';
 import WindowClose from './WindowClose';
@@ -46,7 +46,7 @@ export const Icon = {
   Plus,
   Sort,
   StickyNote,
-  Ticket,
+  TicketAlt,
   Times,
   TimesCircle,
   WindowClose,
