@@ -5,6 +5,7 @@ export interface Colors {
   border: string;
   blue: string;
   description: string;
+  disabledBackground: string;
   gray: string;
   green: string;
   label: string;
@@ -12,6 +13,7 @@ export interface Colors {
   primary: string;
   primaryBackground: string;
   purple: string;
+  quaternaryBackground: string;
   red: string;
   secondary: string;
   secondaryBackground: string;
@@ -19,6 +21,7 @@ export interface Colors {
   tableBorder: string;
   tabItemHorizontal: string;
   tabItemVertical: string;
+  tag: string;
   tertiary: string;
   tertiaryBackground: string;
   title: string;
@@ -216,6 +219,22 @@ export interface GlobalTheme {
   radioItemHoverBorder: string;
   radioItemCheckedBackground: string;
   radioItemCheckedBorderColor: string;
+
+  // ---- Select ---- //
+  selectControlBorderColor: string;
+  selectControlHoverBorderColor: string;
+  selectControlBackground: string;
+  selectControlDisabledBackground: string;
+  selectControlMinHeight: string;
+  selectOptionColor: string;
+  selectOptionSelectedBackground: string;
+  selectOptionSelectedColor: string;
+  selectOptionFocusedBackground: string;
+  selectMenuBackground: string;
+  selectMultiValueLabelColor: string;
+  selectMultiValueBackground: string;
+  selectMultiValueRemoveHoverBackground: string;
+  selectSingleValueColor: string;
 
   // ---- Table ---- //
   tableEmptyContainerHeight: string;

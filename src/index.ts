@@ -117,6 +117,8 @@ export { Tooltip, TooltipProps } from './components/tooltip/Tooltip';
 
 export { Placement } from './components/tooltip/placements';
 
+export { Select, SelectProps } from './components/select/Select';
+
 export {
   Divider,
   DividerProps,
