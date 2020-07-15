@@ -1,5 +1,6 @@
 import ArrowDown from './ArrowDown';
 import ArrowUp from './ArrowUp';
+import Ban from './Ban';
 import Bars from './Bars';
 import CaretDown from './CaretDown';
 import Check from './Check';
@@ -17,6 +18,7 @@ import Loading from './Loading';
 import Minus from './Minus';
 import Pencil from './Pencil';
 import Plus from './Plus';
+import Search from './Search';
 import Sort from './Sort';
 import StickyNote from './StickyNote';
 import TicketAlt from './TicketAlt';
@@ -27,6 +29,7 @@ import WindowClose from './WindowClose';
 export const Icon = {
   ArrowDown,
   ArrowUp,
+  Ban,
   Bars,
   CaretDown,
   Check,
@@ -44,6 +47,7 @@ export const Icon = {
   Minus,
   Pencil,
   Plus,
+  Search,
   Sort,
   StickyNote,
   TicketAlt,
