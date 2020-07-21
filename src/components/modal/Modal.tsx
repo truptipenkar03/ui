@@ -208,6 +208,14 @@ export const Modal: React.FunctionComponent<ModalProps> = ({
     }
   }, [visible, checkFocus]);
 
+  React.useEffect(() => {
+    return () => {
+      // when a visible modal is abruptly unmounted (removed from DOM)
+      // we should revert the overflow style as well
+      document.body.style.overflow = '';
+    };
+  }, []);
+
   return (
     <Portal>
       <AnimatePresence>

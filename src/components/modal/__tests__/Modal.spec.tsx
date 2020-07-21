@@ -172,4 +172,16 @@ describe('Modal', () => {
     okButton.simulate('click');
     expect(defaultProps.onCancel).toHaveBeenCalled();
   });
+
+  it('should reset overflow when a visible modal is unmounted', () => {
+    const wrapper = mount(
+      <Modal {...defaultProps} visible>
+        {defaultContent}
+      </Modal>
+    );
+    expect(document.body.style.overflow).toBe('hidden');
+
+    wrapper.unmount();
+    expect(document.body.style.overflow).toBe('');
+  });
 });
