@@ -198,6 +198,11 @@ export interface GlobalTheme {
   modalMinWidth: string;
 
   // ---- NotificationBox ---- //
+  notificationMinHeight: string;
+  notificationMaxWidth: string;
+  notificationBoxShadow: string;
+
+  // ---- NotificationBox ---- //
   notificationBoxMinHeight: string;
   notificationBoxMaxWidth: string;
   notificationBoxErrorBackground: string;
