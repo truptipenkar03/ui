@@ -11,11 +11,22 @@ import {
 
 import { NotificationIcon } from '../notificationBox/NotificationIcon';
 import { CloseIcon } from './CloseIcon';
-import { NotificationBoxProps } from '../notificationBox/NotificationBox';
 
-export interface NotificationProps extends NotificationBoxProps {
+export interface NotificationProps {
   /** the title text of the notification */
   title: string;
+
+  /** if true, the close icon will appear on the notification for interaction */
+  allowClose?: boolean;
+
+  /** className of the notification component */
+  className?: string;
+
+  /** Callback to be called when close is clicked */
+  onClose?: () => void;
+
+  /** Determines the intent of the notification for the user */
+  notificationType: 'default' | 'success' | 'error' | 'warning' | 'info';
 }
 
 export const Notification: React.FunctionComponent<NotificationProps> = ({

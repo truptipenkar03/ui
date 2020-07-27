@@ -172,6 +172,11 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   modalMinHeight: '200px',
   modalMinWidth: '520px',
 
+  // ---- Notification ---- //
+  notificationMinHeight: '46px',
+  notificationMaxWidth: '520px',
+  notificationBoxShadow: `0px 0px 4px ${rgba(themeColors.black, 0.2)}`,
+
   // ---- NotificationBox ---- //
   notificationBoxMinHeight: '46px',
   notificationBoxMaxWidth: '520px',

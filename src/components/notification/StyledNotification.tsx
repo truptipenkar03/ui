@@ -12,9 +12,9 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  min-height: ${({ theme }) => theme.notificationBoxMinHeight};
+  min-height: ${({ theme }) => theme.notificationMinHeight};
 
-  max-width: ${({ theme }) => theme.notificationBoxMaxWidth};
+  max-width: ${({ theme }) => theme.notificationMaxWidth};
   width: 100%;
 
   display: flex;
