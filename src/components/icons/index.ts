@@ -1,3 +1,5 @@
+import AngleLeft from './AngleLeft';
+import AngleRight from './AngleRight';
 import ArrowDown from './ArrowDown';
 import ArrowUp from './ArrowUp';
 import Ban from './Ban';
@@ -27,6 +29,8 @@ import TimesCircle from './TimesCircle';
 import WindowClose from './WindowClose';
 
 export const Icon = {
+  AngleLeft,
+  AngleRight,
   ArrowDown,
   ArrowUp,
   Ban,
