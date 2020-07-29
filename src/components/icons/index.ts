@@ -9,6 +9,7 @@ import Check from './Check';
 import CheckCircle from './CheckCircle';
 import ChevronUp from './ChevronUp';
 import Clone from './Clone';
+import Edit from './Edit';
 import Exclamation from './Exclamation';
 import ExclamationCircle from './ExclamationCircle';
 import ExclamationTriangle from './ExclamationTriangle';
@@ -43,6 +44,7 @@ export const Icon = {
   CheckCircle,
   ChevronUp,
   Clone,
+  Edit,
   Exclamation,
   ExclamationCircle,
   ExclamationTriangle,
