@@ -75,6 +75,7 @@ export const Icon = {
   Times,
   TimesCircle,
   TrashAlt,
+  Undo,
   WindowClose,
   WindowMaximize,
 };
