@@ -12,17 +12,17 @@ export interface ToggleProps {
   /** className of the Toggle component */
   className?: string;
 
-  /** If true, the toggle will default to on */
-  defaultOn?: boolean;
+  /** If true, move the toggle to on, otherwise move the toggle to off */
+  isOn?: boolean;
 
-  /** If true, the toggle will not be interactible */
+  /** If true, the toggle will not be clickable */
   disabled?: boolean;
 
-  /** If true, the toggle will not be interactible and in a loading state */
-  loading?: boolean;
+  /** If true, the toggle will not be clickable and in a loading state */
+  isLoading?: boolean;
 
   /** Function that is called when toggle is clicked */
-  onClick?: (isOn: boolean) => void;
+  onClick?: () => void;
 }
 
 interface ContainerProps {
@@ -64,30 +64,20 @@ const ToggleCircle = styled.div`
 
 export const Toggle: React.FunctionComponent<ToggleProps> = ({
   className,
-  defaultOn,
   disabled,
-  loading,
+  isLoading,
   onClick,
+  isOn,
 }) => {
-  const [isOn, toggleOn] = React.useState<boolean>(defaultOn || false);
-
   const theme = useTheme();
-
-  const handleClick = React.useCallback(() => {
-    toggleOn(!isOn);
-
-    if (onClick) {
-      onClick(!isOn);
-    }
-  }, [isOn, toggleOn, onClick]);
 
   return (
     <Container
       className={`${className} rtk-toggle`}
       theme={theme}
-      onClick={handleClick}
-      isOn={isOn}
-      disabled={disabled}
+      onClick={onClick}
+      isOn={isOn || false}
+      disabled={disabled || isLoading}
     >
       <ToggleCircleContainer
         theme={theme}
@@ -105,7 +95,7 @@ export const Toggle: React.FunctionComponent<ToggleProps> = ({
       >
         <ToggleCircle theme={theme} />
       </ToggleCircleContainer>
-      {isOn && <ToggleIcon theme={theme} loading={loading} isOn={isOn} />}
+      <ToggleIcon theme={theme} isLoading={isLoading} isOn={isOn} />
     </Container>
   );
 };

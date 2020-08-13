@@ -11,17 +11,32 @@ const ToggleCheck = styled(Check)`
   left: 4px;
 `;
 
-const ToggleLoading = styled(Loading)`
+const ToggleLoadingOn = styled(Loading)`
   position: absolute;
 
   top: 2px;
   left: 4px;
 `;
 
-export const ToggleIcon = ({ isOn, loading, theme }) => {
-  if (isOn && loading) {
-    return <ToggleLoading color={theme.toggleOnIconColor} size="xs" />;
+const ToggleLoadingOff = styled(Loading)`
+  position: absolute;
+
+  top: 2px;
+  left: 17px;
+`;
+
+export const ToggleIcon = ({ isOn, isLoading, theme }) => {
+  if (isOn) {
+    if (isLoading) {
+      return <ToggleLoadingOn color={theme.toggleOnIconColor} size="xs" />;
+    } else {
+      return <ToggleCheck color={theme.toggleOnIconColor} size="xs" />;
+    }
   } else {
-    return <ToggleCheck color={theme.toggleOnIconColor} size="xs" />;
+    if (isLoading) {
+      return <ToggleLoadingOff color={theme.toggleOnIconColor} size="xs" />;
+    } else {
+      return null;
+    }
   }
 };
