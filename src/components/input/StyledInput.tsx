@@ -17,7 +17,7 @@ export const Container = styled.div`
   width: 100%;
 `;
 
-export const Label = styled(Typography.Body)<{ required?: boolean }>`
+export const Label = styled(Typography.Label)<{ required?: boolean }>`
   ${({ theme, required }) => css`
     ${required &&
       css`
