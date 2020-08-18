@@ -37,7 +37,7 @@ const Container = styled.div`
   position: relative;
 `;
 
-const Label = styled(Typography.Body)`
+const Label = styled(Typography.Label)`
   color: ${({ theme }) => theme.colors.black};
   font-size: 14px;
   font-weight: bold;
