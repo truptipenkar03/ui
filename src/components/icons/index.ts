@@ -19,6 +19,7 @@ import EyeSlash from './EyeSlash';
 import File from './File';
 import Folder from './Folder';
 import FolderOpen from './FolderOpen';
+import FolderOutline from './FolderOutline';
 import GlobeAmericas from './GlobeAmericas';
 import InfoCircle from './InfoCircle';
 import Loading from './Loading';
@@ -60,6 +61,7 @@ export const Icon = {
   File,
   Folder,
   FolderOpen,
+  FolderOutline,
   GlobeAmericas,
   InfoCircle,
   Loading,
