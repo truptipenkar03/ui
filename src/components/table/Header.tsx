@@ -26,7 +26,7 @@ const TH = styled.th<{
     margin: 0;
     border-bottom: ${theme.tableHeadBorder};
     border-bottom-color: ${theme.tableHeadBorderColor};
-    width: ${`${width}%` || 'auto'};
+    width: ${width ? `${width}%` : 'auto'};
   `}
 `;
 

@@ -34,6 +34,7 @@ const Container = styled.div<ContainerProps>`
   position: relative;
   height: ${({ theme }) => theme.toggleHeight};
   width: ${({ theme }) => theme.toggleWidth};
+  min-width: ${({ theme }) => theme.toggleWidth};
 
   background: ${({ theme, isOn }) =>
     isOn ? theme.toggleOnBackground : theme.toggleOffBackground};
