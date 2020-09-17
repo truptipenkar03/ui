@@ -32,7 +32,7 @@ const StyledLabel = styled.label`
   line-height: ${({ theme }) => theme.radioItemLineHeight};
   margin: ${({ theme }) => theme.radioItemMargin};
 
-  font-family: 'Lato' sans-serif;
+  font-family: 'Lato', sans-serif;
 
   input {
     display: none;
