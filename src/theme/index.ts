@@ -141,6 +141,7 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   inputColor: themeColors.body,
   inputDefaultHeight: '32px',
   inputDefaultFontSize: 14,
+  inputDisabledBackground: themeColors.tertiaryBackground,
   inputFontFamily: "'Lato', sans-serif",
   inputStatusErrorBorderColor: themeColors.red,
   inputStatusWarningBorderColor: themeColors.orange,

@@ -171,6 +171,7 @@ export const StyledInput = styled.input<StyledInputProps>`
     }
 
     &:disabled {
+      background: ${theme.inputDisabledBackground};
       cursor: not-allowed;
       opacity: 0.5;
     }
