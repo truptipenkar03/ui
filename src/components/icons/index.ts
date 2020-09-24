@@ -10,6 +10,7 @@ import CheckCircle from './CheckCircle';
 import ChevronUp from './ChevronUp';
 import Clipboard from './Clipboard';
 import ClipboardList from './ClipboardList';
+import Clock from './Clock';
 import Clone from './Clone';
 import Edit from './Edit';
 import Exclamation from './Exclamation';
@@ -52,6 +53,7 @@ export const Icon = {
   ChevronUp,
   Clipboard,
   ClipboardList,
+  Clock,
   Clone,
   Edit,
   Exclamation,
