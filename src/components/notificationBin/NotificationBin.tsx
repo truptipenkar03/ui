@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Notification, NotificationProps } from '../notification/Notification';
 
-export type NotificationType = Omit<NotificationProps, 'duration' | 'onClose'>;
+export type NotificationType = Omit<NotificationProps, 'onClose'>;
 
 export interface NotificationBinProps {
   /** className of the NotificationBin component */
