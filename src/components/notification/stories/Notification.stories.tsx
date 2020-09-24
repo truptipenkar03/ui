@@ -24,23 +24,23 @@ const Spacer = styled.div`
 
 export const simple = () => (
   <React.Fragment>
-    <Notification notificationType="default" title="Title Text">
+    <Notification itemKey="1" notificationType="default" title="Title Text">
       Insert message here.
     </Notification>
     <Spacer />
-    <Notification notificationType="warning" title="Warning">
+    <Notification itemKey="2" notificationType="warning" title="Warning">
       Insert warning message here.
     </Notification>
     <Spacer />
-    <Notification notificationType="info" title="Info">
+    <Notification itemKey="3" notificationType="info" title="Info">
       Insert info message here.
     </Notification>
     <Spacer />
-    <Notification notificationType="success" title="Success!">
+    <Notification itemKey="4" notificationType="success" title="Success!">
       Insert info success here.
     </Notification>
     <Spacer />
-    <Notification notificationType="error" title="Error">
+    <Notification itemKey="5" notificationType="error" title="Error">
       Insert info error here.
     </Notification>
   </React.Fragment>

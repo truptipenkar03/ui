@@ -211,8 +211,11 @@ export interface GlobalTheme {
 
   // ---- NotificationBox ---- //
   notificationMinHeight: string;
+  notificationMinWidth: string;
+  notificationBorderRadius: string;
   notificationMaxWidth: string;
   notificationBoxShadow: string;
+  notificationBackground: string;
 
   // ---- NotificationBox ---- //
   notificationBoxMinHeight: string;

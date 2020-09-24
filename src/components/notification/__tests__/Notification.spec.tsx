@@ -7,7 +7,7 @@ import { Notification } from '../Notification';
 describe('Notification', () => {
   it('renders', () => {
     const wrapper = shallow(
-      <Notification notificationType="info" title="title" />
+      <Notification itemKey="1" notificationType="info" title="title" />
     );
 
     expect(wrapper.exists('StyledNotification__Container')).toBe(true);
@@ -16,7 +16,7 @@ describe('Notification', () => {
 
   it('sets the notificationType prop', () => {
     const wrapper = shallow(
-      <Notification notificationType="success" title="" />
+      <Notification itemKey="1" notificationType="success" title="" />
     );
 
     expect(
@@ -26,7 +26,12 @@ describe('Notification', () => {
 
   it('hides the close button', () => {
     const wrapper = shallow(
-      <Notification notificationType="success" allowClose={false} title="" />
+      <Notification
+        itemKey="1"
+        notificationType="success"
+        allowClose={false}
+        title=""
+      />
     );
 
     expect(wrapper.exists('CloseIcon')).toBe(false);
@@ -36,7 +41,12 @@ describe('Notification', () => {
     const onCloseMock = jest.fn();
 
     const wrapper = mount(
-      <Notification notificationType="error" onClose={onCloseMock} title="" />
+      <Notification
+        itemKey="1"
+        notificationType="error"
+        onClose={onCloseMock}
+        title=""
+      />
     );
 
     wrapper.find('CloseIcon__Container').simulate('click');

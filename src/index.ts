@@ -71,6 +71,12 @@ export {
   NotificationProps,
 } from './components/notification/Notification';
 
+export {
+  NotificationBin,
+  NotificationBinProps,
+  NotificationType,
+} from './components/notificationBin/NotificationBin';
+
 export { Panel, PanelProps } from './components/panel/Panel';
 
 export { Portal, PortalProps } from './components/portal/Portal';

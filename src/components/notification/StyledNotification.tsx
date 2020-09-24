@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { motion } from 'framer-motion';
+
 import styled, { css } from 'styled-components';
 
 import { GlobalTheme } from '../../theme/types';
@@ -11,23 +13,29 @@ interface ContainerProps {
   notificationType: 'default' | 'success' | 'error' | 'warning' | 'info';
 }
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled(motion.div)<ContainerProps>`
   min-height: ${({ theme }) => theme.notificationMinHeight};
 
   max-width: ${({ theme }) => theme.notificationMaxWidth};
+  min-width: ${({ theme }) => theme.notificationMinWidth};
   width: 100%;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
   
+  background: ${({ theme }) => theme.notificationBackground};
   border-left: 8px solid;
+
+  border-radius: ${({ theme }) => theme.notificationBorderRadius};
+
+  margin-bottom: 16px;
   
-    ${({ notificationType }) =>
-      notificationType === 'error' &&
-      css`
-        border-left-color: ${({ theme }) => theme.colors.red};
-      `}
+  ${({ notificationType }) =>
+    notificationType === 'error' &&
+    css`
+      border-left-color: ${({ theme }) => theme.colors.red};
+    `}
 
   ${({ notificationType }) =>
     notificationType === 'warning' &&

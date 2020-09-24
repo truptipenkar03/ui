@@ -12,17 +12,19 @@ const Container = styled.div`
 `;
 
 interface CloseIconProps {
-  onClose?: () => void;
+  itemKey: string | number;
+  onClose?: (key: string | number) => void;
 }
 
 export const CloseIcon: React.FunctionComponent<CloseIconProps> = ({
   onClose,
+  itemKey,
 }) => {
   const handleClose = React.useCallback(() => {
     if (onClose) {
-      onClose();
+      onClose(itemKey);
     }
-  }, [onClose]);
+  }, [itemKey, onClose]);
 
   return (
     <Container onClick={handleClose}>
