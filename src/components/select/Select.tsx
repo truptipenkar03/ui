@@ -1,12 +1,45 @@
 import * as React from 'react';
 
-import { default as ReactSelect, Props } from 'react-select';
+import { default as ReactSelect, Props, ValueType } from 'react-select';
 import styled from 'styled-components';
 
 import { useTheme } from '../../hooks/useTheme';
 import CaretDown from '../icons/CaretDown';
 import Times from '../icons/Times';
 import { GlobalTheme } from '../../theme/types';
+
+export type OptionType = {
+  label: string;
+  value: string;
+  customElement?: React.ReactNode;
+  isDisabled?: boolean;
+};
+
+type GetNewValue = {
+  <OT>(newValue: ValueType<OT>, isMulti: true): Array<OT> | null;
+  <OT>(newValue: ValueType<OT>, isMulti: false): OT | null;
+};
+
+/**
+ * A helper to simplify the complex single/multi-value return type of react-select's
+ * onChange handler.  For a multi-valued select, returns array of options or null;
+ * for single-value returns the option or null.
+ * @param {GetNewValue} newValue - the value from the Select onChange handler
+ * @param {boolean} isMulti - whether or not Select is set to multi-valued
+ */
+export const getNewValue: GetNewValue = <OT extends OptionType = OptionType>(
+  newValue: ValueType<OT>,
+  isMulti: boolean
+) => {
+  if (!newValue) {
+    return null;
+  }
+  return (
+    (isMulti && Array.isArray(newValue) && newValue) ||
+    (!isMulti && !Array.isArray(newValue) && newValue) ||
+    null // it should never get here, this is mostly to cover all possible paths to please TS
+  );
+};
 
 export interface SelectProps {
   /** className of the Select component */
