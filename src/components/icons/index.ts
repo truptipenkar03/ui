@@ -7,6 +7,7 @@ import Bars from './Bars';
 import CaretDown from './CaretDown';
 import Check from './Check';
 import CheckCircle from './CheckCircle';
+import CheckSquare from './CheckSquare';
 import ChevronUp from './ChevronUp';
 import Clipboard from './Clipboard';
 import ClipboardList from './ClipboardList';
@@ -53,6 +54,7 @@ export const Icon = {
   CaretDown,
   Check,
   CheckCircle,
+  CheckSquare,
   ChevronUp,
   Clipboard,
   ClipboardList,
