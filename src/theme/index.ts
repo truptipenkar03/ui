@@ -87,6 +87,18 @@ export const getDefaultTheme = (themeColors: Colors = colors): GlobalTheme => ({
   buttonLinkActiveBackground: 'transparent',
   buttonLinkActiveColor: themeColors.secondary,
 
+  // ---- Checkbox ---- //
+  checkboxLineHeight: '16px',
+  checkboxMargin: '4px',
+  checkboxFontSize: '14px',
+  checkboxFontColor: themeColors.body,
+  checkboxBorder: `1px solid ${themeColors.border}`,
+  checkboxHoverColor: themeColors.primary,
+  checkboxHoverBorder: `1px solid ${themeColors.primary}`,
+  checkboxCheckedBackground: themeColors.primary,
+  checkboxCheckedBorderColor: themeColors.primary,
+  checkboxBorderRadius: '4px',
+
   // ---- Collapse ---- //
   collapseBorder: '1px solid',
   collapseBorderColor: themeColors.border,

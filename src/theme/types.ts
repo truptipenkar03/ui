@@ -112,6 +112,18 @@ export interface GlobalTheme {
   buttonLinkActiveBackground: string;
   buttonLinkActiveColor: string;
 
+  // ---- Checkbox ---- //
+  checkboxLineHeight: string;
+  checkboxMargin: string;
+  checkboxFontSize: string;
+  checkboxFontColor: string;
+  checkboxBorder: string;
+  checkboxHoverColor: string;
+  checkboxHoverBorder: string;
+  checkboxCheckedBackground: string;
+  checkboxCheckedBorderColor: string;
+  checkboxBorderRadius: string;
+
   // ---- Collapse ---- //
   collapseBorder: string;
   collapseBorderColor: string;

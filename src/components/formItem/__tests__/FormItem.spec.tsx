@@ -3,6 +3,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 import { FormItem } from '../FormItem';
+import { FormItemIcon } from '../FormItemIcon';
 
 describe('FormItem', () => {
   it('renders', () => {
@@ -53,5 +54,41 @@ describe('FormItem', () => {
     );
 
     expect(wrapper.exists('FormItemIcon')).toBe(false);
+  });
+});
+
+describe('FormItemIcon', () => {
+  it('renders', () => {
+    const wrapper = shallow(<FormItemIcon status="error" />);
+
+    expect(wrapper.exists('FormItemIcon__IconContainer')).toBe(true);
+  });
+
+  it('renders with error status', () => {
+    const wrapper = shallow(<FormItemIcon status="error" />);
+
+    expect(wrapper.exists('FormItemIcon__IconContainer')).toBe(true);
+    expect(wrapper.exists('TimesCircle')).toBe(true);
+  });
+
+  it('renders with warning status', () => {
+    const wrapper = shallow(<FormItemIcon status="warning" />);
+
+    expect(wrapper.exists('FormItemIcon__IconContainer')).toBe(true);
+    expect(wrapper.exists('ExclamationCircle')).toBe(true);
+  });
+
+  it('renders with success status', () => {
+    const wrapper = shallow(<FormItemIcon status="success" />);
+
+    expect(wrapper.exists('FormItemIcon__IconContainer')).toBe(true);
+    expect(wrapper.exists('CheckCircle')).toBe(true);
+  });
+
+  it('renders with loading status', () => {
+    const wrapper = shallow(<FormItemIcon status="loading" />);
+
+    expect(wrapper.exists('FormItemIcon__IconContainer')).toBe(true);
+    expect(wrapper.exists('Loading')).toBe(true);
   });
 });
