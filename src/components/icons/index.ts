@@ -12,6 +12,7 @@ import Clipboard from './Clipboard';
 import ClipboardList from './ClipboardList';
 import Clock from './Clock';
 import Clone from './Clone';
+import Cog from './Cog';
 import Edit from './Edit';
 import Exclamation from './Exclamation';
 import ExclamationCircle from './ExclamationCircle';
@@ -30,8 +31,10 @@ import Pencil from './Pencil';
 import Plus from './Plus';
 import PowerOff from './PowerOff';
 import Search from './Search';
+import ShareSquare from './ShareSquare';
 import Sort from './Sort';
 import StickyNote from './StickyNote';
+import SyncAlt from './SyncAlt';
 import TicketAlt from './TicketAlt';
 import Times from './Times';
 import TimesCircle from './TimesCircle';
@@ -55,6 +58,7 @@ export const Icon = {
   ClipboardList,
   Clock,
   Clone,
+  Cog,
   Edit,
   Exclamation,
   ExclamationCircle,
@@ -73,8 +77,10 @@ export const Icon = {
   Plus,
   PowerOff,
   Search,
+  ShareSquare,
   Sort,
   StickyNote,
+  SyncAlt,
   TicketAlt,
   Times,
   TimesCircle,
