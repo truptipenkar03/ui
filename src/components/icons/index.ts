@@ -20,6 +20,7 @@ import ExclamationCircle from './ExclamationCircle';
 import ExclamationTriangle from './ExclamationTriangle';
 import EyeSlash from './EyeSlash';
 import File from './File';
+import FileAlt from './FileAlt';
 import Folder from './Folder';
 import FolderOpen from './FolderOpen';
 import FolderOutline from './FolderOutline';
@@ -36,6 +37,7 @@ import ShareSquare from './ShareSquare';
 import Sort from './Sort';
 import StickyNote from './StickyNote';
 import SyncAlt from './SyncAlt';
+import Table from './Table';
 import TicketAlt from './TicketAlt';
 import Times from './Times';
 import TimesCircle from './TimesCircle';
@@ -67,6 +69,7 @@ export const Icon = {
   ExclamationTriangle,
   EyeSlash,
   File,
+  FileAlt,
   Folder,
   FolderOpen,
   FolderOutline,
@@ -83,6 +86,7 @@ export const Icon = {
   Sort,
   StickyNote,
   SyncAlt,
+  Table,
   TicketAlt,
   Times,
   TimesCircle,
