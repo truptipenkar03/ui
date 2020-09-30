@@ -1,6 +1,6 @@
 {
   "name": "@rtkwlf/ui",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "dist/ui.cjs.js",
   "module": "dist/ui.es.js",
   "types": "dist/ui.d.ts",
