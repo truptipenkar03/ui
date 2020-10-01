@@ -42,18 +42,16 @@ const getSortState = (currentState: string): SortState => {
   }
 };
 
-const StyledCell = styled(Cell)<StyledCellProps>`
-  ${({ theme, sortable }) => css`
-    transition: background ${theme.animationTimeFast}s ease-in-out;
-
-    ${sortable &&
-      css`
-        &:hover {
-          cursor: pointer;
-          background: ${theme.colors.tertiaryBackground};
-        }
-      `}
-  `}
+const StyledCell = styled(Cell)<any>`
+  transition: background ${({ theme }) => theme.animationTimeFast}s ease-in-out;
+  ${({ sortable }) =>
+    sortable &&
+    css`
+      &:hover {
+        cursor: pointer;
+        background: ${({ theme }) => theme.colors.tertiaryBackground};
+      }
+    `}
 `;
 
 const StyledSubtitle = styled(Typography.Subtitle)`

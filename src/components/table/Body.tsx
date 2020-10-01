@@ -8,7 +8,7 @@ import { Typography } from '../typography/Typography';
 
 import { Cell } from './Cell';
 
-import { ColumnProps } from './Table';
+import { ColumnProps, OnRowInterface } from './Table';
 
 import { GlobalTheme } from '../../theme/types';
 
@@ -16,15 +16,22 @@ interface BodyProps<T> {
   columns: ColumnProps<T>[];
   data: T[];
   emptyComponent?: React.ReactNode;
+  onRow?: OnRowInterface<T>;
 }
+
+const TR = styled.tr<{
+  theme: GlobalTheme;
+}>`
+  &:hover {
+    background: blue;
+  }
+`;
 
 const TD = styled.td<{
   theme: GlobalTheme;
 }>`
-  ${({ theme }) => css`
-    border-bottom: ${theme.tableBodyRowBorder};
-    border-color: ${theme.tableBodyRowBorderColor};
-  `}
+  border-bottom: ${({ theme }) => theme.tableBodyRowBorder};
+  border-color: ${({ theme }) => theme.tableBodyRowBorderColor};
 `;
 
 const EmptyContentContainer = styled.div`
@@ -38,9 +45,22 @@ const EmptyContentContainer = styled.div`
 `;
 
 export const Body = <T extends any = any>(props: BodyProps<T>) => {
-  const { columns, data, emptyComponent } = props;
+  const { columns, data, emptyComponent, onRow } = props;
 
   const theme = useTheme();
+
+  const handleRowEvent = React.useCallback(
+    (e, d: T) => {
+      switch (e.type) {
+        case 'click': {
+          if (onRow && onRow.onClick) {
+            onRow.onClick(d);
+          }
+        }
+      }
+    },
+    [onRow]
+  );
 
   const renderDataIndex = React.useCallback((column, data) => {
     if (column.dataIndex == null) {
@@ -70,7 +90,7 @@ export const Body = <T extends any = any>(props: BodyProps<T>) => {
     }
 
     return data.map((d, index) => (
-      <tr key={index}>
+      <TR key={index} onClick={e => handleRowEvent(e, d)}>
         {columns.map(c => {
           const Renderer = c.render;
           return (
@@ -87,7 +107,7 @@ export const Body = <T extends any = any>(props: BodyProps<T>) => {
             </TD>
           );
         })}
-      </tr>
+      </TR>
     ));
   }, [data, columns, emptyComponent, renderDataIndex, theme]);
 

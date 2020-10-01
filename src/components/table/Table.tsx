@@ -13,6 +13,12 @@ import { TableLoading } from './TableLoading';
 
 export type Justify = 'flex-start' | 'center' | 'flex-end';
 
+// We are only going to support row click for now
+// and look into adding more events in the future
+export interface OnRowInterface<T> {
+  onClick: (record: T) => void;
+}
+
 export interface ColumnProps<T> {
   /** unique key of the column */
   key: string | number;
@@ -57,6 +63,9 @@ export interface TableProps<T> {
 
   /** callback that is called when a column is clicked to sort */
   onSort?: (key: string, state: SortState) => void;
+
+  /** object containing possible event callbacks for a row */
+  onRow?: OnRowInterface<T>;
 }
 
 const Container = styled.div`
@@ -79,6 +88,7 @@ export const Table = <T extends any = any>(props: TableProps<T>) => {
     loading,
     loadingComponent,
     onSort,
+    onRow,
   } = props;
 
   const handleSort = React.useCallback(
@@ -106,6 +116,7 @@ export const Table = <T extends any = any>(props: TableProps<T>) => {
           columns={columns}
           data={data}
           emptyComponent={emptyComponent}
+          onRow={onRow}
         />
       </TableContainer>
     </Container>
