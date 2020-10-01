@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import styled, { css } from 'styled-components';
 
 import { GlobalTheme } from '../../theme/types';
@@ -11,16 +13,20 @@ import { Typography } from '../typography/Typography';
 interface StyledInputProps extends InputProps {
   inputSize?: InputSize;
   status?: Status;
+  theme: GlobalTheme;
 }
 
 export const Container = styled.div`
   width: 100%;
 `;
 
-export const Label = styled(Typography.Label)<{ required?: boolean }>`
+export const Label = styled(Typography.Label)<{
+  theme: GlobalTheme;
+  required?: boolean;
+}>`
   ${({ theme, required }) => css`
     ${required &&
-      css`
+      css<{ theme: GlobalTheme; required?: boolean }>`
         ::before {
           content: '* ';
           color: ${theme.colors.red};
@@ -44,7 +50,10 @@ export const Prefix = styled.div<{
   theme: GlobalTheme;
   inputSize?: InputSize;
 }>`
-  ${({ theme, inputSize }) => css`
+  ${({ theme, inputSize }) => css<{
+    theme: GlobalTheme;
+    inputSize?: InputSize;
+  }>`
     position: absolute;
     display: flex;
     align-items: center;
@@ -83,9 +92,11 @@ export const FeedbackMessage = styled.div`
   height: ${({ theme }) => theme.inputStatusMessageHeight};
 `;
 
-export const StyledInput = styled.input<StyledInputProps>`
-  ${({ borderType, theme, type, inputSize, status }) => css`
-    height: ${theme.inputDefaultHeight};               
+const inputStyles = css<StyledInputProps>`
+  ${({ borderType, theme, htmlType, inputSize, status }) => css<
+    StyledInputProps
+  >`
+    height: ${theme.inputDefaultHeight};
     font-size: ${theme.inputDefaultFontSize}px;
     
     width: 100%;
@@ -100,98 +111,114 @@ export const StyledInput = styled.input<StyledInputProps>`
     border-color: ${theme.inputBorderColor};
     border-radius: ${theme.inputBorderRadius};
     border-color: ${theme.inputBorderColor};
-
+    
     box-sizing: border-box;
     
     transition: border ${theme.animationTimeFast}s;
-    
+
     ${inputSize === 'small' &&
       css`
         height: ${theme.inputSmallHeight};
         font-size: ${theme.inputSmallFontSize}px;
       `}
+        
+        ${inputSize === 'large' &&
+          css`
+            height: ${theme.inputLargeHeight};
+            font-size: ${theme.inputLargeFontSize}px;
+          `}
     
-    ${inputSize === 'large' &&
-      css`
-        height: ${theme.inputLargeHeight};
-        font-size: ${theme.inputLargeFontSize}px;
-      `}
-
-    ${type === 'textarea' &&
-      css`
-        height: 6em;
-        padding: ${theme.inputTextAreaPadding};
-        resize: vertical;
-      `}
+        ${htmlType === 'textarea' &&
+          css`
+            height: 6em;
+            padding: ${theme.inputTextAreaPadding};
+            resize: vertical;
+          `}
+        
+        ${borderType === 'bottom' &&
+          css`
+            padding: 10px 5px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            border-bottom: ${theme.inputBorder};
+            border-color: ${theme.inputBorderColor};
+          `};
+        
+        ${borderType === 'none' &&
+          css`
+            padding: 10px 0;
+            background: transparent;
+            border: none;
+            color: ${theme.inputColor};
+          `};
     
-    ${borderType === 'bottom' &&
-      css`
-        padding: 10px 5px;
-        background: transparent;
-        border: none;
-        border-radius: 0;
-        border-bottom: ${theme.inputBorder};
-        border-color: ${theme.inputBorderColor};
-      `};
+        ${status === 'error' &&
+          css`
+            border-color: ${theme.inputStatusErrorBorderColor};
+          `};
     
-    ${borderType === 'none' &&
-      css`
-        padding: 10px 0;
-        background: transparent;
-        border: none;
-        color: ${theme.inputColor};
-      `};
-
-    ${status === 'error' &&
-      css`
-        border-color: ${theme.inputStatusErrorBorderColor};
-      `};
-
-    ${status === 'success' &&
-      css`
-        border-color: ${theme.inputStatusSuccessBorderColor};
-      `};
-      
-    ${status === 'warning' &&
-      css`
-        border-color: ${theme.inputStatusWarningBorderColor};
-      `};
+        ${status === 'success' &&
+          css`
+            border-color: ${theme.inputStatusSuccessBorderColor};
+          `};
+          
+        ${status === 'warning' &&
+          css`
+            border-color: ${theme.inputStatusWarningBorderColor};
+          `};
+        
+        ${status === 'loading' &&
+          css`
+            border-color: ${theme.inputStatusLoadingBorderColor};
+          `};
     
-    ${status === 'loading' &&
-      css`
-        border-color: ${theme.inputStatusLoadingBorderColor};
+        &:read-only {
+          cursor: pointer;
+        }
+    
+        &::placeholder {
+          color: ${theme.inputPlaceholderColor};
+        }
+    
+        &:disabled {
+          background: ${theme.inputDisabledBackground};
+          cursor: not-allowed;
+          opacity: 0.5;
+        }
+    
+        &:focus {
+          border-color: ${theme.inputFocusBorderColor};
+    
+          ${borderType === 'bottom' &&
+            css`
+              border: none;
+              border-bottom: 1px solid ${theme.inputFocusBorderColor};
+              border-radius: 0;
+            `};
+    
+          ${borderType === 'none' &&
+            css`
+              border: none;
+            `};
+    
+          outline: none;
+        }
       `};
-
-    &:read-only {
-      cursor: pointer;
-    }
-
-    &::placeholder {
-      color: ${theme.inputPlaceholderColor};
-    }
-
-    &:disabled {
-      background: ${theme.inputDisabledBackground};
-      cursor: not-allowed;
-      opacity: 0.5;
-    }
-
-    &:focus {
-      border-color: ${theme.inputFocusBorderColor};
-
-      ${borderType === 'bottom' &&
-        css`
-          border: none;
-          border-bottom: 1px solid ${theme.inputFocusBorderColor};
-          border-radius: 0;
-        `};
-
-      ${borderType === 'none' &&
-        css`
-          border: none;
-        `};
-
-      outline: none;
-    }
-  `};
 `;
+
+const InputWithStyles = styled.input<StyledInputProps>`
+  ${inputStyles}
+`;
+
+const TextAreaWithStyles = styled.textarea<StyledInputProps>`
+  ${inputStyles}
+`;
+
+export const StyledInput = props => {
+  if (props.htmlType === 'textarea') {
+    return <TextAreaWithStyles {...props} />;
+  } else {
+    return <InputWithStyles {...props} />;
+  }
+};
